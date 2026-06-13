@@ -3,151 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>小学生奥数乐园</title>
+<title>小学生奥数乐园 · 思维训练题</title>
 <style>
+  :root {
+    --c-primary: #7c3aed;
+    --c-primary-soft: #ede9fe;
+    --c-accent: #ec4899;
+    --c-easy: #10b981;
+    --c-easy-soft: #d1fae5;
+    --c-mid: #f59e0b;
+    --c-mid-soft: #fef3c7;
+    --c-hard: #ef4444;
+    --c-hard-soft: #fee2e2;
+    --c-text: #1f2937;
+    --c-muted: #6b7280;
+    --c-bg: linear-gradient(135deg, #faf5ff 0%, #fff7ed 50%, #fdf2f8 100%);
+    --shadow: 0 6px 20px rgba(124, 58, 237, 0.12);
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: "Comic Sans MS", "Microsoft YaHei", "PingFang SC", sans-serif;
-    background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 50%, #ddd6fe 100%);
+    font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
+    background: var(--c-bg);
     min-height: 100vh;
+    color: var(--c-text);
+    line-height: 1.7;
     padding: 20px;
-    color: #3b0764;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.15) 0%, transparent 30%),
-      radial-gradient(circle at 90% 80%, rgba(167, 139, 250, 0.15) 0%, transparent 30%),
-      radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.1) 0%, transparent 40%);
-    pointer-events: none;
-    z-index: -1;
   }
 
   .container {
-    max-width: 960px;
+    max-width: 1040px;
     margin: 0 auto;
   }
 
-  /* 标题区 */
+  /* ======= 标题区 ======= */
   .header {
     text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6);
+    padding: 38px 24px 32px;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
     color: #fff;
-    border-radius: 24px;
+    border-radius: 28px;
     margin-bottom: 24px;
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.28);
     position: relative;
     overflow: hidden;
   }
 
+  .header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(255,255,255,0.18) 0%, transparent 25%),
+      radial-gradient(circle at 85% 75%, rgba(255,255,255,0.15) 0%, transparent 30%);
+    pointer-events: none;
+  }
+
   .header h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     margin-bottom: 8px;
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.12);
+    position: relative;
   }
 
   .header p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     opacity: 0.95;
     letter-spacing: 1px;
+    position: relative;
   }
 
-  .emoji {
+  .header .emoji {
     display: inline-block;
+    margin: 0 8px;
     animation: bounce 2s infinite;
   }
 
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-10px); }
   }
 
-  /* 密码栏 */
-  .password-box {
-    background: #fff;
-    border-radius: 20px;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    border: 3px dashed #a78bfa;
-  }
-
-  .password-box label {
-    font-size: 1.05rem;
-    font-weight: bold;
-    color: #6d28d9;
-  }
-
-  .password-box input {
-    flex: 1;
-    min-width: 180px;
-    padding: 10px 14px;
-    font-size: 1rem;
-    border: 2px solid #e9d5ff;
-    border-radius: 12px;
-    outline: none;
-    transition: all 0.2s;
-    font-family: inherit;
-  }
-
-  .password-box input:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
-  }
-
-  .password-box button {
-    padding: 10px 22px;
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-    transition: transform 0.15s;
-    font-family: inherit;
-  }
-
-  .password-box button:hover {
-    transform: translateY(-2px);
-  }
-
-  .password-status {
-    font-size: 0.95rem;
-    margin-left: auto;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-weight: bold;
-  }
-
-  .status-locked {
-    background: #fef3c7;
-    color: #92400e;
-  }
-
-  .status-unlocked {
-    background: #d1fae5;
-    color: #065f46;
-  }
-
-  /* 难度标签 */
+  /* ======= 难度切换标签 ======= */
   .tabs {
     display: flex;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -157,31 +100,38 @@
     background: #fff;
     border-radius: 999px;
     cursor: pointer;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-weight: bold;
     border: 3px solid transparent;
     transition: all 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    color: var(--c-muted);
   }
 
-  .tab[data-level="easy"] { color: #047857; border-color: #6ee7b7; }
-  .tab[data-level="easy"]:hover, .tab[data-level="easy"].active { background: #6ee7b7; color: #064e3b; }
+  .tab[data-level="easy"] { border-color: #a7f3d0; color: var(--c-easy); }
+  .tab[data-level="easy"]:hover, .tab[data-level="easy"].active {
+    background: #10b981; color: #fff; border-color: #10b981;
+    transform: translateY(-2px);
+  }
 
-  .tab[data-level="medium"] { color: #b45309; border-color: #fcd34d; }
-  .tab[data-level="medium"]:hover, .tab[data-level="medium"].active { background: #fcd34d; color: #78350f; }
+  .tab[data-level="medium"] { border-color: #fcd34d; color: var(--c-mid); }
+  .tab[data-level="medium"]:hover, .tab[data-level="medium"].active {
+    background: #f59e0b; color: #fff; border-color: #f59e0b;
+    transform: translateY(-2px);
+  }
 
-  .tab[data-level="hard"] { color: #991b1b; border-color: #fca5a5; }
-  .tab[data-level="hard"]:hover, .tab[data-level="hard"].active { background: #fca5a5; color: #7f1d1d; }
+  .tab[data-level="hard"] { border-color: #fca5a5; color: var(--c-hard); }
+  .tab[data-level="hard"]:hover, .tab[data-level="hard"].active {
+    background: #ef4444; color: #fff; border-color: #ef4444;
+    transform: translateY(-2px);
+  }
 
-  /* 题目区 */
+  /* ======= 难度区域 ======= */
   .level-section {
     display: none;
     animation: fadeIn 0.4s ease;
   }
-
-  .level-section.active {
-    display: block;
-  }
+  .level-section.active { display: block; }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px); }
@@ -190,29 +140,29 @@
 
   .level-intro {
     background: #fff;
-    padding: 18px 22px;
+    padding: 18px 24px;
     border-radius: 18px;
     margin-bottom: 18px;
     font-size: 1rem;
-    line-height: 1.7;
-    color: #581c87;
+    color: #4c1d95;
     border-left: 6px solid #c4b5fd;
+    box-shadow: var(--shadow);
   }
 
-  /* 题目卡片 */
+  /* ======= 题目卡片 ======= */
   .problem-card {
     background: #fff;
     border-radius: 20px;
     padding: 22px 26px;
-    margin-bottom: 16px;
-    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.1);
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
     border: 2px solid #f3e8ff;
-    transition: transform 0.15s;
+    transition: transform 0.15s, border-color 0.2s;
   }
 
   .problem-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(139, 92, 246, 0.18);
+    border-color: #ddd6fe;
   }
 
   .problem-header {
@@ -222,75 +172,111 @@
     margin-bottom: 12px;
     padding-bottom: 10px;
     border-bottom: 2px dashed #e9d5ff;
+    flex-wrap: wrap;
   }
 
   .problem-number {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #8b5cf6;
+    color: var(--c-primary);
   }
 
   .problem-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: bold;
-    color: #6d28d9;
+    color: #5b21b6;
   }
 
   .problem-category {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     margin-left: auto;
     background: #fef3c7;
     color: #92400e;
-    padding: 4px 12px;
+    padding: 3px 12px;
     border-radius: 999px;
     font-weight: bold;
   }
 
   .problem-text {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: #1e1b4b;
+    font-size: 1rem;
+    color: #1f2937;
     margin-bottom: 14px;
     white-space: pre-wrap;
+    padding: 4px 0;
   }
 
-  .solution-toggle {
-    display: inline-flex;
+  /* ======= 每道题密码+查看解析 区 ======= */
+  .unlock-row {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: linear-gradient(135deg, #a78bfa, #f472b6);
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    background: #faf5ff;
+    border-radius: 12px;
+    border: 2px dashed #ddd6fe;
+  }
+
+  .unlock-row label {
+    font-size: 0.9rem;
+    color: #5b21b6;
+    font-weight: bold;
+  }
+
+  .unlock-row input {
+    width: 120px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border: 2px solid #e9d5ff;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+    background: #fff;
+  }
+  .unlock-row input:focus { border-color: var(--c-primary); }
+
+  .unlock-row button {
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
     color: #fff;
     border: none;
-    border-radius: 999px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: bold;
     font-family: inherit;
-    box-shadow: 0 3px 10px rgba(167, 139, 250, 0.3);
+    box-shadow: 0 3px 8px rgba(139, 92, 246, 0.3);
     transition: transform 0.15s;
   }
+  .unlock-row button:hover { transform: translateY(-1px); }
 
-  .solution-toggle:hover {
-    transform: translateY(-2px);
+  .unlock-status {
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 8px;
+    background: #f3f4f6;
+    color: var(--c-muted);
+    margin-left: auto;
   }
+  .unlock-status.ok { background: #d1fae5; color: #065f46; }
+  .unlock-status.err { background: #fee2e2; color: #b91c1c; }
 
+  /* ======= 解析框 ======= */
   .solution-box {
     display: none;
     margin-top: 14px;
-    padding: 18px 20px;
+    padding: 18px 22px;
     background: linear-gradient(135deg, #fdf4ff, #fef3c7);
     border-radius: 14px;
     border-left: 5px solid #a78bfa;
     color: #4c1d95;
     line-height: 1.85;
-    font-size: 1rem;
+    font-size: 0.98rem;
     animation: slideDown 0.3s ease;
   }
-
-  .solution-box.show {
-    display: block;
-  }
+  .solution-box.show { display: block; }
 
   @keyframes slideDown {
     from { opacity: 0; transform: translateY(-6px); }
@@ -298,11 +284,10 @@
   }
 
   .solution-box h4 {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #7c3aed;
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
-
   .solution-box .answer {
     margin-top: 10px;
     padding: 10px 14px;
@@ -310,454 +295,615 @@
     border-radius: 10px;
     font-weight: bold;
     color: #db2777;
+    display: inline-block;
   }
 
-  .locked-hint {
-    color: #9ca3af;
-    font-size: 0.95rem;
-    padding: 10px 0 4px;
-    text-align: center;
-    font-style: italic;
-  }
-
-  /* 底部 */
+  /* ======= 底部 ======= */
   .footer {
     text-align: center;
     margin-top: 30px;
-    padding: 16px;
+    padding: 20px 10px;
     color: #6d28d9;
     font-size: 0.95rem;
-    opacity: 0.8;
+    opacity: 0.85;
+  }
+  .footer .tip {
+    font-size: 0.88rem;
+    color: var(--c-muted);
+    margin-top: 4px;
   }
 
-  @media (max-width: 600px) {
-    .header h1 { font-size: 1.8rem; }
-    .password-box { flex-direction: column; align-items: stretch; }
-    .password-status { margin-left: 0; text-align: center; }
-    .tab { padding: 10px 18px; font-size: 0.95rem; }
+  @media (max-width: 640px) {
+    .header h1 { font-size: 1.7rem; letter-spacing: 2px; }
+    .tab { padding: 10px 18px; font-size: 0.9rem; }
+    .unlock-row { flex-direction: column; align-items: stretch; }
+    .unlock-status { margin-left: 0; text-align: center; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
+  <!-- 标题 -->
   <div class="header">
-    <h1><span class="emoji">🌟</span> 小学生奥数乐园 <span class="emoji">🧮</span></h1>
-    <p>开启数学奇趣之旅 · 越思考越聪明</p>
-  </div>
-
-  <!-- 密码框 -->
-  <div class="password-box">
-    <label for="pwd">🔐 管理员密码：</label>
-    <input id="pwd" type="password" placeholder="请输入密码以查看解析" autocomplete="off">
-    <button id="unlockBtn">解锁解析</button>
-    <span id="status" class="password-status status-locked">🔒 解析已隐藏</span>
+    <h1><span class="emoji">🌟</span>小学生奥数乐园<span class="emoji">🧮</span></h1>
+    <p>开启思维之门 · 越思考越聪明</p>
   </div>
 
   <!-- 难度切换 -->
   <div class="tabs">
-    <button class="tab active" data-level="easy">🌱 初级</button>
-    <button class="tab" data-level="medium">🔥 中级</button>
-    <button class="tab" data-level="hard">🚀 高级</button>
+    <button class="tab active" data-level="easy">🌱 初级（1-2 年级）</button>
+    <button class="tab" data-level="medium">🔥 中级（3-4 年级）</button>
+    <button class="tab" data-level="hard">🚀 高级（5-6 年级）</button>
   </div>
 
-  <!-- 初级 -->
+  <!-- ========== 初级 ========== -->
   <section class="level-section active" id="section-easy">
     <div class="level-intro">
-      <strong>🌱 初级题目：</strong>适合小学1-3年级小朋友。通过巧妙的思路，发现数学原来这么有趣！
+      <strong>🌱 初级题目：</strong>适合小学 1-2 年级小朋友。以基础运算、简单推理、找规律为主，培养数感和观察能力。
     </div>
-
-    <div class="problem-card" data-problem="1">
-      <div class="problem-header">
-        <span class="problem-number">第 1 题</span>
-        <span class="problem-title">凑整速算</span>
-        <span class="problem-category">计算</span>
-      </div>
-      <div class="problem-text">计算：99 + 99 + 99 + 3 = ?</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        把 3 拆成 1 + 1 + 1，分别和三个 99 配对，这样就变成：
-        (99 + 1) + (99 + 1) + (99 + 1) = 100 + 100 + 100 = 300。
-        <div class="answer">✅ 答案：300</div>
-        <h4>💡 小提示</h4>
-        看到 99、98 这类接近整十、整百的数，我们可以"借一点，让它们先变整，再计算。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="2">
-      <div class="problem-header">
-        <span class="problem-number">第 2 题</span>
-        <span class="problem-title">找规律填数</span>
-        <span class="problem-category">规律</span>
-      </div>
-      <div class="problem-text">按规律填空：2, 5, 8, 11, ( ? ), 17</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        观察相邻两个数的差：5 - 2 = 3，8 - 5 = 3，11 - 8 = 3。每一项都比前一项多 3。
-        所以 11 后面的数应该是 11 + 3 = 14，再下一个就是 14 + 3 = 17，正好符合规律。
-        <div class="answer">✅ 答案：14</div>
-        <h4>💡 小提示</h4>
-        找规律填数，最常用的方法是"算出差"和"看看是乘几"。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="3">
-      <div class="problem-header">
-        <span class="problem-number">第 3 题</span>
-        <span class="problem-title">年龄问题</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">小明今年 7 岁，爸爸今年 35 岁。几年后爸爸的年龄是小明的 3 倍？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        年龄问题关键：<strong>年龄差永远不变！</strong><br>
-        爸爸比小明大 35 - 7 = 28 岁。<br>
-        当爸爸年龄是小明的 3 倍时，把小明的年龄看作 1 份，爸爸就是 3 份，相差 2 份。<br>
-        2 份 = 28 岁，所以 1 份 = 14 岁。也就是那时小明 14 岁。<br>
-        14 - 7 = 7 年。
-        <div class="answer">✅ 答案：7 年后</div>
-        <h4>💡 小提示</h4>
-        遇到"几倍"问题，画"线段图"最清楚！
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="4">
-      <div class="problem-header">
-        <span class="problem-number">第 4 题</span>
-        <span class="problem-title">鸡兔同笼</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">鸡和兔一共 8 只，一共有 22 条腿。问：鸡和兔各几只？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路（假设法）</h4>
-        假设 8 只全是鸡，每只鸡有 2 条腿，一共就有 8 × 2 = 16 条腿。<br>
-        但实际有 22 条腿，比假设多了 22 - 16 = 6 条腿。<br>
-        每把一只鸡换成兔，就多 2 条腿。要多出 6 条腿，就要换 6 ÷ 2 = 3 只。<br>
-        所以兔 = 3 只，鸡 = 8 - 3 = 5 只。<br>
-        检查：5 只鸡有 10 条腿，3 只兔有 12 条腿，一共 22 条腿。✓
-        <div class="answer">✅ 答案：鸡 5 只，兔 3 只</div>
-        <h4>💡 小提示</h4>
-        "假设法"是鸡兔同笼的万能钥匙！
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="5">
-      <div class="problem-header">
-        <span class="problem-number">第 5 题</span>
-        <span class="problem-title">简单的和倍问题</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">两筐水果一共 30 个，甲筐比乙筐多 6 个。两筐各多少个？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        画线段图：甲多 6 个，把多的 6 个先拿走，两筐就一样多了。<br>
-        30 - 6 = 24 个，两筐一样多，每筐 24 ÷ 2 = 12 个。<br>
-        所以乙筐 = 12 个，甲筐 = 12 + 6 = 18 个。<br>
-        检查：18 + 12 = 30，18 - 12 = 6。✓
-        <div class="answer">✅ 答案：甲筐 18 个，乙筐 12 个</div>
-        <h4>💡 小提示</h4>
-        "和差问题"公式：大数 = (和 + 差) ÷ 2，小数 = (和 - 差) ÷ 2。
-      </div>
-    </div>
+    <div id="problems-easy"></div>
   </section>
 
-  <!-- 中级 -->
+  <!-- ========== 中级 ========== -->
   <section class="level-section" id="section-medium">
     <div class="level-intro">
-      <strong>🔥 中级题目：</strong>适合小学3-4年级小朋友。需要一点小技巧，一起来挑战吧！
+      <strong>🔥 中级题目：</strong>适合小学 3-4 年级小朋友。涵盖和差倍、年龄、植树、盈亏、鸡兔同笼、行程等经典题型。
     </div>
-
-    <div class="problem-card" data-problem="6">
-      <div class="problem-header">
-        <span class="problem-number">第 1 题</span>
-        <span class="problem-title">等差数列求和</span>
-        <span class="problem-category">计算</span>
-      </div>
-      <div class="problem-text">计算：1 + 2 + 3 + ... + 49 + 50 = ?</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路（高斯法）</h4>
-        把数列正着写和倒着写相加：<br>
-        &nbsp;&nbsp;1 + 2 + 3 + ... + 50<br>
-        +) 50 + 49 + 48 + ... + 1<br>
-        = 51 + 51 + 51 + ... + 51（共 50 个 51）<br>
-        所以结果 = 51 × 50 ÷ 2 = 2550 ÷ 2 = 1275。
-        <div class="answer">✅ 答案：1275</div>
-        <h4>💡 小提示</h4>
-        等差数列求和公式：(首项 + 末项) × 项数 ÷ 2。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="7">
-      <div class="problem-header">
-        <span class="problem-number">第 2 题</span>
-        <span class="problem-title">盈亏问题</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">小朋友分糖。每人分 4 颗多 3 颗；每人分 5 颗少 2 颗。有几个小朋友？几颗糖？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        每人多分 1 颗，总共需要：原来多 3 颗，现在少 2 颗，一共差 3 + 2 = 5 颗糖。<br>
-        所以小朋友人数 = (盈 + 亏) ÷ (两次每人分配差 = 5 ÷ 1 = 5 人。<br>
-        糖的总数 = 4 × 5 + 3 = 23 颗（或 5 × 5 - 2 = 23 颗）。
-        <div class="answer">✅ 答案：5 个小朋友，23 颗糖</div>
-        <h4>💡 小提示</h4>
-        盈亏问题公式：人数 = (盈 + 亏) ÷ 分配差。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="8">
-      <div class="problem-header">
-        <span class="problem-number">第 3 题</span>
-        <span class="problem-title">植树问题</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">在一条长 60 米的小路一边种树，两端都种，每隔 5 米种一棵。一共种多少棵？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        两端都种树，棵数 = 间隔数 + 1。<br>
-        间隔数 = 总长 ÷ 间隔 = 60 ÷ 5 = 12 个间隔。<br>
-        所以棵数 = 12 + 1 = 13 棵。
-        <div class="answer">✅ 答案：13 棵</div>
-        <h4>💡 小提示</h4>
-        两端种树：棵数 = 间隔数 + 1；一端种一端不种：棵数 = 间隔数；两端都不种：棵数 = 间隔数 - 1。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="9">
-      <div class="problem-header">
-        <span class="problem-number">第 4 题</span>
-        <span class="problem-title">乘法简算</span>
-        <span class="problem-category">计算</span>
-      </div>
-      <div class="problem-text">计算：125 × 88 = ?</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        看到 125 想到 8（因为 125 × 8 = 1000）。<br>
-        88 = 8 × 11。<br>
-        125 × 88 = 125 × 8 × 11 = 1000 × 11 = 11000。
-        <div class="answer">✅ 答案：11000</div>
-        <h4>💡 小提示</h4>
-        记住好朋友：2 × 5 = 10，4 × 25 = 100，8 × 125 = 1000。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="10">
-      <div class="problem-header">
-        <span class="problem-number">第 5 题</span>
-        <span class="problem-title">还原问题</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">一个数加上 8，乘以 8，减去 8，除以 8，结果还是 8。这个数是多少？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路（倒推法）</h4>
-        从结果 8 开始反向操作：<br>
-        除以 8 之前：8 × 8 = 64<br>
-        减去 8 之前：64 + 8 = 72<br>
-        乘以 8 之前：72 ÷ 8 = 9<br>
-        加上 8 之前：9 - 8 = 1<br>
-        所以原数是 1。验证：(1 + 8) × 8 - 8 ÷ 8 = 8。✓
-        <div class="answer">✅ 答案：1</div>
-        <h4>💡 小提示</h4>
-        还原问题要"倒着想"，加变减、减变加、乘变除、除变乘。
-      </div>
-    </div>
+    <div id="problems-medium"></div>
   </section>
 
-  <!-- 高级 -->
+  <!-- ========== 高级 ========== -->
   <section class="level-section" id="section-hard">
     <div class="level-intro">
-      <strong>🚀 高级题目：</strong>适合小学5-6年级小朋友。开动脑筋，你就是数学小达人！
+      <strong>🚀 高级题目：</strong>适合小学 5-6 年级小朋友。涉及分数应用、工程、行程、抽屉原理、逻辑推理等综合思维题。
     </div>
-
-    <div class="problem-card" data-problem="11">
-      <div class="problem-header">
-        <span class="problem-number">第 1 题</span>
-        <span class="problem-title">行程问题 - 相遇</span>
-        <span class="problem-category">行程</span>
-      </div>
-      <div class="problem-text">甲、乙两车同时从 A、B 两地相向而行，甲车每小时行 60 千米，乙车每小时行 40 千米，3 小时后相遇。A、B 两地相距多少千米？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        相遇问题公式：<strong>总路程 = 速度和 × 相遇时间</strong><br>
-        甲、乙一小时合起来走了 60 + 40 = 100 千米。<br>
-        3 小时相遇，所以总路程 = 100 × 3 = 300 千米。
-        <div class="answer">✅ 答案：300 千米</div>
-        <h4>💡 小提示</h4>
-        相向而行 → 速度相加；同向而行 → 速度相减。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="12">
-      <div class="problem-header">
-        <span class="problem-number">第 2 题</span>
-        <span class="problem-title">工程问题</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">一项工程，甲单独做 12 天完成，乙单独做 18 天完成。两人合做几天完成？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        把总工作量看作"1"。<br>
-        甲每天做 1/12，乙每天做 1/18。<br>
-        两人合做每天做 1/12 + 1/18 = 3/36 + 2/36 = 5/36。<br>
-        完成时间 = 1 ÷ (5/36) = 36/5 = 7.2 天。
-        <div class="answer">✅ 答案：7.2 天（或 7 天多一点）</div>
-        <h4>💡 小提示</h4>
-        工程问题关键：把工作总量设为"1"，效率 = 1/时间。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="13">
-      <div class="problem-header">
-        <span class="problem-number">第 3 题</span>
-        <span class="problem-title">分数应用</span>
-        <span class="problem-category">应用</span>
-      </div>
-      <div class="problem-text">一本书共 180 页，第一天看了全书的 1/3，第二天看了余下的 1/4，还剩多少页没看？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        第一天看了：180 × 1/3 = 60 页，剩下 180 - 60 = 120 页。<br>
-        第二天看了余下的 1/4：120 × 1/4 = 30 页。<br>
-        还剩：120 - 30 = 90 页。<br>
-        （或者：剩下 = 180 × (1 - 1/3) × (1 - 1/4) = 180 × 2/3 × 3/4 = 180 × 1/2 = 90 页）
-        <div class="answer">✅ 答案：90 页</div>
-        <h4>💡 小提示</h4>
-        "余下的几分之几"中"的"字前面是新的"单位1"。
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="14">
-      <div class="problem-header">
-        <span class="problem-number">第 4 题</span>
-        <span class="problem-title">逻辑推理</span>
-        <span class="problem-category">推理</span>
-      </div>
-      <div class="problem-text">甲、乙、丙三人中有一人是老师，一人是医生，一人是工程师。已知：甲比医生年龄大，乙和工程师不同岁，工程师比丙年龄小。问：谁是工程师？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        根据"乙和工程师不同岁" → 乙不是工程师。<br>
-        根据"工程师比丙年龄小" → 丙不是工程师。<br>
-        乙和丙都不是工程师，所以工程师只能是甲。<br>
-        进一步验证：甲（工程师）比丙小，而甲比医生大 → 丙不可能是医生，所以丙是老师，乙是医生。✓
-        <div class="answer">✅ 答案：甲是工程师，乙是医生，丙是老师</div>
-        <h4>💡 小提示</h4>
-        逻辑推理用"排除法"，画一张表对照看更清楚！
-      </div>
-    </div>
-
-    <div class="problem-card" data-problem="15">
-      <div class="problem-header">
-        <span class="problem-number">第 5 题</span>
-        <span class="problem-title">抽屉原理</span>
-        <span class="problem-category">组合</span>
-      </div>
-      <div class="problem-text">口袋里有红、黄、蓝、绿四种颜色的小球各 10 个。至少摸出多少个球，才能保证有 3 个颜色相同的球？</div>
-      <div class="locked-hint">💡 先自己想一想，再看解析哦！</div>
-      <button class="solution-toggle toggle-hidden">👀 查看解析</button>
-      <div class="solution-box solution-hidden">
-        <h4>📝 解题思路</h4>
-        "最不利原则"：考虑最坏的情况——每种颜色先各摸出 2 个，一共 4 × 2 = 8 个，仍然没有 3 个同色。<br>
-        再摸出 1 个，无论是什么颜色，都一定有 3 个同色。<br>
-        所以至少要摸出 8 + 1 = 9 个球。
-        <div class="answer">✅ 答案：9 个</div>
-        <h4>💡 小提示</h4>
-        抽屉原理：保证 n 个颜色相同 = 颜色数 × (n-1) + 1。
-      </div>
-    </div>
+    <div id="problems-hard"></div>
   </section>
 
   <div class="footer">
-    <p>🌈 勤动脑筋，数学就会越来越有趣！加油！🌟</p>
+    <p>🌈 勤动脑筋，数学就会越来越有趣！加油！</p>
+    <p class="tip">💡 提示：每道题下方输入密码 <strong>admin</strong>，即可查看该题的详细解析。</p>
   </div>
 
 </div>
 
 <script>
-  // 难度切换
-  const tabs = document.querySelectorAll('.tab');
-  const sections = document.querySelectorAll('.level-section');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      sections.forEach(s => s.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('section-' + tab.dataset.level).classList.add('active');
-    });
-  });
+/* =============================================================
+   题库（初级 / 中级 / 高级） — 每题独立验证密码
+   ============================================================= */
+const PASSWORD = "admin";
 
-  // 密码解锁
-  const CORRECT_PWD = 'admin';
-  let unlocked = false;
-  const pwdInput = document.getElementById('pwd');
-  const unlockBtn = document.getElementById('unlockBtn');
-  const statusEl = document.getElementById('status');
+const problems = {
 
-  function setUnlockedState() {
-    unlocked = true;
-    statusEl.textContent = '🔓 解析已解锁，点击"查看解析"即可查看';
-    statusEl.classList.remove('status-locked');
-    statusEl.classList.add('status-unlocked');
-    document.querySelectorAll('.toggle-hidden').forEach(btn => btn.classList.remove('toggle-hidden'));
-    document.querySelectorAll('.solution-hidden').forEach(el => el.classList.remove('solution-hidden'));
-    document.querySelectorAll('.locked-hint').forEach(el => el.style.display = 'none');
-  }
+  easy: [
+    { title:"凑整速算", cat:"计算", text:"计算：99 + 99 + 99 + 3 = ?",
+      solution:["把 3 拆成 1 + 1 + 1，分别和三个 99 配对：",
+                "(99+1) + (99+1) + (99+1) = 100 + 100 + 100 = 300。",
+                "【小技巧】：看到 99、98 这类接近整十、整百的数，先凑整再算。"],
+      answer:"300" },
 
-  function tryUnlock() {
-    const val = pwdInput.value.trim();
-    if (val === CORRECT_PWD) {
-      setUnlockedState();
-    } else {
-      statusEl.textContent = '❌ 密码不正确，请再试一次';
-      statusEl.classList.remove('status-unlocked');
-      statusEl.classList.add('status-locked');
-      pwdInput.value = '';
-      pwdInput.focus();
-    }
-  }
+    { title:"找规律填数", cat:"规律", text:"按规律填空：2，5，8，11，( ? )，17",
+      solution:["观察相邻数字的差：5-2=3，8-5=3，11-8=3，每一项比前一项多 3。",
+                "所以 11 后面的数 = 11 + 3 = 14。",
+                "【验证】：14 + 3 = 17，正确。"],
+      answer:"14" },
 
-  unlockBtn.addEventListener('click', tryUnlock);
-  pwdInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+    { title:"简单年龄问题", cat:"应用", text:"小明今年 7 岁，爸爸今年 35 岁。爸爸比小明大几岁？3 年后呢？",
+      solution:["爸爸比小明大 35 - 7 = 28 岁。",
+                "年龄差永远不变，3 年后爸爸还是比小明大 28 岁。",
+                "【公式】：年龄差 = 大年龄 - 小年龄（永远不变）。"],
+      answer:"28 岁" },
 
-  // 解析展开/收起
-  document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('solution-toggle') && !e.target.classList.contains('toggle-hidden')) {
-      const box = e.target.parentElement.querySelector('.solution-box');
-      if (box.classList.contains('show')) {
-        box.classList.remove('show');
-        e.target.innerHTML = '👀 查看解析';
+    { title:"减法速算", cat:"计算", text:"计算：123 + 359 + 77 + 41 = ?",
+      solution:["观察 123 + 77 = 200，359 + 41 = 400。",
+                "所以 123 + 359 + 77 + 41 = (123 + 77) + (359 + 41) = 200 + 400 = 600。",
+                "【技巧】：加法交换律 + 结合律，找凑整搭档。"],
+      answer:"600" },
+
+    { title:"找规律填数", cat:"规律", text:"1，4，9，16，( ? )，36",
+      solution:["观察：1 = 1×1，4 = 2×2，9 = 3×3，16 = 4×4……",
+                "这是「完全平方数」数列：第 n 项 = n × n。",
+                "所以第 5 项 = 5 × 5 = 25。"],
+      answer:"25" },
+
+    { title:"简单除法应用", cat:"应用", text:"一本书 28 页，小明每天看 4 页，几天能看完？",
+      solution:["总页数 ÷ 每天看的页数 = 天数。",
+                "28 ÷ 4 = 7 天。"],
+      answer:"7 天" },
+
+    { title:"时钟问题", cat:"应用", text:"钟面上时针指向 6，分针指向 12，现在是几点？",
+      solution:["时针指向 6，分针指向 12，表示整点。",
+                "所以现在是 6 点整（可能是上午 6 点，也可能是下午 6 点）。"],
+      answer:"6 点整" },
+
+    { title:"排队问题", cat:"应用", text:"小明前面有 6 人，后面有 8 人，这一排一共有多少人？",
+      solution:["小明前面 6 人 + 小明 1 人 + 小明后面 8 人 = 6 + 1 + 8 = 15 人。",
+                "【关键】：不要忘记加上小明自己！"],
+      answer:"15 人" },
+
+    { title:"锯木头问题", cat:"应用", text:"一根木头锯成 2 段要 3 分钟，锯成 4 段要几分钟？",
+      solution:["锯成 2 段只需锯 1 次 = 3 分钟。",
+                "锯成 4 段需要锯 3 次（次数 = 段数 - 1）。",
+                "3 次 × 3 分钟/次 = 9 分钟。"],
+      answer:"9 分钟" },
+
+    { title:"蜗牛爬井", cat:"应用", text:"蜗牛在 12 米深的井底，每小时向上爬 3 米后又滑下 2 米。几小时能爬出井口？",
+      solution:["每小时实际净上升 3 - 2 = 1 米。",
+                "注意：最后 1 小时只爬上 3 米到达井口，不再滑下。",
+                "先考虑最后 3 米：只需 1 小时。",
+                "之前需要爬 12 - 3 = 9 米，每小时净上升 1 米，需 9 小时。",
+                "总共：9 + 1 = 10 小时。"],
+      answer:"10 小时" },
+
+    { title:"乘法速算", cat:"计算", text:"计算：25 × 4 × 8 = ?",
+      solution:["先算 25 × 4 = 100（牢记这组凑整搭档！）。",
+                "再算 100 × 8 = 800。",
+                "【常用凑整】：25 × 4 = 100，125 × 8 = 1000，5 × 2 = 10。"],
+      answer:"800" },
+
+    { title:"除法应用题", cat:"应用", text:"42 块巧克力，分给 6 个小朋友，每人几块？",
+      solution:["42 ÷ 6 = 7（块）。",
+                "每人分 7 块。"],
+      answer:"7 块" },
+
+    { title:"找规律填数", cat:"规律", text:"1，2，4，7，11，( ? )，22",
+      solution:["相邻两数的差依次为 1、2、3、4……呈递增。",
+                "1 到 2 差 1，2 到 4 差 2，4 到 7 差 3，7 到 11 差 4。",
+                "下一个差是 5，所以括号里 = 11 + 5 = 16。",
+                "【验证】：16 + 6 = 22 ✅。"],
+      answer:"16" },
+
+    { title:"周长问题", cat:"几何", text:"一个长方形，长 6 厘米，宽 4 厘米，周长是多少厘米？",
+      solution:["长方形周长 = (长 + 宽) × 2。",
+                "(6 + 4) × 2 = 10 × 2 = 20 厘米。"],
+      answer:"20 厘米" },
+
+    { title:"简单和倍问题", cat:"应用", text:"两筐水果共 30 个，甲筐是乙筐的 2 倍。两筐各有多少个？",
+      solution:["把乙筐看作 1 份，甲筐就是 2 份，总共 1 + 2 = 3 份。",
+                "3 份 = 30 个，所以 1 份 = 10 个。",
+                "乙筐 = 10 个，甲筐 = 10 × 2 = 20 个。"],
+      answer:"甲筐 20 个，乙筐 10 个" },
+
+    { title:"简单鸡兔同笼", cat:"应用", text:"鸡和兔共 5 只，一共有 14 条腿。鸡和兔各几只？",
+      solution:["假设全是鸡：5 × 2 = 10 条腿。",
+                "实际多出 14 - 10 = 4 条腿，每把 1 只鸡换成兔多 2 条腿。",
+                "所以兔有 4 ÷ 2 = 2 只，鸡有 5 - 2 = 3 只。",
+                "【验证】：3 × 2 + 2 × 4 = 6 + 8 = 14 ✅。"],
+      answer:"鸡 3 只，兔 2 只" },
+
+    { title:"还原问题", cat:"应用", text:"一个数加上 5，再乘 5，再减去 5，再除以 5，结果还是 5。这个数是几？",
+      solution:["倒着想，操作反过来做：",
+                "除以 5 之前：5 × 5 = 25；",
+                "减去 5 之前：25 + 5 = 30；",
+                "乘以 5 之前：30 ÷ 5 = 6；",
+                "加上 5 之前：6 - 5 = 1。",
+                "【验证】：(1+5) × 5 - 5 ÷ 5 = 5 ✅。"],
+      answer:"1" },
+
+    { title:"移多补少", cat:"应用", text:"小明有 18 颗糖，小红有 10 颗糖。小明给小红几颗后，两人一样多？",
+      solution:["两人相差 18 - 10 = 8 颗。",
+                "把多出来的 8 颗分成相等的两份：8 ÷ 2 = 4 颗。",
+                "小明给小红 4 颗后，小明剩下 14 颗，小红变成 14 颗，一样多。"],
+      answer:"4 颗" },
+
+    { title:"连加与等差数列", cat:"计算", text:"1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = ?",
+      solution:["首尾配对：(1+10) + (2+9) + (3+8) + (4+7) + (5+6) = 11 × 5 = 55。",
+                "【公式】：等差数列求和 = (首项 + 末项) × 项数 ÷ 2。"],
+      answer:"55" },
+
+    { title:"数线段", cat:"几何", text:"一条线段被分成 4 小段，一共有多少条线段（包含大小各种线段）？",
+      solution:["分 4 小段时，线段总数 = 4 + 3 + 2 + 1 = 10 条。",
+                "【公式】：分 n 小段，总线段数 = n + (n-1) + ... + 2 + 1 = n(n+1)/2。"],
+      answer:"10 条" },
+
+    { title:"错中求解", cat:"计算", text:"小明做加法时，把加数 25 写成了 52，算得的和是 90。正确的和是多少？",
+      solution:["错把 25 看成 52，多加了 52 - 25 = 27。",
+                "所以正确的和 = 90 - 27 = 63。",
+                "【验证】：正确的另一个加数 = 90 - 52 = 38，38 + 25 = 63 ✅。"],
+      answer:"63" },
+
+    { title:"周期问题", cat:"规律", text:"一串彩灯按「红、黄、蓝、绿」循环排列，第 25 盏是什么颜色？",
+      solution:["每 4 盏一个循环，25 ÷ 4 = 6 余 1。",
+                "余数为 1，即新循环的第 1 盏，对应红色。"],
+      answer:"红色" }
+  ],
+
+  medium: [
+    { title:"等差数列求和", cat:"计算", text:"计算：1 + 2 + 3 + ... + 49 + 50 = ?",
+      solution:["高斯法：把数列正着写和倒着写相加：",
+                "  1 +  2 +  3 + ... + 50",
+                "+ 50 + 49 + 48 + ... +  1",
+                "= 51 × 50 = 2550",
+                "所以原式 = 2550 ÷ 2 = 1275。",
+                "【公式】：和 = (首项 + 末项) × 项数 ÷ 2。"],
+      answer:"1275" },
+
+    { title:"和差问题", cat:"应用", text:"两个数的和是 96，差是 16，这两个数分别是多少？",
+      solution:["大数 = (和 + 差) ÷ 2 = (96 + 16) ÷ 2 = 112 ÷ 2 = 56。",
+                "小数 = (和 - 差) ÷ 2 = (96 - 16) ÷ 2 = 80 ÷ 2 = 40。",
+                "【验证】：56 + 40 = 96，56 - 40 = 16 ✅。"],
+      answer:"56 和 40" },
+
+    { title:"年龄问题", cat:"应用", text:"爸爸今年 36 岁，是小明年龄的 4 倍。几年后爸爸年龄是小明的 2 倍？",
+      solution:["小明今年 = 36 ÷ 4 = 9 岁。",
+                "年龄差 = 36 - 9 = 27 岁（永远不变）。",
+                "爸爸年龄 = 小明年龄 × 2 时，爸爸比小明多 1 倍，即 1 倍 = 27 岁。",
+                "那时小明 27 岁，爸爸 54 岁。",
+                "27 - 9 = 18 年后。"],
+      answer:"18 年后" },
+
+    { title:"植树问题（两端都栽）", cat:"应用", text:"在一条长 200 米的公路一侧栽树，两端都栽，每隔 5 米一棵。一共栽多少棵？",
+      solution:["间隔数 = 总长 ÷ 间距 = 200 ÷ 5 = 40 个。",
+                "棵数 = 间隔数 + 1 = 40 + 1 = 41 棵。",
+                "【三种情况】两端都栽：棵数 = 间隔数 + 1；一端栽一端不栽：棵数 = 间隔数；两端都不栽：棵数 = 间隔数 - 1。"],
+      answer:"41 棵" },
+
+    { title:"植树问题（封闭图形）", cat:"应用", text:"一个圆形花坛周长 120 米，沿边每隔 6 米摆一盆花。一共摆多少盆？",
+      solution:["封闭图形（圆形、正方形、三角形等）：棵数 = 间隔数。",
+                "间隔数 = 120 ÷ 6 = 20。",
+                "所以一共摆 20 盆花。"],
+      answer:"20 盆" },
+
+    { title:"盈亏问题", cat:"应用", text:"小朋友分糖，每人 4 颗剩 20 颗；每人 6 颗缺 10 颗。几个小朋友？几颗糖？",
+      solution:["两次分配的差距：20 + 10 = 30 颗（一盈一亏相加）。",
+                "每人分配差：6 - 4 = 2 颗。",
+                "【公式】：人数 = (盈 + 亏) ÷ 两次分配差。",
+                "人数 = (20 + 10) ÷ (6 - 4) = 30 ÷ 2 = 15 人。",
+                "糖数 = 4 × 15 + 20 = 80 颗（或 6 × 15 - 10 = 80 颗）。"],
+      answer:"15 个小朋友，80 颗糖" },
+
+    { title:"归一问题", cat:"应用", text:"3 台织布机 4 小时织布 600 米。照这样计算，5 台织布机 6 小时织布多少米？",
+      solution:["先求 1 台 1 小时织布：600 ÷ 3 ÷ 4 = 50 米。",
+                "5 台 6 小时织布：50 × 5 × 6 = 1500 米。"],
+      answer:"1500 米" },
+
+    { title:"相遇问题", cat:"行程", text:"甲、乙两车同时从相距 480 千米的两地相对开出，甲车每小时行 65 千米，乙车每小时行 55 千米。几小时相遇？",
+      solution:["相遇时间 = 总路程 ÷ 速度和。",
+                "480 ÷ (65 + 55) = 480 ÷ 120 = 4 小时。",
+                "【关键】相向而行 → 速度相加。"],
+      answer:"4 小时" },
+
+    { title:"乘法简算", cat:"计算", text:"计算：125 × 88 = ?",
+      solution:["看到 125 想到 8（125 × 8 = 1000）。",
+                "88 = 8 × 11。",
+                "125 × 88 = 125 × 8 × 11 = 1000 × 11 = 11000。"],
+      answer:"11000" },
+
+    { title:"还原问题", cat:"应用", text:"一根绳子，第一次用去一半多 2 米，第二次用去剩下的一半少 1 米，还剩 5 米。原来绳长多少米？",
+      solution:["倒着想：",
+                "第二次后剩 5 米，若第二次只用剩下的一半，应剩 5 - 1 = 4 米（实际少用 1 米，故剩下多 1 米，需减 1）；这 4 米是第二次之前的一半，所以第二次之前 = 4 × 2 = 8 米。",
+                "若第一次只用一半，应剩 8 + 2 = 10 米（实际多用 2 米，故剩下少 2 米，需加 2）；这 10 米是全长的一半，所以原长 = 10 × 2 = 20 米。",
+                "【验证】：20 → 20/2 - 2 = 8 → 8/2 + 1 = 5 ✅。"],
+      answer:"20 米" },
+
+    { title:"周期问题", cat:"规律", text:"2026 年 5 月 1 日是星期五。2026 年 5 月 31 日是星期几？",
+      solution:["从 5 月 1 日到 5 月 31 日共经过 30 天。",
+                "30 ÷ 7 = 4 周余 2 天。",
+                "星期五 + 2 天 = 星期日。"],
+      answer:"星期日" },
+
+    { title:"鸡兔同笼进阶", cat:"应用", text:"鸡和兔共 35 只，一共有 94 条腿。鸡和兔各几只？",
+      solution:["假设全是鸡：35 × 2 = 70 条腿。",
+                "实际多出 94 - 70 = 24 条腿。",
+                "每把 1 只鸡换成兔多 2 条腿，所以兔 = 24 ÷ 2 = 12 只。",
+                "鸡 = 35 - 12 = 23 只。",
+                "【抬腿法】：所有动物抬起一半腿，剩 94 ÷ 2 = 47 条腿；此时每只鸡 1 条腿，每只兔 2 条腿，总头数 35。所以兔 = 47 - 35 = 12，鸡 = 23。"],
+      answer:"鸡 23 只，兔 12 只" },
+
+    { title:"追及问题", cat:"行程", text:"哥哥每分钟走 80 米，弟弟每分钟走 60 米。弟弟先走 5 分钟后，哥哥去追。几分钟能追上？",
+      solution:["弟弟先走 5 分钟领先：60 × 5 = 300 米。",
+                "哥哥每分钟比弟弟多走 80 - 60 = 20 米（速度差）。",
+                "追及时间 = 路程差 ÷ 速度差 = 300 ÷ 20 = 15 分钟。"],
+      answer:"15 分钟" },
+
+    { title:"平均数问题", cat:"应用", text:"小明前四次数学测验的平均成绩是 85 分，第五次考了 95 分。五次的平均成绩是多少？",
+      solution:["前四次总分：85 × 4 = 340 分。",
+                "五次总分：340 + 95 = 435 分。",
+                "五次平均：435 ÷ 5 = 87 分。",
+                "【另法】：以 85 为基准，第五次多 10 分，分摊到 5 次，每次 + 2 分，85 + 2 = 87 分。"],
+      answer:"87 分" },
+
+    { title:"年龄问题（和倍型）", cat:"应用", text:"今年父子年龄和是 48 岁，3 年后父亲年龄是儿子的 5 倍。今年父子各几岁？",
+      solution:["3 年后父子各长 3 岁，年龄和 = 48 + 6 = 54 岁。",
+                "3 年后：父 = 5 × 子，所以儿子 1 份，父亲 5 份，共 6 份 = 54 岁。",
+                "1 份 = 9 岁 → 3 年后儿子 9 岁，父亲 45 岁。",
+                "今年：儿子 6 岁，父亲 42 岁。",
+                "【验证】：42 + 6 = 48 ✅，3 年后 45 与 9，45 ÷ 9 = 5 ✅。"],
+      answer:"父亲 42 岁，儿子 6 岁" },
+
+    { title:"和倍问题", cat:"应用", text:"三个数的和是 90，第一个数是第二个的 2 倍，第三个数是第二个的 3 倍。三个数各是多少？",
+      solution:["把第二个数看作 1 份，第一个数 = 2 份，第三个数 = 3 份，总共 1 + 2 + 3 = 6 份。",
+                "6 份 = 90 → 1 份 = 15。",
+                "第二个数 = 15，第一个数 = 30，第三个数 = 45。"],
+      answer:"30、15、45" },
+
+    { title:"方阵问题", cat:"应用", text:"三年级学生排成正方形队列做操，最外层一共 36 人。这个队列每边多少人？",
+      solution:["最外层人数 = (每边人数 - 1) × 4（四个角的人重复计算，所以减 1）。",
+                "每边人数 = 最外层 ÷ 4 + 1 = 36 ÷ 4 + 1 = 9 + 1 = 10 人。",
+                "【验证】：10 人每边，总人数 100；去掉一层后剩 8×8=64，外层 = 100-64=36 ✅。"],
+      answer:"每边 10 人" },
+
+    { title:"楼梯问题", cat:"应用", text:"一栋楼房，从 1 楼到 4 楼要走 48 级台阶。那么从 1 楼到 8 楼要走多少级台阶？",
+      solution:["从 1 楼到 4 楼，实际只上了 3 层楼，共 48 级。",
+                "每层楼台阶：48 ÷ 3 = 16 级。",
+                "1 楼到 8 楼，上 7 层楼：16 × 7 = 112 级。"],
+      answer:"112 级" },
+
+    { title:"归一归总", cat:"应用", text:"一辆汽车每小时行 60 千米，15 小时到达。如果要 12 小时到达，每小时需行多少千米？",
+      solution:["总路程：60 × 15 = 900 千米。",
+                "12 小时到达：900 ÷ 12 = 75 千米/小时。"],
+      answer:"75 千米/小时" },
+
+    { title:"定义新运算", cat:"计算", text:"规定 a △ b = a × b + a - b。例如：3 △ 2 = 3 × 2 + 3 - 2 = 7。求 5 △ 4 = ?",
+      solution:["套用定义：5 △ 4 = 5 × 4 + 5 - 4 = 20 + 5 - 4 = 21。"],
+      answer:"21" },
+
+    { title:"差倍问题", cat:"应用", text:"两个数的差是 36，大数是小数的 7 倍。两数各是多少？",
+      solution:["大数 - 小数 = 6 倍小数 = 36（因为大数 = 7 倍小数，相差 6 倍）。",
+                "小数 = 36 ÷ 6 = 6；大数 = 6 × 7 = 42。",
+                "【验证】：42 - 6 = 36 ✅。"],
+      answer:"42 和 6" },
+
+    { title:"倒推法", cat:"应用", text:"一个数加上 8，乘以 8，减去 8，除以 8，结果还是 8。这个数是多少？",
+      solution:["倒推：除以 8 之前 = 8 × 8 = 64；",
+                "减去 8 之前 = 64 + 8 = 72；",
+                "乘以 8 之前 = 72 ÷ 8 = 9；",
+                "加上 8 之前 = 9 - 8 = 1。",
+                "【验证】：(1+8) × 8 - 8 ÷ 8 = 8 ✅。"],
+      answer:"1" }
+  ],
+
+  hard: [
+    { title:"工程问题", cat:"应用", text:"一项工程，甲单独做 12 天完成，乙单独做 18 天完成。两人合做几天完成？",
+      solution:["把总工作量看作单位「1」。",
+                "甲效率 = 1/12，乙效率 = 1/18。",
+                "合作效率 = 1/12 + 1/18 = 3/36 + 2/36 = 5/36。",
+                "合作时间 = 1 ÷ (5/36) = 36/5 = 7.2 天。"],
+      answer:"7.2 天（或 7 又 1/5 天）" },
+
+    { title:"分数应用", cat:"应用", text:"一本书 180 页，第一天看了全书的 1/3，第二天看了余下的 1/4。还剩多少页？",
+      solution:["第一天看：180 × 1/3 = 60 页，剩 120 页。",
+                "第二天看余下的 1/4：120 × 1/4 = 30 页，剩 120 - 30 = 90 页。",
+                "【整体法】：剩余 = 180 × (1 - 1/3) × (1 - 1/4) = 180 × 2/3 × 3/4 = 180 × 1/2 = 90 页。"],
+      answer:"90 页" },
+
+    { title:"复杂行程", cat:"行程", text:"甲车从 A 城到 B 城需 6 小时，乙车从 B 城到 A 城需 8 小时。两车同时从两城相对开出，相遇时甲比乙多行 48 千米。A、B 两城相距多少千米？",
+      solution:["把全程看作单位「1」。甲速 = 1/6，乙速 = 1/8。",
+                "相遇时间 = 1 ÷ (1/6 + 1/8) = 1 ÷ (7/24) = 24/7 小时。",
+                "相遇时甲走了 24/7 × 1/6 = 4/7，乙走了 24/7 × 1/8 = 3/7。",
+                "甲比乙多走 4/7 - 3/7 = 1/7，对应 48 千米。",
+                "所以全程 = 48 × 7 = 336 千米。"],
+      answer:"336 千米" },
+
+    { title:"抽屉原理", cat:"组合", text:"口袋里有红、黄、蓝、绿四色小球各 10 个。至少摸出多少个球，才能保证有 3 个颜色相同？",
+      solution:["最不利原则：每种颜色先摸出 2 个，共 4 × 2 = 8 个，仍没有 3 个同色。",
+                "再摸出 1 个，无论是什么颜色，都一定有 3 个同色。",
+                "至少需摸出 8 + 1 = 9 个。",
+                "【公式】：保证 n 个同色 = 颜色数 × (n-1) + 1。"],
+      answer:"9 个" },
+
+    { title:"抽屉原理进阶", cat:"组合", text:"一副扑克牌（52 张，不含大小王），至少抽出多少张才能保证有 2 张同花色？",
+      solution:["扑克牌共 4 种花色（黑桃、红桃、方块、梅花）。",
+                "最不利情况：先抽 4 张，每种花色各 1 张。",
+                "再抽 1 张就必定有 2 张同花色。",
+                "所以至少抽 4 + 1 = 5 张。"],
+      answer:"5 张" },
+
+    { title:"流水行船", cat:"行程", text:"一艘船在静水中的速度是每小时 18 千米，水流速度每小时 2 千米。船从甲港顺水到乙港用了 5 小时。返回甲港需要几小时？",
+      solution:["顺水速度 = 18 + 2 = 20 千米/小时。",
+                "两港距离 = 20 × 5 = 100 千米。",
+                "逆水速度 = 18 - 2 = 16 千米/小时。",
+                "返回时间 = 100 ÷ 16 = 6.25 小时 = 6 小时 15 分。"],
+      answer:"6.25 小时（或 6 又 1/4 小时）" },
+
+    { title:"容斥原理", cat:"组合", text:"一个班 50 人，喜欢语文的 30 人，喜欢数学的 35 人，两科都喜欢的至少有多少人？",
+      solution:["喜欢语文 + 喜欢数学 = 30 + 35 = 65 人，超过全班 50 人。",
+                "重复部分就是两科都喜欢的最少人数：65 - 50 = 15 人。",
+                "【公式】：两科都喜欢 ≥ 喜欢语文 + 喜欢数学 - 总人数。"],
+      answer:"至少 15 人" },
+
+    { title:"逻辑推理", cat:"推理", text:"甲、乙、丙三人中有一人是老师，一人是医生，一人是工程师。已知：甲比医生年龄大，乙和工程师不同岁，工程师比丙年龄小。请问：谁是工程师？",
+      solution:["【突破口】：工程师不是乙（乙和工程师不同岁），工程师不是丙（工程师比丙小，说明不是丙）。",
+                "所以工程师只能是甲。",
+                "进一步：甲（工程师）比医生大，甲（工程师）比丙小 → 医生不是丙，丙是老师；那么乙是医生。",
+                "【结论】：甲=工程师，乙=医生，丙=老师。"],
+      answer:"甲是工程师，乙是医生，丙是老师" },
+
+    { title:"逻辑推理（真假话）", cat:"推理", text:"三个盒子，其中一个装着宝石。红盒子写：「宝石在这里」；黄盒子写：「宝石不在红盒子里」；蓝盒子写：「宝石不在我这里」。已知只有一句话是真话，请问宝石在哪个盒子里？",
+      solution:["红与黄两句话完全相反，必定一真一假。",
+                "因为总共有 1 句真话，所以蓝盒子的话一定是假的。",
+                "蓝盒子说「宝石不在我这里」是假话 → 宝石在蓝盒子里。",
+                "【验证】：若宝石在蓝盒子，则红=假，黄=真，蓝=假。刚好 1 真 ✅。"],
+      answer:"蓝盒子" },
+
+    { title:"列方程解应用题", cat:"应用", text:"一个两位数，十位数字与个位数字之和是 13，十位数字比个位数字大 3。这个两位数是多少？",
+      solution:["设个位数字为 x，十位数字 = x + 3。",
+                "(x + 3) + x = 13 → 2x + 3 = 13 → x = 5。",
+                "个位 = 5，十位 = 5 + 3 = 8。",
+                "这个两位数是 85。",
+                "【验证】：8 + 5 = 13，8 - 5 = 3 ✅。"],
+      answer:"85" },
+
+    { title:"分数应用题", cat:"应用", text:"一桶油连桶重 120 千克，倒出一半油后，连桶重 65 千克。桶重多少千克？",
+      solution:["倒出的一半油重：120 - 65 = 55 千克。",
+                "全部油重：55 × 2 = 110 千克。",
+                "桶重：120 - 110 = 10 千克。",
+                "【验证】：110/2 + 10 = 55 + 10 = 65 ✅。"],
+      answer:"10 千克" },
+
+    { title:"浓度问题", cat:"应用", text:"浓度 20% 的糖水 100 克，加入多少克水后浓度变为 10%？",
+      solution:["糖含量 = 100 × 20% = 20 克（糖不变）。",
+                "加水后糖仍为 20 克，浓度 10% → 此时溶液总重 = 20 ÷ 10% = 200 克。",
+                "加入水 = 200 - 100 = 100 克。",
+                "【规律】：浓度减半，需加入与原溶液等量的水。"],
+      answer:"100 克" },
+
+    { title:"比例问题", cat:"应用", text:"一个长方形操场，长比宽多 20 米，周长 280 米。长和宽各是多少米？",
+      solution:["长 + 宽 = 280 ÷ 2 = 140 米。",
+                "长 - 宽 = 20 米。",
+                "长 = (140 + 20) ÷ 2 = 80 米。",
+                "宽 = (140 - 20) ÷ 2 = 60 米。",
+                "【验证】：(80 + 60) × 2 = 280 ✅。"],
+      answer:"长 80 米，宽 60 米" },
+
+    { title:"火车过桥", cat:"行程", text:"一列火车长 180 米，每秒行 25 米，全车通过一座 320 米长的大桥需要多少秒？",
+      solution:["火车过桥从车头进入到车尾离开，行驶路程 = 桥长 + 车长。",
+                "总路程 = 320 + 180 = 500 米。",
+                "时间 = 路程 ÷ 速度 = 500 ÷ 25 = 20 秒。"],
+      answer:"20 秒" },
+
+    { title:"环形跑道", cat:"行程", text:"在一条长 400 米的环形跑道上，甲、乙两人同时从同一起点出发，甲每秒跑 6 米，乙每秒跑 4 米。几秒后甲比乙多跑一圈（即甲追上乙一次）？",
+      solution:["甲每秒比乙多跑 6 - 4 = 2 米（速度差）。",
+                "甲多跑一圈 = 400 米。",
+                "时间 = 400 ÷ 2 = 200 秒（或 3 分 20 秒）。"],
+      answer:"200 秒" },
+
+    { title:"多人工程", cat:"应用", text:"一项工程，甲、乙合作 8 天完成，乙、丙合作 10 天完成，甲、丙合作 12 天完成。三人合作几天完成？",
+      solution:["设总工程为 1。",
+                "甲 + 乙 = 1/8；乙 + 丙 = 1/10；甲 + 丙 = 1/12。",
+                "三式相加：2(甲 + 乙 + 丙) = 1/8 + 1/10 + 1/12 = 15/120 + 12/120 + 10/120 = 37/120。",
+                "甲 + 乙 + 丙 = 37/240。",
+                "三人合作时间 = 1 ÷ (37/240) = 240/37 ≈ 6.49 天。"],
+      answer:"约 6.49 天（或 240/37 天）" },
+
+    { title:"牛吃草问题", cat:"应用", text:"一片牧场，草每天匀速生长。24 头牛 6 天吃完，21 头牛 8 天吃完。若 16 头牛几天吃完？",
+      solution:["设 1 头牛 1 天吃 1 份草。",
+                "24 牛 6 天：24 × 6 = 144 份（原有草 + 6 天新长）。",
+                "21 牛 8 天：21 × 8 = 168 份（原有草 + 8 天新长）。",
+                "2 天新长草：168 - 144 = 24 份 → 每天新长 12 份。",
+                "原有草 = 144 - 6 × 12 = 72 份。",
+                "16 头牛吃：让 12 头吃新长的草，剩下 4 头吃原有草。",
+                "72 ÷ 4 = 18 天。"],
+      answer:"18 天" },
+
+    { title:"盈亏问题进阶", cat:"应用", text:"学生乘车，每车坐 38 人则 12 人无座；每车坐 42 人则空出 8 个座。有几辆车？多少学生？",
+      solution:["两次差距：12 + 8 = 20 人（一多一少相加）。",
+                "每车乘坐差：42 - 38 = 4 人。",
+                "车辆数 = 20 ÷ 4 = 5 辆。",
+                "学生数 = 38 × 5 + 12 = 202 人（或 42 × 5 - 8 = 202 人）。"],
+      answer:"5 辆车，202 名学生" },
+
+    { title:"利润问题", cat:"应用", text:"一件商品按 20% 的利润定价，然后打八折（80%）出售，结果亏损 64 元。这件商品成本多少元？",
+      solution:["设成本为 x 元。",
+                "定价 = x × (1 + 20%) = 1.2x。",
+                "售价 = 1.2x × 80% = 0.96x。",
+                "亏损 = 成本 - 售价 = x - 0.96x = 0.04x = 64 元。",
+                "x = 64 ÷ 0.04 = 1600 元。"],
+      answer:"1600 元" },
+
+    { title:"数论基础", cat:"数论", text:"一个数除以 5 余 2，除以 7 余 3。这个数最小是多少？",
+      solution:["【枚举法】：列出除以 5 余 2 的数：2、7、12、17、22、27、32……",
+                "再检查这些数中哪个除以 7 余 3：",
+                "2÷7 余 2，7÷7 余 0，12÷7 余 5，17÷7 余 3（✓）。",
+                "所以最小的数是 17。"],
+      answer:"17" },
+
+    { title:"分数比大小", cat:"计算", text:"比较大小：3/7、4/9、5/11（从小到大排列）。",
+      solution:["【通分法】：找分母 7、9、11 的最小公倍数 = 693。",
+                "3/7 = 297/693，4/9 = 308/693，5/11 = 315/693。",
+                "因为 297 < 308 < 315，所以 3/7 < 4/9 < 5/11。",
+                "【另法】：用小数对照：3/7 ≈ 0.43，4/9 ≈ 0.44，5/11 ≈ 0.45。"],
+      answer:"3/7 < 4/9 < 5/11" },
+
+    { title:"浓度混合", cat:"应用", text:"将浓度 10% 的盐水 200 克与浓度 20% 的盐水 300 克混合。混合后的浓度是多少？",
+      solution:["含盐总量：200 × 10% + 300 × 20% = 20 + 60 = 80 克。",
+                "溶液总量：200 + 300 = 500 克。",
+                "混合浓度：80 ÷ 500 = 16%。"],
+      answer:"16%" }
+  ]
+
+};
+
+/* =============================================================
+   渲染题目
+   ============================================================= */
+function renderProblems(level) {
+  const container = document.getElementById("problems-" + level);
+  const list = problems[level];
+  if (!list || !container) return;
+
+  container.innerHTML = "";
+  list.forEach((p, idx) => {
+    const card = document.createElement("div");
+    card.className = "problem-card";
+    card.innerHTML =
+      `<div class="problem-header">
+        <span class="problem-number">第 ${idx+1} 题</span>
+        <span class="problem-title">${p.title}</span>
+        <span class="problem-category">${p.cat}</span>
+      </div>
+      <div class="problem-text">${p.text}</div>
+      <div class="unlock-row">
+        <label>🔐 密码：</label>
+        <input type="password" class="pwd" placeholder="输入密码">
+        <button class="view-btn">👀 查看解析</button>
+        <span class="unlock-status">未解锁</span>
+      </div>
+      <div class="solution-box">
+        <h4>📝 解题思路</h4>
+        ${p.solution.map(s => `<div>${s}</div>`).join("")}
+        <h4>✅ 答案</h4>
+        <div class="answer">${p.answer}</div>
+      </div>`;
+    container.appendChild(card);
+
+    // 绑定事件
+    const input = card.querySelector(".pwd");
+    const btn = card.querySelector(".view-btn");
+    const status = card.querySelector(".unlock-status");
+    const solBox = card.querySelector(".solution-box");
+
+    function tryUnlock() {
+      if (input.value.trim() === PASSWORD) {
+        // 切换显示/隐藏
+        if (solBox.classList.contains("show")) {
+          solBox.classList.remove("show");
+          status.textContent = "已解锁 · 已收起";
+          status.className = "unlock-status ok";
+          btn.innerHTML = "👀 查看解析";
+        } else {
+          solBox.classList.add("show");
+          status.textContent = "✅ 解析已显示";
+          status.className = "unlock-status ok";
+          btn.innerHTML = "🙈 收起解析";
+        }
       } else {
-        box.classList.add('show');
-        e.target.innerHTML = '🙈 收起解析';
+        status.textContent = "❌ 密码错误";
+        status.className = "unlock-status err";
       }
     }
+
+    btn.addEventListener("click", tryUnlock);
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") tryUnlock(); });
+    input.addEventListener("input", () => {
+      if (status.classList.contains("err") || status.classList.contains("ok")) {
+        // 用户继续输入时，恢复到未解锁状态提示（只改文字不改颜色类）
+        if (!solBox.classList.contains("show")) {
+          status.textContent = "未解锁";
+          status.className = "unlock-status";
+        }
+      }
+    });
   });
+}
+
+renderProblems("easy");
+renderProblems("medium");
+renderProblems("hard");
+
+/* =============================================================
+   难度切换
+   ============================================================= */
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".level-section").forEach(s => s.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("section-" + tab.dataset.level).classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
 </script>
 
 </body>
