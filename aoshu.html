@@ -1128,7 +1128,7 @@ function renderProblems(level) {
       <button class="view-btn">👀 查看解析</button>
       <div class="pwd-box">
         <label>🔐 密码：</label>
-        <input type="password" class="pwd" placeholder="输入密码">
+        <input type="password" class="pwd" placeholder="admin 或 答案数字">
         <button class="submit-btn">确认</button>
         <span class="pwd-status">未解锁</span>
       </div>
@@ -1148,6 +1148,10 @@ function renderProblems(level) {
     const status = card.querySelector(".pwd-status");
     const solBox = card.querySelector(".solution-box");
 
+    // 从答案中提取所有纯数字，作为本题的第二密码
+    // 例如："12岁, 18岁" → "1218"；"甲=72, 乙=48" → "7248"
+    const answerPwd = (p.answer.match(/\d+/g) || []).join("");
+
     viewBtn.addEventListener("click", () => {
       if (solBox.classList.contains("show")) {
         // 已经解锁了，点击收起/展开
@@ -1163,7 +1167,9 @@ function renderProblems(level) {
     });
 
     function tryUnlock() {
-      if (pwdInput.value.trim() === PASSWORD) {
+      const input = pwdInput.value.trim();
+      // 接受两种密码：admin 或本题答案中的纯数字
+      if (input === PASSWORD || (answerPwd && input === answerPwd)) {
         solBox.classList.add("show");
         pwdBox.classList.remove("show");
         status.textContent = "✅ 已解锁";
