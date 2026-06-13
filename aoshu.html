@@ -319,10 +319,35 @@
   @media (max-width: 640px) {
     .header h1 { font-size: 1.7rem; letter-spacing: 2px; }
     .tab { padding: 10px 18px; font-size: 0.9rem; }
+    .back-to-top { padding: 8px 12px; font-size: 0.85rem; top: 12px; right: 12px; }
+  }
+  /* ======= 回到顶部悬浮按钮 ======= */
+  .back-to-top {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #065f46;
+    background: #a7f3d0;
+    border: 2px solid #6ee7b7;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    z-index: 1000;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+  }
+  .back-to-top:hover {
+    transform: translateY(-2px);
+    background: #6ee7b7;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
   }
 </style>
 </head>
 <body>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到顶部</button>
 <div class="container">
 
   <!-- 标题 -->
@@ -2576,6 +2601,11 @@ document.querySelectorAll(".tab").forEach(tab => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
+
+/* 每次打开/刷新自动回到顶部（关闭浏览器的滚动位置恢复） */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.addEventListener("beforeunload", () => { window.scrollTo(0, 0); });
+window.addEventListener("load", () => { window.scrollTo(0, 0); });
 </script>
 
 </body>
