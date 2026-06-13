@@ -326,17 +326,20 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 5px 10px;
-    font-size: 0.75rem;
+    padding: 8px 4px;
+    font-size: 0.8rem;
     font-weight: bold;
     color: #065f46;
     background: #a7f3d0;
     border: 1px solid #6ee7b7;
-    border-radius: 999px;
+    border-radius: 12px;
     cursor: pointer;
     font-family: inherit;
     box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
     z-index: 1000;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    line-height: 1.4;
     transition: transform 0.15s, box-shadow 0.15s;
   }
   .back-to-top:hover {
@@ -347,7 +350,7 @@
 </style>
 </head>
 <body>
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 回到顶部</button>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑顶部</button>
 <div class="container">
 
   <!-- 标题 -->
