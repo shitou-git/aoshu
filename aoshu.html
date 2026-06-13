@@ -1149,8 +1149,9 @@ function renderProblems(level) {
     const solBox = card.querySelector(".solution-box");
 
     // 从答案中提取所有纯数字，作为本题的第二密码
-    // 例如："12岁, 18岁" → "1218"；"甲=72, 乙=48" → "7248"
-    const answerPwd = (p.answer.match(/\d+/g) || []).join("");
+    // 直接去除所有非数字字符，保留数字顺序拼接
+    // 例如："12岁, 18岁" → "1218"；"6.49" → "649"；"甲=72, 乙=48" → "7248"
+    const answerPwd = p.answer.replace(/[^\d]/g, "");
 
     viewBtn.addEventListener("click", () => {
       if (solBox.classList.contains("show")) {
