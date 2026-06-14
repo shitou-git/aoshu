@@ -57,18 +57,6 @@
   }
   .btn-back:hover { transform: translateY(-2px); }
 
-  /* ========== 搜索框 ========== */
-  .search-box {
-    display: flex; gap: 12px; margin-bottom: 20px; background: #fff;
-    padding: 14px 18px; border-radius: 18px; box-shadow: var(--shadow); align-items: center;
-  }
-  .search-box input {
-    flex: 1; padding: 10px 14px; border: 2px solid var(--c-primary-soft);
-    border-radius: 12px; font-size: 1rem; outline: none; font-family: inherit;
-  }
-  .search-box input:focus { border-color: var(--c-primary); }
-  .search-box label { font-weight: bold; color: var(--c-primary); white-space: nowrap; }
-
   /* ========== 分类目录 ========== */
   .cat-list {
     background: #fff; padding: 20px; border-radius: 22px;
@@ -213,7 +201,6 @@
   }
   .float-btn:hover { background: var(--c-primary-soft); }
   .float-btn-top { top: 24px; color: var(--c-primary); }
-  .float-btn-random { top: 96px; color: var(--c-accent); border-color: #fce7f3; }
   .float-btn .arrow { font-size: 1.2rem; line-height: 1; }
   .float-btn .arrow-h { font-size: 1rem; }
   .float-btn .label-top, .float-btn .label-mid { font-size: 0.78rem; }
@@ -224,14 +211,11 @@
     .header h1 { font-size: 1.6rem; letter-spacing: 1px; }
   }
 
-  .highlight { background: #fff7cd !important; transition: background 1.5s; }
-
   /* ========== 页脚 ========== */
   .footer {
     text-align: center; padding: 20px; color: var(--c-muted); font-size: 0.9rem;
     margin-top: 30px;
   }
-  .hidden { display: none !important; }
 </style>
 </head>
 <body>
@@ -247,12 +231,6 @@
   <div class="topbar">
     <a href="aoshu.html" class="btn-back">← 返回题库</a>
     <a href="https://shitou-git.github.io/math/math.html" class="btn-back">🏠 返回首页</a>
-  </div>
-
-  <!-- ============ 搜索框 ============ -->
-  <div class="search-box">
-    <label>🔍 关键词：</label>
-    <input type="text" id="searchInput" placeholder="输入题型或关键词，如：鸡兔同笼、行程、年龄…">
   </div>
 
   <!-- ============ 目录 ============ -->
@@ -1311,32 +1289,6 @@ function render() {
   });
 }
 
-// ============ 搜索 ============
-function setupSearch() {
-  var input = document.getElementById("searchInput");
-  if (!input) return;
-  input.addEventListener("input", function() {
-    var q = input.value.trim().toLowerCase();
-    var cards = document.querySelectorAll(".card");
-    var cats = document.querySelectorAll(".category");
-    cards.forEach(function(card) {
-      var text = (card.dataset.name + " " + card.dataset.keywords + " " + card.dataset.cat + " " + card.textContent).toLowerCase();
-      if (!q || text.indexOf(q) >= 0) {
-        card.classList.remove("hidden");
-        // 自动展开匹配的卡片
-        if (q) card.classList.add("expanded");
-      } else {
-        card.classList.add("hidden");
-        card.classList.remove("expanded");
-      }
-    });
-    cats.forEach(function(cat) {
-      var visible = cat.querySelectorAll(".card:not(.hidden)").length;
-      cat.style.display = visible > 0 ? "" : "none";
-    });
-  });
-}
-
 // ============ 顶部按钮 ============
 function setupTopBtn() {
   var btn = document.getElementById("topBtn");
@@ -1348,7 +1300,8 @@ function setupTopBtn() {
 
 // ============ 启动 ============
 render();
-setupSearch();
 setupTopBtn();
 
 </script>
+</body>
+</html>
