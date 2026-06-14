@@ -3028,9 +3028,9 @@ function renderProblems(level) {
         viewAnsBtn.textContent = "🙈 收起答案";
         // 如果这道题是随机选中的题，答对后计数 +1
         if (card.classList.contains("selected")) {
-          const count = parseInt(localStorage.getItem("randomCount") || "0", 10);
-          localStorage.setItem("randomCount", count + 1);
-          updateCountDisplay();
+          randomCount++;
+          const badge = document.querySelector(".random-count");
+          if (badge) badge.textContent = randomCount;
           card.classList.remove("selected");
         }
       } else {
@@ -3071,6 +3071,7 @@ if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 window.addEventListener("beforeunload", () => { window.scrollTo(0, 0); });
 
 /* 随机选题：随机定位到一道题，该题显示浅绿背景 */
+let randomCount = 0;
 function randomProblem() {
   // 优先从当前可见的 tab section 中选；如果该 section 暂无卡片则从全部卡片中选
   const activeSection = document.querySelector(".level-section.active");
@@ -3099,17 +3100,9 @@ function randomProblem() {
   window.scrollTo({ top: scrollY + rect.top - 30, behavior: "smooth" });
 }
 
-/* 更新随机按钮上的计数徽章（从 localStorage 读取） */
-function updateCountDisplay() {
-  const count = parseInt(localStorage.getItem("randomCount") || "0", 10);
-  const badge = document.querySelector(".random-count");
-  if (badge) badge.textContent = count;
-}
-
-/* 页面加载时同步计数徽章 */
+/* 页面加载时回到顶部 */
 window.addEventListener("load", () => {
   window.scrollTo(0, 0);
-  updateCountDisplay();
 });
 </script>
 
