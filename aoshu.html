@@ -3026,8 +3026,8 @@ function renderProblems(level) {
         ansBox.classList.add("show");
         pwdBox.classList.remove("show");
         viewAnsBtn.textContent = "🙈 收起答案";
-        // 如果这道题是随机选中的题，答对后计数 +1
-        if (card.classList.contains("selected")) {
+        // 如果这道题是随机选中的题，且用答案数字解锁（非 admin），计数 +1
+        if (card.classList.contains("selected") && (answerPwd && input === answerPwd)) {
           randomCount++;
           const badge = document.querySelector(".random-count");
           if (badge) badge.textContent = randomCount;
