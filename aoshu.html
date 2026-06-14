@@ -3068,15 +3068,28 @@ window.addEventListener("load", () => { window.scrollTo(0, 0); });
 
 /* 随机选题：随机定位到一道题，该题显示浅绿背景 */
 function randomProblem() {
-  const cards = document.querySelectorAll(".problem-card");
+  // 优先从当前可见的 tab section 中选；如果该 section 暂无卡片则从全部卡片中选
+  const activeSection = document.querySelector(".level-section.active");
+  const activeLevel = activeSection ? activeSection.id.replace("section-", "") : null;
+  let cards;
+  if (activeLevel) {
+    cards = activeSection.querySelectorAll(".problem-card");
+  }
+  // 如果当前 section 没卡片（刚切换 tab 后渲染未完成），从全局找
+  if (!cards || cards.length === 0) {
+    cards = document.querySelectorAll(".problem-card");
+  }
   if (cards.length === 0) return;
+
   // 清除之前的选中态
-  cards.forEach(c => c.classList.remove("selected"));
+  document.querySelectorAll(".problem-card.selected").forEach(c => c.classList.remove("selected"));
+
   // 随机选一题
   const idx = Math.floor(Math.random() * cards.length);
   const target = cards[idx];
   target.classList.add("selected");
-  // 平滑滚动到目标题（顶部留出约 30px 间距）
+
+  // 平滑滚动到目标题（顶部留约 30px 间距）
   const rect = target.getBoundingClientRect();
   const scrollY = window.scrollY || window.pageYOffset;
   window.scrollTo({ top: scrollY + rect.top - 30, behavior: "smooth" });
