@@ -29,6 +29,9 @@
     color: var(--c-text);
     line-height: 1.75;
     padding: 20px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
   }
   .container { max-width: 1060px; margin: 0 auto; }
 
@@ -93,11 +96,13 @@
     font-size: 1.25rem; margin-bottom: 12px; box-shadow: var(--shadow);
     display: flex; justify-content: space-between; align-items: center;
     cursor: pointer; user-select: none; transition: opacity 0.2s;
+    gap: 10px;
   }
   .category-title:hover { opacity: 0.9; }
-  .category-title .icon { font-size: 1.5rem; margin-right: 10px; }
-  .category-title .note { font-size: 0.85rem; opacity: 0.9; font-weight: normal; }
-  .category-title .chevron { font-size: 1.2rem; transition: transform 0.3s; display: inline-block; }
+  .category-title .icon { font-size: 1.5rem; margin-right: 6px; flex-shrink: 0; }
+  .category-title > span:first-child { flex: 1; min-width: 0; line-height: 1.5; }
+  .category-title .note { font-size: 0.85rem; opacity: 0.9; font-weight: normal; display: inline; }
+  .category-title .chevron { font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
   .category-title.collapsed .chevron { transform: rotate(-90deg); }
   .category-title.collapsed { margin-bottom: 0; }
 
@@ -114,14 +119,15 @@
   /* 可折叠的卡片头部 */
   .card-header {
     padding: 13px 18px; cursor: pointer; user-select: none;
-    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     transition: background 0.15s;
   }
   .card-header:hover { background: #f5f3ff; }
   .card-header .emoji { font-size: 1.3rem; flex-shrink: 0; }
   .card-header h3 {
-    font-size: 1.08rem; color: var(--c-primary); flex: 1;
+    font-size: 1.05rem; color: var(--c-primary); flex: 1 1 180px;
     border: none; padding: 0; margin: 0; background: none;
+    min-width: 0; line-height: 1.5;
   }
   .card-header .chevron {
     font-size: 1.1rem; color: var(--c-muted); flex-shrink: 0;
@@ -183,11 +189,13 @@
 
   .keywords {
     background: var(--c-mid-soft); padding: 4px 8px; border-radius: 999px;
-    font-size: 0.78rem; color: var(--c-mid); font-weight: bold; flex-shrink: 0;
+    font-size: 0.78rem; color: var(--c-mid); font-weight: bold; flex: 1 1 100%;
+    display: flex; flex-wrap: wrap; gap: 4px; line-height: 1.3;
   }
   .keywords .tag {
-    display: inline-block; padding: 1px 5px; background: #fff; border-radius: 999px;
-    margin: 1px 2px; font-size: 0.75rem; color: var(--c-mid); font-weight: bold;
+    display: inline-block; padding: 2px 8px; background: #fff; border-radius: 999px;
+    margin: 0; font-size: 0.75rem; color: var(--c-mid); font-weight: bold;
+    white-space: nowrap;
   }
 
   /* ========== 悬浮按钮 ========== */
@@ -205,10 +213,85 @@
   .float-btn .arrow-h { font-size: 1rem; }
   .float-btn .label-top, .float-btn .label-mid { font-size: 0.78rem; }
   @media (max-width: 600px) {
-    .float-btn { right: 4px; width: 36px; }
+    body { padding: 12px; }
+    .container { max-width: 100%; }
+
+    .header { padding: 28px 16px 24px; }
+    .header h1 { font-size: 1.4rem; letter-spacing: 1px; }
+    .header p { font-size: 0.9rem; }
+
+    .topbar { gap: 8px; margin-bottom: 12px; }
+    .btn-back { padding: 8px 16px; font-size: 0.85rem; }
+
+    /* 目录 */
+    .cat-list { padding: 14px; }
+    .cat-list h2 { font-size: 1.05rem; margin-bottom: 10px; }
+    .cat-grid { gap: 6px; }
+    .cat-link { font-size: 0.85rem; padding: 8px 10px; }
+    .cat-link .count { font-size: 0.72rem; }
+
+    /* 大类标题 */
+    .category-title {
+      padding: 12px 14px; font-size: 1.05rem; margin-bottom: 10px;
+      border-radius: 14px;
+    }
+    .category-title .icon { font-size: 1.3rem; }
+    .category-title .note { font-size: 0.78rem; display: block; margin-top: 3px; }
+    .category-title .chevron { font-size: 1.1rem; }
+
+    /* 卡片 */
+    .card { margin-bottom: 8px; border-radius: 14px; border-left-width: 4px; }
+    .card-header {
+      padding: 12px 14px; gap: 8px;
+    }
+    .card-header .emoji { font-size: 1.15rem; }
+    .card-header h3 { font-size: 0.98rem; flex: 1 1 100%; order: 2; }
+    .card-header .chevron { font-size: 1rem; order: 3; }
+    .card-header .keywords { order: 4; flex: 1 1 100%; font-size: 0.72rem; padding: 3px 6px; gap: 3px; }
+    .card-header .keywords .tag { font-size: 0.7rem; padding: 2px 6px; }
+
+    .card-body { padding: 0 14px 14px; }
+
+    /* 提示+公式+四步法 两列改单列 */
+    .mid-grid { grid-template-columns: 1fr; gap: 8px; margin-top: 8px; }
+    .formula-col { gap: 6px; }
+
+    .note-box { padding: 8px 12px; font-size: 0.85rem; }
+    .note-box strong { font-size: 0.78rem; }
+
+    .formula {
+      padding: 10px 12px; font-size: 0.85rem; margin: 8px 0; line-height: 1.55;
+      word-break: break-all;
+    }
+
+    .steps { padding: 8px 12px; }
+    .steps h4 { font-size: 0.88rem; }
+    .steps ol { margin-left: 16px; }
+    .steps ol li { font-size: 0.83rem; }
+
+    /* 例题两列改单列 */
+    .examples-grid { grid-template-columns: 1fr; gap: 6px; margin-top: 8px; }
+    .example { padding: 6px 10px; font-size: 0.83rem; }
+    .example-title { font-size: 0.76rem; }
+
+    /* 悬浮按钮 */
+    .float-btn { right: 8px; width: 40px; padding: 5px 3px; font-size: 0.75rem; }
+    .float-btn-top { top: 16px; }
     .float-btn .arrow { font-size: 1rem; }
-    .float-btn .label-top, .float-btn .label-mid { font-size: 0.7rem; }
-    .header h1 { font-size: 1.6rem; letter-spacing: 1px; }
+    .float-btn .label-top, .float-btn .label-mid { font-size: 0.68rem; }
+
+    /* 页脚 */
+    .footer { font-size: 0.82rem; padding: 14px; }
+  }
+
+  /* 超小屏幕（<380px）额外优化 */
+  @media (max-width: 380px) {
+    .header h1 { font-size: 1.2rem; }
+    .category-title { font-size: 0.98rem; padding: 10px 12px; }
+    .card-header h3 { font-size: 0.92rem; }
+    .formula { font-size: 0.8rem; }
+    .steps ol li { font-size: 0.78rem; }
+    .example { font-size: 0.78rem; }
   }
 
   /* ========== 页脚 ========== */
