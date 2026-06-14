@@ -242,26 +242,20 @@
     border-color: #8b5cf6;
     box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
   }
-  .pwd-status {
-    font-size: 0.82rem;
-    font-weight: bold;
-    padding: 3px 10px;
-    border-radius: 8px;
-    background: #f3f4f6;
-    color: var(--c-muted);
-  }
-  .pwd-status.ok { background: #d1fae5; color: #065f46; }
-  .pwd-status.err { background: #fee2e2; color: #b91c1c; }
+  .pwd-status { display: none; }
+  .pwd-status.ok { display: none; }
+  .pwd-status.err { display: none; }
   .pwd-hint {
     display: block;
     width: 100%;
     font-size: 0.74rem;
     color: #6b7280;
     font-style: italic;
-    margin: -2px 0 0;
-    padding-left: 170px;
+    margin: 2px 0 0;
+    padding: 0 0 0 2px;
     line-height: 1.25;
     box-sizing: border-box;
+    text-align: left;
   }
   .pwd-box .submit-btn {
     padding: 6px 16px;
@@ -505,7 +499,7 @@
 
   <div class="footer">
     <p>🌈 勤动脑筋，数学就会越来越有趣！加油！</p>
-    <p class="tip">💡 提示：点击「👀 查看解析」可以免费看到解题思路（小朋友先动动脑筋），思路下方有「🔐 查看答案」按钮，输入密码可以查看完整答案。密码就是本题最终答案中的纯数字（比如答案是"56米"就输入 56）。</p>
+    <p class="tip">💡 提示：点击「👀 查看解析」可以看到解题思路，再点「🔐 查看答案」输入密码即可看到答案（密码是本题答案中的纯数字，比如"56米"就输入 56）。</p>
   </div>
 
 </div>
@@ -2927,8 +2921,7 @@ function renderProblems(level) {
         <label>🔐 查看答案需要密码：</label>
         <input type="password" class="pwd" placeholder="输入密码">
         <button class="submit-btn">确认</button>
-        <span class="pwd-status">未解锁</span>
-        <small class="pwd-hint">（提示：密码就是本题最终答案中的纯数字，比如答案是"56米"就输入 56）</small>
+        <small class="pwd-hint">密码是本题答案中的纯数字，比如"56米"，输入 56</small>
       </div>
       <div class="answer-box">
         <h4>✅ 完整解答</h4>
