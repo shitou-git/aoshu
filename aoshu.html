@@ -117,6 +117,9 @@
   .tab.home-btn { border-color: #c4b5fd; color: #6d28d9; }
   .tab.home-btn:hover {
     background: #7c3aed; color: #fff; border-color: #7c3aed; transform: translateY(-2px); }
+  .tab.silu-btn { border-color: #67e8f9; color: #0891b2; box-shadow: 0 0 15px rgba(103, 232, 249, 0.4), 0 4px 12px rgba(0, 0, 0, 0.06); }
+  .tab.silu-btn:hover {
+    background: #06b6d4; color: #fff; border-color: #06b6d4; transform: translateY(-2px); box-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 6px 16px rgba(0, 0, 0, 0.1); }
 
   /* ======= 难度区域 ======= */
   .level-section { display: none; animation: fadeIn 0.4s ease; }
@@ -366,10 +369,15 @@
   @media (max-width: 640px) {
     .header h1 { font-size: 1.7rem; letter-spacing: 2px; }
     .tab { padding: 10px 18px; font-size: 0.9rem; }
-    .tabs { flex-wrap: wrap; justify-content: center; overflow-x: visible; }
+    .tabs { flex-wrap: wrap; justify-content: center; overflow-x: visible; gap: 8px; }
     .back-to-top { width: 20px; padding: 8px 2px; font-size: 0.7rem; top: 8px; right: 4px; }
     .random-btn { width: 20px; padding: 8px 2px; font-size: 0.7rem; right: 4px; }
     .random-btn span:first-child { font-size: 0.85rem; }
+  }
+  @media (max-width: 480px) {
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+    .tab { width: 100%; text-align: center; padding: 12px 16px; }
+    .tab.home-btn, .tab.silu-btn { grid-column: span 1; }
   }
   /* ======= 回到顶部悬浮按钮 ======= */
   .back-to-top {
@@ -482,7 +490,7 @@
   <!-- 难度切换 -->
   <div class="tabs">
     <button class="tab home-btn" onclick="location.href='https://shitou-git.github.io/math/math.html'">🏠 返回首页</button>
-    <button class="tab" onclick="location.href='silu.html'">📐 查看公式</button>
+    <button class="tab silu-btn" onclick="location.href='silu.html'">📐 查看公式</button>
     <button class="tab active" data-level="easy">🌱 初级（低年段）</button>
     <button class="tab" data-level="medium">🔥 中级（中年段）</button>
     <button class="tab" data-level="hard">🚀 高级（高年段）</button>
