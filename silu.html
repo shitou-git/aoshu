@@ -157,13 +157,14 @@
     line-height: 1.6;
   }
 
-  /* 提示 + 四步法 两列 */
+  /* 提示+公式（左列）| 四步法（右列）两列 */
   .mid-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
   }
   @media (max-width: 600px) {
     .mid-grid { grid-template-columns: 1fr; }
   }
+  .formula-col { display: flex; flex-direction: column; gap: 8px; }
 
   .note-box {
     background: var(--c-mid-soft); padding: 10px 14px; border-radius: 10px;
@@ -1203,14 +1204,23 @@ function render() {
       htmlOut += '</div>';
       // 卡片内容体
       htmlOut += '<div class="card-body">';
-      // 提示 + 四步法 两列（小提示在左上方）
-      if (t.note || (t.steps && t.steps.length)) {
+      // 小提示+公式（左列）| 解题四步法（右列）
+      if (t.note || t.formula || (t.steps && t.steps.length)) {
         htmlOut += '<div class="mid-grid">';
-        if (t.note) {
-          htmlOut += '<div class="note-box"><strong>💡 小提示</strong>' + escapeHtml(t.note) + '</div>';
+        // 左列：小提示 + 公式
+        if (t.note || t.formula) {
+          htmlOut += '<div class="formula-col">';
+          if (t.note) {
+            htmlOut += '<div class="note-box"><strong>💡 小提示</strong>' + escapeHtml(t.note) + '</div>';
+          }
+          if (t.formula) {
+            htmlOut += '<div class="formula">' + escapeHtml(t.formula) + '</div>';
+          }
+          htmlOut += '</div>';
         } else {
           htmlOut += '<div></div>';
         }
+        // 右列：解题四步法
         if (t.steps && t.steps.length) {
           htmlOut += '<div class="steps"><h4>🪜 解题四步法</h4><ol>';
           t.steps.forEach(function(s) { htmlOut += '<li>' + escapeHtml(s) + '</li>'; });
@@ -1220,8 +1230,6 @@ function render() {
         }
         htmlOut += '</div>';
       }
-      // 核心公式（全宽）
-      if (t.formula) htmlOut += '<div class="formula">' + escapeHtml(t.formula) + '</div>';
       // 典型例题 两列
       if (t.examples && t.examples.length) {
         htmlOut += '<div class="examples-grid">';
@@ -1267,7 +1275,7 @@ function render() {
     });
   });
 
-  // 目录链接点击事件
+  // 目录链接点击事件（只显示类别，展开卡片列表但不展开内容）
   var catLinks = document.querySelectorAll(".cat-link");
   catLinks.forEach(function(link) {
     link.addEventListener("click", function() {
@@ -1282,18 +1290,19 @@ function render() {
           cat.classList.add("active");
         } else {
           cat.classList.remove("active");
-          // 同时折叠其他类别的卡片
+          // 折叠其他类别的卡片内容
           cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
           var title = cat.querySelector(".category-title");
           if (title) title.classList.add("collapsed");
         }
       });
 
-      // 展开该大类的卡片
+      // 只展开该大类（显示卡片列表），但不展开卡片内容（二级菜单效果）
       var title = target.querySelector(".category-title");
       if (title) {
         title.classList.remove("collapsed");
-        target.querySelectorAll(".card").forEach(function(c) { c.classList.add("expanded"); });
+        // 卡片内容保持折叠状态
+        target.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
       }
 
       // 滚动到该大类
