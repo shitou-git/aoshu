@@ -86,11 +86,17 @@
   /* ======= 难度切换标签 ======= */
   .tabs {
     display: flex;
+    flex-direction: row;
     gap: 12px;
     margin-bottom: 22px;
-    flex-wrap: nowrap;
     justify-content: center;
-    overflow-x: auto;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .tab-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
   }
   .tab {
     flex-shrink: 0;
@@ -369,17 +375,16 @@
   @media (max-width: 640px) {
     .header h1 { font-size: 1.7rem; letter-spacing: 2px; }
     .tab { padding: 10px 18px; font-size: 0.9rem; }
-    .tabs { flex-wrap: wrap; justify-content: center; overflow-x: visible; gap: 8px; }
+    .tabs { flex-direction: column; align-items: stretch; gap: 10px; }
+    .tab-row { gap: 10px; }
+    .tab-row .tab { flex: 1; padding: 10px 12px; }
     .back-to-top { width: 20px; padding: 8px 2px; font-size: 0.7rem; top: 8px; right: 4px; }
     .random-btn { width: 20px; padding: 8px 2px; font-size: 0.7rem; right: 4px; }
     .random-btn span:first-child { font-size: 0.85rem; }
   }
   @media (max-width: 480px) {
-    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
-    .tab { width: 100%; text-align: center; padding: 12px 16px; }
-    .tab.home-btn, .tab.silu-btn { grid-column: span 1; }
-    .tab[data-level="easy"], .tab[data-level="medium"], .tab[data-level="hard"] { grid-column: span 1; }
-    .tabs::after { content: ''; grid-column: span 2; }
+    .tab { font-size: 0.85rem; }
+    .tab-row .tab { padding: 12px 8px; }
   }
   /* ======= 回到顶部悬浮按钮 ======= */
   .back-to-top {
@@ -491,11 +496,15 @@
 
   <!-- 难度切换 -->
   <div class="tabs">
-    <button class="tab home-btn" onclick="location.href='https://shitou-git.github.io/math/math.html'">🏠 返回首页</button>
-    <button class="tab silu-btn" onclick="location.href='silu.html'">📐 查看公式</button>
-    <button class="tab active" data-level="easy">🌱 初级（低年段）</button>
-    <button class="tab" data-level="medium">🔥 中级（中年段）</button>
-    <button class="tab" data-level="hard">🚀 高级（高年段）</button>
+    <div class="tab-row tab-row-2">
+      <button class="tab home-btn" onclick="location.href='https://shitou-git.github.io/math/math.html'">🏠 返回首页</button>
+      <button class="tab silu-btn" onclick="location.href='silu.html'">📐 查看公式</button>
+    </div>
+    <div class="tab-row tab-row-3">
+      <button class="tab active" data-level="easy">🌱 初级</button>
+      <button class="tab" data-level="medium">🔥 中级</button>
+      <button class="tab" data-level="hard">🚀 高级</button>
+    </div>
   </div>
 
   <!-- ============ 初级 ============ -->
