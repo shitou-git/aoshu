@@ -1245,9 +1245,9 @@ function render() {
   for (var cat in byCat) {
     var catId = 'cat-' + encodeURIComponent(cat);
     htmlOut += '<div class="category" id="' + catId + '" data-cat="' + cat + '">';
-    // 题型大类标题（可折叠全部）
-    htmlOut += '<div class="category-title" data-target="' + catId + '">';
-    htmlOut += '<span><span class="icon">📘</span>' + cat + '<span class="note">（' + byCat[cat].length + ' 类，点击展开）</span></span>';
+    // 题型大类标题（可折叠全部），初始 collapsed 表示未展开
+    htmlOut += '<div class="category-title collapsed" data-target="' + catId + '">';
+    htmlOut += '<span><span class="icon">📘</span>' + cat + '<span class="note">（' + byCat[cat].length + ' 类）</span></span>';
     htmlOut += '<span class="chevron">▼</span>';
     htmlOut += '</div>';
     // 各类别卡片
@@ -1316,27 +1316,45 @@ function render() {
     }
   });
 
-  // 绑定大类折叠事件
+  // 二级目录标题点击事件：切换该类别的显示/隐藏
+  // 不展开卡片内容，卡片内容需点击每个 card-header 单独展开
   var catTitles = document.querySelectorAll(".category-title");
   catTitles.forEach(function(title) {
-    title.addEventListener("click", function() {
-      var target = title.getAttribute("data-target");
-      var catDiv = document.getElementById(target);
+    title.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var targetId = title.getAttribute("data-target");
+      var catDiv = document.getElementById(targetId);
       if (!catDiv) return;
-      var isCollapsed = title.classList.contains("collapsed");
-      if (isCollapsed) {
-        // 展开所有卡片
+
+      var isActive = catDiv.classList.contains("active");
+
+      // 先隐藏所有类别（并重置其他类别状态）
+      var allCategories = document.querySelectorAll(".category");
+      allCategories.forEach(function(cat) {
+        cat.classList.remove("active");
+        // 折叠所有卡片内容
+        cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
+        var otherTitle = cat.querySelector(".category-title");
+        if (otherTitle) otherTitle.classList.add("collapsed");
+      });
+
+      if (!isActive) {
+        // 当前是隐藏的 → 展开显示该类
+        catDiv.classList.add("active");
         title.classList.remove("collapsed");
-        catDiv.querySelectorAll(".card").forEach(function(c) { c.classList.add("expanded"); });
+        // 平滑滚动
+        catDiv.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
-        // 折叠所有卡片
+        // 当前是展开的 → 收起，回到只显示主目录的状态
         title.classList.add("collapsed");
-        catDiv.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
+        // 滚动回目录
+        var catList = document.getElementById("catList");
+        if (catList) catList.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
 
-  // 目录链接点击事件（只显示类别，展开卡片列表但不展开内容）
+  // 主目录（cat-link）点击事件：展开对应类别卡片列表，但不展开卡片内容
   var catLinks = document.querySelectorAll(".cat-link");
   catLinks.forEach(function(link) {
     link.addEventListener("click", function() {
@@ -1344,29 +1362,20 @@ function render() {
       var target = document.getElementById(targetId);
       if (!target) return;
 
-      // 隐藏所有类别，只显示点击的类别
+      // 先隐藏所有类别、折叠所有卡片内容
       var allCategories = document.querySelectorAll(".category");
       allCategories.forEach(function(cat) {
-        if (cat.id === targetId) {
-          cat.classList.add("active");
-        } else {
-          cat.classList.remove("active");
-          // 折叠其他类别的卡片内容
-          cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
-          var title = cat.querySelector(".category-title");
-          if (title) title.classList.add("collapsed");
-        }
+        cat.classList.remove("active");
+        cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
+        var otherTitle = cat.querySelector(".category-title");
+        if (otherTitle) otherTitle.classList.add("collapsed");
       });
 
-      // 只展开该大类（显示卡片列表），但不展开卡片内容（二级菜单效果）
+      // 展开目标类（显示卡片列表），但卡片内容保持折叠，用户需逐个点击 card-header 展开
+      target.classList.add("active");
       var title = target.querySelector(".category-title");
-      if (title) {
-        title.classList.remove("collapsed");
-        // 卡片内容保持折叠状态
-        target.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
-      }
+      if (title) title.classList.remove("collapsed");
 
-      // 滚动到该大类
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
