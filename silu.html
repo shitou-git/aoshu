@@ -227,14 +227,6 @@
 
 <script>
 // ============ 题型数据 ============
-// 每类题型：{ cat: 大类, name: 题型名, emoji: 图标, note: 一句话备注,
-//             keywords: [关键词], formula: 核心公式(多行字符串),
-//             steps: [四步法条目], examples: [经典例题描述] }
-<script>
-// ============ 题型数据 ============
-// 每类题型：{ cat: 大类, name: 题型名, emoji: 图标, note: 一句话备注,
-//             keywords: [关键词], formula: 核心公式(多行字符串),
-//             steps: [四步法条目], examples: [经典例题描述] }
 const TYPES = [
   {
     cat: "计算类",
@@ -1113,85 +1105,83 @@ LCM = 2² × 3² = 36`,
   }
 ];
 
+// ============ HTML 转义 ============
+function escapeHtml(s) {
+  if (s == null) return "";
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
 // ============ 渲染 ============
 function render() {
-  // 按大类分组
   const byCat = {};
-  TYPES.forEach(t => {
+  TYPES.forEach(function(t) {
     if (!byCat[t.cat]) byCat[t.cat] = [];
     byCat[t.cat].push(t);
   });
-
-  // 渲染目录
-  const catGrid = document.getElementById('catGrid');
-  let catHtml = '';
+  const catGrid = document.getElementById("catGrid");
+  let catHtml = "";
   for (const cat in byCat) {
-    catHtml += `<a class="cat-link" href="#cat-${encodeURIComponent(cat)}">${cat}<span class="count">(${byCat[cat].length})</span></a>`;
+    catHtml += '<a class="cat-link" href="#cat-' + encodeURIComponent(cat) + '">' + cat + '<span class="count">(' + byCat[cat].length + ')</span></a>';
   }
   catGrid.innerHTML = catHtml;
-  document.getElementById('totalTypes').textContent = TYPES.length;
-
-  // 渲染内容
-  const content = document.getElementById('content');
-  let html = '';
+  document.getElementById("totalTypes").textContent = TYPES.length;
+  const content = document.getElementById("content");
+  let htmlOut = "";
   for (const cat in byCat) {
-    html += `<div class="category" id="cat-${encodeURIComponent(cat)}" data-cat="${cat}">`;
-    html += `<div class="category-title"><span><span class="icon">📘</span>${cat}</span><span class="note">共 ${byCat[cat].length} 类</span></div>`;
-    byCat[cat].forEach(t => {
-      const id = 't-' + Math.random().toString(36).slice(2, 8);
-      html += `<div class="card" id="${id}" data-name="${t.name}" data-keywords="${(t.keywords||[]).join(' ')}">`;
-      html += `<h3><span class="emoji">${t.emoji||'📌'}</span>${t.name}</h3>`;
-      html += `<div class="keywords"><strong>判断关键词：</strong>`;
-      (t.keywords||[]).forEach(k => { html += `<span class="tag">${k}</span>`; });
-      html += `</div>`;
-      html += `<p style="color:#6b7280;font-size:0.92rem;margin-top:6px;">💬 ${t.note||''}</p>`;
-      if (t.formula) html += `<div class="formula">${escapeHtml(t.formula)}</div>`;
+    htmlOut += '<div class="category" id="cat-' + encodeURIComponent(cat) + '" data-cat="' + cat + '">';
+    htmlOut += '<div class="category-title"><span><span class="icon">📘</span>' + cat + '</span><span class="note">共 ' + byCat[cat].length + ' 类</span></div>';
+    byCat[cat].forEach(function(t) {
+      var id = "t-" + Math.random().toString(36).slice(2, 8);
+      htmlOut += '<div class="card" id="' + id + '" data-name="' + t.name + '" data-keywords="' + (t.keywords||[]).join(" ") + '" data-cat="' + t.cat + '">';
+      htmlOut += '<h3><span class="emoji">' + (t.emoji||"📌") + '</span>' + t.name + '</h3>';
+      htmlOut += '<div class="keywords"><strong>判断关键词：</strong>';
+      (t.keywords||[]).forEach(function(k) { htmlOut += '<span class="tag">' + k + '</span>'; });
+      htmlOut += '</div>';
+      htmlOut += '<p style="color:#6b7280;font-size:0.92rem;margin-top:6px;">💬 ' + (t.note||"") + '</p>';
+      if (t.formula) htmlOut += '<div class="formula">' + escapeHtml(t.formula) + '</div>';
       if (t.steps && t.steps.length) {
-        html += `<div class="steps"><h4>🪜 解题四步法</h4><ol>`;
-        t.steps.forEach(s => { html += `<li>${escapeHtml(s)}</li>`; });
-        html += `</ol></div>`;
+        htmlOut += '<div class="steps"><h4>🪜 解题四步法</h4><ol>';
+        t.steps.forEach(function(s) { htmlOut += '<li>' + escapeHtml(s) + '</li>'; });
+        htmlOut += '</ol></div>';
       }
       if (t.examples && t.examples.length) {
-        html += `<div class="example"><div class="example-title">📝 典型例题</div>`;
-        t.examples.forEach(e => { html += `<div>· ${escapeHtml(e)}</div>`; });
-        html += `</div>`;
+        htmlOut += '<div class="example"><div class="example-title">📝 典型例题</div>';
+        t.examples.forEach(function(e) { htmlOut += '<div>· ' + escapeHtml(e) + '</div>'; });
+        htmlOut += '</div>';
       }
-      html += `</div>`;
+      htmlOut += '</div>';
     });
-    html += `</div>`;
+    htmlOut += '</div>';
   }
-  content.innerHTML = html;
-}
-
-function escapeHtml(s) {
-  if (s == null) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  content.innerHTML = htmlOut;
 }
 
 // ============ 搜索 ============
 function setupSearch() {
-  const input = document.getElementById('searchInput');
-  input.addEventListener('input', () => {
-    const q = input.value.trim().toLowerCase();
-    const cards = document.querySelectorAll('.card');
-    const cats = document.querySelectorAll('.category');
-    cards.forEach(card => {
-      const text = (card.dataset.name + ' ' + card.dataset.keywords + ' ' + card.textContent).toLowerCase();
-      if (!q || text.indexOf(q) >= 0) card.classList.remove('hidden');
-      else card.classList.add('hidden');
+  var input = document.getElementById("searchInput");
+  if (!input) return;
+  input.addEventListener("input", function() {
+    var q = input.value.trim().toLowerCase();
+    var cards = document.querySelectorAll(".card");
+    var cats = document.querySelectorAll(".category");
+    cards.forEach(function(card) {
+      var text = (card.dataset.name + " " + card.dataset.keywords + " " + card.dataset.cat + " " + card.textContent).toLowerCase();
+      if (!q || text.indexOf(q) >= 0) card.classList.remove("hidden");
+      else card.classList.add("hidden");
     });
-    cats.forEach(cat => {
-      const visible = cat.querySelectorAll('.card:not(.hidden)').length;
-      cat.style.display = visible > 0 ? '' : 'none';
+    cats.forEach(function(cat) {
+      var visible = cat.querySelectorAll(".card:not(.hidden)").length;
+      cat.style.display = visible > 0 ? "" : "none";
     });
   });
 }
 
 // ============ 顶部按钮 ============
 function setupTopBtn() {
-  const btn = document.getElementById('topBtn');
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  var btn = document.getElementById("topBtn");
+  if (!btn) return;
+  btn.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
@@ -1200,93 +1190,4 @@ render();
 setupSearch();
 setupTopBtn();
 
-
-// ============ 渲染 ============
-function render() {
-  // 按大类分组
-  const byCat = {};
-  TYPES.forEach(t => {
-    if (!byCat[t.cat]) byCat[t.cat] = [];
-    byCat[t.cat].push(t);
-  });
-
-  // 渲染目录
-  const catGrid = document.getElementById('catGrid');
-  let catHtml = '';
-  for (const cat in byCat) {
-    catHtml += `<a class="cat-link" href="#cat-${encodeURIComponent(cat)}">${cat}<span class="count">(${byCat[cat].length})</span></a>`;
-  }
-  catGrid.innerHTML = catHtml;
-  document.getElementById('totalTypes').textContent = TYPES.length;
-
-  // 渲染内容
-  const content = document.getElementById('content');
-  let html = '';
-  for (const cat in byCat) {
-    html += `<div class="category" id="cat-${encodeURIComponent(cat)}" data-cat="${cat}">`;
-    html += `<div class="category-title"><span><span class="icon">📘</span>${cat}</span><span class="note">共 ${byCat[cat].length} 类</span></div>`;
-    byCat[cat].forEach(t => {
-      const id = 't-' + Math.random().toString(36).slice(2, 8);
-      html += `<div class="card" id="${id}" data-name="${t.name}" data-keywords="${(t.keywords||[]).join(' ')}">`;
-      html += `<h3><span class="emoji">${t.emoji||'📌'}</span>${t.name}</h3>`;
-      html += `<div class="keywords"><strong>判断关键词：</strong>`;
-      (t.keywords||[]).forEach(k => { html += `<span class="tag">${k}</span>`; });
-      html += `</div>`;
-      html += `<p style="color:#6b7280;font-size:0.92rem;margin-top:6px;">💬 ${t.note||''}</p>`;
-      if (t.formula) html += `<div class="formula">${escapeHtml(t.formula)}</div>`;
-      if (t.steps && t.steps.length) {
-        html += `<div class="steps"><h4>🪜 解题四步法</h4><ol>`;
-        t.steps.forEach(s => { html += `<li>${escapeHtml(s)}</li>`; });
-        html += `</ol></div>`;
-      }
-      if (t.examples && t.examples.length) {
-        html += `<div class="example"><div class="example-title">📝 典型例题</div>`;
-        t.examples.forEach(e => { html += `<div>· ${escapeHtml(e)}</div>`; });
-        html += `</div>`;
-      }
-      html += `</div>`;
-    });
-    html += `</div>`;
-  }
-  content.innerHTML = html;
-}
-
-function escapeHtml(s) {
-  if (s == null) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-// ============ 搜索 ============
-function setupSearch() {
-  const input = document.getElementById('searchInput');
-  input.addEventListener('input', () => {
-    const q = input.value.trim().toLowerCase();
-    const cards = document.querySelectorAll('.card');
-    const cats = document.querySelectorAll('.category');
-    cards.forEach(card => {
-      const text = (card.dataset.name + ' ' + card.dataset.keywords + ' ' + card.textContent).toLowerCase();
-      if (!q || text.indexOf(q) >= 0) card.classList.remove('hidden');
-      else card.classList.add('hidden');
-    });
-    cats.forEach(cat => {
-      const visible = cat.querySelectorAll('.card:not(.hidden)').length;
-      cat.style.display = visible > 0 ? '' : 'none';
-    });
-  });
-}
-
-// ============ 顶部按钮 ============
-function setupTopBtn() {
-  const btn = document.getElementById('topBtn');
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-// ============ 启动 ============
-render();
-setupSearch();
-setupTopBtn();
 </script>
-</body>
-</html>
