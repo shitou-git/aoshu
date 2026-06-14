@@ -94,6 +94,10 @@
   /* ========== 题型卡片（折叠式） ========== */
   .category {
     margin-bottom: 26px; scroll-margin-top: 20px;
+    display: none;
+  }
+  .category.active {
+    display: block;
   }
   .category-title {
     background: linear-gradient(135deg, #8b5cf6, #ec4899);
@@ -148,14 +152,14 @@
   /* 公式区（全宽） */
   .formula {
     background: var(--c-primary-soft); padding: 12px 16px; border-radius: 12px;
-    margin: 12px 0 0; font-family: "Courier New", monospace; font-size: 0.95rem;
+    margin: 10px 0; font-family: "Courier New", monospace; font-size: 0.95rem;
     color: #5b21b6; font-weight: bold; white-space: pre-wrap; word-break: break-word;
     line-height: 1.6;
   }
 
   /* 提示 + 四步法 两列 */
   .mid-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;
   }
   @media (max-width: 600px) {
     .mid-grid { grid-template-columns: 1fr; }
@@ -1199,9 +1203,7 @@ function render() {
       htmlOut += '</div>';
       // 卡片内容体
       htmlOut += '<div class="card-body">';
-      // 核心公式（全宽）
-      if (t.formula) htmlOut += '<div class="formula">' + escapeHtml(t.formula) + '</div>';
-      // 提示 + 四步法 两列
+      // 提示 + 四步法 两列（小提示在左上方）
       if (t.note || (t.steps && t.steps.length)) {
         htmlOut += '<div class="mid-grid">';
         if (t.note) {
@@ -1218,6 +1220,8 @@ function render() {
         }
         htmlOut += '</div>';
       }
+      // 核心公式（全宽）
+      if (t.formula) htmlOut += '<div class="formula">' + escapeHtml(t.formula) + '</div>';
       // 典型例题 两列
       if (t.examples && t.examples.length) {
         htmlOut += '<div class="examples-grid">';
@@ -1270,13 +1274,28 @@ function render() {
       var targetId = link.getAttribute("data-target");
       var target = document.getElementById(targetId);
       if (!target) return;
+
+      // 隐藏所有类别，只显示点击的类别
+      var allCategories = document.querySelectorAll(".category");
+      allCategories.forEach(function(cat) {
+        if (cat.id === targetId) {
+          cat.classList.add("active");
+        } else {
+          cat.classList.remove("active");
+          // 同时折叠其他类别的卡片
+          cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
+          var title = cat.querySelector(".category-title");
+          if (title) title.classList.add("collapsed");
+        }
+      });
+
+      // 展开该大类的卡片
       var title = target.querySelector(".category-title");
-      // 展开该大类
-      if (title && !title.classList.contains("collapsed")) {
-        // already expanded
-      } else if (title) {
-        title.click();
+      if (title) {
+        title.classList.remove("collapsed");
+        target.querySelectorAll(".card").forEach(function(c) { c.classList.add("expanded"); });
       }
+
       // 滚动到该大类
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
