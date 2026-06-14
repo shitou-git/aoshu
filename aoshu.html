@@ -378,6 +378,8 @@
     .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
     .tab { width: 100%; text-align: center; padding: 12px 16px; }
     .tab.home-btn, .tab.silu-btn { grid-column: span 1; }
+    .tab[data-level="easy"], .tab[data-level="medium"], .tab[data-level="hard"] { grid-column: span 1; }
+    .tabs::after { content: ''; grid-column: span 2; }
   }
   /* ======= 回到顶部悬浮按钮 ======= */
   .back-to-top {
