@@ -91,65 +91,111 @@
   .cat-link:hover { background: var(--c-primary); color: #fff; transform: translateY(-2px); }
   .cat-link .count { font-size: 0.78rem; opacity: 0.75; margin-left: 4px; }
 
-  /* ========== 题型卡片 ========== */
+  /* ========== 题型卡片（折叠式） ========== */
   .category {
     margin-bottom: 26px; scroll-margin-top: 20px;
   }
   .category-title {
     background: linear-gradient(135deg, #8b5cf6, #ec4899);
-    color: #fff; padding: 16px 22px; border-radius: 18px;
-    font-size: 1.3rem; margin-bottom: 14px; box-shadow: var(--shadow);
+    color: #fff; padding: 14px 20px; border-radius: 18px;
+    font-size: 1.25rem; margin-bottom: 12px; box-shadow: var(--shadow);
     display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; user-select: none; transition: opacity 0.2s;
   }
-  .category-title .icon { font-size: 1.6rem; margin-right: 10px; }
+  .category-title:hover { opacity: 0.9; }
+  .category-title .icon { font-size: 1.5rem; margin-right: 10px; }
   .category-title .note { font-size: 0.85rem; opacity: 0.9; font-weight: normal; }
+  .category-title .chevron { font-size: 1.2rem; transition: transform 0.3s; display: inline-block; }
+  .category-title.collapsed .chevron { transform: rotate(-90deg); }
+  .category-title.collapsed { margin-bottom: 0; }
 
   .card {
-    background: #fff; border-radius: 20px; padding: 20px;
-    box-shadow: var(--shadow); margin-bottom: 14px;
-    border-left: 6px solid var(--c-primary);
+    background: #fff; border-radius: 18px;
+    box-shadow: var(--shadow); margin-bottom: 10px;
+    border-left: 5px solid var(--c-primary);
+    overflow: hidden;
   }
   .card:nth-child(3n+1) { border-left-color: #8b5cf6; }
   .card:nth-child(3n+2) { border-left-color: #ec4899; }
   .card:nth-child(3n+3) { border-left-color: #f59e0b; }
 
-  .card h3 {
-    font-size: 1.15rem; color: var(--c-primary); margin-bottom: 10px;
-    padding-bottom: 8px; border-bottom: 2px dashed var(--c-primary-soft);
-    display: flex; align-items: center; gap: 8px;
+  /* 可折叠的卡片头部 */
+  .card-header {
+    padding: 13px 18px; cursor: pointer; user-select: none;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    transition: background 0.15s;
   }
-  .card h3 .emoji { font-size: 1.3rem; }
+  .card-header:hover { background: #f5f3ff; }
+  .card-header .emoji { font-size: 1.3rem; flex-shrink: 0; }
+  .card-header h3 {
+    font-size: 1.08rem; color: var(--c-primary); flex: 1;
+    border: none; padding: 0; margin: 0; background: none;
+  }
+  .card-header .chevron {
+    font-size: 1.1rem; color: var(--c-muted); flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .card.expanded .card-header .chevron { transform: rotate(180deg); }
 
+  /* 卡片折叠状态 */
+  .card-body {
+    display: none;
+    padding: 0 18px 16px;
+    border-top: 1px dashed var(--c-primary-soft);
+  }
+  .card.expanded .card-body { display: block; }
+
+  /* 公式区（全宽） */
   .formula {
     background: var(--c-primary-soft); padding: 12px 16px; border-radius: 12px;
-    margin: 10px 0; font-family: "Courier New", monospace; font-size: 0.98rem;
+    margin: 12px 0 0; font-family: "Courier New", monospace; font-size: 0.95rem;
     color: #5b21b6; font-weight: bold; white-space: pre-wrap; word-break: break-word;
+    line-height: 1.6;
   }
-  .formula strong { color: var(--c-hard); }
+
+  /* 提示 + 四步法 两列 */
+  .mid-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
+  }
+  @media (max-width: 600px) {
+    .mid-grid { grid-template-columns: 1fr; }
+  }
+
+  .note-box {
+    background: var(--c-mid-soft); padding: 10px 14px; border-radius: 10px;
+    font-size: 0.9rem;
+  }
+  .note-box strong { color: var(--c-mid); display: block; margin-bottom: 4px; font-size: 0.82rem; }
 
   .steps {
-    background: var(--c-easy-soft); padding: 12px 16px; border-radius: 12px;
-    margin: 10px 0;
+    background: var(--c-easy-soft); padding: 10px 14px; border-radius: 10px;
   }
-  .steps h4 { color: var(--c-easy); font-size: 1rem; margin-bottom: 8px; }
-  .steps ol { margin-left: 24px; }
-  .steps ol li { margin-bottom: 4px; }
+  .steps h4 { color: var(--c-easy); font-size: 0.95rem; margin-bottom: 6px; font-weight: bold; }
+  .steps ol { margin: 0 0 0 18px; padding: 0; }
+  .steps ol li { margin-bottom: 3px; font-size: 0.88rem; }
 
-  .keywords {
-    background: var(--c-mid-soft); padding: 10px 14px; border-radius: 10px;
-    margin: 10px 0; font-size: 0.92rem;
+  /* 经典例题 两列 */
+  .examples-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
   }
-  .keywords strong { color: var(--c-mid); }
-  .keywords .tag {
-    display: inline-block; padding: 2px 8px; background: #fff; border-radius: 999px;
-    margin: 2px 4px 2px 0; font-size: 0.82rem; color: var(--c-mid); font-weight: bold;
+  @media (max-width: 500px) {
+    .examples-grid { grid-template-columns: 1fr; }
   }
 
   .example {
-    background: #f9fafb; padding: 10px 14px; border-radius: 10px;
-    margin: 8px 0; font-size: 0.95rem; border-left: 3px solid #9ca3af;
+    background: #f9fafb; padding: 8px 12px; border-radius: 8px;
+    font-size: 0.88rem; border-left: 3px solid #d1d5db;
   }
-  .example-title { color: var(--c-muted); font-weight: bold; margin-bottom: 4px; font-size: 0.85rem; }
+  .example-title { color: var(--c-muted); font-weight: bold; margin-bottom: 3px; font-size: 0.8rem; }
+
+  .keywords {
+    background: var(--c-mid-soft); padding: 4px 8px; border-radius: 999px;
+    font-size: 0.78rem; color: var(--c-mid); font-weight: bold; flex-shrink: 0;
+  }
+  .keywords .tag {
+    display: inline-block; padding: 1px 5px; background: #fff; border-radius: 999px;
+    margin: 1px 2px; font-size: 0.75rem; color: var(--c-mid); font-weight: bold;
+  }
 
   /* ========== 悬浮按钮 ========== */
   .float-btn {
@@ -1113,47 +1159,128 @@ function escapeHtml(s) {
 
 // ============ 渲染 ============
 function render() {
-  const byCat = {};
+  var byCat = {};
   TYPES.forEach(function(t) {
     if (!byCat[t.cat]) byCat[t.cat] = [];
     byCat[t.cat].push(t);
   });
-  const catGrid = document.getElementById("catGrid");
-  let catHtml = "";
-  for (const cat in byCat) {
-    catHtml += '<a class="cat-link" href="#cat-' + encodeURIComponent(cat) + '">' + cat + '<span class="count">(' + byCat[cat].length + ')</span></a>';
+
+  // 目录
+  var catGrid = document.getElementById("catGrid");
+  var catHtml = "";
+  for (var cat in byCat) {
+    catHtml += '<a class="cat-link" href="javascript:void(0)" data-target="cat-' + encodeURIComponent(cat) + '">' + cat + '<span class="count">(' + byCat[cat].length + ')</span></a>';
   }
   catGrid.innerHTML = catHtml;
   document.getElementById("totalTypes").textContent = TYPES.length;
-  const content = document.getElementById("content");
-  let htmlOut = "";
-  for (const cat in byCat) {
-    htmlOut += '<div class="category" id="cat-' + encodeURIComponent(cat) + '" data-cat="' + cat + '">';
-    htmlOut += '<div class="category-title"><span><span class="icon">📘</span>' + cat + '</span><span class="note">共 ' + byCat[cat].length + ' 类</span></div>';
+
+  var content = document.getElementById("content");
+  var htmlOut = "";
+  for (var cat in byCat) {
+    var catId = 'cat-' + encodeURIComponent(cat);
+    htmlOut += '<div class="category" id="' + catId + '" data-cat="' + cat + '">';
+    // 题型大类标题（可折叠全部）
+    htmlOut += '<div class="category-title" data-target="' + catId + '">';
+    htmlOut += '<span><span class="icon">📘</span>' + cat + '<span class="note">（' + byCat[cat].length + ' 类，点击展开）</span></span>';
+    htmlOut += '<span class="chevron">▼</span>';
+    htmlOut += '</div>';
+    // 各类别卡片
     byCat[cat].forEach(function(t) {
-      var id = "t-" + Math.random().toString(36).slice(2, 8);
-      htmlOut += '<div class="card" id="' + id + '" data-name="' + t.name + '" data-keywords="' + (t.keywords||[]).join(" ") + '" data-cat="' + t.cat + '">';
-      htmlOut += '<h3><span class="emoji">' + (t.emoji||"📌") + '</span>' + t.name + '</h3>';
-      htmlOut += '<div class="keywords"><strong>判断关键词：</strong>';
+      var cardId = "t-" + Math.random().toString(36).slice(2, 8);
+      htmlOut += '<div class="card" id="' + cardId + '" data-name="' + t.name + '" data-keywords="' + (t.keywords||[]).join(" ") + '" data-cat="' + t.cat + '">';
+      // 卡片头部（点击展开/折叠）
+      htmlOut += '<div class="card-header">';
+      htmlOut += '<span class="emoji">' + (t.emoji||"📌") + '</span>';
+      htmlOut += '<h3>' + t.name + '</h3>';
+      htmlOut += '<span class="keywords">';
       (t.keywords||[]).forEach(function(k) { htmlOut += '<span class="tag">' + k + '</span>'; });
+      htmlOut += '</span>';
+      htmlOut += '<span class="chevron">▼</span>';
       htmlOut += '</div>';
-      htmlOut += '<p style="color:#6b7280;font-size:0.92rem;margin-top:6px;">💬 ' + (t.note||"") + '</p>';
+      // 卡片内容体
+      htmlOut += '<div class="card-body">';
+      // 核心公式（全宽）
       if (t.formula) htmlOut += '<div class="formula">' + escapeHtml(t.formula) + '</div>';
-      if (t.steps && t.steps.length) {
-        htmlOut += '<div class="steps"><h4>🪜 解题四步法</h4><ol>';
-        t.steps.forEach(function(s) { htmlOut += '<li>' + escapeHtml(s) + '</li>'; });
-        htmlOut += '</ol></div>';
-      }
-      if (t.examples && t.examples.length) {
-        htmlOut += '<div class="example"><div class="example-title">📝 典型例题</div>';
-        t.examples.forEach(function(e) { htmlOut += '<div>· ' + escapeHtml(e) + '</div>'; });
+      // 提示 + 四步法 两列
+      if (t.note || (t.steps && t.steps.length)) {
+        htmlOut += '<div class="mid-grid">';
+        if (t.note) {
+          htmlOut += '<div class="note-box"><strong>💡 小提示</strong>' + escapeHtml(t.note) + '</div>';
+        } else {
+          htmlOut += '<div></div>';
+        }
+        if (t.steps && t.steps.length) {
+          htmlOut += '<div class="steps"><h4>🪜 解题四步法</h4><ol>';
+          t.steps.forEach(function(s) { htmlOut += '<li>' + escapeHtml(s) + '</li>'; });
+          htmlOut += '</ol></div>';
+        } else {
+          htmlOut += '<div></div>';
+        }
         htmlOut += '</div>';
       }
-      htmlOut += '</div>';
+      // 典型例题 两列
+      if (t.examples && t.examples.length) {
+        htmlOut += '<div class="examples-grid">';
+        t.examples.forEach(function(e) {
+          htmlOut += '<div class="example"><div class="example-title">📝 典型例题</div>' + escapeHtml(e) + '</div>';
+        });
+        htmlOut += '</div>';
+      }
+      htmlOut += '</div></div>';
     });
     htmlOut += '</div>';
   }
   content.innerHTML = htmlOut;
+
+  // 绑定卡片折叠事件（点击头部）
+  var cards = document.querySelectorAll(".card");
+  cards.forEach(function(card) {
+    var header = card.querySelector(".card-header");
+    if (header) {
+      header.addEventListener("click", function() {
+        card.classList.toggle("expanded");
+      });
+    }
+  });
+
+  // 绑定大类折叠事件
+  var catTitles = document.querySelectorAll(".category-title");
+  catTitles.forEach(function(title) {
+    title.addEventListener("click", function() {
+      var target = title.getAttribute("data-target");
+      var catDiv = document.getElementById(target);
+      if (!catDiv) return;
+      var isCollapsed = title.classList.contains("collapsed");
+      if (isCollapsed) {
+        // 展开所有卡片
+        title.classList.remove("collapsed");
+        catDiv.querySelectorAll(".card").forEach(function(c) { c.classList.add("expanded"); });
+      } else {
+        // 折叠所有卡片
+        title.classList.add("collapsed");
+        catDiv.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
+      }
+    });
+  });
+
+  // 目录链接点击事件
+  var catLinks = document.querySelectorAll(".cat-link");
+  catLinks.forEach(function(link) {
+    link.addEventListener("click", function() {
+      var targetId = link.getAttribute("data-target");
+      var target = document.getElementById(targetId);
+      if (!target) return;
+      var title = target.querySelector(".category-title");
+      // 展开该大类
+      if (title && !title.classList.contains("collapsed")) {
+        // already expanded
+      } else if (title) {
+        title.click();
+      }
+      // 滚动到该大类
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 // ============ 搜索 ============
@@ -1166,8 +1293,14 @@ function setupSearch() {
     var cats = document.querySelectorAll(".category");
     cards.forEach(function(card) {
       var text = (card.dataset.name + " " + card.dataset.keywords + " " + card.dataset.cat + " " + card.textContent).toLowerCase();
-      if (!q || text.indexOf(q) >= 0) card.classList.remove("hidden");
-      else card.classList.add("hidden");
+      if (!q || text.indexOf(q) >= 0) {
+        card.classList.remove("hidden");
+        // 自动展开匹配的卡片
+        if (q) card.classList.add("expanded");
+      } else {
+        card.classList.add("hidden");
+        card.classList.remove("expanded");
+      }
     });
     cats.forEach(function(cat) {
       var visible = cat.querySelectorAll(".card:not(.hidden)").length;
