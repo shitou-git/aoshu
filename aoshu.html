@@ -271,7 +271,47 @@
   }
 
   /* ======= 解析框 ======= */
-  .solution-box {
+  /* ======= 解题思路区（免密码）======= */
+  .hint-box {
+    display: none;
+    margin-top: 12px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #ecfdf5, #f0f9ff);
+    border-radius: 14px;
+    border-left: 5px solid #10b981;
+    color: #064e3b;
+    line-height: 1.85;
+    font-size: 0.96rem;
+    animation: slideDown 0.3s ease;
+  }
+  .hint-box.show { display: block; }
+  .hint-box h4 {
+    margin-bottom: 4px;
+    color: #047857;
+    font-size: 0.98rem;
+    margin-top: 4px;
+  }
+  .hint-box h4:first-child { margin-top: 0; }
+
+  /* ======= 查看答案按钮（放在解题思路下方）======= */
+  .view-answer-btn {
+    margin-top: 14px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: inherit;
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.25);
+    transition: transform 0.15s;
+  }
+  .view-answer-btn:hover { transform: translateY(-2px); }
+
+  /* ======= 答案区（密码解锁后才显示）======= */
+  .answer-box {
     display: none;
     margin-top: 12px;
     padding: 16px 20px;
@@ -283,15 +323,15 @@
     font-size: 0.96rem;
     animation: slideDown 0.3s ease;
   }
-  .solution-box.show { display: block; }
-  .solution-box h4 {
+  .answer-box.show { display: block; }
+  .answer-box h4 {
     margin-bottom: 4px;
     color: #7c3aed;
     font-size: 0.98rem;
     margin-top: 4px;
   }
-  .solution-box h4:first-child { margin-top: 0; }
-  .solution-box .answer {
+  .answer-box h4:first-child { margin-top: 0; }
+  .answer-box .answer {
     margin-top: 8px;
     padding: 8px 12px;
     background: #fff;
@@ -404,7 +444,7 @@
 
   <div class="footer">
     <p>🌈 勤动脑筋，数学就会越来越有趣！加油！</p>
-    <p class="tip">💡 提示：点击「👀 查看解析」按钮，会弹出密码框，输入正确密码即可查看该题的详细解析。</p>
+    <p class="tip">💡 提示：点击「👀 查看解析」可以免费看到解题思路（小朋友先动动脑筋），思路下方有「🔐 查看答案」按钮，输入密码可以查看完整答案。</p>
   </div>
 
 </div>
@@ -2481,12 +2521,16 @@ function renderProblems(level) {
   const list = problems[level];
   if (!list || !container) return;
   // 先收起容器内所有已展开的卡片
-  container.querySelectorAll(".solution-box.show, .pwd-box.show").forEach(el => {
+  container.querySelectorAll(".hint-box.show, .answer-box.show, .pwd-box.show").forEach(el => {
     el.classList.remove("show");
   });
   // 重置所有收起按钮的文本
   container.querySelectorAll(".view-btn").forEach(btn => {
     btn.textContent = "👀 查看解析";
+  });
+  // 重置所有查看答案按钮的文本
+  container.querySelectorAll(".view-answer-btn").forEach(btn => {
+    btn.textContent = "🔐 查看答案";
   });
   // 重置所有密码状态
   container.querySelectorAll(".pwd-status").forEach(s => {
@@ -2508,15 +2552,18 @@ function renderProblems(level) {
       </div>
       <div class="problem-text">${p.text}</div>
       <button class="view-btn">👀 查看解析</button>
+      <div class="hint-box">
+        <h4>💡 解题思路（先动动脑筋，再看下方答案）</h4>
+        ${p.solution.map(s => `<div>${s}</div>`).join("")}
+        <button class="view-answer-btn">🔐 查看答案</button>
+      </div>
       <div class="pwd-box">
-        <label>🔐 密码：</label>
+        <label>🔐 查看答案需要密码：</label>
         <input type="password" class="pwd" placeholder="输入密码">
         <button class="submit-btn">确认</button>
         <span class="pwd-status">未解锁</span>
       </div>
-      <div class="solution-box">
-        <h4>📝 解题思路</h4>
-        ${p.solution.map(s => `<div>${s}</div>`).join("")}
+      <div class="answer-box">
         <h4>✅ 答案</h4>
         <div class="answer">${p.answer}</div>
       </div>`;
@@ -2524,62 +2571,94 @@ function renderProblems(level) {
 
     // 绑定事件
     const viewBtn = card.querySelector(".view-btn");
+    const viewAnsBtn = card.querySelector(".view-answer-btn");
     const pwdBox  = card.querySelector(".pwd-box");
     const pwdInput = card.querySelector(".pwd");
     const submitBtn = card.querySelector(".submit-btn");
     const status = card.querySelector(".pwd-status");
-    const solBox = card.querySelector(".solution-box");
+    const hintBox = card.querySelector(".hint-box");
+    const ansBox = card.querySelector(".answer-box");
 
     // 从答案中提取所有纯数字，作为本题的第二密码
-    // 直接去除所有非数字字符，保留数字顺序拼接
-    // 例如："12岁, 18岁" → "1218"；"6.49" → "649"；"甲=72, 乙=48" → "7248"
     const answerPwd = p.answer.replace(/[^\d]/g, "");
     const currentCard = card;
 
-    viewBtn.addEventListener("click", () => {
-      // 第一步：先收起其他所有题目已展开的解析与密码框
+    // 收起其他所有题目（内部用）
+    function collapseOthers() {
       document.querySelectorAll(".problem-card").forEach(c => {
-        if (c === currentCard) return; // 跳过当前卡片，稍后单独处理
-        const otherSol = c.querySelector(".solution-box");
+        if (c === currentCard) return;
+        const otherHint = c.querySelector(".hint-box");
+        const otherAns = c.querySelector(".answer-box");
         const otherPwd = c.querySelector(".pwd-box");
         const otherBtn = c.querySelector(".view-btn");
+        const otherViewAnsBtn = c.querySelector(".view-answer-btn");
         const otherInput = c.querySelector(".pwd");
         const otherStatus = c.querySelector(".pwd-status");
-        if (otherSol) otherSol.classList.remove("show");
+        if (otherHint) otherHint.classList.remove("show");
+        if (otherAns) otherAns.classList.remove("show");
         if (otherPwd) otherPwd.classList.remove("show");
         if (otherBtn) otherBtn.textContent = "👀 查看解析";
+        if (otherViewAnsBtn) otherViewAnsBtn.textContent = "🔐 查看答案";
         if (otherInput) otherInput.value = "";
         if (otherStatus) {
           otherStatus.textContent = "未解锁";
           otherStatus.className = "pwd-status";
         }
       });
+    }
+
+    // 点击「查看解析」按钮 → 显示解题思路（免密码）
+    viewBtn.addEventListener("click", () => {
+      collapseOthers();
 
       if (viewBtn.textContent === "🙈 收起解析") {
         // 当前处于「收起解析」状态 → 点击后完全收起
-        solBox.classList.remove("show");
+        hintBox.classList.remove("show");
+        ansBox.classList.remove("show");
         pwdBox.classList.remove("show");
+        viewAnsBtn.textContent = "🔐 查看答案";
         viewBtn.textContent = "👀 查看解析";
         pwdInput.value = "";
         status.textContent = "未解锁";
         status.className = "pwd-status";
       } else {
-        // 当前处于「查看解析」状态 → 点击后按钮切换为「收起解析」，并弹出密码框
+        // 当前处于「查看解析」状态 → 点击后显示解题思路
         viewBtn.textContent = "🙈 收起解析";
-        pwdBox.classList.add("show");
-        setTimeout(() => pwdInput.focus(), 50);
+        hintBox.classList.add("show");
       }
     });
 
+    // 点击「查看答案」按钮 → 显示密码输入框
+    viewAnsBtn.addEventListener("click", () => {
+      if (viewAnsBtn.textContent === "🙈 收起答案") {
+        // 当前已解锁并在展示答案 → 点击后收起答案和密码框
+        ansBox.classList.remove("show");
+        pwdBox.classList.remove("show");
+        viewAnsBtn.textContent = "🔐 查看答案";
+        pwdInput.value = "";
+        status.textContent = "未解锁";
+        status.className = "pwd-status";
+      } else {
+        // 切换密码框的显示/隐藏（第二次点击则收起）
+        if (pwdBox.classList.contains("show")) {
+          pwdBox.classList.remove("show");
+        } else {
+          pwdBox.classList.add("show");
+          setTimeout(() => pwdInput.focus(), 50);
+        }
+      }
+    });
+
+    // 验证密码 → 显示答案
     function tryUnlock() {
       const input = pwdInput.value.trim();
       // 接受两种密码：admin 或本题答案中的纯数字
       if (input === PASSWORD || (answerPwd && input === answerPwd)) {
-        solBox.classList.add("show");
+        ansBox.classList.add("show");
         pwdBox.classList.remove("show");
         status.textContent = "✅ 已解锁";
         status.className = "pwd-status ok";
-        viewBtn.textContent = "🙈 收起解析";
+        viewAnsBtn.textContent = "🙈 收起答案";
       } else {
         status.textContent = "❌ 密码错误，请重新输入";
         status.className = "pwd-status err";
@@ -2592,9 +2671,6 @@ function renderProblems(level) {
     pwdInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") tryUnlock();
     });
-
-    // 再次点击「查看解析」时切换解/收（若已解锁）
-    // （逻辑已在 viewBtn 的 listener 中处理）
   });
 }
 
