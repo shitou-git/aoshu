@@ -135,6 +135,67 @@
     box-shadow: var(--shadow);
   }
 
+  /* ======= 搜索栏 ======= */
+  .search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 16px;
+    border: 2px solid #e9d5ff;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus {
+    border-color: #7c3aed;
+  }
+  .search-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .search-btn.confirm {
+    background: #7c3aed;
+    color: #fff;
+  }
+  .search-btn.confirm:hover {
+    background: #6d28d9;
+    transform: translateY(-1px);
+  }
+  .search-btn.clear {
+    background: #f3f4f6;
+    color: #6b7280;
+  }
+  .search-btn.clear:hover {
+    background: #e5e7eb;
+    color: #374151;
+  }
+  .search-result-tip {
+    font-size: 0.9rem;
+    color: #7c3aed;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .search-no-result {
+    text-align: center;
+    padding: 30px;
+    color: #9ca3af;
+    font-size: 1rem;
+  }
+
   /* ======= 题目卡片 ======= */
   .problem-card {
     background: #fff;
@@ -148,6 +209,9 @@
   .problem-card:hover {
     transform: translateY(-1px);
     border-color: #ddd6fe;
+  }
+  .problem-card.search-hidden {
+    display: none;
   }
 
   .problem-header {
@@ -423,6 +487,12 @@
     <div class="level-intro">
       <strong>🌱 初级题目：</strong>适合小学 1-2 年级，侧重基础巧算、找规律、简单推理，帮助小朋友建立数感。
     </div>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-easy" placeholder="输入关键词搜索题目，例如：小明、分数…">
+      <button class="search-btn confirm" onclick="doSearch('easy')">确认</button>
+      <button class="search-btn clear" onclick="clearSearch('easy')">清空</button>
+    </div>
+    <div class="search-result-tip" id="tip-easy"></div>
     <div id="problems-easy"></div>
   </section>
 
@@ -431,6 +501,12 @@
     <div class="level-intro">
       <strong>🔥 中级题目：</strong>适合小学 3-4 年级，涵盖和差倍、盈亏、植树、行程、鸡兔同笼等经典题型。
     </div>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-medium" placeholder="输入关键词搜索题目，例如：小明、分数…">
+      <button class="search-btn confirm" onclick="doSearch('medium')">确认</button>
+      <button class="search-btn clear" onclick="clearSearch('medium')">清空</button>
+    </div>
+    <div class="search-result-tip" id="tip-medium"></div>
     <div id="problems-medium"></div>
   </section>
 
@@ -439,6 +515,12 @@
     <div class="level-intro">
       <strong>🚀 高级题目：</strong>适合小学 5-6 年级，涉及分数、工程、浓度、抽屉原理、逻辑推理等综合应用题。
     </div>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-hard" placeholder="输入关键词搜索题目，例如：小明、分数…">
+      <button class="search-btn confirm" onclick="doSearch('hard')">确认</button>
+      <button class="search-btn clear" onclick="clearSearch('hard')">清空</button>
+    </div>
+    <div class="search-result-tip" id="tip-hard"></div>
     <div id="problems-hard"></div>
   </section>
 
@@ -3402,6 +3484,59 @@ const problems = {
 /* ============================================================
  *  渲染 + 交互
  * ============================================================ */
+
+// ============ 搜索功能 ============
+function doSearch(level) {
+  const keyword = document.getElementById("search-" + level).value.trim();
+  const container = document.getElementById("problems-" + level);
+  const tip = document.getElementById("tip-" + level);
+  const cards = container.querySelectorAll(".problem-card");
+
+  if (!keyword) {
+    // 空关键词，显示全部
+    cards.forEach(card => card.classList.remove("search-hidden"));
+    tip.textContent = "";
+    return;
+  }
+
+  let shown = 0;
+  cards.forEach(card => {
+    const title = card.querySelector(".problem-title")?.textContent || "";
+    const text = card.querySelector(".problem-text")?.textContent || "";
+    const match = title.includes(keyword) || text.includes(keyword);
+    if (match) {
+      card.classList.remove("search-hidden");
+      shown++;
+    } else {
+      card.classList.add("search-hidden");
+    }
+  });
+
+  tip.textContent = `找到 ${shown} 道相关题目`;
+}
+
+function clearSearch(level) {
+  const input = document.getElementById("search-" + level);
+  const container = document.getElementById("problems-" + level);
+  const tip = document.getElementById("tip-" + level);
+  input.value = "";
+  container.querySelectorAll(".problem-card").forEach(card => {
+    card.classList.remove("search-hidden");
+  });
+  tip.textContent = "";
+}
+
+// 回车确认搜索
+document.addEventListener("DOMContentLoaded", function() {
+  ["easy", "medium", "hard"].forEach(level => {
+    const input = document.getElementById("search-" + level);
+    if (input) {
+      input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") doSearch(level);
+      });
+    }
+  });
+});
 
 function renderProblems(level) {
   const container = document.getElementById("problems-" + level);
