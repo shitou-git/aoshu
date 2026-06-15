@@ -3578,8 +3578,8 @@ const problems = {
 // ============ 随机跳转功能 ============
 // 当前被随机定位的题目元素
 let randomTargetCard = null;
-// 随机定位题目解锁计数（从 localStorage 读取）
-let randomSolveCount = parseInt(localStorage.getItem('randomSolveCount') || '0', 10);
+// 随机定位题目解锁计数（页面刷新后归零）
+let randomSolveCount = 0;
 
 function jumpToRandom() {
   // 获取当前显示的难度级别
@@ -3825,7 +3825,6 @@ function renderProblems(level) {
         // 仅当：使用答案密码解锁 + 本题是随机定位目标 时，计数+1
         if (isAnswerPwd && currentCard === randomTargetCard) {
           randomSolveCount++;
-          localStorage.setItem('randomSolveCount', String(randomSolveCount));
           updateRandomCount(randomSolveCount);
           randomTargetCard = null;
         }
