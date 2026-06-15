@@ -3576,6 +3576,11 @@ const problems = {
  * ============================================================ */
 
 // ============ 随机跳转功能 ============
+// 当前被随机定位的题目元素
+let randomTargetCard = null;
+// 随机定位题目解锁计数（从 localStorage 读取）
+let randomSolveCount = parseInt(localStorage.getItem('randomSolveCount') || '0', 10);
+
 function jumpToRandom() {
   // 获取当前显示的难度级别
   const activeSection = document.querySelector(".level-section.active");
@@ -3592,6 +3597,8 @@ function jumpToRandom() {
 
   // 随机选择一道题目
   const randomCard = cards[Math.floor(Math.random() * cards.length)];
+  // 标记：这个卡片是随机定位的
+  randomTargetCard = randomCard;
 
   // 滚动到该题目
   randomCard.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -3605,6 +3612,14 @@ function jumpToRandom() {
   setTimeout(() => {
     randomCard.classList.remove("highlight");
   }, 3000);
+}
+
+// 更新随机按钮的计数显示
+function updateRandomCount(count) {
+  const btn = document.querySelector(".random-btn");
+  if (btn) {
+    btn.innerHTML = `<span>🎲</span><span>随</span><span>机</span><span style="font-size:0.85rem;color:#059669;">${count}</span>`;
+  }
 }
 
 // ============ 搜索功能 ============
@@ -3798,13 +3813,22 @@ function renderProblems(level) {
     // 验证密码 → 显示答案
     function tryUnlock() {
       const input = pwdInput.value.trim();
+      const isAnswerPwd = answerPwd && input === answerPwd;
       // 接受两种密码：admin 或本题答案中的纯数字
-      if (input === PASSWORD || (answerPwd && input === answerPwd)) {
+      if (input === PASSWORD || isAnswerPwd) {
         ansBox.classList.add("show");
         pwdBox.classList.remove("show");
         status.textContent = "✅ 已解锁";
         status.className = "pwd-status ok";
         viewAnsBtn.textContent = "🙈 收起答案";
+
+        // 仅当：使用答案密码解锁 + 本题是随机定位目标 时，计数+1
+        if (isAnswerPwd && currentCard === randomTargetCard) {
+          randomSolveCount++;
+          localStorage.setItem('randomSolveCount', String(randomSolveCount));
+          updateRandomCount(randomSolveCount);
+          randomTargetCard = null;
+        }
       } else {
         status.textContent = "❌ 密码错误，请重新输入";
         status.className = "pwd-status err";
@@ -3823,6 +3847,9 @@ function renderProblems(level) {
 renderProblems("easy");
 renderProblems("medium");
 renderProblems("hard");
+
+// 页面加载后，在随机按钮上显示已保存的计数
+updateRandomCount(randomSolveCount);
 
 /* ============================================================
  * 难度切换
