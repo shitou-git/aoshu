@@ -511,8 +511,8 @@
   }
   /* ======= 题目高亮 ======= */
   .problem-card.highlight {
-    background: #d1fae5 !important;
-    border-color: #6ee7b7 !important;
+    background: #f0fdf4 !important;
+    border-color: #bbf7d0 !important;
     transition: background 0.5s ease;
   }
   @media (max-width: 640px) {
@@ -3602,7 +3602,7 @@ function jumpToRandom() {
   const cards = Array.from(activeSection.querySelectorAll(".problem-card:not(.search-hidden)"));
   if (cards.length === 0) return;
 
-  // 移除之前的高亮
+  // 移除之前的高亮（再次点击随机按钮还原底色）
   document.querySelectorAll(".problem-card.highlight").forEach(el => {
     el.classList.remove("highlight");
   });
@@ -3615,15 +3615,10 @@ function jumpToRandom() {
   // 滚动到该题目
   randomCard.scrollIntoView({ behavior: "smooth", block: "center" });
 
-  // 添加高亮效果
+  // 添加高亮效果（保持到下次点击随机按钮）
   setTimeout(() => {
     randomCard.classList.add("highlight");
   }, 300);
-
-  // 3秒后自动取消高亮
-  setTimeout(() => {
-    randomCard.classList.remove("highlight");
-  }, 3000);
 }
 
 // 更新随机按钮的计数显示
