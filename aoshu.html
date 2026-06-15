@@ -507,7 +507,7 @@
       <strong>🌱 初级题目：</strong>适合小学 1-2 年级，侧重基础巧算、找规律、简单推理，帮助小朋友建立数感。
     </div>
     <div class="search-bar">
-      <input type="text" class="search-input" id="search-easy" placeholder="输入关键词搜索题目，例如：小明、分数…">
+      <input type="text" class="search-input" id="search-easy" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('easy')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('easy')">清空</button>
     </div>
@@ -521,7 +521,7 @@
       <strong>🔥 中级题目：</strong>适合小学 3-4 年级，涵盖和差倍、盈亏、植树、行程、鸡兔同笼等经典题型。
     </div>
     <div class="search-bar">
-      <input type="text" class="search-input" id="search-medium" placeholder="输入关键词搜索题目，例如：小明、分数…">
+      <input type="text" class="search-input" id="search-medium" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('medium')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('medium')">清空</button>
     </div>
@@ -535,7 +535,7 @@
       <strong>🚀 高级题目：</strong>适合小学 5-6 年级，涉及分数、工程、浓度、抽屉原理、逻辑推理等综合应用题。
     </div>
     <div class="search-bar">
-      <input type="text" class="search-input" id="search-hard" placeholder="输入关键词搜索题目，例如：小明、分数…">
+      <input type="text" class="search-input" id="search-hard" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('hard')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('hard')">清空</button>
     </div>
@@ -3700,7 +3700,8 @@ function doSearch(level) {
   cards.forEach(card => {
     const title = card.querySelector(".problem-title")?.textContent || "";
     const text = card.querySelector(".problem-text")?.textContent || "";
-    const match = title.includes(keyword) || text.includes(keyword);
+    const cat = card.querySelector(".problem-category")?.textContent || "";
+    const match = title.includes(keyword) || text.includes(keyword) || cat.includes(keyword);
     if (match) {
       card.classList.remove("search-hidden");
       shown++;
