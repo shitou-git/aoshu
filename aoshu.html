@@ -471,10 +471,58 @@
     font-size: 1.2rem;
     line-height: 1;
   }
+  /* ======= 随机跳转悬浮按钮 ======= */
+  .random-btn {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 34px;
+    padding: 10px 4px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #065f46;
+    background: #d1fae5;
+    border: 1px solid #6ee7b7;
+    border-radius: 17px;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.1;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .random-btn:hover {
+    transform: translateY(-50%) translateY(-2px);
+    background: #a7f3d0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+  .random-btn span {
+    display: block;
+    text-align: center;
+  }
+  .random-btn span:first-child {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  /* ======= 题目高亮 ======= */
+  .problem-card.highlight {
+    background: #d1fae5 !important;
+    border-color: #6ee7b7 !important;
+    transition: background 0.5s ease;
+  }
+  @media (max-width: 640px) {
+    .random-btn { width: 20px; padding: 8px 2px; font-size: 0.7rem; }
+  }
 </style>
 </head>
 <body>
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span>↑</span><span>顶</span><span>部</span></button>
+<button class="random-btn" onclick="jumpToRandom()"><span>🎲</span><span>随</span><span>机</span></button>
 <div class="container">
 
   <!-- 标题 -->
@@ -3526,6 +3574,38 @@ const problems = {
 /* ============================================================
  *  渲染 + 交互
  * ============================================================ */
+
+// ============ 随机跳转功能 ============
+function jumpToRandom() {
+  // 获取当前显示的难度级别
+  const activeSection = document.querySelector(".level-section.active");
+  if (!activeSection) return;
+
+  // 获取当前显示的所有题目卡片
+  const cards = Array.from(activeSection.querySelectorAll(".problem-card:not(.search-hidden)"));
+  if (cards.length === 0) return;
+
+  // 移除之前的高亮
+  document.querySelectorAll(".problem-card.highlight").forEach(el => {
+    el.classList.remove("highlight");
+  });
+
+  // 随机选择一道题目
+  const randomCard = cards[Math.floor(Math.random() * cards.length)];
+
+  // 滚动到该题目
+  randomCard.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  // 添加高亮效果
+  setTimeout(() => {
+    randomCard.classList.add("highlight");
+  }, 300);
+
+  // 3秒后自动取消高亮
+  setTimeout(() => {
+    randomCard.classList.remove("highlight");
+  }, 3000);
+}
 
 // ============ 搜索功能 ============
 function doSearch(level) {
