@@ -192,6 +192,20 @@
     background: #e5e7eb;
     color: #374151;
   }
+  .category-select {
+    padding: 10px 14px;
+    border: 2px solid #e9d5ff;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #7c3aed;
+    background: #faf5ff;
+    cursor: pointer;
+    outline: none;
+  }
+  .category-select:focus {
+    border-color: #7c3aed;
+  }
   .search-result-tip {
     font-size: 0.9rem;
     color: #7c3aed;
@@ -510,6 +524,16 @@
       <input type="text" class="search-input" id="search-easy" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('easy')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('easy')">清空</button>
+      <select class="category-select" id="cat-easy" onchange="filterByCategory('easy')">
+        <option value="">全题型</option>
+        <option value="应用">应用</option>
+        <option value="几何">几何</option>
+        <option value="推理">推理</option>
+        <option value="计算">计算</option>
+        <option value="规律">规律</option>
+        <option value="数论">数论</option>
+        <option value="组合">组合</option>
+      </select>
     </div>
     <div class="search-result-tip" id="tip-easy"></div>
     <div id="problems-easy"></div>
@@ -524,6 +548,16 @@
       <input type="text" class="search-input" id="search-medium" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('medium')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('medium')">清空</button>
+      <select class="category-select" id="cat-medium" onchange="filterByCategory('medium')">
+        <option value="">全题型</option>
+        <option value="应用">应用</option>
+        <option value="几何">几何</option>
+        <option value="推理">推理</option>
+        <option value="计算">计算</option>
+        <option value="规律">规律</option>
+        <option value="数论">数论</option>
+        <option value="组合">组合</option>
+      </select>
     </div>
     <div class="search-result-tip" id="tip-medium"></div>
     <div id="problems-medium"></div>
@@ -538,6 +572,16 @@
       <input type="text" class="search-input" id="search-hard" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('hard')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('hard')">清空</button>
+      <select class="category-select" id="cat-hard" onchange="filterByCategory('hard')">
+        <option value="">全题型</option>
+        <option value="应用">应用</option>
+        <option value="几何">几何</option>
+        <option value="推理">推理</option>
+        <option value="计算">计算</option>
+        <option value="规律">规律</option>
+        <option value="数论">数论</option>
+        <option value="组合">组合</option>
+      </select>
     </div>
     <div class="search-result-tip" id="tip-hard"></div>
     <div id="problems-hard"></div>
@@ -3687,7 +3731,11 @@ function doSearch(level) {
   const keyword = document.getElementById("search-" + level).value.trim();
   const container = document.getElementById("problems-" + level);
   const tip = document.getElementById("tip-" + level);
+  const catSelect = document.getElementById("cat-" + level);
   const cards = container.querySelectorAll(".problem-card");
+
+  // 关键词搜索时重置下拉框
+  catSelect.value = "";
 
   if (!keyword) {
     // 空关键词，显示全部
@@ -3713,11 +3761,41 @@ function doSearch(level) {
   tip.textContent = `找到 ${shown} 道相关题目`;
 }
 
+// ============ 题型下拉筛选 ============
+function filterByCategory(level) {
+  const selectedCat = document.getElementById("cat-" + level).value;
+  const container = document.getElementById("problems-" + level);
+  const tip = document.getElementById("tip-" + level);
+  const cards = container.querySelectorAll(".problem-card");
+
+  if (!selectedCat) {
+    // 未选择题型，显示全部
+    cards.forEach(card => card.classList.remove("search-hidden"));
+    tip.textContent = "";
+    return;
+  }
+
+  let shown = 0;
+  cards.forEach(card => {
+    const cat = card.querySelector(".problem-category")?.textContent || "";
+    if (cat === selectedCat) {
+      card.classList.remove("search-hidden");
+      shown++;
+    } else {
+      card.classList.add("search-hidden");
+    }
+  });
+
+  tip.textContent = `${selectedCat}类题目共 ${shown} 道`;
+}
+
 function clearSearch(level) {
   const input = document.getElementById("search-" + level);
   const container = document.getElementById("problems-" + level);
   const tip = document.getElementById("tip-" + level);
+  const catSelect = document.getElementById("cat-" + level);
   input.value = "";
+  catSelect.value = "";
   container.querySelectorAll(".problem-card").forEach(card => {
     card.classList.remove("search-hidden");
   });
