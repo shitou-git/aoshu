@@ -326,20 +326,18 @@
   .pwd-status.ok { background: #d1fae5; color: #065f46; }
   .pwd-status.err { background: #fee2e2; color: #b91c1c; }
   .pwd-box .submit-btn {
-    padding: 14px 28px;
-    font-size: 1.2rem;
+    padding: 8px 18px;
+    font-size: 0.9rem;
     font-weight: bold;
     color: #065f46;
     background: #a7f3d0;
     border: 2px solid #6ee7b7;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     font-family: inherit;
-    transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.25);
+    transition: background 0.15s;
   }
   .pwd-box .submit-btn:hover {
-    transform: translateY(-2px);
     background: #6ee7b7;
   }
 
@@ -3659,11 +3657,6 @@ function renderProblems(level) {
   container.querySelectorAll(".view-answer-btn").forEach(btn => {
     btn.textContent = "🔐 查看答案";
   });
-  // 重置所有密码状态
-  container.querySelectorAll(".pwd-status").forEach(s => {
-    s.textContent = "未解锁";
-    s.className = "pwd-status";
-  });
   container.querySelectorAll(".pwd").forEach(inp => {
     inp.value = "";
   });
@@ -3685,10 +3678,9 @@ function renderProblems(level) {
         <button class="view-answer-btn">🔐 查看答案</button>
       </div>
       <div class="pwd-box">
-        <label>🔐 查看答案需要密码：</label>
-        <input type="password" class="pwd" placeholder="输入密码">
+        <label>🔐 密码：</label>
+        <input type="password" class="pwd" placeholder="密码是本题的答案">
         <button class="submit-btn">确认</button>
-        <span class="pwd-status">未解锁</span>
       </div>
       <div class="answer-box">
         <h4>✅ 完整解答</h4>
@@ -3704,7 +3696,6 @@ function renderProblems(level) {
     const pwdBox  = card.querySelector(".pwd-box");
     const pwdInput = card.querySelector(".pwd");
     const submitBtn = card.querySelector(".submit-btn");
-    const status = card.querySelector(".pwd-status");
     const hintBox = card.querySelector(".hint-box");
     const ansBox = card.querySelector(".answer-box");
 
@@ -3722,17 +3713,12 @@ function renderProblems(level) {
         const otherBtn = c.querySelector(".view-btn");
         const otherViewAnsBtn = c.querySelector(".view-answer-btn");
         const otherInput = c.querySelector(".pwd");
-        const otherStatus = c.querySelector(".pwd-status");
         if (otherHint) otherHint.classList.remove("show");
         if (otherAns) otherAns.classList.remove("show");
         if (otherPwd) otherPwd.classList.remove("show");
         if (otherBtn) otherBtn.textContent = "👀 查看解析";
         if (otherViewAnsBtn) otherViewAnsBtn.textContent = "🔐 查看答案";
         if (otherInput) otherInput.value = "";
-        if (otherStatus) {
-          otherStatus.textContent = "未解锁";
-          otherStatus.className = "pwd-status";
-        }
       });
     }
 
@@ -3748,8 +3734,6 @@ function renderProblems(level) {
         viewAnsBtn.textContent = "🔐 查看答案";
         viewBtn.textContent = "👀 查看解析";
         pwdInput.value = "";
-        status.textContent = "未解锁";
-        status.className = "pwd-status";
       } else {
         // 当前处于「查看解析」状态 → 点击后显示解题思路
         viewBtn.textContent = "🙈 收起解析";
@@ -3765,8 +3749,6 @@ function renderProblems(level) {
         pwdBox.classList.remove("show");
         viewAnsBtn.textContent = "🔐 查看答案";
         pwdInput.value = "";
-        status.textContent = "未解锁";
-        status.className = "pwd-status";
       } else {
         // 切换密码框的显示/隐藏（第二次点击则收起）
         if (pwdBox.classList.contains("show")) {
@@ -3786,8 +3768,6 @@ function renderProblems(level) {
       if (input === PASSWORD || isAnswerPwd) {
         ansBox.classList.add("show");
         pwdBox.classList.remove("show");
-        status.textContent = "✅ 已解锁";
-        status.className = "pwd-status ok";
         viewAnsBtn.textContent = "🙈 收起答案";
 
         // 仅当：使用答案密码解锁 + 本题是随机定位目标 时，计数+1
@@ -3797,10 +3777,12 @@ function renderProblems(level) {
           randomTargetCard = null;
         }
       } else {
-        status.textContent = "❌ 密码错误，请重新输入";
-        status.className = "pwd-status err";
         pwdInput.value = "";
+        pwdInput.placeholder = "❌ 密码错误，重新输入";
         pwdInput.focus();
+        setTimeout(() => {
+          pwdInput.placeholder = "密码是本题的答案";
+        }, 1500);
       }
     }
 
