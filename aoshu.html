@@ -192,7 +192,7 @@
     background: #e5e7eb;
     color: #374151;
   }
-  .category-select {
+  .category-btn {
     padding: 10px 14px;
     border: 2px solid #e9d5ff;
     border-radius: 12px;
@@ -202,9 +202,57 @@
     background: #faf5ff;
     cursor: pointer;
     outline: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
   }
-  .category-select:focus {
+  .category-btn:hover {
+    background: #f3e8ff;
     border-color: #7c3aed;
+  }
+  .category-btn.open {
+    background: #7c3aed;
+    color: #fff;
+  }
+  .category-btn .arrow {
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+  }
+  .category-btn.open .arrow {
+    transform: rotate(180deg);
+  }
+  .category-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 2px solid #e9d5ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 4px;
+    margin: 8px 0 0 0;
+    display: none;
+    z-index: 100;
+  }
+  .category-menu.show {
+    display: block;
+  }
+  .category-menu li {
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #374151;
+  }
+  .category-menu li:hover {
+    background: #f3e8ff;
+    color: #7c3aed;
+  }
+  .category-menu li.active {
+    background: #7c3aed;
+    color: #fff;
   }
   .search-result-tip {
     font-size: 0.9rem;
@@ -520,20 +568,26 @@
     <div class="level-intro">
       <strong>🌱 初级题目：</strong>适合小学 1-2 年级，侧重基础巧算、找规律、简单推理，帮助小朋友建立数感。
     </div>
-    <div class="search-bar">
+    <div class="search-bar" style="position:relative;">
       <input type="text" class="search-input" id="search-easy" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('easy')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('easy')">清空</button>
-      <select class="category-select" id="cat-easy" onchange="filterByCategory('easy')">
-        <option value="">全题型</option>
-        <option value="应用">应用</option>
-        <option value="几何">几何</option>
-        <option value="推理">推理</option>
-        <option value="计算">计算</option>
-        <option value="规律">规律</option>
-        <option value="数论">数论</option>
-        <option value="组合">组合</option>
-      </select>
+      <div style="position:relative;display:inline-block;">
+        <button class="category-btn" id="cat-btn-easy" onclick="toggleCategoryMenu('easy')">
+          <span id="cat-text-easy">题型</span>
+          <span class="arrow">▼</span>
+        </button>
+        <ul class="category-menu" id="cat-menu-easy">
+          <li data-cat="" onclick="selectCategory('easy', '')">全题型</li>
+          <li data-cat="应用" onclick="selectCategory('easy', '应用')">应用</li>
+          <li data-cat="几何" onclick="selectCategory('easy', '几何')">几何</li>
+          <li data-cat="推理" onclick="selectCategory('easy', '推理')">推理</li>
+          <li data-cat="计算" onclick="selectCategory('easy', '计算')">计算</li>
+          <li data-cat="规律" onclick="selectCategory('easy', '规律')">规律</li>
+          <li data-cat="数论" onclick="selectCategory('easy', '数论')">数论</li>
+          <li data-cat="组合" onclick="selectCategory('easy', '组合')">组合</li>
+        </ul>
+      </div>
     </div>
     <div class="search-result-tip" id="tip-easy"></div>
     <div id="problems-easy"></div>
@@ -544,20 +598,26 @@
     <div class="level-intro">
       <strong>🔥 中级题目：</strong>适合小学 3-4 年级，涵盖和差倍、盈亏、植树、行程、鸡兔同笼等经典题型。
     </div>
-    <div class="search-bar">
+    <div class="search-bar" style="position:relative;">
       <input type="text" class="search-input" id="search-medium" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('medium')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('medium')">清空</button>
-      <select class="category-select" id="cat-medium" onchange="filterByCategory('medium')">
-        <option value="">全题型</option>
-        <option value="应用">应用</option>
-        <option value="几何">几何</option>
-        <option value="推理">推理</option>
-        <option value="计算">计算</option>
-        <option value="规律">规律</option>
-        <option value="数论">数论</option>
-        <option value="组合">组合</option>
-      </select>
+      <div style="position:relative;display:inline-block;">
+        <button class="category-btn" id="cat-btn-medium" onclick="toggleCategoryMenu('medium')">
+          <span id="cat-text-medium">题型</span>
+          <span class="arrow">▼</span>
+        </button>
+        <ul class="category-menu" id="cat-menu-medium">
+          <li data-cat="" onclick="selectCategory('medium', '')">全题型</li>
+          <li data-cat="应用" onclick="selectCategory('medium', '应用')">应用</li>
+          <li data-cat="几何" onclick="selectCategory('medium', '几何')">几何</li>
+          <li data-cat="推理" onclick="selectCategory('medium', '推理')">推理</li>
+          <li data-cat="计算" onclick="selectCategory('medium', '计算')">计算</li>
+          <li data-cat="规律" onclick="selectCategory('medium', '规律')">规律</li>
+          <li data-cat="数论" onclick="selectCategory('medium', '数论')">数论</li>
+          <li data-cat="组合" onclick="selectCategory('medium', '组合')">组合</li>
+        </ul>
+      </div>
     </div>
     <div class="search-result-tip" id="tip-medium"></div>
     <div id="problems-medium"></div>
@@ -568,20 +628,26 @@
     <div class="level-intro">
       <strong>🚀 高级题目：</strong>适合小学 5-6 年级，涉及分数、工程、浓度、抽屉原理、逻辑推理等综合应用题。
     </div>
-    <div class="search-bar">
+    <div class="search-bar" style="position:relative;">
       <input type="text" class="search-input" id="search-hard" placeholder="搜索题目名称或题型，例如：几何、鸡兔…">
       <button class="search-btn confirm" onclick="doSearch('hard')">确认</button>
       <button class="search-btn clear" onclick="clearSearch('hard')">清空</button>
-      <select class="category-select" id="cat-hard" onchange="filterByCategory('hard')">
-        <option value="">全题型</option>
-        <option value="应用">应用</option>
-        <option value="几何">几何</option>
-        <option value="推理">推理</option>
-        <option value="计算">计算</option>
-        <option value="规律">规律</option>
-        <option value="数论">数论</option>
-        <option value="组合">组合</option>
-      </select>
+      <div style="position:relative;display:inline-block;">
+        <button class="category-btn" id="cat-btn-hard" onclick="toggleCategoryMenu('hard')">
+          <span id="cat-text-hard">题型</span>
+          <span class="arrow">▼</span>
+        </button>
+        <ul class="category-menu" id="cat-menu-hard">
+          <li data-cat="" onclick="selectCategory('hard', '')">全题型</li>
+          <li data-cat="应用" onclick="selectCategory('hard', '应用')">应用</li>
+          <li data-cat="几何" onclick="selectCategory('hard', '几何')">几何</li>
+          <li data-cat="推理" onclick="selectCategory('hard', '推理')">推理</li>
+          <li data-cat="计算" onclick="selectCategory('hard', '计算')">计算</li>
+          <li data-cat="规律" onclick="selectCategory('hard', '规律')">规律</li>
+          <li data-cat="数论" onclick="selectCategory('hard', '数论')">数论</li>
+          <li data-cat="组合" onclick="selectCategory('hard', '组合')">组合</li>
+        </ul>
+      </div>
     </div>
     <div class="search-result-tip" id="tip-hard"></div>
     <div id="problems-hard"></div>
@@ -3731,14 +3797,12 @@ function doSearch(level) {
   const keyword = document.getElementById("search-" + level).value.trim();
   const container = document.getElementById("problems-" + level);
   const tip = document.getElementById("tip-" + level);
-  const catSelect = document.getElementById("cat-" + level);
   const cards = container.querySelectorAll(".problem-card");
 
-  // 关键词搜索时重置下拉框
-  catSelect.value = "";
+  // 关键词搜索时重置题型选择
+  resetCategory(level);
 
   if (!keyword) {
-    // 空关键词，显示全部
     cards.forEach(card => card.classList.remove("search-hidden"));
     tip.textContent = "";
     return;
@@ -3761,15 +3825,66 @@ function doSearch(level) {
   tip.textContent = `找到 ${shown} 道相关题目`;
 }
 
-// ============ 题型下拉筛选 ============
-function filterByCategory(level) {
-  const selectedCat = document.getElementById("cat-" + level).value;
+// ============ 题型筛选功能 ============
+function toggleCategoryMenu(level) {
+  const menu = document.getElementById("cat-menu-" + level);
+  const btn = document.getElementById("cat-btn-" + level);
+  
+  // 关闭其他菜单
+  document.querySelectorAll(".category-menu").forEach(m => {
+    if (m.id !== "cat-menu-" + level) {
+      m.classList.remove("show");
+    }
+  });
+  document.querySelectorAll(".category-btn").forEach(b => {
+    if (b.id !== "cat-btn-" + level) {
+      b.classList.remove("open");
+    }
+  });
+  
+  menu.classList.toggle("show");
+  btn.classList.toggle("open");
+  
+  // 点击外部关闭菜单
+  if (menu.classList.contains("show")) {
+    document.addEventListener("click", closeCategoryMenu);
+  }
+}
+
+function closeCategoryMenu(e) {
+  if (!e.target.closest(".category-btn") && !e.target.closest(".category-menu")) {
+    document.querySelectorAll(".category-menu").forEach(m => m.classList.remove("show"));
+    document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("open"));
+    document.removeEventListener("click", closeCategoryMenu);
+  }
+}
+
+function selectCategory(level, cat) {
   const container = document.getElementById("problems-" + level);
   const tip = document.getElementById("tip-" + level);
   const cards = container.querySelectorAll(".problem-card");
+  const textEl = document.getElementById("cat-text-" + level);
+  const menu = document.getElementById("cat-menu-" + level);
+  const btn = document.getElementById("cat-btn-" + level);
 
-  if (!selectedCat) {
-    // 未选择题型，显示全部
+  // 更新按钮文字
+  textEl.textContent = cat || "题型";
+  
+  // 更新菜单选中状态
+  menu.querySelectorAll("li").forEach(li => li.classList.remove("active"));
+  if (cat) {
+    menu.querySelector(`li[data-cat="${cat}"]`)?.classList.add("active");
+  } else {
+    menu.querySelector("li[data-cat='']")?.classList.add("active");
+  }
+
+  // 关闭菜单
+  menu.classList.remove("show");
+  btn.classList.remove("open");
+  document.removeEventListener("click", closeCategoryMenu);
+
+  // 过滤题目
+  if (!cat) {
     cards.forEach(card => card.classList.remove("search-hidden"));
     tip.textContent = "";
     return;
@@ -3777,8 +3892,8 @@ function filterByCategory(level) {
 
   let shown = 0;
   cards.forEach(card => {
-    const cat = card.querySelector(".problem-category")?.textContent || "";
-    if (cat === selectedCat) {
+    const cardCat = card.querySelector(".problem-category")?.textContent || "";
+    if (cardCat === cat) {
       card.classList.remove("search-hidden");
       shown++;
     } else {
@@ -3786,16 +3901,23 @@ function filterByCategory(level) {
     }
   });
 
-  tip.textContent = `${selectedCat}类题目共 ${shown} 道`;
+  tip.textContent = `${cat}类题目共 ${shown} 道`;
+}
+
+function resetCategory(level) {
+  const textEl = document.getElementById("cat-text-" + level);
+  const menu = document.getElementById("cat-menu-" + level);
+  textEl.textContent = "题型";
+  menu.querySelectorAll("li").forEach(li => li.classList.remove("active"));
+  menu.querySelector("li[data-cat='']")?.classList.add("active");
 }
 
 function clearSearch(level) {
   const input = document.getElementById("search-" + level);
   const container = document.getElementById("problems-" + level);
   const tip = document.getElementById("tip-" + level);
-  const catSelect = document.getElementById("cat-" + level);
   input.value = "";
-  catSelect.value = "";
+  resetCategory(level);
   container.querySelectorAll(".problem-card").forEach(card => {
     card.classList.remove("search-hidden");
   });
