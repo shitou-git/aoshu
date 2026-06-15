@@ -432,51 +432,13 @@
   @media (max-width: 640px) {
     .header h1 { font-size: 1.7rem; letter-spacing: 2px; }
     .tab { padding: 10px 18px; font-size: 0.9rem; }
-    .back-to-top { width: 20px; padding: 8px 2px; font-size: 0.7rem; top: 8px; right: 4px; }
+    .back-to-top { width: 20px; padding: 8px 2px; font-size: 0.7rem; }
+    .random-btn { width: 20px; padding: 8px 2px; font-size: 0.7rem; }
   }
-  /* ======= 回到顶部悬浮按钮 ======= */
-  .back-to-top {
+  /* ======= 悬浮按钮通用样式 ======= */
+  .back-to-top, .random-btn {
     position: fixed;
-    top: 20px;
     right: 10px;
-    width: 34px;
-    padding: 10px 4px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    color: #4b5563;
-    background: #f3f4f6;
-    border: 1px solid #d1d5db;
-    border-radius: 17px;
-    cursor: pointer;
-    font-family: inherit;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    line-height: 1.1;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .back-to-top:hover {
-    transform: translateY(-2px);
-    background: #e5e7eb;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  }
-  .back-to-top span {
-    display: block;
-    text-align: center;
-  }
-  .back-to-top span:first-child {
-    font-size: 1.2rem;
-    line-height: 1;
-  }
-  /* ======= 随机跳转悬浮按钮 ======= */
-  .random-btn {
-    position: fixed;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
     width: 34px;
     padding: 10px 4px;
     font-size: 0.95rem;
@@ -494,29 +456,28 @@
     align-items: center;
     gap: 4px;
     line-height: 1.1;
-    transition: transform 0.15s, box-shadow 0.15s;
+    transition: background 0.15s, box-shadow 0.15s;
   }
-  .random-btn:hover {
-    transform: translateY(-50%) translateY(-2px);
+  .back-to-top:hover, .random-btn:hover {
     background: #a7f3d0;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   }
-  .random-btn span {
+  .back-to-top span, .random-btn span {
     display: block;
     text-align: center;
   }
-  .random-btn span:first-child {
+  .back-to-top span:first-child, .random-btn span:first-child {
     font-size: 1.2rem;
     line-height: 1;
   }
+  /* ======= 位置 ======= */
+  .back-to-top { top: 20px; }
+  .random-btn { top: calc(50% - 45px); }
   /* ======= 题目高亮 ======= */
   .problem-card.highlight {
     background: #f0fdf4 !important;
     border-color: #bbf7d0 !important;
     transition: background 0.5s ease;
-  }
-  @media (max-width: 640px) {
-    .random-btn { width: 20px; padding: 8px 2px; font-size: 0.7rem; }
   }
 </style>
 </head>
