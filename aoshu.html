@@ -3561,6 +3561,20 @@ function jumpToRandom() {
   const cards = Array.from(activeSection.querySelectorAll(".problem-card:not(.search-hidden)"));
   if (cards.length === 0) return;
 
+  // 收起所有已展开的解析、答案和密码框
+  document.querySelectorAll(".hint-box.show, .answer-box.show, .pwd-box.show").forEach(el => {
+    el.classList.remove("show");
+  });
+  document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.textContent = "👀 查看解析";
+  });
+  document.querySelectorAll(".view-answer-btn").forEach(btn => {
+    btn.textContent = "🔐 查看答案";
+  });
+  document.querySelectorAll(".pwd").forEach(inp => {
+    inp.value = "";
+  });
+
   // 移除之前的高亮（再次点击随机按钮还原底色）
   document.querySelectorAll(".problem-card.highlight").forEach(el => {
     el.classList.remove("highlight");
