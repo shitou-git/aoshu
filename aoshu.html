@@ -578,7 +578,6 @@
           <span class="arrow">▼</span>
         </button>
         <ul class="category-menu" id="cat-menu-easy">
-          <li data-cat="" onclick="selectCategory('easy', '')">全题型</li>
           <li data-cat="应用" onclick="selectCategory('easy', '应用')">应用</li>
           <li data-cat="几何" onclick="selectCategory('easy', '几何')">几何</li>
           <li data-cat="推理" onclick="selectCategory('easy', '推理')">推理</li>
@@ -608,7 +607,6 @@
           <span class="arrow">▼</span>
         </button>
         <ul class="category-menu" id="cat-menu-medium">
-          <li data-cat="" onclick="selectCategory('medium', '')">全题型</li>
           <li data-cat="应用" onclick="selectCategory('medium', '应用')">应用</li>
           <li data-cat="几何" onclick="selectCategory('medium', '几何')">几何</li>
           <li data-cat="推理" onclick="selectCategory('medium', '推理')">推理</li>
@@ -638,7 +636,6 @@
           <span class="arrow">▼</span>
         </button>
         <ul class="category-menu" id="cat-menu-hard">
-          <li data-cat="" onclick="selectCategory('hard', '')">全题型</li>
           <li data-cat="应用" onclick="selectCategory('hard', '应用')">应用</li>
           <li data-cat="几何" onclick="selectCategory('hard', '几何')">几何</li>
           <li data-cat="推理" onclick="selectCategory('hard', '推理')">推理</li>
@@ -1994,6 +1991,31 @@ const problems = {
                 "再摸 1 个必与其中一种同色。",
                 "至少摸 3 + 1 = 4 个。"],
       answer:"4 个" },
+    { title:"衣服搭配", cat:"组合",
+      text:"小明有 2 件上衣和 3 条裤子，他可以有几种不同的穿法？",
+      hint:["每件上衣都可以搭配每条裤子。","这是「乘法原理」：做一件事分两步，第一步有 a 种方法，第二步有 b 种方法，总共有 a×b 种方法。"],
+      solution:["第 1 件上衣可以搭配 3 条裤子，有 3 种穿法。",
+                "第 2 件上衣也可以搭配 3 条裤子，又有 3 种穿法。",
+                "总共：2 × 3 = 6 种不同穿法。"],
+      answer:"6 种" },
+    { title:"握手问题", cat:"组合",
+      text:"5 个小朋友见面，每两个人握一次手，一共要握几次手？",
+      hint:["第一个人要和其他 4 人握手，第二个人已经和第一个人握过了，还要和剩下的 3 人握手...","这是组合问题：从 n 个人中选 2 个人的组合数 = n(n-1)÷2。"],
+      solution:["第 1 个小朋友：和 4 人握手",
+                "第 2 个小朋友：和剩下 3 人握手（已和第1人握过）",
+                "第 3 个小朋友：和剩下 2 人握手",
+                "第 4 个小朋友：和剩下 1 人握手",
+                "第 5 个小朋友：都握过了",
+                "总共：4 + 3 + 2 + 1 = 10 次。"],
+      answer:"10 次" },
+    { title:"路线计数", cat:"组合",
+      text:"从 A 到 B 只能向右或向下走，图中一共有几条不同的路线？\n\n<svg width=\"160\" height=\"160\" viewBox=\"0 0 160 160\" style=\"display:block;margin:8px 0;\">\n  <text x=\"20\" y=\"20\" font-size=\"16\" font-weight=\"bold\">A</text>\n  <line x1=\"40\" y1=\"30\" x2=\"140\" y2=\"30\" stroke=\"#374151\" stroke-width=\"2\"/>\n  <line x1=\"40\" y1=\"30\" x2=\"40\" y2=\"130\" stroke=\"#374151\" stroke-width=\"2\"/>\n  <line x1=\"90\" y1=\"30\" x2=\"90\" y2=\"130\" stroke=\"#374151\" stroke-width=\"2\"/>\n  <line x1=\"40\" y1=\"80\" x2=\"140\" y2=\"80\" stroke=\"#374151\" stroke-width=\"2\"/>\n  <text x=\"140\" y=\"145\" font-size=\"16\" font-weight=\"bold\">B</text>\n</svg>",
+      hint:["可以用标数法：从 A 开始，每个点的路线数等于左边和上边的路线数之和。","也可以数需要走几步右、几步下，再算排列组合。"],
+      solution:["需要走 2 步向右（→）和 2 步向下（↓），共 4 步。",
+                "问题变成：在 4 个位置中选 2 个放向右，剩下的放下。",
+                "计算：4×3÷2 = 6 种。",
+                "或用标数法验证：每个交叉点标上到达它的路线数。"],
+      answer:"6 条" },
     { title:"简单工程问题", cat:"应用",
       text:"一项工作，甲单独做 10 天完成，乙单独做 15 天完成。两人合做几天完成？",
       hint:["把工作总量看作单位「1」。","甲效率 = 1 ÷ 甲单独天数；乙效率 = 1 ÷ 乙单独天数；合作效率 = 甲效率 + 乙效率。","合作时间 = 1 ÷ 合作效率。"],
@@ -3868,15 +3890,11 @@ function selectCategory(level, cat) {
   const btn = document.getElementById("cat-btn-" + level);
 
   // 更新按钮文字
-  textEl.textContent = cat || "题型";
+  textEl.textContent = cat;
   
   // 更新菜单选中状态
   menu.querySelectorAll("li").forEach(li => li.classList.remove("active"));
-  if (cat) {
-    menu.querySelector(`li[data-cat="${cat}"]`)?.classList.add("active");
-  } else {
-    menu.querySelector("li[data-cat='']")?.classList.add("active");
-  }
+  menu.querySelector(`li[data-cat="${cat}"]`)?.classList.add("active");
 
   // 关闭菜单
   menu.classList.remove("show");
@@ -3884,12 +3902,6 @@ function selectCategory(level, cat) {
   document.removeEventListener("click", closeCategoryMenu);
 
   // 过滤题目
-  if (!cat) {
-    cards.forEach(card => card.classList.remove("search-hidden"));
-    tip.textContent = "";
-    return;
-  }
-
   let shown = 0;
   cards.forEach(card => {
     const cardCat = card.querySelector(".problem-category")?.textContent || "";
@@ -3909,7 +3921,6 @@ function resetCategory(level) {
   const menu = document.getElementById("cat-menu-" + level);
   textEl.textContent = "题型";
   menu.querySelectorAll("li").forEach(li => li.classList.remove("active"));
-  menu.querySelector("li[data-cat='']")?.classList.add("active");
 }
 
 function clearSearch(level) {
