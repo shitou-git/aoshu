@@ -91,6 +91,15 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+  @media (max-width: 640px) {
+    .tabs .home-btn-group {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+  }
   .tab {
     padding: 12px 28px;
     background: #fff;
@@ -476,11 +485,13 @@
 
   <!-- 难度切换 -->
   <div class="tabs">
-    <button class="tab home-btn" onclick="location.href='https://shitou-git.github.io/math/math.html'">🏠 返回首页</button>
-    <button class="tab home-btn" onclick="location.href='https://shitou-git.github.io/aoshu/silu'">📖 查看公式</button>
-    <button class="tab active" data-level="easy">🌱 初级（低年段）</button>
-    <button class="tab" data-level="medium">🔥 中级（中年段）</button>
-    <button class="tab" data-level="hard">🚀 高级（高年段）</button>
+    <div class="home-btn-group">
+      <button class="tab home-btn" onclick="location.href='https://shitou-git.github.io/math/math.html'">🏠 返回首页</button>
+      <button class="tab home-btn" onclick="location.href='https://shitou-git.github.io/aoshu/silu'">📖 查看公式</button>
+    </div>
+    <button class="tab active" data-level="easy">🌱 初级</button>
+    <button class="tab" data-level="medium">🔥 中级</button>
+    <button class="tab" data-level="hard">🚀 高级</button>
   </div>
 
   <!-- ============ 初级 ============ -->
