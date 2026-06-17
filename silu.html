@@ -1937,30 +1937,114 @@ function setupChat() {
   function renderContent(text) {
     if (!text) return "";
 
-    // 将 Unicode 根号 √ 转换为 LaTeX 格式
-    text = text.replace(/√(\d+)/g, '$\sqrt{$1}$');
-    text = text.replace(/√(.+?)(?=\s|=|\)|$)/g, '$\sqrt{$1}$');
+    // 统一将各种数学格式转换为 $...$ 格式
+    // 1. 转换 $$...$$ → 临时占位符 {MATH_BLOCK:...}
+    // 2. 转换 \(...\) 和 \[...\] → $...$
+    // 3. 转换 Unicode 数学符号 → LaTeX
+    var placeholderId = 0;
+    var placeholders = [];
 
-    // 分割文本为公式部分和普通文本部分
-    var parts = text.split(/(\$\$[\s\S]+?\$\$|\$[^\$]+?\$)/g);
+    // 先处理块级公式 $$...$$
+    text = text.replace(/\$\$([\s\S]+?)\$\$/g, function(match, content) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: content.trim(), display: true });
+      return "\n" + id + "\n";
+    });
+
+    // 处理 \[...\]
+    text = text.replace(/\\\[([\s\S]+?)\\\]/g, function(match, content) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: content.trim(), display: true });
+      return "\n" + id + "\n";
+    });
+
+    // 处理 \(...\)
+    text = text.replace(/\\\(([\s\S]+?)\\\)/g, function(match, content) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: content.trim(), display: false });
+      return id;
+    });
+
+    // 处理行内公式 $...$（确保不匹配 $$ 开头）
+    text = text.replace(/(^|[^$])\$([^$\n]+?)\$(?!\$)/g, function(match, prefix, content) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: content.trim(), display: false });
+      return prefix + id;
+    });
+
+    // 将 Unicode 根号等符号转换为公式占位符
+    // √4, √(a+b), √9=3, √(b²-4ac) 等
+    text = text.replace(/√(\s*\([^\)]+\)|\s*\d+\w*|\s*\w+)/g, function(match, content) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: "\\sqrt{" + content.trim() + "}", display: false });
+      return id;
+    });
+
+    // 数字上标: x² → x^2, x³ → x^3
+    text = text.replace(/(\w+)\s*²/g, function(match, base) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: base + "^2", display: false });
+      return id;
+    });
+    text = text.replace(/(\w+)\s*³/g, function(match, base) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: base + "^3", display: false });
+      return id;
+    });
+
+    // 简单分数: a/b → \frac{a}{b} (仅当看起来像数学分数时)
+    text = text.replace(/\b(\d+)\s*\/\s*(\d+)\b/g, function(match, a, b) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: "\\frac{" + a + "}{" + b + "}", display: false });
+      return id;
+    });
+
+    // 现在按行处理文本：公式占位符 → KaTeX 渲染，其他文本 → Markdown + 转义
+    var lines = text.split("\n");
     var html = "";
 
-    for (var i = 0; i < parts.length; i++) {
-      var part = parts[i];
-      if (part.startsWith("$$") && part.endsWith("$$")) {
-        try {
-          html += '<div class="katex-block">' + katex.renderToString(part.slice(2, -2).trim(), { throwOnError: false, displayMode: true }) + '</div>';
-        } catch (e) {
-          html += '<div class="katex-block">' + escapeHtml(part) + '</div>';
+    for (var l = 0; l < lines.length; l++) {
+      var line = lines[l];
+
+      // 检查是否是纯公式占位符行
+      var isPureMathLine = false;
+      for (var p = 0; p < placeholders.length; p++) {
+        if (line.trim() === placeholders[p].id) {
+          isPureMathLine = true;
+          break;
         }
-      } else if (part.startsWith("$") && part.endsWith("$")) {
-        try {
-          html += katex.renderToString(part.slice(1, -1).trim(), { throwOnError: false, displayMode: false });
-        } catch (e) {
-          html += escapeHtml(part);
+      }
+
+      if (isPureMathLine) {
+        // 块级公式行
+        for (var p2 = 0; p2 < placeholders.length; p2++) {
+          if (line.trim() === placeholders[p2].id) {
+            try {
+              html += '<div class="katex-block">' + katex.renderToString(placeholders[p2].latex, { throwOnError: false, displayMode: true }) + '</div>';
+            } catch (e) {
+              html += '<div class="katex-block">' + escapeHtml(placeholders[p2].latex) + '</div>';
+            }
+            break;
+          }
         }
       } else {
-        html += escapeHtml(part);
+        // 普通文本行：先转义，再替换行内公式占位符
+        var lineHtml = escapeHtml(line);
+
+        // 替换行内公式占位符
+        for (var p3 = 0; p3 < placeholders.length; p3++) {
+          var ph = placeholders[p3];
+          if (lineHtml.indexOf(ph.id) !== -1) {
+            try {
+              var rendered = katex.renderToString(ph.latex, { throwOnError: false, displayMode: ph.display });
+              lineHtml = lineHtml.split(ph.id).join(rendered);
+            } catch (e) {
+              lineHtml = lineHtml.split(ph.id).join(escapeHtml(ph.latex));
+            }
+          }
+        }
+
+        html += lineHtml + "\n";
       }
     }
 
@@ -2073,7 +2157,7 @@ function setupChat() {
           messages: [
             {
               role: "system",
-              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【输出格式要求】\n1. 使用 Markdown 格式输出\n2. 所有数学公式必须用 LaTeX 格式，行内公式用 $...$ 包裹，独占一行的公式用 $$...$$ 包裹\n3. 例如：平方根写作 $\\sqrt{4}=2$，分数写作 $\\frac{a}{b}$\n4. 严格禁止任何自我介绍，直接给出答案"
+              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【极其重要：输出格式严格要求】\n1. 所有数学符号必须使用 LaTeX 语法并用美元符号包裹：\n   - 行内小公式：用 $...$ 包裹，例如 $\\sqrt{4}$、$\\frac{1}{2}$、$x^2$、$a^2+b^2=c^2$\n   - 独占一行的大公式：用 $$...$$ 包裹，例如 $$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$\n2. 根号写法：$\\sqrt{4}$ 而不是根号4或√4\n3. 分数写法：$\\frac{1}{2}$ 而不是 1/2\n4. 平方写法：$x^2$ 而不是 x²\n5. 公式中涉及的所有数字、字母变量必须放在 $...$ 中\n6. 每讲解一个概念后，至少给出一个包含完整公式的例子\n7. 使用 Markdown 格式组织内容（# 标题，**加粗**，- 列表等）\n8. 严格禁止任何自我介绍，直接给出答案"
             },
             {
               role: "user",
