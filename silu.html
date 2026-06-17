@@ -2086,9 +2086,10 @@ function setupChat() {
     var messages = [];
     var msgDivs = chatMessages.querySelectorAll(".message");
     msgDivs.forEach(function(div) {
+      var bubble = div.querySelector(".msg-bubble");
       messages.push({
         isUser: div.classList.contains("user"),
-        text: div.querySelector(".msg-bubble").textContent
+        text: bubble.dataset.original || bubble.textContent
       });
     });
     try {
@@ -2106,7 +2107,10 @@ function setupChat() {
       messages.forEach(function(msg) {
         var div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
-        div.innerHTML = '<div class="msg-bubble">' + (msg.isUser ? escapeHtml(msg.text) : renderContent(msg.text)) + '</div>';
+        var bubbleHtml = msg.isUser ? escapeHtml(msg.text) : renderContent(msg.text);
+        div.innerHTML = '<div class="msg-bubble">' + bubbleHtml + '</div>';
+        var bubble = div.querySelector(".msg-bubble");
+        bubble.dataset.original = msg.text;
         chatMessages.appendChild(div);
       });
       scrollToBottom();
@@ -2119,7 +2123,10 @@ function setupChat() {
 
     var div = document.createElement("div");
     div.className = "message " + (isUser ? "user" : "ai");
-    div.innerHTML = '<div class="msg-bubble">' + escapeHtml(text) + '</div>';
+    var bubbleHtml = isUser ? escapeHtml(text) : renderContent(text);
+    div.innerHTML = '<div class="msg-bubble">' + bubbleHtml + '</div>';
+    var bubble = div.querySelector(".msg-bubble");
+    bubble.dataset.original = text;
     chatMessages.appendChild(div);
     scrollToBottom();
     saveChatHistory();
@@ -2290,6 +2297,7 @@ function setupChat() {
         renderedHtml += renderContent(remainingContent);
       }
       bubble.innerHTML = renderedHtml;
+      bubble.dataset.original = fullContent;
       chatMessages.scrollTop = chatMessages.scrollHeight;
       saveChatHistory();
     } catch (error) {
