@@ -310,7 +310,7 @@
   .chat-modal-overlay.show { display: flex; }
   .chat-modal {
     background: #fff; border-radius: 24px; width: 90%; max-width: 720px;
-    max-height: 85vh; display: flex; flex-direction: column;
+    height: 650px; display: flex; flex-direction: column;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     overflow: hidden;
   }
@@ -406,7 +406,7 @@
   }
 
   @media (max-width: 600px) {
-    .chat-modal { width: 96%; max-height: 90vh; border-radius: 20px; }
+    .chat-modal { width: 96%; height: 80vh; border-radius: 20px; }
     .chat-header { padding: 14px 16px; }
     .chat-header h2 { font-size: 1.05rem; }
     .api-config { padding: 10px 14px; }
@@ -2009,7 +2009,7 @@ function setupChat() {
           messages: [
             {
               role: "system",
-              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。注意：不要在回答开头做自我介绍，直接回答问题即可。"
+              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。严格禁止在回答中包含任何自我介绍内容，特别是'你好！我是 Agnes-2.0-Flash，由 Sapiens AI 开发。'这句话，直接回答问题即可。"
             },
             {
               role: "user",
