@@ -468,7 +468,10 @@
   <div class="chat-modal">
     <div class="chat-header">
       <h2>🤖 AI 查公式</h2>
-      <button class="chat-close" id="chatCloseBtn" title="关闭">×</button>
+      <div style="display:flex;gap:8px;">
+        <button class="chat-close" id="chatClearBtn" title="清空记录" style="background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;">🗑️</button>
+        <button class="chat-close" id="chatCloseBtn" title="关闭">×</button>
+      </div>
     </div>
 
     <div class="chat-messages" id="chatMessages">
@@ -2027,6 +2030,7 @@ function setupChat() {
   }
 
   function openChat() {
+    loadChatHistory();
     chatModalOverlay.classList.add("show");
     chatInput.focus();
   }
@@ -2076,6 +2080,39 @@ function setupChat() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+  var CHAT_STORAGE_KEY = "ai_chat_history";
+
+  function saveChatHistory() {
+    var messages = [];
+    var msgDivs = chatMessages.querySelectorAll(".message");
+    msgDivs.forEach(function(div) {
+      messages.push({
+        isUser: div.classList.contains("user"),
+        text: div.querySelector(".msg-bubble").textContent
+      });
+    });
+    try {
+      localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+    } catch(e) {}
+  }
+
+  function loadChatHistory() {
+    try {
+      var data = localStorage.getItem(CHAT_STORAGE_KEY);
+      if (!data) return;
+      var messages = JSON.parse(data);
+      var emptyTip = chatMessages.querySelector(".chat-empty-tip");
+      if (emptyTip) emptyTip.remove();
+      messages.forEach(function(msg) {
+        var div = document.createElement("div");
+        div.className = "message " + (msg.isUser ? "user" : "ai");
+        div.innerHTML = '<div class="msg-bubble">' + escapeHtml(msg.text) + '</div>';
+        chatMessages.appendChild(div);
+      });
+      scrollToBottom();
+    } catch(e) {}
+  }
+
   function addMessage(text, isUser) {
     var emptyTip = chatMessages.querySelector(".chat-empty-tip");
     if (emptyTip) emptyTip.remove();
@@ -2085,6 +2122,7 @@ function setupChat() {
     div.innerHTML = '<div class="msg-bubble">' + escapeHtml(text) + '</div>';
     chatMessages.appendChild(div);
     scrollToBottom();
+    saveChatHistory();
     return div;
   }
 
@@ -2227,6 +2265,7 @@ function setupChat() {
       }
       bubble.innerHTML = renderedHtml;
       chatMessages.scrollTop = chatMessages.scrollHeight;
+      saveChatHistory();
 
     } catch (error) {
       bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
@@ -2242,6 +2281,16 @@ function setupChat() {
 
   if (chatCloseBtn) {
     chatCloseBtn.addEventListener("click", closeChat);
+  }
+
+  var chatClearBtn = document.getElementById("chatClearBtn");
+  if (chatClearBtn) {
+    chatClearBtn.addEventListener("click", function() {
+      if (confirm("确定要清空所有聊天记录吗？")) {
+        localStorage.removeItem(CHAT_STORAGE_KEY);
+        chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+      }
+    });
   }
 
   if (chatModalOverlay) {
