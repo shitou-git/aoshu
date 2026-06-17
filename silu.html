@@ -333,6 +333,49 @@
   }
   .chat-close:hover { background: rgba(255,255,255,0.3); }
 
+  .chat-confirm-overlay {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6); z-index: 10;
+    display: none; justify-content: center; align-items: center;
+    backdrop-filter: blur(3px);
+  }
+  .chat-confirm-overlay.show { display: flex; }
+  .chat-confirm-modal {
+    background: #fff; border-radius: 20px; width: 80%; max-width: 360px;
+    padding: 28px 24px; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: confirmPopIn 0.25s ease-out;
+  }
+  @keyframes confirmPopIn {
+    0% { opacity: 0; transform: scale(0.85); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .chat-confirm-title {
+    font-size: 1.2rem; font-weight: bold; color: var(--c-text);
+    margin-bottom: 12px;
+  }
+  .chat-confirm-text {
+    font-size: 0.95rem; color: var(--c-muted);
+    line-height: 1.6; margin-bottom: 22px;
+  }
+  .chat-confirm-buttons {
+    display: flex; gap: 12px; justify-content: center;
+  }
+  .chat-confirm-btn {
+    flex: 1; max-width: 120px; padding: 10px 20px;
+    border: none; border-radius: 12px; font-size: 0.95rem;
+    cursor: pointer; font-weight: 500; transition: all 0.2s;
+  }
+  .chat-confirm-cancel {
+    background: #f1f5f9; color: var(--c-text);
+  }
+  .chat-confirm-cancel:hover { background: #e2e8f0; }
+  .chat-confirm-ok {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    color: #fff;
+  }
+  .chat-confirm-ok:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(139,92,246,0.3); }
+
   .chat-messages {
     flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column;
     gap: 16px; background: #faf5ff;
@@ -482,6 +525,16 @@
     <div class="chat-input-area">
       <textarea class="chat-input" id="chatInput" placeholder="输入你的问题..." rows="1"></textarea>
       <button class="chat-send-btn" id="chatSendBtn" title="发送">→</button>
+    </div>
+  </div>
+  <div class="chat-confirm-overlay" id="chatConfirmOverlay">
+    <div class="chat-confirm-modal">
+      <div class="chat-confirm-title">确认清空</div>
+      <div class="chat-confirm-text">确定要清空所有聊天记录吗？此操作不可恢复。</div>
+      <div class="chat-confirm-buttons">
+        <button class="chat-confirm-btn chat-confirm-cancel" id="chatConfirmCancel">取消</button>
+        <button class="chat-confirm-btn chat-confirm-ok" id="chatConfirmOk">清空</button>
+      </div>
     </div>
   </div>
 </div>
@@ -2319,11 +2372,30 @@ function setupChat() {
   }
 
   var chatClearBtn = document.getElementById("chatClearBtn");
+  var chatConfirmOverlay = document.getElementById("chatConfirmOverlay");
+  var chatConfirmCancel = document.getElementById("chatConfirmCancel");
+  var chatConfirmOk = document.getElementById("chatConfirmOk");
   if (chatClearBtn) {
     chatClearBtn.addEventListener("click", function() {
-      if (confirm("确定要清空所有聊天记录吗？")) {
-        localStorage.removeItem(CHAT_STORAGE_KEY);
-        chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+      if (chatConfirmOverlay) chatConfirmOverlay.classList.add("show");
+    });
+  }
+  if (chatConfirmCancel) {
+    chatConfirmCancel.addEventListener("click", function() {
+      if (chatConfirmOverlay) chatConfirmOverlay.classList.remove("show");
+    });
+  }
+  if (chatConfirmOk) {
+    chatConfirmOk.addEventListener("click", function() {
+      localStorage.removeItem(CHAT_STORAGE_KEY);
+      chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+      if (chatConfirmOverlay) chatConfirmOverlay.classList.remove("show");
+    });
+  }
+  if (chatConfirmOverlay) {
+    chatConfirmOverlay.addEventListener("click", function(e) {
+      if (e.target === chatConfirmOverlay) {
+        chatConfirmOverlay.classList.remove("show");
       }
     });
   }
