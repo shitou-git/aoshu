@@ -1933,170 +1933,82 @@ function setupChat() {
   var API_BASE_URL = "https://apihub.agnes-ai.com/v1";
   var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
 
-  // 修复 LaTeX 公式内部的语法错误（兼容旧版浏览器）
+  // 简化的LaTeX修复：只修AI常见错误，避免过度处理
   function fixLatex(latex) {
-    // 1. 修复方括号代替花括号：] → } , [ → {
-    latex = latex.replace(/\]/g, '}').replace(/\[/g, '{');
-    
-    // 2. 修复 Isqrt / isqrt (无反斜杠) → \sqrt
-    latex = latex.replace(/(^|[^\\a-z])Isqrt(?=\s|\{|$)/gi, '$1\\sqrt');
-    
-    // 3. 修复缺少反斜杠的 sqrt (前面不是反斜杠)
-    latex = latex.replace(/(^|[^\\a-z])sqrt(?=\s|\{|$)/gi, '$1\\sqrt');
-    
-    // 4. 修复 \sqr → \sqrt (缺少 t)
-    latex = latex.replace(/\\sqr(?=\s|\{|$)/g, '\\sqrt');
-    
-    // 5. 修复 \sqrt 4 → \sqrt{4} (缺少花括号)
-    latex = latex.replace(/\\sqrt\s+(\d+)(?=\s|$|=|\+|-|\*|\/|\)|\|)/g, '\\sqrt{$1}');
-    latex = latex.replace(/\\sqrt\s+([a-zA-Z][a-zA-Z0-9]*)(?=\s|$|=|\+|-|\*|\/|\)|\|)/g, '\\sqrt{$1}');
-    
-    // 6. 修复 a^2 → a^{2} (上标缺少花括号)
-    latex = latex.replace(/\^(\d+)/g, '^{$1}');
-    
-    // 7. 修复 a_2 → a_{2} (下标缺少花括号)
-    latex = latex.replace(/_(\d+)/g, '_{$1}');
-    
-    // 8. 修复 \frac a b → \frac{a}{b}
-    latex = latex.replace(/\\frac\s+(\w+)\s+(\w+)/g, '\\frac{$1}{$2}');
-    
-    // 9. 移除重复反斜杠
-    latex = latex.replace(/\\\\+/g, '\\');
-    
-    return latex;
+    if (!latex) return latex;
+    var r = latex;
+    // 1. 修复方括号代替花括号
+    r = r.replace(/\]/g, '}').replace(/\[/g, '{');
+    // 2. 修复缺少花括号：\sqrt 4 → \sqrt{4}
+    r = r.replace(/\\sqrt\s+(\d+)/g, '\\sqrt{$1}');
+    r = r.replace(/\\sqrt\s+([a-zA-Z]\w*)/g, '\\sqrt{$1}');
+    // 3. 修复 \frac a b → \frac{a}{b}
+    r = r.replace(/\\frac\s+(\w+)\s+(\w+)/g, '\\frac{$1}{$2}');
+    // 4. 移除重复反斜杠
+    r = r.replace(/\\\\+/g, '\\');
+    return r;
   }
 
   function renderContent(text) {
     if (!text) return "";
+    if (typeof katex === 'undefined') return escapeHtml(text).replace(/\n/g, '<br>');
 
-    var placeholderId = 0;
-    var placeholders = [];
+    // 用单一扫描法识别 $...$ 和 $$...$$，避免复杂正则导致的误处理
+    var result = "";
+    var i = 0;
+    var len = text.length;
 
-    function addPlaceholder(latex, display) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: fixLatex(latex), display: display });
-      return id;
-    }
-
-    // 1. 处理块级公式 $$...$$
-    text = text.replace(/\$\$([\s\S]+?)\$\$/g, function(match, content) {
-      return "\n" + addPlaceholder(content.trim(), true) + "\n";
-    });
-
-    // 2. 处理行内公式 $...$
-    text = text.replace(/\$([^\$\n]+?)\$/g, function(match, content) {
-      return addPlaceholder(content.trim(), false);
-    });
-
-    // 3. 处理 Unicode 根号：√(表达式)
-    text = text.replace(/√\s*\(([^)\n]+)\)/g, function(match, content) {
-      return addPlaceholder("\\sqrt{" + content.trim() + "}", true);
-    });
-
-    // 4. 处理 Unicode 根号：√数字
-    text = text.replace(/√(\d+(?:\.\d+)?)/g, function(match, num) {
-      return addPlaceholder("\\sqrt{" + num + "}", true);
-    });
-
-    // 5. 处理 Unicode 根号：√字母变量
-    text = text.replace(/√([a-zA-Z]+)/g, function(match, varName) {
-      return addPlaceholder("\\sqrt{" + varName + "}", true);
-    });
-
-    // 6. 处理 ± 符号
-    text = text.replace(/±/g, function() { return addPlaceholder("\\pm", false); });
-
-    // 7. 处理 × 符号
-    text = text.replace(/×/g, function() { return addPlaceholder("\\times", false); });
-
-    // 8. 处理 ÷ 符号
-    text = text.replace(/÷/g, function() { return addPlaceholder("\\div", false); });
-
-    // 9. 处理 ≤ ≥ ≠ ≈
-    text = text.replace(/≤/g, function() { return addPlaceholder("\\le", false); });
-    text = text.replace(/≥/g, function() { return addPlaceholder("\\ge", false); });
-    text = text.replace(/≠/g, function() { return addPlaceholder("\\ne", false); });
-    text = text.replace(/≈/g, function() { return addPlaceholder("\\approx", false); });
-
-    // 10. 处理上下标
-    text = text.replace(/(\w+)\s*²/g, function(m, b) { return addPlaceholder(b + "^2", false); });
-    text = text.replace(/(\w+)\s*³/g, function(m, b) { return addPlaceholder(b + "^3", false); });
-
-    // 11. 处理 π, °
-    text = text.replace(/π/g, function() { return addPlaceholder("\\pi", false); });
-    text = text.replace(/°/g, function() { return addPlaceholder("^\\circ", false); });
-
-    // 12. 处理简单分数
-    text = text.replace(/\b(\d+)\s*\/\s*(\d+)\b/g, function(match, a, b) {
-      return addPlaceholder("\\frac{" + a + "}{" + b + "}", false);
-    });
-
-    // 按行处理
-    var lines = text.split("\n");
-    var html = "";
-
-    for (var l = 0; l < lines.length; l++) {
-      var line = lines[l];
-      var trimmedLine = line.trim();
-
-      // 检查是否是纯公式占位符行
-      var isPureMathLine = false;
-      for (var p = 0; p < placeholders.length; p++) {
-        if (trimmedLine === placeholders[p].id && placeholders[p].display) {
+    while (i < len) {
+      // 检查 $$...$$ 块级公式
+      if (i + 1 < len && text.charAt(i) === '$' && text.charAt(i + 1) === '$') {
+        var endB = text.indexOf('$$', i + 2);
+        if (endB !== -1) {
+          var latexB = text.substring(i + 2, endB);
           try {
-            html += '<div class="katex-block">' + katex.renderToString(placeholders[p].latex, { throwOnError: false, displayMode: true }) + '</div>\n';
-          } catch (e) {
-            html += '<div class="katex-block" style="color:red;">' + escapeHtml(placeholders[p].latex) + '</div>\n';
+            result += '<div class="katex-block">' + katex.renderToString(fixLatex(latexB.trim()), { throwOnError: false, displayMode: true }) + '</div>';
+          } catch (err) {
+            result += '<span style="color:red;">$' + escapeHtml(latexB) + '$</span>';
           }
-          isPureMathLine = true;
-          break;
+          i = endB + 2;
+          continue;
         }
       }
-
-      if (!isPureMathLine) {
-        var lineHtml = escapeHtml(line);
-
-        for (var p2 = 0; p2 < placeholders.length; p2++) {
-          var ph = placeholders[p2];
-          if (lineHtml.indexOf(ph.id) !== -1) {
+      // 检查 $...$ 行内公式（单行内容，内容非空）
+      if (text.charAt(i) === '$') {
+        var endI = text.indexOf('$', i + 1);
+        if (endI !== -1 && endI > i + 1) {
+          var contentI = text.substring(i + 1, endI);
+          if (contentI.indexOf('\n') === -1) {
             try {
-              var rendered = katex.renderToString(ph.latex, { throwOnError: false, displayMode: ph.display });
-              lineHtml = lineHtml.split(ph.id).join(rendered);
-            } catch (e) {
-              lineHtml = lineHtml.split(ph.id).join('<span style="color:red;font-family:monospace;">$' + escapeHtml(ph.latex) + '$</span>');
+              result += katex.renderToString(fixLatex(contentI.trim()), { throwOnError: false, displayMode: false });
+            } catch (err) {
+              result += '<span style="color:red;">$' + escapeHtml(contentI) + '$</span>';
             }
+            i = endI + 1;
+            continue;
           }
         }
-
-        html += lineHtml + "\n";
       }
+      // 普通字符：累积到下一个 $ 之前
+      var nextDollar = text.indexOf('$', i);
+      var plainEnd = (nextDollar === -1) ? len : nextDollar;
+      result += escapeHtml(text.substring(i, plainEnd));
+      i = plainEnd;
     }
 
-    // 处理代码块
-    html = html.replace(/```([\s\S]+?)```/g, '<pre style="background:rgba(0,0,0,0.05);padding:8px 12px;border-radius:6px;overflow-x:auto;margin:8px 0;font-size:0.9em;">$1</pre>');
+    // 处理Markdown（在公式渲染完成后处理，避免破坏KaTeX生成的HTML）
+    result = result.replace(/```([\s\S]+?)```/g, '<pre style="background:rgba(0,0,0,0.05);padding:8px 12px;border-radius:6px;overflow-x:auto;margin:8px 0;font-size:0.9em;">$1</pre>');
+    result = result.replace(/^### (.+)$/gm, '<h4 style="margin:12px 0 6px;font-size:1.05em;font-weight:600;">$1</h4>');
+    result = result.replace(/^## (.+)$/gm, '<h3 style="margin:14px 0 6px;font-size:1.15em;font-weight:600;">$1</h3>');
+    result = result.replace(/^# (.+)$/gm, '<h2 style="margin:16px 0 8px;font-size:1.25em;font-weight:700;">$1</h2>');
+    result = result.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+    result = result.replace(/(^|[^\*])\*([^\*\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3');
+    result = result.replace(/(^|\n)(\s*)[\*\-] (.+)/g, '$1$2<li>$3</li>');
+    result = result.replace(/(<li>.*<\/li>(?:\s*<li>.*<\/li>)*)/g, '<ul style="margin:6px 0 6px 20px;padding-left:8px;">$1</ul>');
+    result = result.replace(/(^|\n)(\s*)\d+\. (.+)/g, '$1$2<li>$3</li>');
+    result = result.replace(/\n/g, '<br>');
 
-    // 处理标题
-    html = html.replace(/^### (.+)$/gm, '<h4 style="margin:12px 0 6px;font-size:1.05em;font-weight:600;">$1</h4>');
-    html = html.replace(/^## (.+)$/gm, '<h3 style="margin:14px 0 6px;font-size:1.15em;font-weight:600;">$1</h3>');
-    html = html.replace(/^# (.+)$/gm, '<h2 style="margin:16px 0 8px;font-size:1.25em;font-weight:700;">$1</h2>');
-
-    // 处理粗体
-    html = html.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
-
-    // 处理斜体
-    html = html.replace(/(^|[^\*])\*([^\*\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3');
-
-    // 处理无序列表
-    html = html.replace(/(^|\n)(\s*)[\*\-] (.+)/g, '$1$2<li>$3</li>');
-    html = html.replace(/(<li>.*<\/li>(?:\s*<li>.*<\/li>)*)/g, '<ul style="margin:6px 0 6px 20px;padding-left:8px;">$1</ul>');
-
-    // 处理有序列表
-    html = html.replace(/(^|\n)(\s*)\d+\. (.+)/g, '$1$2<li>$3</li>');
-
-    // 处理换行
-    html = html.replace(/\n/g, '<br>');
-
-    return html;
+    return result;
   }
 
   function openChat() {
