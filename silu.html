@@ -2234,25 +2234,6 @@ function setupChat() {
     var bubble = aiMsgDiv.querySelector(".msg-bubble");
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    var typingIndicator = null;
-    function showTyping() {
-      if (!typingIndicator) {
-        typingIndicator = document.createElement("div");
-        typingIndicator.className = "typing-indicator";
-        typingIndicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-        bubble.appendChild(typingIndicator);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }
-    }
-    function hideTyping() {
-      if (typingIndicator) {
-        typingIndicator.remove();
-        typingIndicator = null;
-      }
-    }
-
-    showTyping();
-
     var MAX_RETRIES = 2;
     var retryCount = 0;
     var response = null;
@@ -2285,15 +2266,17 @@ function setupChat() {
         });
 
         if (response.ok) {
-          break;
+          break; // 请求成功，退出重试循环
         }
 
         var errorText = await response.text();
+        // 只有5xx错误才重试
         if (response.status >= 500 && response.status < 600 && retryCount < MAX_RETRIES) {
           retryCount++;
-          await new Promise(function(resolve) { setTimeout(resolve, 1000 * retryCount); });
+          await new Promise(function(resolve) { setTimeout(resolve, 1000 * retryCount); }); // 递增延迟
           continue;
         }
+        // 其他错误直接抛出
         throw new Error("API 请求失败：" + response.status + " " + errorText);
 
       } catch(err) {
@@ -2310,12 +2293,13 @@ function setupChat() {
     var reader = response.body.getReader();
     var decoder = new TextDecoder();
     var fullContent = "";
+    var renderedHtml = "";
+    var lastRenderedLength = 0;
     var renderTimeout = null;
-    var hasFirstChunk = false;
 
     function doRender() {
-      var escaped = escapeHtml(fullContent).replace(/\n/g, '<br>');
-      bubble.innerHTML = escaped;
+      var incompletePart = fullContent.substring(lastRenderedLength);
+      bubble.innerHTML = renderedHtml + (lastRenderedLength > 0 && incompletePart ? '<br>' : '') + escapeHtml(incompletePart);
       chatMessages.scrollTop = chatMessages.scrollHeight;
       renderTimeout = null;
     }
@@ -2335,16 +2319,21 @@ function setupChat() {
             var jsonStr = line.slice(6);
             var data = JSON.parse(jsonStr);
             if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
-              if (!hasFirstChunk) {
-                hideTyping();
-                hasFirstChunk = true;
-              }
               fullContent += data.choices[0].delta.content;
 
+              var lastNewlineIndex = fullContent.lastIndexOf('\n');
+              if (lastNewlineIndex > lastRenderedLength) {
+                var newContent = fullContent.substring(lastRenderedLength, lastNewlineIndex);
+                renderedHtml += renderContent(newContent);
+                lastRenderedLength = lastNewlineIndex;
+              }
+
+              // 防抖：避免每字符都更新DOM
               if (renderTimeout) clearTimeout(renderTimeout);
-              renderTimeout = setTimeout(doRender, 10);
+              renderTimeout = setTimeout(doRender, 30);
             }
           } catch (e) {
+            // 忽略解析错误
           }
         }
       }
@@ -2355,14 +2344,19 @@ function setupChat() {
         throw new Error("未收到有效响应");
       }
 
+      // 清理防抖定时器
       if (renderTimeout) clearTimeout(renderTimeout);
 
-      bubble.innerHTML = renderContent(fullContent);
+      // 渲染剩余未渲染的部分
+      var remainingContent = fullContent.substring(lastRenderedLength);
+      if (remainingContent) {
+        renderedHtml += renderContent(remainingContent);
+      }
+      bubble.innerHTML = renderedHtml;
       bubble.dataset.original = fullContent;
       chatMessages.scrollTop = chatMessages.scrollHeight;
       saveChatHistory();
     } catch (error) {
-      hideTyping();
       bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
       console.error(error);
     } finally {
