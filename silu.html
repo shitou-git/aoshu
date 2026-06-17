@@ -1937,103 +1937,129 @@ function setupChat() {
   function renderContent(text) {
     if (!text) return "";
 
-    // 统一将各种数学格式转换为 $...$ 格式
-    // 1. 转换 $$...$$ → 临时占位符 {MATH_BLOCK:...}
-    // 2. 转换 \(...\) 和 \[...\] → $...$
-    // 3. 转换 Unicode 数学符号 → LaTeX
     var placeholderId = 0;
     var placeholders = [];
 
-    // 先处理块级公式 $$...$$
+    // 辅助函数：创建占位符
+    function addPlaceholder(latex, display) {
+      var id = "@@MATH" + (placeholderId++) + "@@";
+      placeholders.push({ id: id, latex: latex, display: display });
+      return id;
+    }
+
+    // 1. 先处理块级公式 $$...$$
     text = text.replace(/\$\$([\s\S]+?)\$\$/g, function(match, content) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: content.trim(), display: true });
-      return "\n" + id + "\n";
+      return "\n" + addPlaceholder(content.trim(), true) + "\n";
     });
 
-    // 处理 \[...\]
-    text = text.replace(/\\\[([\s\S]+?)\\\]/g, function(match, content) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: content.trim(), display: true });
-      return "\n" + id + "\n";
+    // 2. 处理行内公式 $...$（不含换行）
+    text = text.replace(/\$([^\$\n]+?)\$/g, function(match, content) {
+      return addPlaceholder(content.trim(), false);
     });
 
-    // 处理 \(...\)
-    text = text.replace(/\\\(([\s\S]+?)\\\)/g, function(match, content) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: content.trim(), display: false });
-      return id;
+    // 3. 处理 Unicode 根号：√(表达式) → 块级根号
+    text = text.replace(/√\s*\(([^)\n]+)\)/g, function(match, content) {
+      return addPlaceholder("\\sqrt{" + content.trim() + "}", true);
     });
 
-    // 处理行内公式 $...$（确保不匹配 $$ 开头）
-    text = text.replace(/(^|[^$])\$([^$\n]+?)\$(?!\$)/g, function(match, prefix, content) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: content.trim(), display: false });
-      return prefix + id;
+    // 4. 处理 Unicode 根号：√数字 → 块级根号
+    //    注意：要避免重复处理（如 √(4) 已被处理）
+    text = text.replace(/√(\d+(?:\.\d+)?)/g, function(match, num) {
+      return addPlaceholder("\\sqrt{" + num + "}", true);
     });
 
-    // 将 Unicode 根号等符号转换为公式占位符
-    // √4, √(a+b), √9=3, √(b²-4ac) 等
-    text = text.replace(/√(\s*\([^\)]+\)|\s*\d+\w*|\s*\w+)/g, function(match, content) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: "\\sqrt{" + content.trim() + "}", display: false });
-      return id;
+    // 5. 处理 Unicode 根号：√字母变量 → 块级根号
+    text = text.replace(/√([a-zA-Z]+)/g, function(match, varName) {
+      return addPlaceholder("\\sqrt{" + varName + "}", true);
     });
 
-    // 数字上标: x² → x^2, x³ → x^3
-    text = text.replace(/(\w+)\s*²/g, function(match, base) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: base + "^2", display: false });
-      return id;
-    });
-    text = text.replace(/(\w+)\s*³/g, function(match, base) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: base + "^3", display: false });
-      return id;
+    // 6. 处理 Unicode 根号：√(混合表达式，如 b²-4ac, b²-4ac）
+    text = text.replace(/√\s*([a-zA-Z0-9²³⁰-⁹\+\-\*\/\(\)]+)/g, function(match, content) {
+      // 转 Unicode 上标
+      var latex = content
+        .replace(/²/g, "^2")
+        .replace(/³/g, "^3")
+        .replace(/\s+/g, "");
+      if (latex) {
+        return addPlaceholder("\\sqrt{" + latex + "}", true);
+      }
+      return match;
     });
 
-    // 简单分数: a/b → \frac{a}{b} (仅当看起来像数学分数时)
+    // 7. 处理 ± 符号
+    text = text.replace(/±/g, function() {
+      return addPlaceholder("\\pm", false);
+    });
+
+    // 8. 处理 × 符号
+    text = text.replace(/×/g, function() {
+      return addPlaceholder("\\times", false);
+    });
+
+    // 9. 处理 ÷ 符号
+    text = text.replace(/÷/g, function() {
+      return addPlaceholder("\\div", false);
+    });
+
+    // 10. 处理 ≤ ≥ ≠
+    text = text.replace(/≤/g, function() { return addPlaceholder("\\le", false); });
+    text = text.replace(/≥/g, function() { return addPlaceholder("\\ge", false); });
+    text = text.replace(/≠/g, function() { return addPlaceholder("\\ne", false); });
+    text = text.replace(/≈/g, function() { return addPlaceholder("\\approx", false); });
+
+    // 11. 处理上下标: x², x³, a¹
+    text = text.replace(/(\w+)\s*⁰/g, function(m, b) { return addPlaceholder(b + "^0", false); });
+    text = text.replace(/(\w+)\s*¹/g, function(m, b) { return addPlaceholder(b + "^1", false); });
+    text = text.replace(/(\w+)\s*²/g, function(m, b) { return addPlaceholder(b + "^2", false); });
+    text = text.replace(/(\w+)\s*³/g, function(m, b) { return addPlaceholder(b + "^3", false); });
+    text = text.replace(/(\w+)\s*⁴/g, function(m, b) { return addPlaceholder(b + "^4", false); });
+    text = text.replace(/(\w+)\s*⁵/g, function(m, b) { return addPlaceholder(b + "^5", false); });
+
+    // 12. 处理 π, ° 等
+    text = text.replace(/π/g, function() { return addPlaceholder("\\pi", false); });
+    text = text.replace(/°/g, function() { return addPlaceholder("^\\circ", false); });
+
+    // 13. 处理简单分数: a/b (避免路径如 a/b/c)
     text = text.replace(/\b(\d+)\s*\/\s*(\d+)\b/g, function(match, a, b) {
-      var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: "\\frac{" + a + "}{" + b + "}", display: false });
-      return id;
+      return addPlaceholder("\\frac{" + a + "}{" + b + "}", false);
     });
 
-    // 现在按行处理文本：公式占位符 → KaTeX 渲染，其他文本 → Markdown + 转义
+    // 14. 处理希腊字母
+    var greek = {
+      "α": "\\alpha", "β": "\\beta", "γ": "\\gamma", "δ": "\\delta",
+      "ε": "\\epsilon", "θ": "\\theta", "λ": "\\lambda", "μ": "\\mu",
+      "σ": "\\sigma", "ω": "\\omega", "Δ": "\\Delta", "Σ": "\\Sigma",
+      "Ω": "\\Omega", "Π": "\\Pi"
+    };
+    for (var g in greek) {
+      text = text.split(g).join(addPlaceholder(greek[g], false));
+    }
+
+    // 现在按行处理：公式占位符行 → KaTeX 块级渲染；其他行 → 文本转义 + 替换行内公式
     var lines = text.split("\n");
     var html = "";
 
     for (var l = 0; l < lines.length; l++) {
       var line = lines[l];
+      var trimmedLine = line.trim();
 
-      // 检查是否是纯公式占位符行
+      // 检查是否是纯公式占位符行（块级公式）
       var isPureMathLine = false;
       for (var p = 0; p < placeholders.length; p++) {
-        if (line.trim() === placeholders[p].id) {
+        if (trimmedLine === placeholders[p].id && placeholders[p].display) {
+          html += '<div class="katex-block">' + katex.renderToString(placeholders[p].latex, { throwOnError: false, displayMode: true }) + '</div>\n';
           isPureMathLine = true;
           break;
         }
       }
 
-      if (isPureMathLine) {
-        // 块级公式行
-        for (var p2 = 0; p2 < placeholders.length; p2++) {
-          if (line.trim() === placeholders[p2].id) {
-            try {
-              html += '<div class="katex-block">' + katex.renderToString(placeholders[p2].latex, { throwOnError: false, displayMode: true }) + '</div>';
-            } catch (e) {
-              html += '<div class="katex-block">' + escapeHtml(placeholders[p2].latex) + '</div>';
-            }
-            break;
-          }
-        }
-      } else {
+      if (!isPureMathLine) {
         // 普通文本行：先转义，再替换行内公式占位符
         var lineHtml = escapeHtml(line);
 
-        // 替换行内公式占位符
-        for (var p3 = 0; p3 < placeholders.length; p3++) {
-          var ph = placeholders[p3];
+        // 替换所有公式占位符
+        for (var p2 = 0; p2 < placeholders.length; p2++) {
+          var ph = placeholders[p2];
           if (lineHtml.indexOf(ph.id) !== -1) {
             try {
               var rendered = katex.renderToString(ph.latex, { throwOnError: false, displayMode: ph.display });
@@ -2059,7 +2085,7 @@ function setupChat() {
     // 处理粗体 **text**
     html = html.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
 
-    // 处理斜体 *text*
+    // 处理斜体 *text*（不在公式上下文时）
     html = html.replace(/(^|[^\*])\*([^\*\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3');
 
     // 处理无序列表 * item 或 - item
