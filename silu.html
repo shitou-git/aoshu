@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="小学奥数解题思路公式速查手册 · 按题型梳理公式与解题四步法">
 <title>奥数解题思路 · 公式速查手册</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <style>
   :root {
     --c-primary: #7c3aed;
@@ -1928,6 +1930,32 @@ function setupChat() {
   var API_BASE_URL = "https://apihub.agnes-ai.com/v1";
   var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
 
+  function renderContent(text) {
+    if (!text) return "";
+    var html = escapeHtml(text);
+    // 处理块级公式 $$...$$
+    html = html.replace(/\$\$([\s\S]+?)\$\$/g, function(match, content) {
+      try {
+        return '</p><div class="katex-block">' + katex.renderToString(content.trim(), { throwOnError: false, displayMode: true }) + '</div><p>';
+      } catch (e) {
+        return match;
+      }
+    });
+    // 处理行内公式 $...$
+    html = html.replace(/\$([^\$]+?)\$/g, function(match, content) {
+      try {
+        return katex.renderToString(content.trim(), { throwOnError: false, displayMode: false });
+      } catch (e) {
+        return match;
+      }
+    });
+    // 处理粗体 **text**
+    html = html.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+    // 处理换行
+    html = html.replace(/\n/g, '<br>');
+    return html;
+  }
+
   function openChat() {
     chatModalOverlay.classList.add("show");
     chatInput.focus();
@@ -2049,7 +2077,7 @@ function setupChat() {
               var data = JSON.parse(jsonStr);
               if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
                 fullContent += data.choices[0].delta.content;
-                bubble.textContent = fullContent;
+                bubble.innerHTML = renderContent(fullContent);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
               }
             } catch (e) {
@@ -2064,7 +2092,7 @@ function setupChat() {
       }
 
     } catch (error) {
-      bubble.textContent = "❌ 出错了：" + error.message;
+      bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
       console.error(error);
     } finally {
       chatSendBtn.disabled = false;
