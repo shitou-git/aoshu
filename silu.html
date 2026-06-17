@@ -2229,7 +2229,7 @@ function setupChat() {
     if (emptyTip) emptyTip.remove();
     var aiMsgDiv = document.createElement("div");
     aiMsgDiv.className = "message ai";
-    aiMsgDiv.innerHTML = '<div class="msg-bubble"></div>';
+    aiMsgDiv.innerHTML = '<div class="msg-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>';
     chatMessages.appendChild(aiMsgDiv);
     var bubble = aiMsgDiv.querySelector(".msg-bubble");
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -2319,6 +2319,9 @@ function setupChat() {
             var jsonStr = line.slice(6);
             var data = JSON.parse(jsonStr);
             if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
+              if (fullContent.length === 0) {
+                bubble.innerHTML = '';
+              }
               fullContent += data.choices[0].delta.content;
 
               var lastNewlineIndex = fullContent.lastIndexOf('\n');
@@ -2328,12 +2331,10 @@ function setupChat() {
                 lastRenderedLength = lastNewlineIndex;
               }
 
-              // 防抖：避免每字符都更新DOM
               if (renderTimeout) clearTimeout(renderTimeout);
               renderTimeout = setTimeout(doRender, 30);
             }
           } catch (e) {
-            // 忽略解析错误
           }
         }
       }
