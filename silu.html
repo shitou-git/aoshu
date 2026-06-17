@@ -2171,86 +2171,112 @@ function setupChat() {
     var bubble = aiMsgDiv.querySelector(".msg-bubble");
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    try {
-      var response = await fetch(API_BASE_URL + "/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + API_KEY
-        },
-        body: JSON.stringify({
-          model: model,
-          messages: [
-            {
-              role: "system",
-              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【极其重要：输出格式严格要求】\n1. 所有数学符号必须使用 LaTeX 语法并用美元符号包裹：\n   - 行内小公式：用 $...$ 包裹，例如 $\\sqrt{4}$、$\\frac{1}{2}$、$x^2$、$a^2+b^2=c^2$\n   - 独占一行的大公式：用 $$...$$ 包裹，例如 $$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$\n2. 根号写法：$\\sqrt{4}$ 而不是根号4或√4\n3. 分数写法：$\\frac{1}{2}$ 而不是 1/2\n4. 平方写法：$x^2$ 而不是 x²\n5. 公式中涉及的所有数字、字母变量必须放在 $...$ 中\n6. 每讲解一个概念后，至少给出一个包含完整公式的例子\n7. 使用 Markdown 格式组织内容（# 标题，**加粗**，- 列表等）\n8. 严格禁止任何自我介绍，直接给出答案"
-            },
-            {
-              role: "user",
-              content: text
-            }
-          ],
-          temperature: 0.3,
-          max_tokens: 2048,
-          stream: true
-        })
-      });
+    var MAX_RETRIES = 2;
+    var retryCount = 0;
+    var response = null;
 
-      if (!response.ok) {
-        var errorText = await response.text();
-        throw new Error("API 请求失败：" + response.status + " " + errorText);
-      }
-
-      // 处理流式响应
-      var reader = response.body.getReader();
-      var decoder = new TextDecoder();
-      var fullContent = "";
-      var renderedHtml = "";
-      var lastRenderedLength = 0;
-      var renderTimeout = null;
-
-      function doRender() {
-        var incompletePart = fullContent.substring(lastRenderedLength);
-        bubble.innerHTML = renderedHtml + (lastRenderedLength > 0 && incompletePart ? '<br>' : '') + escapeHtml(incompletePart);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        renderTimeout = null;
-      }
-
-      while (true) {
-        var result = await reader.read();
-        if (result.done) break;
-
-        var chunk = decoder.decode(result.value, { stream: true });
-        var lines = chunk.split("\n");
-
-        for (var i = 0; i < lines.length; i++) {
-          var line = lines[i].trim();
-          if (line === "" || line === "data: [DONE]") continue;
-          if (line.startsWith("data: ")) {
-            try {
-              var jsonStr = line.slice(6);
-              var data = JSON.parse(jsonStr);
-              if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
-                fullContent += data.choices[0].delta.content;
-                
-                var lastNewlineIndex = fullContent.lastIndexOf('\n');
-                if (lastNewlineIndex > lastRenderedLength) {
-                  var newContent = fullContent.substring(lastRenderedLength, lastNewlineIndex);
-                  renderedHtml += renderContent(newContent);
-                  lastRenderedLength = lastNewlineIndex;
-                }
-                
-                // 防抖：避免每字符都更新DOM
-                if (renderTimeout) clearTimeout(renderTimeout);
-                renderTimeout = setTimeout(doRender, 30);
+    // 带重试的请求
+    while (retryCount <= MAX_RETRIES) {
+      try {
+        response = await fetch(API_BASE_URL + "/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + API_KEY
+          },
+          body: JSON.stringify({
+            model: model,
+            messages: [
+              {
+                role: "system",
+                content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【极其重要：输出格式严格要求】\n1. 所有数学符号必须使用 LaTeX 语法并用美元符号包裹：\n   - 行内小公式：用 $...$ 包裹，例如 $\\sqrt{4}$、$\\frac{1}{2}$、$x^2$、$a^2+b^2=c^2$\n   - 独占一行的大公式：用 $$...$$ 包裹，例如 $$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$\n2. 根号写法：$\\sqrt{4}$ 而不是根号4或√4\n3. 分数写法：$\\frac{1}{2}$ 而不是 1/2\n4. 平方写法：$x^2$ 而不是 x²\n5. 公式中涉及的所有数字、字母变量必须放在 $...$ 中\n6. 每讲解一个概念后，至少给出一个包含完整公式的例子\n7. 使用 Markdown 格式组织内容（# 标题，**加粗**，- 列表等）\n8. 严格禁止任何自我介绍，直接给出答案"
+              },
+              {
+                role: "user",
+                content: text
               }
-            } catch (e) {
-              // 忽略解析错误
+            ],
+            temperature: 0.3,
+            max_tokens: 2048,
+            stream: true
+          })
+        });
+
+        if (response.ok) {
+          break; // 请求成功，退出重试循环
+        }
+
+        var errorText = await response.text();
+        // 只有5xx错误才重试
+        if (response.status >= 500 && response.status < 600 && retryCount < MAX_RETRIES) {
+          retryCount++;
+          await new Promise(function(resolve) { setTimeout(resolve, 1000 * retryCount); }); // 递增延迟
+          continue;
+        }
+        // 其他错误直接抛出
+        throw new Error("API 请求失败：" + response.status + " " + errorText);
+
+      } catch(err) {
+        if (retryCount < MAX_RETRIES) {
+          retryCount++;
+          await new Promise(function(resolve) { setTimeout(resolve, 1000 * retryCount); });
+          continue;
+        }
+        throw err;
+      }
+    }
+
+    // 处理流式响应
+    var reader = response.body.getReader();
+    var decoder = new TextDecoder();
+    var fullContent = "";
+    var renderedHtml = "";
+    var lastRenderedLength = 0;
+    var renderTimeout = null;
+
+    function doRender() {
+      var incompletePart = fullContent.substring(lastRenderedLength);
+      bubble.innerHTML = renderedHtml + (lastRenderedLength > 0 && incompletePart ? '<br>' : '') + escapeHtml(incompletePart);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      renderTimeout = null;
+    }
+
+    while (true) {
+      var result = await reader.read();
+      if (result.done) break;
+
+      var chunk = decoder.decode(result.value, { stream: true });
+      var lines = chunk.split("\n");
+
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (line === "" || line === "data: [DONE]") continue;
+        if (line.startsWith("data: ")) {
+          try {
+            var jsonStr = line.slice(6);
+            var data = JSON.parse(jsonStr);
+            if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
+              fullContent += data.choices[0].delta.content;
+
+              var lastNewlineIndex = fullContent.lastIndexOf('\n');
+              if (lastNewlineIndex > lastRenderedLength) {
+                var newContent = fullContent.substring(lastRenderedLength, lastNewlineIndex);
+                renderedHtml += renderContent(newContent);
+                lastRenderedLength = lastNewlineIndex;
+              }
+
+              // 防抖：避免每字符都更新DOM
+              if (renderTimeout) clearTimeout(renderTimeout);
+              renderTimeout = setTimeout(doRender, 30);
             }
+          } catch (e) {
+            // 忽略解析错误
           }
         }
       }
+    }
 
+    try {
       if (!fullContent) {
         throw new Error("未收到有效响应");
       }
@@ -2266,7 +2292,6 @@ function setupChat() {
       bubble.innerHTML = renderedHtml;
       chatMessages.scrollTop = chatMessages.scrollHeight;
       saveChatHistory();
-
     } catch (error) {
       bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
       console.error(error);
