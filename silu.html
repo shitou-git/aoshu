@@ -1934,42 +1934,45 @@ function setupChat() {
   var API_BASE_URL = "https://apihub.agnes-ai.com/v1";
   var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
 
-  function renderContent(text) {
-    if (!text) return "";
-
-    // ===== 第一步：修复 AI 输出的常见 LaTeX 语法错误 =====
-    text = text
-      // 修复 Isqrt → sqrt（AI 经常把 sqrt 写成 Isqrt）
+  // 修复 LaTeX 公式内部的语法错误
+  function fixLatex(latex) {
+    return latex
+      // 修复 Isqrt → sqrt（AI 经常把 sqrt 写成 Isqrt，可能有或没有反斜杠）
       .replace(/\\Isqrt/g, '\\sqrt')
       .replace(/\\isqrt/g, '\\sqrt')
       // 修复 }] → }}（AI 经常用 ] 代替 }）
-      .replace(/\]\$/g, '}$')
-      .replace(/\]\]\$/g, '}}')
+      .replace(/\]/g, '}')
       // 修复 [{ → {{（AI 经常用 [ 代替 {）
-      .replace(/\$\[/g, '${')
-      .replace(/\$\[\[/g, '$')
-      // 修复 \\sqrt → \sqrt（避免双反斜杠）
-      .replace(/\\\\sqrt/g, '\\sqrt')
+      .replace(/\[/g, '{')
       // 修复 \sqr → \sqrt（不完整的 sqrt）
       .replace(/\\sqr\b/g, '\\sqrt')
-      // 修复缺少反斜杠的 sqrt
-      .replace(/(\$[^$]*)\bsqrt\b/g, '$1\\sqrt')
-      // 修复缺少花括号的情况：sqrt 4 → sqrt{4}
+      // 修复缺少反斜杠的 sqrt（含 Isqrt 等各种错误）
+      .replace(/(?<!\\)\bIsqrt\b/g, '\\sqrt')
+      .replace(/(?<!\\)\bisqrt\b/g, '\\sqrt')
+      .replace(/(?<!\\)\bsqrt\b/g, '\\sqrt')
+      // 修复缺少花括号的情况：\sqrt 4 → \sqrt{4}
       .replace(/\\sqrt\s+(\d+)/g, '\\sqrt{$1}')
       .replace(/\\sqrt\s+([a-zA-Z]+)/g, '\\sqrt{$1}')
+      .replace(/\\sqrt\s+\(/g, '\\sqrt{(')
       // 修复分数格式：\frac a b → \frac{a}{b}
       .replace(/\\frac\s+(\w+)\s+(\w+)/g, '\\frac{$1}{$2}')
       // 修复上标格式：a^2 → a^{2}
       .replace(/\^(\d+)/g, '^{$1}')
       // 修复下标格式：a_2 → a_{2}
-      .replace(/\_(\d+)/g, '_{$1}');
+      .replace(/_(\d+)/g, '_{$1}')
+      // 修复 \\sqrt → \sqrt
+      .replace(/\\\\/g, '\\');
+  }
+
+  function renderContent(text) {
+    if (!text) return "";
 
     var placeholderId = 0;
     var placeholders = [];
 
     function addPlaceholder(latex, display) {
       var id = "@@MATH" + (placeholderId++) + "@@";
-      placeholders.push({ id: id, latex: latex, display: display });
+      placeholders.push({ id: id, latex: fixLatex(latex), display: display });
       return id;
     }
 
