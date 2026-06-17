@@ -1937,8 +1937,11 @@ function setupChat() {
   function fixLatex(latex) {
     if (!latex) return latex;
     var r = latex;
-    // 1. 修复方括号代替花括号
-    r = r.replace(/\]/g, '}').replace(/\[/g, '{');
+    // 1. 修复AI错误：\sqrt(3){-8} 或 \sqrt{3}{-8} → \sqrt[3]{-8}
+    //    注意：\sqrt[3]{-8} 本身是合法LaTeX，表示开3次方（立方根）
+    //    不要破坏 [n] 这种根次写法！
+    r = r.replace(/\\sqrt\s*\((\d+)\)\s*\{/g, '\\sqrt[$1]{');
+    r = r.replace(/\\sqrt\s*\{(\d+)\}\s*\{/g, '\\sqrt[$1]{');
     // 2. 修复缺少花括号：\sqrt 4 → \sqrt{4}
     r = r.replace(/\\sqrt\s+(\d+)/g, '\\sqrt{$1}');
     r = r.replace(/\\sqrt\s+([a-zA-Z]\w*)/g, '\\sqrt{$1}');
