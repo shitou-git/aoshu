@@ -2106,7 +2106,7 @@ function setupChat() {
       messages.forEach(function(msg) {
         var div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
-        div.innerHTML = '<div class="msg-bubble">' + escapeHtml(msg.text) + '</div>';
+        div.innerHTML = '<div class="msg-bubble">' + (msg.isUser ? escapeHtml(msg.text) : renderContent(msg.text)) + '</div>';
         chatMessages.appendChild(div);
       });
       scrollToBottom();
