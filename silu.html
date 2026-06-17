@@ -358,7 +358,6 @@
   .message.ai .msg-bubble { border-bottom-left-radius: 4px; }
 
   .katex-block { display: block; text-align: left; margin: 12px 0; overflow-x: auto; overflow-y: hidden; padding: 0 4px; }
-  .katex { font-size: 1.1em; display: inline-block; }
   .msg-bubble p { margin: 0; }
 
   .typing-indicator {
@@ -1936,43 +1935,34 @@ function setupChat() {
 
   // 修复 LaTeX 公式内部的语法错误（兼容旧版浏览器）
   function fixLatex(latex) {
-    // 先处理有反斜杠的错误
-    latex = latex
-      .replace(/\\Isqrt/g, '\\sqrt')
-      .replace(/\\isqrt/g, '\\sqrt')
-      .replace(/\\sqr\b/g, '\\sqrt');
-
-    // 修复 }] → }}（AI 经常用 ] 代替 }）
-    latex = latex.replace(/\]/g, '}');
-
-    // 修复 [{ → {{（AI 经常用 [ 代替 {）
-    latex = latex.replace(/\[/g, '{');
-
-    // 修复缺少反斜杠的 sqrt（兼容写法：不使用负向后行断言）
-    // 策略：先给所有 sqrt/Isqrt/isqrt 加反斜杠，然后移除多余的反斜杠
-    latex = latex.replace(/\bIsqrt\b/g, '\\sqrt');
-    latex = latex.replace(/\bisqrt\b/g, '\\sqrt');
-    latex = latex.replace(/\bsqrt\b/g, '\\sqrt');
-    // 移除重复的反斜杠 \\sqrt → \sqrt
-    latex = latex.replace(/\\\\sqrt/g, '\\sqrt');
-
-    // 修复缺少花括号的情况：\sqrt 4 → \sqrt{4}
-    latex = latex.replace(/\\sqrt\s+(\d+)/g, '\\sqrt{$1}');
-    latex = latex.replace(/\\sqrt\s+([a-zA-Z]+)/g, '\\sqrt{$1}');
-    latex = latex.replace(/\\sqrt\s+\(/g, '\\sqrt{(');
-
-    // 修复分数格式：\frac a b → \frac{a}{b}
-    latex = latex.replace(/\\frac\s+(\w+)\s+(\w+)/g, '\\frac{$1}{$2}');
-
-    // 修复上标格式：a^2 → a^{2}
+    // 1. 修复方括号代替花括号：] → } , [ → {
+    latex = latex.replace(/\]/g, '}').replace(/\[/g, '{');
+    
+    // 2. 修复 Isqrt / isqrt (无反斜杠) → \sqrt
+    latex = latex.replace(/(^|[^\\a-z])Isqrt(?=\s|\{|$)/gi, '$1\\sqrt');
+    
+    // 3. 修复缺少反斜杠的 sqrt (前面不是反斜杠)
+    latex = latex.replace(/(^|[^\\a-z])sqrt(?=\s|\{|$)/gi, '$1\\sqrt');
+    
+    // 4. 修复 \sqr → \sqrt (缺少 t)
+    latex = latex.replace(/\\sqr(?=\s|\{|$)/g, '\\sqrt');
+    
+    // 5. 修复 \sqrt 4 → \sqrt{4} (缺少花括号)
+    latex = latex.replace(/\\sqrt\s+(\d+)(?=\s|$|=|\+|-|\*|\/|\)|\|)/g, '\\sqrt{$1}');
+    latex = latex.replace(/\\sqrt\s+([a-zA-Z][a-zA-Z0-9]*)(?=\s|$|=|\+|-|\*|\/|\)|\|)/g, '\\sqrt{$1}');
+    
+    // 6. 修复 a^2 → a^{2} (上标缺少花括号)
     latex = latex.replace(/\^(\d+)/g, '^{$1}');
-
-    // 修复下标格式：a_2 → a_{2}
+    
+    // 7. 修复 a_2 → a_{2} (下标缺少花括号)
     latex = latex.replace(/_(\d+)/g, '_{$1}');
-
-    // 移除所有重复反斜杠
-    latex = latex.replace(/\\\\/g, '\\');
-
+    
+    // 8. 修复 \frac a b → \frac{a}{b}
+    latex = latex.replace(/\\frac\s+(\w+)\s+(\w+)/g, '\\frac{$1}{$2}');
+    
+    // 9. 移除重复反斜杠
+    latex = latex.replace(/\\\\+/g, '\\');
+    
     return latex;
   }
 
