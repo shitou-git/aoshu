@@ -355,7 +355,7 @@
     box-sizing: border-box;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
-  .message.ai .msg-bubble { flex: 1; min-width: 0; border-bottom-left-radius: 4px; }
+  .message.ai .msg-bubble { max-width: calc(100% - 46px); border-bottom-left-radius: 4px; }
   .message.user .msg-bubble { max-width: calc(100% - 46px); border-bottom-left-radius: 4px; }
 
   .katex-block { display: block; text-align: left; margin: 2px 0; overflow-x: auto; overflow-y: hidden; padding: 0; line-height: 1; }
