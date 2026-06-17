@@ -375,6 +375,7 @@
     color: #fff;
   }
   .chat-confirm-ok:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(139,92,246,0.3); }
+  .chat-confirm-warn { color: #8b5cf6; font-weight: 500; }
 
   .chat-messages {
     flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column;
@@ -530,7 +531,7 @@
   <div class="chat-confirm-overlay" id="chatConfirmOverlay">
     <div class="chat-confirm-modal">
       <div class="chat-confirm-title">确认清空</div>
-      <div class="chat-confirm-text">确定要清空所有聊天记录吗？此操作不可恢复。</div>
+      <div class="chat-confirm-text">确定要清空所有聊天记录吗？<br><span class="chat-confirm-warn">此操作不可恢复。</span></div>
       <div class="chat-confirm-buttons">
         <button class="chat-confirm-btn chat-confirm-cancel" id="chatConfirmCancel">取消</button>
         <button class="chat-confirm-btn chat-confirm-ok" id="chatConfirmOk">清空</button>
