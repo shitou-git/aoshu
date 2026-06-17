@@ -328,18 +328,6 @@
   }
   .chat-close:hover { background: rgba(255,255,255,0.3); }
 
-  .api-config {
-    background: #f8fafc; padding: 12px 20px; border-bottom: 1px solid #e2e8f0;
-    flex-shrink: 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
-  }
-  .api-config label { font-size: 0.85rem; color: var(--c-muted); font-weight: bold; }
-  .api-config select {
-    flex: 1 1 200px; padding: 8px 12px; border: 2px solid #e2e8f0;
-    border-radius: 10px; font-size: 0.9rem; outline: none;
-    transition: border-color 0.2s; background: #fff; cursor: pointer;
-  }
-  .api-config select:focus { border-color: var(--c-primary); }
-
   .chat-messages {
     flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column;
     gap: 16px; background: #faf5ff;
@@ -475,13 +463,7 @@
       <h2>🤖 AI 查公式</h2>
       <button class="chat-close" id="chatCloseBtn" title="关闭">×</button>
     </div>
-    <div class="api-config">
-      <label>选择模型:</label>
-      <select id="modelSelect">
-        <option value="agnes-2.0-flash" selected>Agnes 2.0 Flash</option>
-        <option value="agnes-1.5-flash">Agnes 1.5 Flash</option>
-      </select>
-    </div>
+
     <div class="chat-messages" id="chatMessages">
       <div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>
     </div>
@@ -1938,7 +1920,6 @@ function setupChat() {
   var chatModalOverlay = document.getElementById("chatModalOverlay");
   var chatCloseBtn = document.getElementById("chatCloseBtn");
   var aiChatBtn = document.getElementById("aiChatBtn");
-  var modelSelect = document.getElementById("modelSelect");
   var chatMessages = document.getElementById("chatMessages");
   var chatInput = document.getElementById("chatInput");
   var chatSendBtn = document.getElementById("chatSendBtn");
@@ -1998,7 +1979,7 @@ function setupChat() {
     var text = chatInput.value.trim();
     if (!text) return;
 
-    var model = modelSelect.value || "agnes-2.0-flash";
+    var model = "agnes-2.0-flash";
 
     chatInput.value = "";
     chatInput.style.height = "auto";
