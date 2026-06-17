@@ -1936,11 +1936,15 @@ function setupChat() {
 
   function renderContent(text) {
     if (!text) return "";
-    var html = escapeHtml(text);
+
+    // 先处理公式，再转义其他内容
+    // 将 Unicode 根号 √ 转换为 LaTeX 格式
+    var html = text.replace(/√(\d+)/g, '$\sqrt{$1}$');
+    html = html.replace(/√(.+?)(?=\s|=|\)|$)/g, '$\sqrt{$1}$');
 
     // 处理代码块 ```...```
     html = html.replace(/```([\s\S]+?)```/g, function(match, content) {
-      return '<pre style="background:rgba(0,0,0,0.05);padding:8px 12px;border-radius:6px;overflow-x:auto;margin:8px 0;font-size:0.9em;">' + content.trim() + '</pre>';
+      return '<pre style="background:rgba(0,0,0,0.05);padding:8px 12px;border-radius:6px;overflow-x:auto;margin:8px 0;font-size:0.9em;">' + escapeHtml(content.trim()) + '</pre>';
     });
 
     // 处理块级公式 $$...$$
@@ -1948,7 +1952,7 @@ function setupChat() {
       try {
         return '<div class="katex-block">' + katex.renderToString(content.trim(), { throwOnError: false, displayMode: true }) + '</div>';
       } catch (e) {
-        return match;
+        return '<div class="katex-block">' + escapeHtml(content.trim()) + '</div>';
       }
     });
 
@@ -1957,9 +1961,12 @@ function setupChat() {
       try {
         return katex.renderToString(content.trim(), { throwOnError: false, displayMode: false });
       } catch (e) {
-        return match;
+        return '$' + escapeHtml(content.trim()) + '$';
       }
     });
+
+    // 转义 HTML 特殊字符（在公式处理之后）
+    html = escapeHtml(html);
 
     // 处理标题 ### / ## / #
     html = html.replace(/^### (.+)$/gm, '<h4 style="margin:12px 0 6px;font-size:1.05em;font-weight:600;">$1</h4>');
