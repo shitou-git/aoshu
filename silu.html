@@ -357,8 +357,8 @@
   .message.user .msg-bubble { border-bottom-right-radius: 4px; }
   .message.ai .msg-bubble { border-bottom-left-radius: 4px; }
 
-  .katex-block { display: block; text-align: center; margin: 12px 0; overflow-x: auto; overflow-y: hidden; }
-  .katex { font-size: 1.05em; }
+  .katex-block { display: block; text-align: left; margin: 12px 0; overflow-x: auto; overflow-y: hidden; padding: 0 4px; }
+  .katex { font-size: 1.1em; display: inline-block; }
   .msg-bubble p { margin: 0; }
 
   .typing-indicator {
@@ -1940,7 +1940,7 @@ function setupChat() {
     // 处理块级公式 $$...$$
     html = html.replace(/\$\$([\s\S]+?)\$\$/g, function(match, content) {
       try {
-        return '</p><div class="katex-block">' + katex.renderToString(content.trim(), { throwOnError: false, displayMode: true }) + '</div><p>';
+        return '<div class="katex-block">' + katex.renderToString(content.trim(), { throwOnError: false, displayMode: true }) + '</div>';
       } catch (e) {
         return match;
       }
@@ -2081,7 +2081,7 @@ function setupChat() {
               var data = JSON.parse(jsonStr);
               if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
                 fullContent += data.choices[0].delta.content;
-                bubble.innerHTML = renderContent(fullContent);
+                bubble.textContent = fullContent;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
               }
             } catch (e) {
@@ -2094,6 +2094,10 @@ function setupChat() {
       if (!fullContent) {
         throw new Error("未收到有效响应");
       }
+
+      // 流式输出完成后，统一渲染公式
+      bubble.innerHTML = renderContent(fullContent);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
 
     } catch (error) {
       bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
