@@ -2125,7 +2125,16 @@ function setupChat() {
       var reader = response.body.getReader();
       var decoder = new TextDecoder();
       var fullContent = "";
-      var lastRenderedLength = 0; // 记录上次渲染的长度
+      var renderedHtml = "";
+      var lastRenderedLength = 0;
+      var renderTimeout = null;
+
+      function doRender() {
+        var incompletePart = fullContent.substring(lastRenderedLength);
+        bubble.innerHTML = renderedHtml + (lastRenderedLength > 0 && incompletePart ? '<br>' : '') + escapeHtml(incompletePart);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        renderTimeout = null;
+      }
 
       while (true) {
         var result = await reader.read();
@@ -2144,26 +2153,16 @@ function setupChat() {
               if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
                 fullContent += data.choices[0].delta.content;
                 
-                // 换行后渲染：找到最后一个换行符，对完整行进行渲染
                 var lastNewlineIndex = fullContent.lastIndexOf('\n');
                 if (lastNewlineIndex > lastRenderedLength) {
-                  // 有新的完整行，渲染到换行符位置
-                  var completePart = fullContent.substring(0, lastNewlineIndex);
-                  var incompletePart = fullContent.substring(lastNewlineIndex + 1);
-                  bubble.innerHTML = renderContent(completePart) + '<br>' + escapeHtml(incompletePart);
+                  var newContent = fullContent.substring(lastRenderedLength, lastNewlineIndex);
+                  renderedHtml += renderContent(newContent);
                   lastRenderedLength = lastNewlineIndex;
-                } else {
-                  // 没有新换行，只更新未完成部分
-                  if (lastRenderedLength > 0) {
-                    var renderedPart = fullContent.substring(0, lastRenderedLength);
-                    var unrenderedPart = fullContent.substring(lastRenderedLength + 1);
-                    bubble.innerHTML = renderContent(renderedPart) + '<br>' + escapeHtml(unrenderedPart);
-                  } else {
-                    // 还没有任何换行，显示纯文本
-                    bubble.textContent = fullContent;
-                  }
                 }
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // 防抖：避免每字符都更新DOM
+                if (renderTimeout) clearTimeout(renderTimeout);
+                renderTimeout = setTimeout(doRender, 30);
               }
             } catch (e) {
               // 忽略解析错误
@@ -2176,8 +2175,15 @@ function setupChat() {
         throw new Error("未收到有效响应");
       }
 
-      // 流式输出完成后，统一渲染公式
-      bubble.innerHTML = renderContent(fullContent);
+      // 清理防抖定时器
+      if (renderTimeout) clearTimeout(renderTimeout);
+
+      // 渲染剩余未渲染的部分
+      var remainingContent = fullContent.substring(lastRenderedLength);
+      if (remainingContent) {
+        renderedHtml += renderContent(remainingContent);
+      }
+      bubble.innerHTML = renderedHtml;
       chatMessages.scrollTop = chatMessages.scrollHeight;
 
     } catch (error) {
