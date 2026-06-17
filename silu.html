@@ -478,10 +478,9 @@
     <div class="api-config">
       <label>选择模型:</label>
       <select id="modelSelect">
-        <option value="claude-3-sonnet">Claude 3 Sonnet</option>
-        <option value="gpt-4o">GPT-4o</option>
-        <option value="gpt-4o-mini">GPT-4o Mini</option>
-        <option value="llama-3.3-70b">Llama 3.3 70B</option>
+        <option value="agnes-2.0-flash" selected>Agnes 2.0 Flash</option>
+        <option value="agnes-2.0-pro">Agnes 2.0 Pro</option>
+        <option value="agnes-2.0-ultra">Agnes 2.0 Ultra</option>
       </select>
     </div>
     <div class="chat-messages" id="chatMessages">
@@ -2000,7 +1999,7 @@ function setupChat() {
     var text = chatInput.value.trim();
     if (!text) return;
 
-    var model = modelSelect.value || "claude-3-sonnet";
+    var model = modelSelect.value || "agnes-2.0-flash";
 
     chatInput.value = "";
     chatInput.style.height = "auto";
