@@ -308,6 +308,7 @@
     background: rgba(0,0,0,0.5); z-index: 1000;
     display: none; justify-content: center; align-items: center;
     backdrop-filter: blur(4px);
+    overscroll-behavior: contain;
   }
   .chat-modal-overlay.show { display: flex; }
   .chat-modal {
@@ -315,6 +316,8 @@
     height: 650px; display: flex; flex-direction: column;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     overflow: hidden;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
   }
   .chat-header {
     background: linear-gradient(135deg, #8b5cf6, #ec4899); color: #fff;
@@ -333,6 +336,8 @@
   .chat-messages {
     flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column;
     gap: 16px; background: #faf5ff;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   .chat-messages::-webkit-scrollbar { width: 6px; }
   .chat-messages::-webkit-scrollbar-track { background: transparent; }
@@ -2029,6 +2034,43 @@ function setupChat() {
   function closeChat() {
     chatModalOverlay.classList.remove("show");
   }
+
+  // 防止滑动穿透：聊天窗口打开时拦截触摸滚动
+  (function setupScrollLock() {
+    var startY = 0;
+    var isTouching = false;
+
+    chatModalOverlay.addEventListener("touchstart", function(e) {
+      startY = e.touches[0].clientY;
+      isTouching = true;
+    }, { passive: false });
+
+    chatModalOverlay.addEventListener("touchmove", function(e) {
+      // 在聊天窗口内滚动时阻止冒泡，防止触发页面下拉刷新或穿透
+      if (!chatMessages.contains(e.target)) {
+        // 点击在遮罩区域也阻止滚动
+        e.preventDefault();
+        return;
+      }
+      
+      var currentY = e.touches[0].clientY;
+      var deltaY = currentY - startY;
+      
+      // 在顶部向下滑，或底部向上滑 — 阻止页面滚动穿透
+      if (deltaY > 0 && chatMessages.scrollTop <= 0) {
+        e.preventDefault();
+        return;
+      }
+      if (deltaY < 0 && chatMessages.scrollTop + chatMessages.clientHeight >= chatMessages.scrollHeight) {
+        e.preventDefault();
+        return;
+      }
+    }, { passive: false });
+
+    chatModalOverlay.addEventListener("touchend", function() {
+      isTouching = false;
+    }, { passive: false });
+  })();
 
   function scrollToBottom() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
