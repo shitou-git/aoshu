@@ -1937,6 +1937,12 @@ function setupChat() {
   function renderContent(text) {
     if (!text) return "";
     var html = escapeHtml(text);
+
+    // 处理代码块 ```...```
+    html = html.replace(/```([\s\S]+?)```/g, function(match, content) {
+      return '<pre style="background:rgba(0,0,0,0.05);padding:8px 12px;border-radius:6px;overflow-x:auto;margin:8px 0;font-size:0.9em;">' + content.trim() + '</pre>';
+    });
+
     // 处理块级公式 $$...$$
     html = html.replace(/\$\$([\s\S]+?)\$\$/g, function(match, content) {
       try {
@@ -1945,6 +1951,7 @@ function setupChat() {
         return match;
       }
     });
+
     // 处理行内公式 $...$
     html = html.replace(/\$([^\$]+?)\$/g, function(match, content) {
       try {
@@ -1953,10 +1960,28 @@ function setupChat() {
         return match;
       }
     });
+
+    // 处理标题 ### / ## / #
+    html = html.replace(/^### (.+)$/gm, '<h4 style="margin:12px 0 6px;font-size:1.05em;font-weight:600;">$1</h4>');
+    html = html.replace(/^## (.+)$/gm, '<h3 style="margin:14px 0 6px;font-size:1.15em;font-weight:600;">$1</h3>');
+    html = html.replace(/^# (.+)$/gm, '<h2 style="margin:16px 0 8px;font-size:1.25em;font-weight:700;">$1</h2>');
+
     // 处理粗体 **text**
     html = html.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+
+    // 处理斜体 *text*
+    html = html.replace(/(^|[^\*])\*([^\*\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3');
+
+    // 处理无序列表 * item 或 - item
+    html = html.replace(/(^|\n)(\s*)[\*\-] (.+)/g, '$1$2<li>$3</li>');
+    html = html.replace(/(<li>.*<\/li>(?:\s*<li>.*<\/li>)*)/g, '<ul style="margin:6px 0 6px 20px;padding-left:8px;">$1</ul>');
+
+    // 处理有序列表 1. item
+    html = html.replace(/(^|\n)(\s*)\d+\. (.+)/g, '$1$2<li>$3</li>');
+
     // 处理换行
     html = html.replace(/\n/g, '<br>');
+
     return html;
   }
 
@@ -2042,7 +2067,7 @@ function setupChat() {
           messages: [
             {
               role: "system",
-              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。严格禁止在回答中包含任何自我介绍内容，特别是'你好！我是 Agnes-2.0-Flash，由 Sapiens AI 开发。'这句话，直接回答问题即可。"
+              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【输出格式要求】\n1. 使用 Markdown 格式输出\n2. 所有数学公式必须用 LaTeX 格式，行内公式用 $...$ 包裹，独占一行的公式用 $$...$$ 包裹\n3. 例如：平方根写作 $\\sqrt{4}=2$，分数写作 $\\frac{a}{b}$\n4. 严格禁止任何自我介绍，直接给出答案"
             },
             {
               role: "user",
