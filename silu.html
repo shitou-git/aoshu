@@ -2145,6 +2145,7 @@ function setupChat() {
       var reader = response.body.getReader();
       var decoder = new TextDecoder();
       var fullContent = "";
+      var lastRenderedLength = 0; // 记录上次渲染的长度
 
       while (true) {
         var result = await reader.read();
@@ -2162,7 +2163,26 @@ function setupChat() {
               var data = JSON.parse(jsonStr);
               if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
                 fullContent += data.choices[0].delta.content;
-                bubble.textContent = fullContent;
+                
+                // 换行后渲染：找到最后一个换行符，对完整行进行渲染
+                var lastNewlineIndex = fullContent.lastIndexOf('\n');
+                if (lastNewlineIndex > lastRenderedLength) {
+                  // 有新的完整行，渲染到换行符位置
+                  var completePart = fullContent.substring(0, lastNewlineIndex);
+                  var incompletePart = fullContent.substring(lastNewlineIndex + 1);
+                  bubble.innerHTML = renderContent(completePart) + '<br>' + escapeHtml(incompletePart);
+                  lastRenderedLength = lastNewlineIndex;
+                } else {
+                  // 没有新换行，只更新未完成部分
+                  if (lastRenderedLength > 0) {
+                    var renderedPart = fullContent.substring(0, lastRenderedLength);
+                    var unrenderedPart = fullContent.substring(lastRenderedLength + 1);
+                    bubble.innerHTML = renderContent(renderedPart) + '<br>' + escapeHtml(unrenderedPart);
+                  } else {
+                    // 还没有任何换行，显示纯文本
+                    bubble.textContent = fullContent;
+                  }
+                }
                 chatMessages.scrollTop = chatMessages.scrollHeight;
               }
             } catch (e) {
