@@ -1956,8 +1956,12 @@ function setupChat() {
     if (!text) return "";
     if (typeof katex === 'undefined') return escapeHtml(text).replace(/\n/g, '<br>');
 
-    // 用单一扫描法识别 $...$ 和 $$...$$，避免复杂正则导致的误处理
-    var result = "";
+    // 关键修复：先把整段文本做一次"公式提取"，用占位符替换公式，
+    // 然后只对占位符之外的纯文本做escape + markdown处理，
+    // 最后再把渲染好的KaTeX HTML替换回占位符。
+    // 这样可以彻底避免markdown正则破坏KaTeX生成的SVG/HTML。
+
+    var segments = []; // {type: 'text'|'math-inline'|'math-block', content: string}
     var i = 0;
     var len = text.length;
 
@@ -1966,27 +1970,20 @@ function setupChat() {
       if (i + 1 < len && text.charAt(i) === '$' && text.charAt(i + 1) === '$') {
         var endB = text.indexOf('$$', i + 2);
         if (endB !== -1) {
-          var latexB = text.substring(i + 2, endB);
-          try {
-            result += '<div class="katex-block">' + katex.renderToString(fixLatex(latexB.trim()), { throwOnError: false, displayMode: true }) + '</div>';
-          } catch (err) {
-            result += '<span style="color:red;">$' + escapeHtml(latexB) + '$</span>';
-          }
+          segments.push({ type: 'math-block', content: text.substring(i + 2, endB) });
           i = endB + 2;
           continue;
         }
       }
-      // 检查 $...$ 行内公式（单行内容，内容非空）
+      // 检查 $...$ 行内公式（单行、内容非空、且下一个 $ 不是 $$ 的开头）
       if (text.charAt(i) === '$') {
+        // 跳过 $ 的下一字符
         var endI = text.indexOf('$', i + 1);
-        if (endI !== -1 && endI > i + 1) {
+        // 确保不是 $$ (即 endI+1 不是 $)
+        if (endI !== -1 && endI > i + 1 && text.charAt(endI + 1) !== '$') {
           var contentI = text.substring(i + 1, endI);
           if (contentI.indexOf('\n') === -1) {
-            try {
-              result += katex.renderToString(fixLatex(contentI.trim()), { throwOnError: false, displayMode: false });
-            } catch (err) {
-              result += '<span style="color:red;">$' + escapeHtml(contentI) + '$</span>';
-            }
+            segments.push({ type: 'math-inline', content: contentI });
             i = endI + 1;
             continue;
           }
@@ -1995,21 +1992,51 @@ function setupChat() {
       // 普通字符：累积到下一个 $ 之前
       var nextDollar = text.indexOf('$', i);
       var plainEnd = (nextDollar === -1) ? len : nextDollar;
-      result += escapeHtml(text.substring(i, plainEnd));
+      var plainText = text.substring(i, plainEnd);
+      if (plainText.length > 0) {
+        segments.push({ type: 'text', content: plainText });
+      }
       i = plainEnd;
     }
 
-    // 处理Markdown（在公式渲染完成后处理，避免破坏KaTeX生成的HTML）
-    result = result.replace(/```([\s\S]+?)```/g, '<pre style="background:rgba(0,0,0,0.05);padding:8px 12px;border-radius:6px;overflow-x:auto;margin:8px 0;font-size:0.9em;">$1</pre>');
-    result = result.replace(/^### (.+)$/gm, '<h4 style="margin:12px 0 6px;font-size:1.05em;font-weight:600;">$1</h4>');
-    result = result.replace(/^## (.+)$/gm, '<h3 style="margin:14px 0 6px;font-size:1.15em;font-weight:600;">$1</h3>');
-    result = result.replace(/^# (.+)$/gm, '<h2 style="margin:16px 0 8px;font-size:1.25em;font-weight:700;">$1</h2>');
-    result = result.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
-    result = result.replace(/(^|[^\*])\*([^\*\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3');
-    result = result.replace(/(^|\n)(\s*)[\*\-] (.+)/g, '$1$2<li>$3</li>');
-    result = result.replace(/(<li>.*<\/li>(?:\s*<li>.*<\/li>)*)/g, '<ul style="margin:6px 0 6px 20px;padding-left:8px;">$1</ul>');
-    result = result.replace(/(^|\n)(\s*)\d+\. (.+)/g, '$1$2<li>$3</li>');
-    result = result.replace(/\n/g, '<br>');
+    // 第二步：对每段单独处理
+    var result = "";
+    for (var s = 0; s < segments.length; s++) {
+      var seg = segments[s];
+      if (seg.type === 'math-block') {
+        try {
+          result += '<div class="katex-block">' + katex.renderToString(fixLatex(seg.content.trim()), { throwOnError: false, displayMode: true }) + '</div>';
+        } catch (err) {
+          result += '<div class="katex-block" style="color:red;">$' + escapeHtml(seg.content) + '$</div>';
+        }
+      } else if (seg.type === 'math-inline') {
+        try {
+          result += katex.renderToString(fixLatex(seg.content.trim()), { throwOnError: false, displayMode: false });
+        } catch (err) {
+          result += '<span style="color:red;">$' + escapeHtml(seg.content) + '$</span>';
+        }
+      } else {
+        // 普通文本：escape + markdown
+        var txt = escapeHtml(seg.content);
+        // 代码块
+        txt = txt.replace(/```([\s\S]+?)```/g, '<pre style="background:rgba(0,0,0,0.05);padding:8px 12px;border-radius:6px;overflow-x:auto;margin:8px 0;font-size:0.9em;">$1</pre>');
+        // 标题
+        txt = txt.replace(/^### (.+)$/gm, '<h4 style="margin:12px 0 6px;font-size:1.05em;font-weight:600;">$1</h4>');
+        txt = txt.replace(/^## (.+)$/gm, '<h3 style="margin:14px 0 6px;font-size:1.15em;font-weight:600;">$1</h3>');
+        txt = txt.replace(/^# (.+)$/gm, '<h2 style="margin:16px 0 8px;font-size:1.25em;font-weight:700;">$1</h2>');
+        // 粗体
+        txt = txt.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+        // 斜体
+        txt = txt.replace(/(^|[^\*])\*([^\*\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3');
+        // 列表
+        txt = txt.replace(/(^|\n)(\s*)[\*\-] (.+)/g, '$1$2<li>$3</li>');
+        txt = txt.replace(/(<li>.*<\/li>(?:\s*<li>.*<\/li>)*)/g, '<ul style="margin:6px 0 6px 20px;padding-left:8px;">$1</ul>');
+        txt = txt.replace(/(^|\n)(\s*)\d+\. (.+)/g, '$1$2<li>$3</li>');
+        // 换行
+        txt = txt.replace(/\n/g, '<br>');
+        result += txt;
+      }
+    }
 
     return result;
   }
