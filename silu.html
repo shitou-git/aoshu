@@ -2088,6 +2088,7 @@ function setupChat() {
   function openChat() {
     loadChatHistory();
     chatModalOverlay.classList.add("show");
+    setTimeout(scrollToBottom, 50);
     chatInput.focus();
   }
 
