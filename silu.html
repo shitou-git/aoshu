@@ -357,7 +357,10 @@
   .message.user .msg-bubble { border-bottom-right-radius: 4px; }
   .message.ai .msg-bubble { border-bottom-left-radius: 4px; }
 
-  .katex-block { display: block; text-align: left; margin: 12px 0; overflow-x: auto; overflow-y: hidden; padding: 0 4px; }
+  .katex-block { display: block; text-align: left; margin: 2px 0; overflow-x: auto; overflow-y: hidden; padding: 0; line-height: 1; }
+  .katex-block .katex { font-size: 1.05em; }
+  .katex-block .katex-display { margin: 0; }
+  .msg-bubble .katex { font-size: 1em; }
   .msg-bubble p { margin: 0; }
 
   .typing-indicator {
