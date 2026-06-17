@@ -2006,7 +2006,16 @@ function setupChat() {
     chatSendBtn.disabled = true;
 
     addMessage(text, true);
-    var typing = addTypingIndicator();
+
+    // 创建 AI 消息容器（用于流式输出）
+    var emptyTip = chatMessages.querySelector(".chat-empty-tip");
+    if (emptyTip) emptyTip.remove();
+    var aiMsgDiv = document.createElement("div");
+    aiMsgDiv.className = "message ai";
+    aiMsgDiv.innerHTML = '<div class="msg-avatar">🤖</div><div class="msg-bubble"></div>';
+    chatMessages.appendChild(aiMsgDiv);
+    var bubble = aiMsgDiv.querySelector(".msg-bubble");
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
     try {
       var response = await fetch(API_BASE_URL + "/chat/completions", {
@@ -2020,7 +2029,7 @@ function setupChat() {
           messages: [
             {
               role: "system",
-              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。"
+              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。注意：不要在回答开头做自我介绍，直接回答问题即可。"
             },
             {
               role: "user",
@@ -2028,7 +2037,8 @@ function setupChat() {
             }
           ],
           temperature: 0.3,
-          max_tokens: 2048
+          max_tokens: 2048,
+          stream: true
         })
       });
 
@@ -2037,18 +2047,43 @@ function setupChat() {
         throw new Error("API 请求失败：" + response.status + " " + errorText);
       }
 
-      var data = await response.json();
-      var answer = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
-      if (!answer) {
+      // 处理流式响应
+      var reader = response.body.getReader();
+      var decoder = new TextDecoder();
+      var fullContent = "";
+
+      while (true) {
+        var result = await reader.read();
+        if (result.done) break;
+
+        var chunk = decoder.decode(result.value, { stream: true });
+        var lines = chunk.split("\n");
+
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i].trim();
+          if (line === "" || line === "data: [DONE]") continue;
+          if (line.startsWith("data: ")) {
+            try {
+              var jsonStr = line.slice(6);
+              var data = JSON.parse(jsonStr);
+              if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
+                fullContent += data.choices[0].delta.content;
+                bubble.textContent = fullContent;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+              }
+            } catch (e) {
+              // 忽略解析错误
+            }
+          }
+        }
+      }
+
+      if (!fullContent) {
         throw new Error("未收到有效响应");
       }
 
-      removeTypingIndicator();
-      addMessage(answer, false);
-
     } catch (error) {
-      removeTypingIndicator();
-      addMessage("❌ 出错了：" + error.message, false);
+      bubble.textContent = "❌ 出错了：" + error.message;
       console.error(error);
     } finally {
       chatSendBtn.disabled = false;
