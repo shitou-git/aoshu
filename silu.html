@@ -339,7 +339,7 @@
   .chat-messages::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
 
   .message { display: flex; width: 100%; align-items: flex-start; }
-  .message.user { justify-content: flex-start; }
+  .message.user { justify-content: flex-end; }
   .message.user .msg-bubble { background: var(--c-primary); color: #fff; }
   .message.ai { justify-content: flex-start; }
   .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; }
@@ -350,7 +350,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
   .message.ai .msg-bubble { max-width: 100%; border-bottom-left-radius: 4px; }
-  .message.user .msg-bubble { max-width: 100%; border-bottom-left-radius: 4px; }
+  .message.user .msg-bubble { max-width: 100%; border-bottom-right-radius: 4px; }
 
   .katex-block { display: block; text-align: left; margin: 2px 0; overflow-x: auto; overflow-y: hidden; padding: 0; line-height: 1; }
   .katex-block .katex { font-size: 1.05em; }
