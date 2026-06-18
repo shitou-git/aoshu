@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="小学奥数解题思路公式速查手册 · 按题型梳理公式与解题四步法">
 <title>奥数解题思路 · 公式速查手册</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <style>
   :root {
     --c-primary: #7c3aed;
@@ -344,7 +346,7 @@
 
   .chat-messages {
     flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column;
-    gap: 16px; background: #faf5ff;
+    gap: 16px; background: #faf5ff; overscroll-behavior: contain; touch-action: pan-y;
   }
   .chat-messages::-webkit-scrollbar { width: 6px; }
   .chat-messages::-webkit-scrollbar-track { background: transparent; }
@@ -353,27 +355,22 @@
   .message { display: flex; gap: 10px; max-width: 100%; }
   .message.user { justify-content: flex-end; }
   .message.user .msg-bubble { background: var(--c-primary); color: #fff; }
-  .message.ai { justify-content: flex-start; }
-  .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; }
-  .msg-avatar {
-    width: 36px; height: 36px; border-radius: 50%; display: flex;
-    align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
-  }
-  .message.user .msg-avatar { background: var(--c-primary); color: #fff; }
-  .message.ai .msg-avatar { background: linear-gradient(135deg, #8b5cf6, #ec4899); color: #fff; }
+  .message.ai { justify-content: flex-end; }
+  .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; width: 100%; border-bottom-right-radius: 4px; }
   .msg-bubble {
     padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.6;
     max-width: 75%; white-space: pre-wrap; word-break: break-word;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
   .message.user .msg-bubble { border-bottom-right-radius: 4px; }
-  .message.ai .msg-bubble { border-bottom-left-radius: 4px; }
+
+  .katex-block { display: block; margin: 2px 0; padding: 0; text-align: left; line-height: 1; }
 
   .typing-indicator {
-    display: flex; gap: 4px; padding: 8px 0;
+    display: inline-flex; gap: 4px; padding: 0 0 0 8px; vertical-align: middle;
   }
   .typing-dot {
-    width: 8px; height: 8px; background: var(--c-primary); border-radius: 50%;
+    width: 6px; height: 6px; background: #8b5cf6; border-radius: 50%;
     animation: typing 1.4s infinite ease-in-out;
   }
   .typing-dot:nth-child(1) { animation-delay: 0s; }
@@ -390,7 +387,7 @@
   }
   .chat-input {
     flex: 1; padding: 12px 16px; border: 2px solid #e2e8f0;
-    border-radius: 999px; font-size: 0.95rem; outline: none;
+    border-radius: 20px; font-size: 0.95rem; outline: none;
     transition: border-color 0.2s; resize: none; min-height: 44px;
     max-height: 120px; font-family: inherit;
   }
@@ -404,10 +401,45 @@
   .chat-send-btn:hover { transform: scale(1.05); }
   .chat-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
+  .chat-clear-btn {
+    background: rgba(255,255,255,0.2); border: none; color: #fff;
+    width: 32px; height: 32px; border-radius: 50%; font-size: 1rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; margin-right: 8px;
+  }
+  .chat-clear-btn:hover { background: rgba(255,255,255,0.3); }
+
   .chat-empty-tip {
     text-align: center; color: var(--c-muted); font-size: 0.9rem;
     padding: 40px 20px;
   }
+
+  .chat-confirm-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 1100;
+    display: none; justify-content: center; align-items: center;
+    backdrop-filter: blur(4px);
+  }
+  .chat-confirm-overlay.show { display: flex; }
+  .chat-confirm-modal {
+    background: #fff; border-radius: 16px; padding: 24px;
+    max-width: 300px; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .chat-confirm-title { font-size: 1.1rem; font-weight: bold; color: var(--c-text); margin-bottom: 8px; }
+  .chat-confirm-warn { color: #8b5cf6; font-weight: 500; font-size: 1.2rem; margin-bottom: 20px; }
+  .chat-confirm-btns { display: flex; gap: 12px; justify-content: center; }
+  .chat-confirm-cancel {
+    padding: 10px 24px; border: 1px solid #e2e8f0; border-radius: 8px;
+    background: #fff; color: var(--c-muted); font-size: 0.95rem; cursor: pointer;
+  }
+  .chat-confirm-cancel:hover { background: #f8fafc; }
+  .chat-confirm-ok {
+    padding: 10px 24px; border: none; border-radius: 8px;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    color: #fff; font-size: 0.95rem; cursor: pointer;
+  }
+  .chat-confirm-ok:hover { opacity: 0.9; }
 
   /* AI 查公式按钮样式 */
   .cat-link.ai-link {
@@ -423,11 +455,8 @@
     .chat-modal { width: 96%; max-height: 90vh; border-radius: 20px; }
     .chat-header { padding: 14px 16px; }
     .chat-header h2 { font-size: 1.05rem; }
-    .api-config { padding: 10px 14px; }
-    .api-config input { flex: 1 1 150px; padding: 6px 10px; font-size: 0.85rem; }
     .chat-messages { padding: 14px; gap: 12px; }
     .msg-bubble { padding: 10px 14px; font-size: 0.9rem; max-width: 85%; }
-    .msg-avatar { width: 32px; height: 32px; font-size: 1rem; }
     .chat-input-area { padding: 12px 14px; }
     .chat-input { padding: 10px 14px; font-size: 0.9rem; }
     .chat-send-btn { width: 40px; height: 40px; }
@@ -475,15 +504,8 @@
   <div class="chat-modal">
     <div class="chat-header">
       <h2>🤖 AI 查公式</h2>
+      <button class="chat-clear-btn" id="chatClearBtn" title="清空记录">🗑</button>
       <button class="chat-close" id="chatCloseBtn" title="关闭">×</button>
-    </div>
-    <div class="api-config">
-      <label>选择模型:</label>
-      <select id="modelSelect">
-        <option value="agnes-2.0-flash" selected>Agnes 2.0 Flash</option>
-        <option value="agnes-2.0-pro">Agnes 2.0 Pro</option>
-        <option value="agnes-2.0-ultra">Agnes 2.0 Ultra</option>
-      </select>
     </div>
     <div class="chat-messages" id="chatMessages">
       <div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>
@@ -491,6 +513,18 @@
     <div class="chat-input-area">
       <textarea class="chat-input" id="chatInput" placeholder="输入你的问题..." rows="1"></textarea>
       <button class="chat-send-btn" id="chatSendBtn" title="发送">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- 清空确认弹窗 -->
+<div class="chat-confirm-overlay" id="chatConfirmOverlay">
+  <div class="chat-confirm-modal">
+    <div class="chat-confirm-title">确认清空聊天记录？</div>
+    <div class="chat-confirm-warn">此操作不可恢复</div>
+    <div class="chat-confirm-btns">
+      <button class="chat-confirm-cancel" id="chatConfirmCancel">取消</button>
+      <button class="chat-confirm-ok" id="chatConfirmOk">确认</button>
     </div>
   </div>
 </div>
@@ -1941,17 +1975,76 @@ function setupChat() {
   var chatModalOverlay = document.getElementById("chatModalOverlay");
   var chatCloseBtn = document.getElementById("chatCloseBtn");
   var aiChatBtn = document.getElementById("aiChatBtn");
-  var modelSelect = document.getElementById("modelSelect");
   var chatMessages = document.getElementById("chatMessages");
   var chatInput = document.getElementById("chatInput");
   var chatSendBtn = document.getElementById("chatSendBtn");
 
   var API_BASE_URL = "https://apihub.agnes-ai.com/v1";
   var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
+  var CHAT_STORAGE_KEY = "ai_chat_history";
+
+  function escapeHtml(text) {
+    var div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function fixLatex(text) {
+    return text
+      .replace(/\\sqrt\{(\d+)\}\{([^}]+)\}/g, "\\sqrt[$1]{$2}")
+      .replace(/\\sqrt(\d+)/g, "\\sqrt{$1}");
+  }
+
+  function renderContent(text) {
+    var fixed = fixLatex(text);
+    var parts = [];
+    var lastEnd = 0;
+    var regex = /\$\$?([^$]+)\$\$?/g;
+    var match;
+    while ((match = regex.exec(fixed)) !== null) {
+      if (match.index > lastEnd) {
+        parts.push({ type: "text", content: fixed.substring(lastEnd, match.index) });
+      }
+      var isBlock = match[0].startsWith("$$");
+      parts.push({ type: isBlock ? "block" : "inline", content: match[1] });
+      lastEnd = match.index + match[0].length;
+    }
+    if (lastEnd < fixed.length) {
+      parts.push({ type: "text", content: fixed.substring(lastEnd) });
+    }
+
+    var result = "";
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      if (p.type === "text") {
+        var txt = p.content
+          .replace(/\*\*([^*]+)\*\*/g, "$1")
+          .replace(/\*([^*]+)\*/g, "$1")
+          .replace(/^#{1,6}\s*/gm, "")
+          .replace(/^[-*]\s+/gm, "• ")
+          .replace(/\n/g, "<br>");
+        result += txt;
+      } else {
+        try {
+          var html = katex.renderToString(p.content, { throwOnError: false, displayMode: p.type === "block" });
+          if (p.type === "block") {
+            result += '<div class="katex-block">' + html + '</div>';
+          } else {
+            result += html;
+          }
+        } catch (e) {
+          result += escapeHtml(p.content);
+        }
+      }
+    }
+    return result;
+  }
 
   function openChat() {
+    loadChatHistory();
     document.body.classList.add("chat-open");
     chatModalOverlay.classList.add("show");
+    setTimeout(scrollToBottom, 50);
   }
 
   function closeChat() {
@@ -1963,34 +2056,39 @@ function setupChat() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function addMessage(text, isUser) {
-    var emptyTip = chatMessages.querySelector(".chat-empty-tip");
-    if (emptyTip) emptyTip.remove();
-
-    var div = document.createElement("div");
-    div.className = "message " + (isUser ? "user" : "ai");
-    div.innerHTML = '<div class="msg-avatar">' + (isUser ? "👤" : "🤖") + '</div><div class="msg-bubble">' + escapeHtml(text) + '</div>';
-    chatMessages.appendChild(div);
-    scrollToBottom();
-    return div;
+  function saveChatHistory() {
+    var messages = [];
+    var msgDivs = chatMessages.querySelectorAll(".message");
+    msgDivs.forEach(function(div) {
+      var bubble = div.querySelector(".msg-bubble");
+      messages.push({
+        isUser: div.classList.contains("user"),
+        text: bubble.dataset.original || bubble.textContent
+      });
+    });
+    try {
+      localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+    } catch(e) {}
   }
 
-  function addTypingIndicator() {
-    var emptyTip = chatMessages.querySelector(".chat-empty-tip");
-    if (emptyTip) emptyTip.remove();
-
-    var div = document.createElement("div");
-    div.className = "message ai";
-    div.id = "typingIndicator";
-    div.innerHTML = '<div class="msg-avatar">🤖</div><div class="msg-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>';
-    chatMessages.appendChild(div);
-    scrollToBottom();
-    return div;
-  }
-
-  function removeTypingIndicator() {
-    var typing = document.getElementById("typingIndicator");
-    if (typing) typing.remove();
+  function loadChatHistory() {
+    try {
+      var data = localStorage.getItem(CHAT_STORAGE_KEY);
+      if (!data) return;
+      var messages = JSON.parse(data);
+      var emptyTip = chatMessages.querySelector(".chat-empty-tip");
+      if (emptyTip) emptyTip.remove();
+      messages.forEach(function(msg) {
+        var div = document.createElement("div");
+        div.className = "message " + (msg.isUser ? "user" : "ai");
+        var bubbleHtml = msg.isUser ? escapeHtml(msg.text) : renderContent(msg.text);
+        div.innerHTML = '<div class="msg-bubble">' + bubbleHtml + '</div>';
+        var bubble = div.querySelector(".msg-bubble");
+        bubble.dataset.original = msg.text;
+        chatMessages.appendChild(div);
+      });
+      scrollToBottom();
+    } catch(e) {}
   }
 
   function updateInputHeight() {
@@ -2002,62 +2100,173 @@ function setupChat() {
     var text = chatInput.value.trim();
     if (!text) return;
 
-    var model = modelSelect.value || "agnes-2.0-flash";
+    var model = "agnes-2.0-flash";
 
     chatInput.value = "";
     chatInput.style.height = "auto";
     chatSendBtn.disabled = true;
 
-    addMessage(text, true);
-    var typing = addTypingIndicator();
+    var emptyTip = chatMessages.querySelector(".chat-empty-tip");
+    if (emptyTip) emptyTip.remove();
+    var userMsgDiv = document.createElement("div");
+    userMsgDiv.className = "message user";
+    userMsgDiv.innerHTML = '<div class="msg-bubble">' + escapeHtml(text) + '</div>';
+    chatMessages.appendChild(userMsgDiv);
+    scrollToBottom();
+
+    var aiMsgDiv = document.createElement("div");
+    aiMsgDiv.className = "message ai";
+    aiMsgDiv.innerHTML = '<div class="msg-bubble">正在思考<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>';
+    chatMessages.appendChild(aiMsgDiv);
+    var bubble = aiMsgDiv.querySelector(".msg-bubble");
+    scrollToBottom();
+
+    var MAX_RETRIES = 2;
+    var retryCount = 0;
+    var response = null;
+
+    while (retryCount <= MAX_RETRIES) {
+      try {
+        response = await fetch(API_BASE_URL + "/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + API_KEY
+          },
+          body: JSON.stringify({
+            model: model,
+            messages: [
+              {
+                role: "system",
+                content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【极其重要：输出格式严格要求】\n1. 所有数学符号必须使用 LaTeX 语法并用美元符号包裹：\n   - 行内小公式：用 $...$ 包裹，例如 $\\sqrt{4}$、$\\frac{1}{2}$、$x^2$、$a^2+b^2=c^2$\n   - 独占一行的大公式：用 $$...$$ 包裹，例如 $$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$\n2. 根号写法：$\\sqrt{4}$ 而不是根号4或√4\n3. 分数写法：$\\frac{1}{2}$ 而不是 1/2\n4. 平方写法：$x^2$ 而不是 x²\n5. 公式中涉及的所有数字、字母变量必须放在 $...$ 中\n6. 每讲解一个概念后，至少给出一个包含完整公式的例子\n7. 使用 Markdown 格式组织内容（# 标题，**加粗**，- 列表等）\n8. 严格禁止任何自我介绍，直接给出答案"
+              },
+              {
+                role: "user",
+                content: text
+              }
+            ],
+            temperature: 0.3,
+            max_tokens: 2048,
+            stream: true
+          })
+        });
+
+        if (response.ok) {
+          break;
+        }
+
+        var errorText = await response.text();
+        if (response.status >= 500 && response.status < 600 && retryCount < MAX_RETRIES) {
+          retryCount++;
+          await new Promise(function(resolve) { setTimeout(resolve, 1000 * retryCount); });
+          continue;
+        }
+        throw new Error("API 请求失败：" + response.status + " " + errorText);
+
+      } catch(err) {
+        if (retryCount < MAX_RETRIES) {
+          retryCount++;
+          await new Promise(function(resolve) { setTimeout(resolve, 1000 * retryCount); });
+          continue;
+        }
+        throw err;
+      }
+    }
+
+    var reader = response.body.getReader();
+    var decoder = new TextDecoder();
+    var fullContent = "";
+    var renderedHtml = "";
+    var lastRenderedLength = 0;
+    var renderTimeout = null;
+
+    function doRender() {
+      var incompletePart = fullContent.substring(lastRenderedLength);
+      bubble.innerHTML = renderedHtml + (lastRenderedLength > 0 && incompletePart ? '<br>' : '') + escapeHtml(incompletePart);
+      scrollToBottom();
+      renderTimeout = null;
+    }
+
+    while (true) {
+      var result = await reader.read();
+      if (result.done) break;
+
+      var chunk = decoder.decode(result.value, { stream: true });
+      var lines = chunk.split("\n");
+
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (line === "" || line === "data: [DONE]") continue;
+        if (line.startsWith("data: ")) {
+          try {
+            var jsonStr = line.slice(6);
+            var data = JSON.parse(jsonStr);
+            if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
+              if (fullContent.length === 0) {
+                bubble.innerHTML = '';
+              }
+              fullContent += data.choices[0].delta.content;
+
+              var lastNewlineIndex = fullContent.lastIndexOf('\n');
+              if (lastNewlineIndex > lastRenderedLength) {
+                var newContent = fullContent.substring(lastRenderedLength, lastNewlineIndex);
+                renderedHtml += renderContent(newContent);
+                lastRenderedLength = lastNewlineIndex;
+              }
+
+              if (renderTimeout) clearTimeout(renderTimeout);
+              renderTimeout = setTimeout(doRender, 30);
+            }
+          } catch (e) {}
+        }
+      }
+    }
 
     try {
-      var response = await fetch(API_BASE_URL + "/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + API_KEY
-        },
-        body: JSON.stringify({
-          model: model,
-          messages: [
-            {
-              role: "system",
-              content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。"
-            },
-            {
-              role: "user",
-              content: text
-            }
-          ],
-          temperature: 0.3,
-          max_tokens: 2048
-        })
-      });
-
-      if (!response.ok) {
-        var errorText = await response.text();
-        throw new Error("API 请求失败：" + response.status + " " + errorText);
-      }
-
-      var data = await response.json();
-      var answer = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
-      if (!answer) {
+      if (!fullContent) {
         throw new Error("未收到有效响应");
       }
 
-      removeTypingIndicator();
-      addMessage(answer, false);
+      if (renderTimeout) clearTimeout(renderTimeout);
 
+      var remainingContent = fullContent.substring(lastRenderedLength);
+      if (remainingContent) {
+        renderedHtml += renderContent(remainingContent);
+      }
+      bubble.innerHTML = renderedHtml;
+      bubble.dataset.original = fullContent;
+      scrollToBottom();
+      saveChatHistory();
     } catch (error) {
-      removeTypingIndicator();
-      addMessage("❌ 出错了：" + error.message, false);
+      bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
       console.error(error);
     } finally {
       chatSendBtn.disabled = false;
-      chatInput.focus();
     }
   }
+
+  // 防止滑动穿透
+  var startY = 0;
+  chatModalOverlay.addEventListener("touchstart", function(e) {
+    startY = e.touches[0].clientY;
+  }, { passive: false });
+
+  chatModalOverlay.addEventListener("touchmove", function(e) {
+    if (!chatMessages.contains(e.target)) {
+      e.preventDefault();
+      return;
+    }
+    var currentY = e.touches[0].clientY;
+    var deltaY = currentY - startY;
+    if (deltaY > 0 && chatMessages.scrollTop <= 0) {
+      e.preventDefault();
+      return;
+    }
+    if (deltaY < 0 && chatMessages.scrollTop + chatMessages.clientHeight >= chatMessages.scrollHeight) {
+      e.preventDefault();
+      return;
+    }
+  }, { passive: false });
 
   if (aiChatBtn) {
     aiChatBtn.addEventListener("click", openChat);
@@ -2067,6 +2276,36 @@ function setupChat() {
 
   if (chatCloseBtn) {
     chatCloseBtn.addEventListener("click", closeChat);
+  }
+
+  var chatClearBtn = document.getElementById("chatClearBtn");
+  var chatConfirmOverlay = document.getElementById("chatConfirmOverlay");
+  var chatConfirmCancel = document.getElementById("chatConfirmCancel");
+  var chatConfirmOk = document.getElementById("chatConfirmOk");
+
+  if (chatClearBtn) {
+    chatClearBtn.addEventListener("click", function() {
+      if (chatConfirmOverlay) chatConfirmOverlay.classList.add("show");
+    });
+  }
+  if (chatConfirmCancel) {
+    chatConfirmCancel.addEventListener("click", function() {
+      if (chatConfirmOverlay) chatConfirmOverlay.classList.remove("show");
+    });
+  }
+  if (chatConfirmOk) {
+    chatConfirmOk.addEventListener("click", function() {
+      localStorage.removeItem(CHAT_STORAGE_KEY);
+      chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+      if (chatConfirmOverlay) chatConfirmOverlay.classList.remove("show");
+    });
+  }
+  if (chatConfirmOverlay) {
+    chatConfirmOverlay.addEventListener("click", function(e) {
+      if (e.target === chatConfirmOverlay) {
+        chatConfirmOverlay.classList.remove("show");
+      }
+    });
   }
 
   if (chatModalOverlay) {
