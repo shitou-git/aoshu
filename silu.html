@@ -2095,6 +2095,7 @@ function setupChat() {
         return;
       }
       messages.forEach(function(msg) {
+        if (!msg.text || !msg.text.trim()) return; // 跳过空消息
         var div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
         var bubbleHtml = msg.isUser ? escapeHtml(msg.text) : renderContent(msg.text);
