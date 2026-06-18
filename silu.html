@@ -350,9 +350,7 @@
 
   .message { display: flex; gap: 10px; max-width: 100%; }
   .message.user { justify-content: flex-end; }
-  .message.user .msg-bubble { background: var(--c-primary); color: #fff; }
   .message.ai { justify-content: flex-start; }
-  .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; }
   .msg-avatar {
     width: 36px; height: 36px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
@@ -364,8 +362,8 @@
     max-width: 75%; white-space: pre-wrap; word-break: break-word;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
-  .message.user .msg-bubble { border-bottom-right-radius: 4px; }
-  .message.ai .msg-bubble { border-bottom-left-radius: 4px; }
+  .message.user .msg-bubble { background: var(--c-primary); color: #fff; border-bottom-right-radius: 4px; }
+  .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; border-bottom-left-radius: 4px; }
 
   .typing-indicator {
     display: flex; gap: 4px; padding: 8px 0;
@@ -1849,6 +1847,20 @@ function render() {
   }
   content.innerHTML = htmlOut;
 
+  function resetAllCategories() {
+    var allCategories = document.querySelectorAll(".category");
+    allCategories.forEach(function(cat) {
+      cat.classList.remove("active");
+      cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
+      var otherTitle = cat.querySelector(".category-title");
+      if (otherTitle) otherTitle.classList.add("collapsed");
+    });
+  }
+
+  function scrollToElement(el) {
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   // 绑定卡片折叠事件（点击头部）
   var cards = document.querySelectorAll(".card");
   cards.forEach(function(card) {
@@ -1861,7 +1873,6 @@ function render() {
   });
 
   // 二级目录标题点击事件：切换该类别的显示/隐藏
-  // 不展开卡片内容，卡片内容需点击每个 card-header 单独展开
   var catTitles = document.querySelectorAll(".category-title");
   catTitles.forEach(function(title) {
     title.addEventListener("click", function(e) {
@@ -1871,34 +1882,20 @@ function render() {
       if (!catDiv) return;
 
       var isActive = catDiv.classList.contains("active");
-
-      // 先隐藏所有类别（并重置其他类别状态）
-      var allCategories = document.querySelectorAll(".category");
-      allCategories.forEach(function(cat) {
-        cat.classList.remove("active");
-        // 折叠所有卡片内容
-        cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
-        var otherTitle = cat.querySelector(".category-title");
-        if (otherTitle) otherTitle.classList.add("collapsed");
-      });
+      resetAllCategories();
 
       if (!isActive) {
-        // 当前是隐藏的 → 展开显示该类
         catDiv.classList.add("active");
         title.classList.remove("collapsed");
-        // 平滑滚动
-        catDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollToElement(catDiv);
       } else {
-        // 当前是展开的 → 收起，回到只显示主目录的状态
         title.classList.add("collapsed");
-        // 滚动回目录
-        var catList = document.getElementById("catList");
-        if (catList) catList.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollToElement(document.getElementById("catList"));
       }
     });
   });
 
-  // 主目录（cat-link）点击事件：展开对应类别卡片列表，但不展开卡片内容
+  // 主目录（cat-link）点击事件：展开对应类别卡片列表
   var catLinks = document.querySelectorAll(".cat-link");
   catLinks.forEach(function(link) {
     link.addEventListener("click", function() {
@@ -1906,21 +1903,13 @@ function render() {
       var target = document.getElementById(targetId);
       if (!target) return;
 
-      // 先隐藏所有类别、折叠所有卡片内容
-      var allCategories = document.querySelectorAll(".category");
-      allCategories.forEach(function(cat) {
-        cat.classList.remove("active");
-        cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
-        var otherTitle = cat.querySelector(".category-title");
-        if (otherTitle) otherTitle.classList.add("collapsed");
-      });
+      resetAllCategories();
 
-      // 展开目标类（显示卡片列表），但卡片内容保持折叠，用户需逐个点击 card-header 展开
       target.classList.add("active");
       var title = target.querySelector(".category-title");
       if (title) title.classList.remove("collapsed");
 
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToElement(target);
     });
   });
 }
@@ -1935,6 +1924,9 @@ function setupTopBtn() {
 }
 
 // ============ AI 聊天功能 ============
+var API_BASE_URL = "https://apihub.agnes-ai.com/v1";
+var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
+
 function setupChat() {
   var chatModalOverlay = document.getElementById("chatModalOverlay");
   var chatCloseBtn = document.getElementById("chatCloseBtn");
@@ -1944,25 +1936,31 @@ function setupChat() {
   var chatInput = document.getElementById("chatInput");
   var chatSendBtn = document.getElementById("chatSendBtn");
 
-  var API_BASE_URL = "https://apihub.agnes-ai.com/v1";
-  var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
-
   function openChat() {
+    if (!chatModalOverlay || !chatInput) return;
     chatModalOverlay.classList.add("show");
     chatInput.focus();
   }
 
   function closeChat() {
+    if (!chatModalOverlay) return;
     chatModalOverlay.classList.remove("show");
   }
 
   function scrollToBottom() {
+    if (!chatMessages) return;
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function addMessage(text, isUser) {
+  function removeEmptyTip() {
+    if (!chatMessages) return;
     var emptyTip = chatMessages.querySelector(".chat-empty-tip");
     if (emptyTip) emptyTip.remove();
+  }
+
+  function addMessage(text, isUser) {
+    if (!chatMessages) return;
+    removeEmptyTip();
 
     var div = document.createElement("div");
     div.className = "message " + (isUser ? "user" : "ai");
@@ -1973,8 +1971,8 @@ function setupChat() {
   }
 
   function addTypingIndicator() {
-    var emptyTip = chatMessages.querySelector(".chat-empty-tip");
-    if (emptyTip) emptyTip.remove();
+    if (!chatMessages) return;
+    removeEmptyTip();
 
     var div = document.createElement("div");
     div.className = "message ai";
@@ -1991,22 +1989,25 @@ function setupChat() {
   }
 
   function updateInputHeight() {
+    if (!chatInput) return;
     chatInput.style.height = "auto";
     chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + "px";
   }
 
   async function sendMessage() {
+    if (!chatInput || !chatSendBtn) return;
+    
     var text = chatInput.value.trim();
     if (!text) return;
 
-    var model = modelSelect.value || "agnes-2.0-flash";
+    var model = modelSelect ? modelSelect.value : "agnes-2.0-flash";
 
     chatInput.value = "";
     chatInput.style.height = "auto";
     chatSendBtn.disabled = true;
 
     addMessage(text, true);
-    var typing = addTypingIndicator();
+    addTypingIndicator();
 
     try {
       var response = await fetch(API_BASE_URL + "/chat/completions", {
@@ -2052,7 +2053,7 @@ function setupChat() {
       console.error(error);
     } finally {
       chatSendBtn.disabled = false;
-      chatInput.focus();
+      if (chatInput) chatInput.focus();
     }
   }
 
