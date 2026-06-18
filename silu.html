@@ -2086,7 +2086,11 @@ function setupChat() {
       if (!data) return;
       var messages = JSON.parse(data);
       var emptyTip = chatMessages.querySelector(".chat-empty-tip");
-      if (emptyTip) emptyTip.remove();
+      chatMessages.innerHTML = '';
+      if (messages.length === 0) {
+        chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+        return;
+      }
       messages.forEach(function(msg) {
         var div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
