@@ -2095,13 +2095,14 @@ function setupChat() {
         return;
       }
       messages.forEach(function(msg) {
-        if (!msg.text || !msg.text.trim()) return; // 跳过空消息
+        if (!msg.text || !msg.text.trim()) return;
+        var cleanText = msg.text.replace(/^×\s*/, '').replace(/\s*×$/, '');
         var div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
-        var bubbleHtml = msg.isUser ? escapeHtml(msg.text) : renderContent(msg.text);
+        var bubbleHtml = msg.isUser ? escapeHtml(cleanText) : renderContent(cleanText);
         div.innerHTML = '<div class="msg-bubble"><button class="msg-delete" title="删除">×</button>' + bubbleHtml + '</div>';
         var bubble = div.querySelector(".msg-bubble");
-        bubble.dataset.original = msg.text;
+        bubble.dataset.original = cleanText;
         div.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(div); });
         chatMessages.appendChild(div);
       });
@@ -2136,6 +2137,8 @@ function setupChat() {
     var userMsgDiv = document.createElement("div");
     userMsgDiv.className = "message user";
     userMsgDiv.innerHTML = '<div class="msg-bubble"><button class="msg-delete" title="删除">×</button>' + escapeHtml(text) + '</div>';
+    var userBubble = userMsgDiv.querySelector(".msg-bubble");
+    userBubble.dataset.original = text;
     userMsgDiv.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(userMsgDiv); });
     chatMessages.appendChild(userMsgDiv);
     scrollToBottom();
