@@ -364,7 +364,17 @@
   .message.user .msg-bubble { background: var(--c-primary); color: #fff; border-bottom-right-radius: 4px; width: auto; max-width: 100%; }
   .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; border-bottom-left-radius: 4px; width: 100%; }
   .msg-bubble { user-select: text; -webkit-user-select: text; -webkit-touch-callout: default; }
-  .msg-bubble.long-press-active { background: #fce7f3 !important; transition: background 0.15s; }
+  .msg-delete {
+    position: absolute; top: -8px; right: -8px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #ef4444; border: 2px solid #fff; color: #fff;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; line-height: 1; opacity: 0; visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 10; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  .message:hover .msg-delete { opacity: 1; visibility: visible; }
+  @media (hover: none) { .msg-delete { opacity: 1; visibility: visible; } }
 
   .katex-block { display: block; margin: 2px 0; padding: 0; text-align: center; line-height: 1.1; width: 100%; box-sizing: border-box; }
   .katex-block .katex { white-space: normal; }
@@ -2112,9 +2122,10 @@ function setupChat() {
         const div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
         const bubbleHtml = msg.isUser ? optimizeLineBreak(escapeHtml(cleanText)) : renderContent(cleanText);
-        div.innerHTML = '<div class="msg-bubble">' + bubbleHtml + '</div>';
+        div.innerHTML = '<div class="msg-bubble">' + bubbleHtml + '<button class="msg-delete" title="删除">×</button></div>';
         const bubble = div.querySelector(".msg-bubble");
         bubble.dataset.original = cleanText;
+        div.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(div); });
         chatMessages.appendChild(div);
         if (!msg.isUser) autoScaleKatex(bubble);
       });
@@ -2151,9 +2162,10 @@ function setupChat() {
     // 用户消息
     const userMsgDiv = document.createElement("div");
     userMsgDiv.className = "message user";
-    userMsgDiv.innerHTML = '<div class="msg-bubble">' + optimizeLineBreak(escapeHtml(text)) + '</div>';
+    userMsgDiv.innerHTML = '<div class="msg-bubble">' + optimizeLineBreak(escapeHtml(text)) + '<button class="msg-delete" title="删除">×</button></div>';
     const userBubble = userMsgDiv.querySelector(".msg-bubble");
     userBubble.dataset.original = text;
+    userMsgDiv.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(userMsgDiv); });
     chatMessages.appendChild(userMsgDiv);
     scrollToBottom();
 
@@ -2283,13 +2295,15 @@ function setupChat() {
       if (remainingContent) {
         renderedHtml += renderContent(remainingContent);
       }
-      bubble.innerHTML = renderedHtml;
+      bubble.innerHTML = renderedHtml + '<button class="msg-delete" title="删除">×</button>';
       bubble.dataset.original = fullContent;
       autoScaleKatex(bubble);
+      bubble.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(aiMsgDiv); });
       scrollToBottom();
       saveChatHistory();
     } catch (error) {
-      bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
+      bubble.innerHTML = renderContent("❌ 出错了：" + error.message) + '<button class="msg-delete" title="删除">×</button>';
+      bubble.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(aiMsgDiv); });
       console.error(error);
     } finally {
       chatSendBtn.disabled = false;
@@ -2318,50 +2332,6 @@ function setupChat() {
       return;
     }
   }, { passive: false });
-
-  // ===== 长按 & 右键删除（事件委托） =====
-  let longPressTimer = null;
-
-  let longPressFired = false;
-
-  chatMessages.addEventListener("touchstart", function(e) {
-    const bubble = e.target.closest(".msg-bubble");
-    if (!bubble) return;
-    longPressFired = false;
-    const msgDiv = bubble.closest(".message");
-    longPressTimer = setTimeout(function() {
-      longPressFired = true;
-      bubble.classList.add("long-press-active");
-      deleteMessage(msgDiv);
-    }, 600);
-  }, { passive: true });
-
-  chatMessages.addEventListener("touchend", function() {
-    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
-    const active = chatMessages.querySelector(".long-press-active");
-    if (active) active.classList.remove("long-press-active");
-  });
-
-  chatMessages.addEventListener("touchcancel", function() {
-    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
-    const active = chatMessages.querySelector(".long-press-active");
-    if (active) active.classList.remove("long-press-active");
-  });
-
-  chatMessages.addEventListener("touchmove", function() {
-    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
-    const active = chatMessages.querySelector(".long-press-active");
-    if (active) active.classList.remove("long-press-active");
-  }, { passive: true });
-
-  chatMessages.addEventListener("contextmenu", function(e) {
-    if (longPressFired) { longPressFired = false; return; }
-    const bubble = e.target.closest(".msg-bubble");
-    if (!bubble) return;
-    e.preventDefault();
-    const msgDiv = bubble.closest(".message");
-    deleteMessage(msgDiv);
-  });
 
   // ===== 事件绑定 =====
   if (aiChatBtn) {
