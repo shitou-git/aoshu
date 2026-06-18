@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="小学奥数解题思路公式速查手册 · 按题型梳理公式与解题四步法">
+<meta name="theme-color" content="#8b5cf6">
 <title>奥数解题思路 · 公式速查手册</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -11,12 +12,9 @@
   :root {
     --c-primary: #7c3aed;
     --c-primary-soft: #ede9fe;
-    --c-accent: #ec4899;
-    --c-easy: #10b981;
     --c-easy-soft: #d1fae5;
     --c-mid: #f59e0b;
     --c-mid-soft: #fef3c7;
-    --c-hard: #ef4444;
     --c-text: #1f2937;
     --c-muted: #6b7280;
     --c-bg: linear-gradient(135deg, #faf5ff 0%, #fff7ed 50%, #fdf2f8 100%);
@@ -208,11 +206,11 @@
     font-weight: bold; font-size: 0.8rem; padding: 6px 4px;
     width: 44px; line-height: 1; gap: 2px;
     border: 2px solid var(--c-primary-soft);
+    font-family: inherit; color: var(--c-primary);
   }
   .float-btn:hover { background: var(--c-primary-soft); }
   .float-btn-top { top: 24px; color: var(--c-primary); }
   .float-btn .arrow { font-size: 1.2rem; line-height: 1; }
-  .float-btn .arrow-h { font-size: 1rem; }
   .float-btn .label-top, .float-btn .label-mid { font-size: 0.78rem; }
   @media (max-width: 600px) {
     body { padding: 12px; }
@@ -284,6 +282,16 @@
 
     /* 页脚 */
     .footer { font-size: 0.82rem; padding: 14px; }
+
+    /* AI 聊天弹窗 */
+    .chat-modal { width: 96%; max-height: 90vh; border-radius: 20px; }
+    .chat-header { padding: 14px 16px; }
+    .chat-header h2 { font-size: 1.05rem; }
+    .chat-messages { padding: 14px; gap: 12px; }
+    .msg-bubble { padding: 10px 14px; font-size: 0.9rem; max-width: 100%; }
+    .chat-input-area { padding: 12px 14px; }
+    .chat-input { padding: 10px 14px; font-size: 0.9rem; }
+    .chat-send-btn { width: 40px; height: 40px; }
   }
 
   /* 超小屏幕（<380px）额外优化 */
@@ -332,18 +340,6 @@
   }
   .chat-close:hover { background: rgba(255,255,255,0.3); }
 
-  .api-config {
-    background: #f8fafc; padding: 12px 20px; border-bottom: 1px solid #e2e8f0;
-    flex-shrink: 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
-  }
-  .api-config label { font-size: 0.85rem; color: var(--c-muted); font-weight: bold; }
-  .api-config select {
-    flex: 1 1 200px; padding: 8px 12px; border: 2px solid #e2e8f0;
-    border-radius: 10px; font-size: 0.9rem; outline: none;
-    transition: border-color 0.2s; background: #fff; cursor: pointer;
-  }
-  .api-config select:focus { border-color: var(--c-primary); }
-
   .chat-messages {
     flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column;
     gap: 16px; background: #faf5ff; overscroll-behavior: contain; touch-action: pan-y;
@@ -361,7 +357,7 @@
     padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.7;
     max-width: 100%; white-space: normal;
     overflow-wrap: break-word;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow-x: visible; overflow-y: visible;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative;
     box-sizing: border-box;
     text-align: left;
   }
@@ -460,16 +456,6 @@
     transform: translateY(-2px);
   }
 
-  @media (max-width: 600px) {
-    .chat-modal { width: 96%; max-height: 90vh; border-radius: 20px; }
-    .chat-header { padding: 14px 16px; }
-    .chat-header h2 { font-size: 1.05rem; }
-    .chat-messages { padding: 14px; gap: 12px; }
-    .msg-bubble { padding: 10px 14px; font-size: 0.9rem; max-width: 100%; }
-    .chat-input-area { padding: 12px 14px; }
-    .chat-input { padding: 10px 14px; font-size: 0.9rem; }
-    .chat-send-btn { width: 40px; height: 40px; }
-  }
 </style>
 </head>
 <body>
@@ -483,8 +469,8 @@
 
   <!-- ============ 顶部导航 ============ -->
   <div class="topbar">
-    <a href="aoshu.html" class="btn-back">← 返回题库</a>
-    <a href="https://shitou-git.github.io/math/math.html" class="btn-back">🏠 返回首页</a>
+    <a href="aoshu.html" class="btn-back" rel="noopener">← 返回题库</a>
+    <a href="https://shitou-git.github.io/math/math.html" class="btn-back" target="_blank" rel="noopener noreferrer">🏠 返回首页</a>
   </div>
 
   <!-- ============ 目录 ============ -->
@@ -502,11 +488,11 @@
 </div>
 
 <!-- ============ 悬浮按钮 ============ -->
-<div class="float-btn float-btn-top" id="topBtn" title="回到顶部">
+<button class="float-btn float-btn-top" id="topBtn" title="回到顶部" aria-label="回到顶部">
   <span class="arrow">↑</span>
   <span class="label-top">顶</span>
   <span class="label-mid">部</span>
-</div>
+</button>
 
 <!-- ============ AI 聊天弹窗 ============ -->
 <div class="chat-modal-overlay" id="chatModalOverlay" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
@@ -520,7 +506,7 @@
       <div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>
     </div>
     <div class="chat-input-area">
-      <textarea class="chat-input" id="chatInput" placeholder="输入你的问题..." rows="1"></textarea>
+      <textarea class="chat-input" id="chatInput" placeholder="输入你的问题..." rows="1" maxlength="2000"></textarea>
       <button class="chat-send-btn" id="chatSendBtn" title="发送">→</button>
     </div>
   </div>
@@ -1996,6 +1982,7 @@ function setupChat() {
 
   // 待删除消息（闭包变量，替代 window 全局）
   let pendingDeleteMsg = null;
+  let abortController = null;
 
   // ===== 工具函数 =====
   function optimizeLineBreak(text) {
@@ -2031,7 +2018,7 @@ function setupChat() {
       const p = parts[i];
       if (p.type === "text") {
         let txt = p.content
-          .replace(/\*\*([^*]+)\*\*/g, "$1")
+          .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
           .replace(/\*([^*]+)\*/g, "$1")
           .replace(/^#{1,6}\s*/gm, "")
           .replace(/^[-*]\s+/gm, "• ")
@@ -2086,6 +2073,7 @@ function setupChat() {
   function closeChat() {
     document.body.classList.remove("chat-open");
     chatModalOverlay.classList.remove("show");
+    if (abortController) { abortController.abort(); abortController = null; }
   }
 
   function scrollToBottom() {
@@ -2105,7 +2093,7 @@ function setupChat() {
     });
     try {
       localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
-    } catch(e) {}
+    } catch(e) { console.warn("saveChatHistory error:", e); }
   }
 
   function loadChatHistory() {
@@ -2131,7 +2119,7 @@ function setupChat() {
         if (!msg.isUser) autoScaleKatex(bubble);
       });
       scrollToBottom();
-    } catch(e) {}
+    } catch(e) { console.warn("loadChatHistory error:", e); }
   }
 
   // ===== 删除消息 =====
@@ -2193,6 +2181,8 @@ function setupChat() {
     let retryCount = 0;
     let response = null;
 
+    abortController = new AbortController();
+
     while (retryCount <= MAX_RETRIES) {
       try {
         response = await fetch(API_BASE_URL + "/chat/completions", {
@@ -2201,6 +2191,7 @@ function setupChat() {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + API_KEY
           },
+          signal: abortController.signal,
           body: JSON.stringify({
             model: AI_MODEL,
             messages: historyMessages,
@@ -2275,7 +2266,7 @@ function setupChat() {
               if (renderTimeout) clearTimeout(renderTimeout);
               renderTimeout = setTimeout(doRender, 30);
             }
-          } catch (e) {}
+          } catch (e) { /* partial JSON, will retry on next chunk */ }
         }
       }
     }
@@ -2292,7 +2283,6 @@ function setupChat() {
       if (remainingContent) {
         renderedHtml += renderContent(remainingContent);
       }
-      const deleteBtn = '';
       bubble.innerHTML = renderedHtml;
       bubble.dataset.original = fullContent;
       autoScaleKatex(bubble);
@@ -2332,17 +2322,27 @@ function setupChat() {
   // ===== 长按 & 右键删除（事件委托） =====
   let longPressTimer = null;
 
+  let longPressFired = false;
+
   chatMessages.addEventListener("touchstart", function(e) {
     const bubble = e.target.closest(".msg-bubble");
     if (!bubble) return;
+    longPressFired = false;
     const msgDiv = bubble.closest(".message");
     longPressTimer = setTimeout(function() {
+      longPressFired = true;
       bubble.classList.add("long-press-active");
       deleteMessage(msgDiv);
     }, 600);
   }, { passive: true });
 
   chatMessages.addEventListener("touchend", function() {
+    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+    const active = chatMessages.querySelector(".long-press-active");
+    if (active) active.classList.remove("long-press-active");
+  });
+
+  chatMessages.addEventListener("touchcancel", function() {
     if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
     const active = chatMessages.querySelector(".long-press-active");
     if (active) active.classList.remove("long-press-active");
@@ -2355,6 +2355,7 @@ function setupChat() {
   }, { passive: true });
 
   chatMessages.addEventListener("contextmenu", function(e) {
+    if (longPressFired) { longPressFired = false; return; }
     const bubble = e.target.closest(".msg-bubble");
     if (!bubble) return;
     e.preventDefault();
