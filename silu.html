@@ -345,24 +345,28 @@
   .api-config select:focus { border-color: var(--c-primary); }
 
   .chat-messages {
-    flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column;
+    flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column;
     gap: 16px; background: #faf5ff; overscroll-behavior: contain; touch-action: pan-y;
+    width: 100%;
+    box-sizing: border-box;
   }
   .chat-messages::-webkit-scrollbar { width: 6px; }
   .chat-messages::-webkit-scrollbar-track { background: transparent; }
   .chat-messages::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
 
-  .message { display: flex; gap: 10px; max-width: 100%; width: 100%; }
+  .message { display: flex; gap: 0; max-width: 100%; width: 100%; }
   .message.user { justify-content: flex-end; }
   .message.ai { justify-content: flex-start; }
   .msg-bubble {
     padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.7;
-    max-width: 100%; width: 100%; white-space: pre-wrap; word-break: break-all;
+    max-width: 100%; white-space: normal; word-break: break-all;
     overflow-wrap: break-word;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow-x: auto; overflow-y: visible;
+    line-break: anywhere;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow-x: visible; overflow-y: visible;
     box-sizing: border-box;
+    text-align: left;
   }
-  .message.user .msg-bubble { background: var(--c-primary); color: #fff; border-bottom-right-radius: 4px; padding-right: 36px; width: auto; max-width: 90%; }
+  .message.user .msg-bubble { background: var(--c-primary); color: #fff; border-bottom-right-radius: 4px; padding-right: 36px; width: auto; max-width: 100%; }
   .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; border-bottom-left-radius: 4px; padding-right: 36px; width: 100%; }
   .msg-bubble .msg-delete {
     position: absolute; top: 4px; right: 4px;
@@ -2001,6 +2005,10 @@ function setupChat() {
     return div.innerHTML;
   }
 
+  function optimizeLineBreak(text) {
+    return text.replace(/([，。！？、；：）】])/g, "$1&#8203;");
+  }
+
   function fixLatex(text) {
     return text
       .replace(/\\sqrt\{(\d+)\}\{([^}]+)\}/g, "\\sqrt[$1]{$2}")
@@ -2037,7 +2045,7 @@ function setupChat() {
           .replace(/^(\d+\.\s+)/gm, "<br>$1")
           .replace(/\n\n/g, "<br><br>")
           .replace(/\n/g, " ");
-        result += txt;
+        result += optimizeLineBreak(txt);
       } else {
         try {
           var html = katex.renderToString(p.content, { throwOnError: false, displayMode: p.type === "block" });
@@ -2101,7 +2109,7 @@ function setupChat() {
         var cleanText = msg.text.replace(/^×\s*/, '').replace(/\s*×$/, '');
         var div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
-        var bubbleHtml = msg.isUser ? escapeHtml(cleanText) : renderContent(cleanText);
+        var bubbleHtml = msg.isUser ? optimizeLineBreak(escapeHtml(cleanText)) : renderContent(cleanText);
         div.innerHTML = '<div class="msg-bubble"><button class="msg-delete" title="删除">×</button>' + bubbleHtml + '</div>';
         var bubble = div.querySelector(".msg-bubble");
         bubble.dataset.original = cleanText;
@@ -2138,7 +2146,7 @@ function setupChat() {
     if (emptyTip) emptyTip.remove();
     var userMsgDiv = document.createElement("div");
     userMsgDiv.className = "message user";
-    userMsgDiv.innerHTML = '<div class="msg-bubble"><button class="msg-delete" title="删除">×</button>' + escapeHtml(text) + '</div>';
+    userMsgDiv.innerHTML = '<div class="msg-bubble"><button class="msg-delete" title="删除">×</button>' + optimizeLineBreak(escapeHtml(text)) + '</div>';
     var userBubble = userMsgDiv.querySelector(".msg-bubble");
     userBubble.dataset.original = text;
     userMsgDiv.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(userMsgDiv); });
