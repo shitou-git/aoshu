@@ -306,11 +306,13 @@
     background: rgba(0,0,0,0.5); z-index: 1000;
     display: none; justify-content: center; align-items: center;
     backdrop-filter: blur(4px);
+    overscroll-behavior: contain;
   }
   .chat-modal-overlay.show { display: flex; }
+  body.chat-open { overflow: hidden; position: fixed; width: 100%; }
   .chat-modal {
     background: #fff; border-radius: 24px; width: 90%; max-width: 720px;
-    max-height: 85vh; display: flex; flex-direction: column;
+    height: 650px; display: flex; flex-direction: column;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     overflow: hidden;
   }
@@ -1948,11 +1950,13 @@ function setupChat() {
   var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
 
   function openChat() {
+    document.body.classList.add("chat-open");
     chatModalOverlay.classList.add("show");
-    chatInput.focus();
+    setTimeout(function() { chatInput.focus(); }, 100);
   }
 
   function closeChat() {
+    document.body.classList.remove("chat-open");
     chatModalOverlay.classList.remove("show");
   }
 
@@ -2059,6 +2063,8 @@ function setupChat() {
   if (aiChatBtn) {
     aiChatBtn.addEventListener("click", openChat);
   }
+
+  setTimeout(openChat, 100);
 
   if (chatCloseBtn) {
     chatCloseBtn.addEventListener("click", closeChat);
