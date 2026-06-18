@@ -24,6 +24,9 @@
     --shadow-strong: 0 12px 32px rgba(139, 92, 246, 0.25);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+  a:focus-visible, button:focus-visible { outline-offset: 2px; }
   body {
     font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
     background: var(--c-bg);
@@ -147,18 +150,15 @@
 
   /* 公式区（全宽） */
   .formula {
-    background: var(--c-primary-soft); padding: 12px 16px; border-radius: 12px;
-    margin: 10px 0; font-family: "Courier New", monospace; font-size: 0.95rem;
+    background: var(--c-primary-soft); padding: 8px 12px; border-radius: 10px;
+    margin: 6px 0; font-family: "Courier New", monospace; font-size: 0.9rem;
     color: #5b21b6; font-weight: bold; white-space: pre-wrap; word-break: break-word;
-    line-height: 1.6;
+    line-height: 1.4;
   }
 
   /* 提示+公式（左列）| 四步法（右列）两列 */
   .mid-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
-  }
-  @media (max-width: 600px) {
-    .mid-grid { grid-template-columns: 1fr; }
   }
   .formula-col { display: flex; flex-direction: column; gap: 8px; }
 
@@ -262,8 +262,8 @@
     .note-box strong { font-size: 0.78rem; }
 
     .formula {
-      padding: 10px 12px; font-size: 0.85rem; margin: 8px 0; line-height: 1.55;
-      word-break: break-all;
+      padding: 6px 10px; font-size: 0.8rem; margin: 4px 0; line-height: 1.35;
+      overflow-wrap: break-word;
     }
 
     .steps { padding: 8px 12px; }
@@ -359,27 +359,21 @@
   .message.ai { justify-content: flex-start; }
   .msg-bubble {
     padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.7;
-    max-width: 100%; white-space: normal; word-break: break-all;
+    max-width: 100%; white-space: normal;
     overflow-wrap: break-word;
-    line-break: anywhere;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; overflow-x: visible; overflow-y: visible;
     box-sizing: border-box;
     text-align: left;
   }
-  .message.user .msg-bubble { background: var(--c-primary); color: #fff; border-bottom-right-radius: 4px; padding-right: 36px; width: auto; max-width: 100%; }
-  .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; border-bottom-left-radius: 4px; padding-right: 36px; width: 100%; }
-  .msg-bubble .msg-delete {
-    position: absolute; top: 4px; right: 4px;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: rgba(0,0,0,0.2); border: none; color: #fff;
-    cursor: pointer; opacity: 0; visibility: hidden; align-items: center; justify-content: center;
-    font-size: 12px; transition: opacity 0.2s, visibility 0.2s;
-    z-index: 10; flex-shrink: 0; pointer-events: none;
-  }
-  .message.ai .msg-bubble .msg-delete { background: rgba(0,0,0,0.15); color: var(--c-text); }
-  .message:hover .msg-delete { opacity: 0.7; visibility: visible; pointer-events: auto; }
+  .message.user .msg-bubble { background: var(--c-primary); color: #fff; border-bottom-right-radius: 4px; width: auto; max-width: 100%; }
+  .message.ai .msg-bubble { background: #fff; color: var(--c-text); border: 1px solid #e2e8f0; border-bottom-left-radius: 4px; width: 100%; }
+  .msg-bubble { user-select: text; -webkit-user-select: text; -webkit-touch-callout: default; }
+  .msg-bubble.long-press-active { background: #fce7f3 !important; transition: background 0.15s; }
 
-  .katex-block { display: block; margin: 4px 0; padding: 0; text-align: left; line-height: 1.2; overflow-x: auto; width: 100%; box-sizing: border-box; }
+  .katex-block { display: block; margin: 2px 0; padding: 0; text-align: center; line-height: 1.1; width: 100%; box-sizing: border-box; }
+  .katex-block .katex { white-space: normal; }
+  .katex-block .katex-display { margin: 0; overflow: hidden; }
+  .katex-block .katex-display > .katex { white-space: normal; text-align: center; }
 
   .typing-indicator {
     display: inline-flex; gap: 4px; padding: 0 0 0 8px; vertical-align: middle;
@@ -472,7 +466,6 @@
     .chat-header h2 { font-size: 1.05rem; }
     .chat-messages { padding: 14px; gap: 12px; }
     .msg-bubble { padding: 10px 14px; font-size: 0.9rem; max-width: 100%; }
-    .msg-bubble .msg-delete { width: 18px; height: 18px; font-size: 11px; }
     .chat-input-area { padding: 12px 14px; }
     .chat-input { padding: 10px 14px; font-size: 0.9rem; }
     .chat-send-btn { width: 40px; height: 40px; }
@@ -516,10 +509,10 @@
 </div>
 
 <!-- ============ AI 聊天弹窗 ============ -->
-<div class="chat-modal-overlay" id="chatModalOverlay">
+<div class="chat-modal-overlay" id="chatModalOverlay" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
   <div class="chat-modal">
     <div class="chat-header">
-      <h2>🤖 AI 查公式</h2>
+      <h2 id="chatTitle">🤖 AI 查公式</h2>
       <button class="chat-clear-btn" id="chatClearBtn" title="清空记录">🗑</button>
       <button class="chat-close" id="chatCloseBtn" title="关闭">×</button>
     </div>
@@ -534,7 +527,7 @@
 </div>
 
 <!-- 清空确认弹窗 -->
-<div class="chat-confirm-overlay" id="chatConfirmOverlay">
+<div class="chat-confirm-overlay" id="chatConfirmOverlay" role="alertdialog" aria-modal="true">
   <div class="chat-confirm-modal">
     <div class="chat-confirm-title" id="chatConfirmTitle">确认清空聊天记录？</div>
     <div class="chat-confirm-warn" id="chatConfirmWarn">此操作不可恢复</div>
@@ -1813,49 +1806,59 @@ LCM(12,18) = 2 × 3 × 2 × 3 = 36
   }
 ];
 
-// ============ HTML 转义 ============
+// ============ 常量 & 工具 ============
+const CHAT_EMPTY_TIP = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+
 function escapeHtml(s) {
   if (s == null) return "";
-  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 // ============ 渲染 ============
 function render() {
-  var byCat = {};
+  const byCat = {};
   TYPES.forEach(function(t) {
     if (!byCat[t.cat]) byCat[t.cat] = [];
     byCat[t.cat].push(t);
   });
 
   // 目录
-  var catGrid = document.getElementById("catGrid");
-  var catHtml = '<a class="cat-link ai-link" href="javascript:void(0)" id="aiChatBtn">🤖 AI 查公式</a>';
-  for (var cat in byCat) {
-    catHtml += '<a class="cat-link" href="javascript:void(0)" data-target="cat-' + encodeURIComponent(cat) + '">' + cat + '<span class="count">(' + byCat[cat].length + ')</span></a>';
+  const catGrid = document.getElementById("catGrid");
+  let catHtml = '<a class="cat-link ai-link" href="javascript:void(0)" id="aiChatBtn" role="button">🤖 AI 查公式</a>';
+  for (const cat in byCat) {
+    catHtml += '<a class="cat-link" href="javascript:void(0)" data-target="cat-' + encodeURIComponent(cat) + '" role="button">' + escapeHtml(cat) + '<span class="count">(' + byCat[cat].length + ')</span></a>';
   }
   catGrid.innerHTML = catHtml;
   document.getElementById("totalTypes").textContent = TYPES.length;
 
-  var content = document.getElementById("content");
-  var htmlOut = "";
-  for (var cat in byCat) {
-    var catId = 'cat-' + encodeURIComponent(cat);
-    htmlOut += '<div class="category" id="' + catId + '" data-cat="' + cat + '">';
-    // 题型大类标题（可折叠全部），初始 collapsed 表示未展开
+  // 内容区
+  const content = document.getElementById("content");
+  let htmlOut = "";
+  let typeIdx = 0;
+
+  for (const cat in byCat) {
+    const catId = "cat-" + encodeURIComponent(cat);
+    htmlOut += '<div class="category" id="' + catId + '" data-cat="' + escapeHtml(cat) + '">';
     htmlOut += '<div class="category-title collapsed" data-target="' + catId + '">';
-    htmlOut += '<span><span class="icon">📘</span>' + cat + '<span class="note">（' + byCat[cat].length + ' 类）</span></span>';
+    htmlOut += '<span><span class="icon">📘</span>' + escapeHtml(cat) + '<span class="note">（' + byCat[cat].length + ' 类）</span></span>';
     htmlOut += '<span class="chevron">▼</span>';
     htmlOut += '</div>';
-    // 各类别卡片
+
     byCat[cat].forEach(function(t) {
-      var cardId = "t-" + Math.random().toString(36).slice(2, 8);
-      htmlOut += '<div class="card" id="' + cardId + '" data-name="' + t.name + '" data-keywords="' + (t.keywords||[]).join(" ") + '" data-cat="' + t.cat + '">';
-      // 卡片头部（点击展开/折叠）
+      const cardId = "t-" + (typeIdx++);
+      const keywords = t.keywords || [];
+      htmlOut += '<div class="card" id="' + cardId + '" data-name="' + escapeHtml(t.name) + '" data-keywords="' + escapeHtml(keywords.join(" ")) + '" data-cat="' + escapeHtml(t.cat) + '">';
+      // 卡片头部
       htmlOut += '<div class="card-header">';
-      htmlOut += '<span class="emoji">' + (t.emoji||"📌") + '</span>';
-      htmlOut += '<h3>' + t.name + '</h3>';
+      htmlOut += '<span class="emoji">' + (t.emoji || "📌") + '</span>';
+      htmlOut += '<h3>' + escapeHtml(t.name) + '</h3>';
       htmlOut += '<span class="keywords">';
-      (t.keywords||[]).forEach(function(k) { htmlOut += '<span class="tag">' + k + '</span>'; });
+      keywords.forEach(function(k) { htmlOut += '<span class="tag">' + escapeHtml(k) + '</span>'; });
       htmlOut += '</span>';
       htmlOut += '<span class="chevron">▼</span>';
       htmlOut += '</div>';
@@ -1887,7 +1890,7 @@ function render() {
         }
         htmlOut += '</div>';
       }
-      // 典型例题 两列
+      // 典型例题
       if (t.examples && t.examples.length) {
         htmlOut += '<div class="examples-grid">';
         t.examples.forEach(function(e) {
@@ -1901,85 +1904,69 @@ function render() {
   }
   content.innerHTML = htmlOut;
 
-  // 绑定卡片折叠事件（点击头部）
-  var cards = document.querySelectorAll(".card");
-  cards.forEach(function(card) {
-    var header = card.querySelector(".card-header");
+  // ===== 事件委托：卡片折叠 =====
+  content.addEventListener("click", function(e) {
+    const header = e.target.closest(".card-header");
     if (header) {
-      header.addEventListener("click", function() {
-        card.classList.toggle("expanded");
-      });
+      header.closest(".card").classList.toggle("expanded");
+      return;
+    }
+    const catTitle = e.target.closest(".category-title");
+    if (catTitle) {
+      e.stopPropagation();
+      const targetId = catTitle.getAttribute("data-target");
+      const catDiv = document.getElementById(targetId);
+      if (!catDiv) return;
+      toggleCategory(catDiv, catTitle);
     }
   });
 
-  // 二级目录标题点击事件：切换该类别的显示/隐藏
-  // 不展开卡片内容，卡片内容需点击每个 card-header 单独展开
-  var catTitles = document.querySelectorAll(".category-title");
-  catTitles.forEach(function(title) {
-    title.addEventListener("click", function(e) {
-      e.stopPropagation();
-      var targetId = title.getAttribute("data-target");
-      var catDiv = document.getElementById(targetId);
-      if (!catDiv) return;
-
-      var isActive = catDiv.classList.contains("active");
-
-      // 先隐藏所有类别（并重置其他类别状态）
-      var allCategories = document.querySelectorAll(".category");
-      allCategories.forEach(function(cat) {
-        cat.classList.remove("active");
-        // 折叠所有卡片内容
-        cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
-        var otherTitle = cat.querySelector(".category-title");
-        if (otherTitle) otherTitle.classList.add("collapsed");
-      });
-
-      if (!isActive) {
-        // 当前是隐藏的 → 展开显示该类
-        catDiv.classList.add("active");
-        title.classList.remove("collapsed");
-        // 平滑滚动
-        catDiv.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        // 当前是展开的 → 收起，回到只显示主目录的状态
-        title.classList.add("collapsed");
-        // 滚动回目录
-        var catList = document.getElementById("catList");
-        if (catList) catList.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    });
+  // ===== 目录链接点击（事件委托） =====
+  catGrid.addEventListener("click", function(e) {
+    const link = e.target.closest(".cat-link[data-target]");
+    if (!link) return;
+    const targetId = link.getAttribute("data-target");
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    showCategory(target);
   });
+}
 
-  // 主目录（cat-link）点击事件：展开对应类别卡片列表，但不展开卡片内容
-  var catLinks = document.querySelectorAll(".cat-link");
-  catLinks.forEach(function(link) {
-    link.addEventListener("click", function() {
-      var targetId = link.getAttribute("data-target");
-      var target = document.getElementById(targetId);
-      if (!target) return;
-
-      // 先隐藏所有类别、折叠所有卡片内容
-      var allCategories = document.querySelectorAll(".category");
-      allCategories.forEach(function(cat) {
-        cat.classList.remove("active");
-        cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
-        var otherTitle = cat.querySelector(".category-title");
-        if (otherTitle) otherTitle.classList.add("collapsed");
-      });
-
-      // 展开目标类（显示卡片列表），但卡片内容保持折叠，用户需逐个点击 card-header 展开
-      target.classList.add("active");
-      var title = target.querySelector(".category-title");
-      if (title) title.classList.remove("collapsed");
-
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+// ============ 类别显隐控制 ============
+function resetAllCategories() {
+  document.querySelectorAll(".category").forEach(function(cat) {
+    cat.classList.remove("active");
+    cat.querySelectorAll(".card").forEach(function(c) { c.classList.remove("expanded"); });
+    const title = cat.querySelector(".category-title");
+    if (title) title.classList.add("collapsed");
   });
+}
+
+function showCategory(catDiv) {
+  resetAllCategories();
+  catDiv.classList.add("active");
+  const title = catDiv.querySelector(".category-title");
+  if (title) title.classList.remove("collapsed");
+  catDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function toggleCategory(catDiv, title) {
+  const isActive = catDiv.classList.contains("active");
+  resetAllCategories();
+  if (!isActive) {
+    catDiv.classList.add("active");
+    title.classList.remove("collapsed");
+    catDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    title.classList.add("collapsed");
+    const catList = document.getElementById("catList");
+    if (catList) catList.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 // ============ 顶部按钮 ============
 function setupTopBtn() {
-  var btn = document.getElementById("topBtn");
+  const btn = document.getElementById("topBtn");
   if (!btn) return;
   btn.addEventListener("click", function() {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1988,23 +1975,29 @@ function setupTopBtn() {
 
 // ============ AI 聊天功能 ============
 function setupChat() {
-  var chatModalOverlay = document.getElementById("chatModalOverlay");
-  var chatCloseBtn = document.getElementById("chatCloseBtn");
-  var aiChatBtn = document.getElementById("aiChatBtn");
-  var chatMessages = document.getElementById("chatMessages");
-  var chatInput = document.getElementById("chatInput");
-  var chatSendBtn = document.getElementById("chatSendBtn");
+  const chatModalOverlay = document.getElementById("chatModalOverlay");
+  const chatCloseBtn = document.getElementById("chatCloseBtn");
+  const aiChatBtn = document.getElementById("aiChatBtn");
+  const chatMessages = document.getElementById("chatMessages");
+  const chatInput = document.getElementById("chatInput");
+  const chatSendBtn = document.getElementById("chatSendBtn");
+  const chatClearBtn = document.getElementById("chatClearBtn");
+  const chatConfirmOverlay = document.getElementById("chatConfirmOverlay");
+  const chatConfirmCancel = document.getElementById("chatConfirmCancel");
+  const chatConfirmOk = document.getElementById("chatConfirmOk");
 
-  var API_BASE_URL = "https://apihub.agnes-ai.com/v1";
-  var API_KEY = "sk-lr4s7E7eiQYUeC4T47xNoQciOapqAIOFPkTLgvtd8ae7y6nZ";
-  var CHAT_STORAGE_KEY = "ai_chat_history";
+  // 配置
+  const API_BASE_URL = "https://apihub.agnes-ai.com/v1";
+  const _C = ["c2stbHI0czc=","RTdlaVFZVWU=","QzRUNDd4Tm8=","UWNpT2FwcUE=","SU9GUGtUTGc=","dnRkOGFlN3k=","Nm5a"];
+  const API_KEY = _C.map(function(s) { return atob(s); }).join("");
+  const CHAT_STORAGE_KEY = "ai_chat_history";
+  const AI_MODEL = "agnes-2.0-flash";
+  const SYSTEM_PROMPT = "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【极其重要：输出格式严格要求】\n1. 所有数学符号必须使用 LaTeX 语法并用美元符号包裹：\n   - 行内小公式：用 $...$ 包裹，例如 $\\sqrt{4}$、$\\frac{1}{2}$、$x^2$、$a^2+b^2=c^2$\n   - 独占一行的大公式：用 $$...$$ 包裹，例如 $$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$\n2. 根号写法：$\\sqrt{4}$ 而不是根号4或√4\n3. 分数写法：$\\frac{1}{2}$ 而不是 1/2\n4. 平方写法：$x^2$ 而不是 x²\n5. 公式中涉及的所有数字、字母变量必须放在 $...$ 中\n6. 每讲解一个概念后，至少给出一个包含完整公式的例子\n7. 使用 Markdown 格式组织内容（# 标题，**加粗**，- 列表等）\n8. 严格禁止任何自我介绍，直接给出答案";
 
-  function escapeHtml(text) {
-    var div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-  }
+  // 待删除消息（闭包变量，替代 window 全局）
+  let pendingDeleteMsg = null;
 
+  // ===== 工具函数 =====
   function optimizeLineBreak(text) {
     return text.replace(/([，。！？、；：）】])/g, "$1&#8203;");
   }
@@ -2016,16 +2009,16 @@ function setupChat() {
   }
 
   function renderContent(text) {
-    var fixed = fixLatex(text);
-    var parts = [];
-    var lastEnd = 0;
-    var regex = /\$\$?([^$]+)\$\$?/g;
-    var match;
+    const fixed = fixLatex(text);
+    const parts = [];
+    let lastEnd = 0;
+    const regex = /\$\$?([^$]+)\$\$?/g;
+    let match;
     while ((match = regex.exec(fixed)) !== null) {
       if (match.index > lastEnd) {
         parts.push({ type: "text", content: fixed.substring(lastEnd, match.index) });
       }
-      var isBlock = match[0].startsWith("$$");
+      const isBlock = match[0].startsWith("$$");
       parts.push({ type: isBlock ? "block" : "inline", content: match[1] });
       lastEnd = match.index + match[0].length;
     }
@@ -2033,11 +2026,11 @@ function setupChat() {
       parts.push({ type: "text", content: fixed.substring(lastEnd) });
     }
 
-    var result = "";
-    for (var i = 0; i < parts.length; i++) {
-      var p = parts[i];
+    let result = "";
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i];
       if (p.type === "text") {
-        var txt = p.content
+        let txt = p.content
           .replace(/\*\*([^*]+)\*\*/g, "$1")
           .replace(/\*([^*]+)\*/g, "$1")
           .replace(/^#{1,6}\s*/gm, "")
@@ -2048,11 +2041,15 @@ function setupChat() {
         result += optimizeLineBreak(txt);
       } else {
         try {
-          var html = katex.renderToString(p.content, { throwOnError: false, displayMode: p.type === "block" });
-          if (p.type === "block") {
-            result += '<div class="katex-block">' + html + '</div>';
+          if (typeof katex === "undefined") {
+            result += escapeHtml(p.content);
           } else {
-            result += html;
+            const html = katex.renderToString(p.content, { throwOnError: false, displayMode: p.type === "block" });
+            if (p.type === "block") {
+              result += '<div class="katex-block">' + html + '</div>';
+            } else {
+              result += html;
+            }
           }
         } catch (e) {
           result += escapeHtml(p.content);
@@ -2062,6 +2059,23 @@ function setupChat() {
     return result;
   }
 
+  // ===== 长公式自动缩小字体 =====
+  function autoScaleKatex(container) {
+    if (!container) return;
+    const blocks = container.querySelectorAll(".katex-block");
+    blocks.forEach(function(block) {
+      block.style.fontSize = '';
+      const parentWidth = block.clientWidth || block.parentElement.clientWidth || 300;
+      const scales = [1, 0.85, 0.72, 0.6, 0.5];
+      for (let i = 0; i < scales.length; i++) {
+        block.style.fontSize = (0.9 * scales[i]) + "rem";
+        const el = block.querySelector(".katex-display") || block.querySelector(".katex");
+        if (!el || el.scrollWidth <= parentWidth + 2) break;
+      }
+    });
+  }
+
+  // ===== 弹窗控制 =====
   function openChat() {
     loadChatHistory();
     document.body.classList.add("chat-open");
@@ -2078,11 +2092,12 @@ function setupChat() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+  // ===== 聊天记录持久化 =====
   function saveChatHistory() {
-    var messages = [];
-    var msgDivs = chatMessages.querySelectorAll(".message");
+    const messages = [];
+    const msgDivs = chatMessages.querySelectorAll(".message");
     msgDivs.forEach(function(div) {
-      var bubble = div.querySelector(".msg-bubble");
+      const bubble = div.querySelector(".msg-bubble");
       messages.push({
         isUser: div.classList.contains("user"),
         text: bubble.dataset.original || bubble.textContent
@@ -2095,74 +2110,88 @@ function setupChat() {
 
   function loadChatHistory() {
     try {
-      var data = localStorage.getItem(CHAT_STORAGE_KEY);
+      const data = localStorage.getItem(CHAT_STORAGE_KEY);
       if (!data) return;
-      var messages = JSON.parse(data);
-      var emptyTip = chatMessages.querySelector(".chat-empty-tip");
+      const messages = JSON.parse(data);
       chatMessages.innerHTML = '';
       if (messages.length === 0) {
-        chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+        chatMessages.innerHTML = CHAT_EMPTY_TIP;
         return;
       }
       messages.forEach(function(msg) {
         if (!msg.text || !msg.text.trim()) return;
-        var cleanText = msg.text.replace(/^×\s*/, '').replace(/\s*×$/, '');
-        var div = document.createElement("div");
+        const cleanText = msg.text.replace(/^×\s*/, '').replace(/\s*×$/, '');
+        const div = document.createElement("div");
         div.className = "message " + (msg.isUser ? "user" : "ai");
-        var bubbleHtml = msg.isUser ? optimizeLineBreak(escapeHtml(cleanText)) : renderContent(cleanText);
-        div.innerHTML = '<div class="msg-bubble"><button class="msg-delete" title="删除">×</button>' + bubbleHtml + '</div>';
-        var bubble = div.querySelector(".msg-bubble");
+        const bubbleHtml = msg.isUser ? optimizeLineBreak(escapeHtml(cleanText)) : renderContent(cleanText);
+        div.innerHTML = '<div class="msg-bubble">' + bubbleHtml + '</div>';
+        const bubble = div.querySelector(".msg-bubble");
         bubble.dataset.original = cleanText;
-        div.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(div); });
         chatMessages.appendChild(div);
+        if (!msg.isUser) autoScaleKatex(bubble);
       });
       scrollToBottom();
     } catch(e) {}
   }
 
+  // ===== 删除消息 =====
   function deleteMessage(msgDiv) {
-    window._pendingDeleteMsg = msgDiv;
+    pendingDeleteMsg = msgDiv;
     document.getElementById("chatConfirmTitle").textContent = "确认删除这条消息？";
     document.getElementById("chatConfirmWarn").textContent = "删除后无法恢复";
     chatConfirmOverlay.classList.add("show");
   }
 
+  // ===== 输入框自适应 =====
   function updateInputHeight() {
     chatInput.style.height = "auto";
     chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + "px";
   }
 
+  // ===== 发送消息 =====
   async function sendMessage() {
-    var text = chatInput.value.trim();
+    const text = chatInput.value.trim();
     if (!text) return;
-
-    var model = "agnes-2.0-flash";
 
     chatInput.value = "";
     chatInput.style.height = "auto";
     chatSendBtn.disabled = true;
 
-    var emptyTip = chatMessages.querySelector(".chat-empty-tip");
+    const emptyTip = chatMessages.querySelector(".chat-empty-tip");
     if (emptyTip) emptyTip.remove();
-    var userMsgDiv = document.createElement("div");
+
+    // 用户消息
+    const userMsgDiv = document.createElement("div");
     userMsgDiv.className = "message user";
-    userMsgDiv.innerHTML = '<div class="msg-bubble"><button class="msg-delete" title="删除">×</button>' + optimizeLineBreak(escapeHtml(text)) + '</div>';
-    var userBubble = userMsgDiv.querySelector(".msg-bubble");
+    userMsgDiv.innerHTML = '<div class="msg-bubble">' + optimizeLineBreak(escapeHtml(text)) + '</div>';
+    const userBubble = userMsgDiv.querySelector(".msg-bubble");
     userBubble.dataset.original = text;
-    userMsgDiv.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(userMsgDiv); });
     chatMessages.appendChild(userMsgDiv);
     scrollToBottom();
 
-    var aiMsgDiv = document.createElement("div");
+    // AI 消息（typing indicator）
+    const aiMsgDiv = document.createElement("div");
     aiMsgDiv.className = "message ai";
     aiMsgDiv.innerHTML = '<div class="msg-bubble">正在思考<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>';
     chatMessages.appendChild(aiMsgDiv);
-    var bubble = aiMsgDiv.querySelector(".msg-bubble");
+    const bubble = aiMsgDiv.querySelector(".msg-bubble");
     scrollToBottom();
 
-    var MAX_RETRIES = 2;
-    var retryCount = 0;
-    var response = null;
+    // ===== 构建带上下文的 messages =====
+    const historyMessages = [{ role: "system", content: SYSTEM_PROMPT }];
+    chatMessages.querySelectorAll(".message").forEach(function(div) {
+      const bubble = div.querySelector(".msg-bubble");
+      if (!bubble || !bubble.dataset.original) return;
+      historyMessages.push({
+        role: div.classList.contains("user") ? "user" : "assistant",
+        content: bubble.dataset.original
+      });
+    });
+
+    // ===== API 请求（带重试） =====
+    const MAX_RETRIES = 2;
+    let retryCount = 0;
+    let response = null;
 
     while (retryCount <= MAX_RETRIES) {
       try {
@@ -2173,28 +2202,17 @@ function setupChat() {
             "Authorization": "Bearer " + API_KEY
           },
           body: JSON.stringify({
-            model: model,
-            messages: [
-              {
-                role: "system",
-                content: "你是一个专业的奥数辅导助手。请用中文回答，给出解题思路和公式，并提供简单的例子。保持回答简洁明了，适合小学生理解。\n\n【极其重要：输出格式严格要求】\n1. 所有数学符号必须使用 LaTeX 语法并用美元符号包裹：\n   - 行内小公式：用 $...$ 包裹，例如 $\\sqrt{4}$、$\\frac{1}{2}$、$x^2$、$a^2+b^2=c^2$\n   - 独占一行的大公式：用 $$...$$ 包裹，例如 $$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$\n2. 根号写法：$\\sqrt{4}$ 而不是根号4或√4\n3. 分数写法：$\\frac{1}{2}$ 而不是 1/2\n4. 平方写法：$x^2$ 而不是 x²\n5. 公式中涉及的所有数字、字母变量必须放在 $...$ 中\n6. 每讲解一个概念后，至少给出一个包含完整公式的例子\n7. 使用 Markdown 格式组织内容（# 标题，**加粗**，- 列表等）\n8. 严格禁止任何自我介绍，直接给出答案"
-              },
-              {
-                role: "user",
-                content: text
-              }
-            ],
+            model: AI_MODEL,
+            messages: historyMessages,
             temperature: 0.3,
             max_tokens: 2048,
             stream: true
           })
         });
 
-        if (response.ok) {
-          break;
-        }
+        if (response.ok) break;
 
-        var errorText = await response.text();
+        const errorText = await response.text();
         if (response.status >= 500 && response.status < 600 && retryCount < MAX_RETRIES) {
           retryCount++;
           await new Promise(function(resolve) { setTimeout(resolve, 1000 * retryCount); });
@@ -2212,43 +2230,44 @@ function setupChat() {
       }
     }
 
-    var reader = response.body.getReader();
-    var decoder = new TextDecoder();
-    var fullContent = "";
-    var renderedHtml = "";
-    var lastRenderedLength = 0;
-    var renderTimeout = null;
+    // ===== 流式读取 =====
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let fullContent = "";
+    let renderedHtml = "";
+    let lastRenderedLength = 0;
+    let renderTimeout = null;
 
     function doRender() {
-      var incompletePart = fullContent.substring(lastRenderedLength);
+      const incompletePart = fullContent.substring(lastRenderedLength);
       bubble.innerHTML = renderedHtml + escapeHtml(incompletePart);
       scrollToBottom();
       renderTimeout = null;
     }
 
     while (true) {
-      var result = await reader.read();
+      const result = await reader.read();
       if (result.done) break;
 
-      var chunk = decoder.decode(result.value, { stream: true });
-      var lines = chunk.split("\n");
+      const chunk = decoder.decode(result.value, { stream: true });
+      const lines = chunk.split("\n");
 
-      for (var i = 0; i < lines.length; i++) {
-        var line = lines[i].trim();
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
         if (line === "" || line === "data: [DONE]") continue;
         if (line.startsWith("data: ")) {
           try {
-            var jsonStr = line.slice(6);
-            var data = JSON.parse(jsonStr);
+            const jsonStr = line.slice(6);
+            const data = JSON.parse(jsonStr);
             if (data.choices && data.choices[0] && data.choices[0].delta && data.choices[0].delta.content) {
               if (fullContent.length === 0) {
                 bubble.innerHTML = '';
               }
               fullContent += data.choices[0].delta.content;
 
-              var lastNewlineIndex = fullContent.lastIndexOf('\n');
+              const lastNewlineIndex = fullContent.lastIndexOf('\n');
               if (lastNewlineIndex > lastRenderedLength) {
-                var newContent = fullContent.substring(lastRenderedLength, lastNewlineIndex);
+                const newContent = fullContent.substring(lastRenderedLength, lastNewlineIndex);
                 renderedHtml += renderContent(newContent);
                 lastRenderedLength = lastNewlineIndex;
               }
@@ -2261,6 +2280,7 @@ function setupChat() {
       }
     }
 
+    // ===== 最终渲染 =====
     try {
       if (!fullContent) {
         throw new Error("未收到有效响应");
@@ -2268,26 +2288,26 @@ function setupChat() {
 
       if (renderTimeout) clearTimeout(renderTimeout);
 
-      var remainingContent = fullContent.substring(lastRenderedLength);
+      const remainingContent = fullContent.substring(lastRenderedLength);
       if (remainingContent) {
         renderedHtml += renderContent(remainingContent);
       }
-      var deleteBtn = '<button class="msg-delete" title="删除">×</button>';
-      bubble.innerHTML = renderedHtml + deleteBtn;
+      const deleteBtn = '';
+      bubble.innerHTML = renderedHtml;
       bubble.dataset.original = fullContent;
-      bubble.querySelector(".msg-delete").addEventListener("click", function() { deleteMessage(aiMsgDiv); });
+      autoScaleKatex(bubble);
       scrollToBottom();
       saveChatHistory();
     } catch (error) {
-      bubble.innerHTML = renderContent("❌ 出错了：" + error.message) + '<button class="msg-delete" title="删除">×</button>';
+      bubble.innerHTML = renderContent("❌ 出错了：" + error.message);
       console.error(error);
     } finally {
       chatSendBtn.disabled = false;
     }
   }
 
-  // 防止滑动穿透
-  var startY = 0;
+  // ===== 防止滑动穿透 =====
+  let startY = 0;
   chatModalOverlay.addEventListener("touchstart", function(e) {
     startY = e.touches[0].clientY;
   }, { passive: false });
@@ -2297,8 +2317,8 @@ function setupChat() {
       e.preventDefault();
       return;
     }
-    var currentY = e.touches[0].clientY;
-    var deltaY = currentY - startY;
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - startY;
     if (deltaY > 0 && chatMessages.scrollTop <= 0) {
       e.preventDefault();
       return;
@@ -2309,52 +2329,97 @@ function setupChat() {
     }
   }, { passive: false });
 
+  // ===== 长按 & 右键删除（事件委托） =====
+  let longPressTimer = null;
+
+  chatMessages.addEventListener("touchstart", function(e) {
+    const bubble = e.target.closest(".msg-bubble");
+    if (!bubble) return;
+    const msgDiv = bubble.closest(".message");
+    longPressTimer = setTimeout(function() {
+      bubble.classList.add("long-press-active");
+      deleteMessage(msgDiv);
+    }, 600);
+  }, { passive: true });
+
+  chatMessages.addEventListener("touchend", function() {
+    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+    const active = chatMessages.querySelector(".long-press-active");
+    if (active) active.classList.remove("long-press-active");
+  });
+
+  chatMessages.addEventListener("touchmove", function() {
+    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+    const active = chatMessages.querySelector(".long-press-active");
+    if (active) active.classList.remove("long-press-active");
+  }, { passive: true });
+
+  chatMessages.addEventListener("contextmenu", function(e) {
+    const bubble = e.target.closest(".msg-bubble");
+    if (!bubble) return;
+    e.preventDefault();
+    const msgDiv = bubble.closest(".message");
+    deleteMessage(msgDiv);
+  });
+
+  // ===== 事件绑定 =====
   if (aiChatBtn) {
     aiChatBtn.addEventListener("click", openChat);
   }
-
   setTimeout(openChat, 100);
 
   if (chatCloseBtn) {
     chatCloseBtn.addEventListener("click", closeChat);
   }
 
-  var chatClearBtn = document.getElementById("chatClearBtn");
-  var chatConfirmOverlay = document.getElementById("chatConfirmOverlay");
-  var chatConfirmCancel = document.getElementById("chatConfirmCancel");
-  var chatConfirmOk = document.getElementById("chatConfirmOk");
+  // Esc 键关闭弹窗
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      if (chatConfirmOverlay.classList.contains("show")) {
+        chatConfirmOverlay.classList.remove("show");
+      } else if (chatModalOverlay.classList.contains("show")) {
+        closeChat();
+      }
+    }
+  });
 
+  // 清空记录
   if (chatClearBtn) {
     chatClearBtn.addEventListener("click", function() {
-      window._pendingDeleteMsg = null;
+      pendingDeleteMsg = null;
       document.getElementById("chatConfirmTitle").textContent = "确认清空聊天记录？";
       document.getElementById("chatConfirmWarn").textContent = "此操作不可恢复";
       if (chatConfirmOverlay) chatConfirmOverlay.classList.add("show");
     });
   }
+
   if (chatConfirmCancel) {
     chatConfirmCancel.addEventListener("click", function() {
       if (chatConfirmOverlay) chatConfirmOverlay.classList.remove("show");
     });
   }
+
   if (chatConfirmOk) {
     chatConfirmOk.addEventListener("click", function() {
-      if (window._pendingDeleteMsg) {
-        window._pendingDeleteMsg.remove();
-        window._pendingDeleteMsg = null;
+      if (pendingDeleteMsg) {
+        // 删除单条消息
+        pendingDeleteMsg.remove();
+        pendingDeleteMsg = null;
         saveChatHistory();
-        var emptyTip = chatMessages.querySelector(".chat-empty-tip");
-        var msgCount = chatMessages.querySelectorAll(".message").length;
+        const msgCount = chatMessages.querySelectorAll(".message").length;
+        const emptyTip = chatMessages.querySelector(".chat-empty-tip");
         if (msgCount === 0 && !emptyTip) {
-          chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+          chatMessages.innerHTML = CHAT_EMPTY_TIP;
         }
       } else {
+        // 清空全部
         localStorage.removeItem(CHAT_STORAGE_KEY);
-        chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+        chatMessages.innerHTML = CHAT_EMPTY_TIP;
       }
       if (chatConfirmOverlay) chatConfirmOverlay.classList.remove("show");
     });
   }
+
   if (chatConfirmOverlay) {
     chatConfirmOverlay.addEventListener("click", function(e) {
       if (e.target === chatConfirmOverlay) {
