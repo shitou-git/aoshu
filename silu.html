@@ -2034,7 +2034,9 @@ function setupChat() {
           .replace(/\*([^*]+)\*/g, "$1")
           .replace(/^#{1,6}\s*/gm, "")
           .replace(/^[-*]\s+/gm, "• ")
-          .replace(/\n/g, "<br>");
+          .replace(/^(\d+\.\s+)/gm, "<br>$1")
+          .replace(/\n\n/g, "<br><br>")
+          .replace(/\n/g, " ");
         result += txt;
       } else {
         try {
@@ -2211,7 +2213,7 @@ function setupChat() {
 
     function doRender() {
       var incompletePart = fullContent.substring(lastRenderedLength);
-      bubble.innerHTML = renderedHtml + (lastRenderedLength > 0 && incompletePart ? '<br>' : '') + escapeHtml(incompletePart);
+      bubble.innerHTML = renderedHtml + escapeHtml(incompletePart);
       scrollToBottom();
       renderTimeout = null;
     }
