@@ -529,8 +529,8 @@
 <!-- 清空确认弹窗 -->
 <div class="chat-confirm-overlay" id="chatConfirmOverlay">
   <div class="chat-confirm-modal">
-    <div class="chat-confirm-title">确认清空聊天记录？</div>
-    <div class="chat-confirm-warn">此操作不可恢复</div>
+    <div class="chat-confirm-title" id="chatConfirmTitle">确认清空聊天记录？</div>
+    <div class="chat-confirm-warn" id="chatConfirmWarn">此操作不可恢复</div>
     <div class="chat-confirm-btns">
       <button class="chat-confirm-cancel" id="chatConfirmCancel">取消</button>
       <button class="chat-confirm-ok" id="chatConfirmOk">确认</button>
@@ -2102,13 +2102,10 @@ function setupChat() {
   }
 
   function deleteMessage(msgDiv) {
-    msgDiv.remove();
-    saveChatHistory();
-    var emptyTip = chatMessages.querySelector(".chat-empty-tip");
-    var msgCount = chatMessages.querySelectorAll(".message").length;
-    if (msgCount === 0 && !emptyTip) {
-      chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
-    }
+    window._pendingDeleteMsg = msgDiv;
+    document.getElementById("chatConfirmTitle").textContent = "确认删除这条消息？";
+    document.getElementById("chatConfirmWarn").textContent = "删除后无法恢复";
+    chatConfirmOverlay.classList.add("show");
   }
 
   function updateInputHeight() {
@@ -2308,6 +2305,9 @@ function setupChat() {
 
   if (chatClearBtn) {
     chatClearBtn.addEventListener("click", function() {
+      window._pendingDeleteMsg = null;
+      document.getElementById("chatConfirmTitle").textContent = "确认清空聊天记录？";
+      document.getElementById("chatConfirmWarn").textContent = "此操作不可恢复";
       if (chatConfirmOverlay) chatConfirmOverlay.classList.add("show");
     });
   }
@@ -2318,8 +2318,19 @@ function setupChat() {
   }
   if (chatConfirmOk) {
     chatConfirmOk.addEventListener("click", function() {
-      localStorage.removeItem(CHAT_STORAGE_KEY);
-      chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+      if (window._pendingDeleteMsg) {
+        window._pendingDeleteMsg.remove();
+        window._pendingDeleteMsg = null;
+        saveChatHistory();
+        var emptyTip = chatMessages.querySelector(".chat-empty-tip");
+        var msgCount = chatMessages.querySelectorAll(".message").length;
+        if (msgCount === 0 && !emptyTip) {
+          chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+        }
+      } else {
+        localStorage.removeItem(CHAT_STORAGE_KEY);
+        chatMessages.innerHTML = '<div class="chat-empty-tip">👋 你好！我是你的奥数公式助手。<br>有什么题目需要我帮你查公式或解题吗？</div>';
+      }
       if (chatConfirmOverlay) chatConfirmOverlay.classList.remove("show");
     });
   }
