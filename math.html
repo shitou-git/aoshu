@@ -102,11 +102,27 @@
         }
 
         .iframe-page {
-            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            z-index: 1000;
         }
 
         .iframe-page iframe {
             display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .iframe-back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
         }
 
         .back-btn {
@@ -2460,14 +2476,14 @@
 
         <!-- 英语单词页面（iframe 内嵌） -->
         <div id="dcPage" class="game-page iframe-page">
-            <button class="back-btn" onclick="goHome()">← 返回首页</button>
-            <iframe src="dc.html" frameborder="0" style="width:100%;height:calc(100vh - 100px);border-radius:16px;background:#fff;"></iframe>
+            <button class="back-btn iframe-back-btn" onclick="goHome()">← 返回首页</button>
+            <iframe src="dc.html"></iframe>
         </div>
 
         <!-- 奥数页面（iframe 内嵌） -->
         <div id="aoshuPage" class="game-page iframe-page">
-            <button class="back-btn" onclick="goHome()">← 返回首页</button>
-            <iframe src="aoshu.html" frameborder="0" style="width:100%;height:calc(100vh - 100px);border-radius:16px;background:#fff;"></iframe>
+            <button class="back-btn iframe-back-btn" onclick="goHome()">← 返回首页</button>
+            <iframe src="aoshu.html"></iframe>
         </div>
     </div>
 
