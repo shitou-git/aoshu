@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="小学生奥数乐园 · 思维训练题，含计算、应用、行程、几何、数论、推理、组合等多种题型">
-<title>小学生奥数乐园 · 思维训练题</title>
-<style>
+// 奥数题库 ES Module
+const AOSHU_CSS = `
   :root {
     --c-primary: #7c3aed;
     --c-primary-soft: #ede9fe;
@@ -544,9 +538,9 @@
     border-color: #bbf7d0 !important;
     transition: background 0.5s ease;
   }
-</style>
-</head>
-<body>
+`;
+
+const AOSHU_HTML = `
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span>↑</span><span>顶</span><span>部</span></button>
 <button class="random-btn" onclick="jumpToRandom()"><span>🎲</span><span>随</span><span>机</span></button>
 <div class="container">
@@ -560,7 +554,7 @@
   <!-- 难度切换 -->
   <div class="tabs">
     <div class="home-btn-group">
-      <button class="tab home-btn" onclick="location.href='silu.html'">📖 查看公式</button>
+      <button class="tab home-btn" onclick="showGame('silu')">📖 查看公式</button>
     </div>
     <button class="tab active" data-level="easy">🌱 初级</button>
     <button class="tab" data-level="medium">🔥 中级</button>
@@ -660,8 +654,8 @@
   </div>
 
 </div>
+`;
 
-<script>
 /* ============================================================
  * 题库（每题独立解锁）
  * ============================================================ */
@@ -767,7 +761,7 @@ function doSearch(level) {
 function toggleCategoryMenu(level) {
   const menu = document.getElementById("cat-menu-" + level);
   const btn = document.getElementById("cat-btn-" + level);
-  
+
   // 关闭其他菜单
   document.querySelectorAll(".category-menu").forEach(m => {
     if (m.id !== "cat-menu-" + level) {
@@ -779,10 +773,10 @@ function toggleCategoryMenu(level) {
       b.classList.remove("open");
     }
   });
-  
+
   menu.classList.toggle("show");
   btn.classList.toggle("open");
-  
+
   // 点击外部关闭菜单
   if (menu.classList.contains("show")) {
     document.addEventListener("click", closeCategoryMenu);
@@ -807,7 +801,7 @@ function selectCategory(level, cat) {
 
   // 更新按钮文字
   textEl.textContent = cat;
-  
+
   // 更新菜单选中状态
   menu.querySelectorAll("li").forEach(li => li.classList.remove("active"));
   menu.querySelector(`li[data-cat="${cat}"]`)?.classList.add("active");
@@ -850,18 +844,6 @@ function clearSearch(level) {
   });
   tip.textContent = "";
 }
-
-// 回车确认搜索
-document.addEventListener("DOMContentLoaded", function() {
-  ["easy", "medium", "hard"].forEach(level => {
-    const input = document.getElementById("search-" + level);
-    if (input) {
-      input.addEventListener("keydown", function(e) {
-        if (e.key === "Enter") doSearch(level);
-      });
-    }
-  });
-});
 
 function renderProblems(level) {
   const container = document.getElementById("problems-" + level);
@@ -1041,30 +1023,68 @@ function loadAndRender() {
       });
     });
 }
-loadAndRender();
 
-// 页面加载后，在随机按钮上显示已保存的计数
-updateRandomCount(randomSolveCount);
+let aoshuInited = false;
+let aoshuDataLoaded = false;
 
-/* ============================================================
- * 难度切换
- * ============================================================ */
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-    if (!tab.dataset.level) return;
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    document.querySelectorAll(".level-section").forEach(s => s.classList.remove("active"));
-    tab.classList.add("active");
-    document.getElementById("section-" + tab.dataset.level).classList.add("active");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-});
+export function injectAoshuStyle() {
+    if (document.getElementById('aoshu-style')) return;
+    const style = document.createElement('style');
+    style.id = 'aoshu-style';
+    style.textContent = AOSHU_CSS;
+    document.head.appendChild(style);
+}
 
-/* 每次打开/刷新自动回到顶部（关闭浏览器的滚动位置恢复） */
-if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-window.addEventListener("beforeunload", () => { window.scrollTo(0, 0); });
-window.addEventListener("load", () => { window.scrollTo(0, 0); });
-</script>
+export function renderAoshuHTML() {
+    return AOSHU_HTML;
+}
 
-</body>
-</html>
+export function initAoshu() {
+    if (aoshuInited) return;
+    aoshuInited = true;
+
+    // 回车确认搜索（原 DOMContentLoaded 里的初始化代码）
+    ["easy", "medium", "hard"].forEach(level => {
+        const input = document.getElementById("search-" + level);
+        if (input) {
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Enter") doSearch(level);
+            });
+        }
+    });
+
+    // 难度切换
+    document.querySelectorAll(".tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+            if (!tab.dataset.level) return;
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".level-section").forEach(s => s.classList.remove("active"));
+            tab.classList.add("active");
+            document.getElementById("section-" + tab.dataset.level).classList.add("active");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    });
+
+    // 滚动复位（关闭浏览器的滚动位置恢复）
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    window.addEventListener("beforeunload", () => { window.scrollTo(0, 0); });
+    window.addEventListener("load", () => { window.scrollTo(0, 0); });
+
+    // 页面加载后，在随机按钮上显示已保存的计数
+    updateRandomCount(randomSolveCount);
+
+    // 加载题库（用 aoshuDataLoaded 标记防止重复加载）
+    if (!aoshuDataLoaded) {
+        aoshuDataLoaded = true;
+        loadAndRender();
+    }
+}
+
+// 挂载到 window（所有 onclick 调用的函数）
+if (typeof window !== 'undefined') {
+    window.jumpToRandom = jumpToRandom;
+    window.doSearch = doSearch;
+    window.clearSearch = clearSearch;
+    window.toggleCategoryMenu = toggleCategoryMenu;
+    window.selectCategory = selectCategory;
+}

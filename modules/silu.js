@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="小学奥数解题思路公式速查手册 · 按题型梳理公式与解题四步法">
-<meta name="theme-color" content="#8b5cf6">
-<title>奥数解题思路 · 公式速查手册</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<style>
+// 公式速查 ES Module
+const SILU_CSS = `
   :root {
     --c-primary: #7c3aed;
     --c-primary-soft: #ede9fe;
@@ -466,9 +457,9 @@
     transform: translateY(-2px);
   }
 
-</style>
-</head>
-<body>
+`;
+
+const SILU_HTML = `
 <div class="container">
 
   <!-- ============ 标题 ============ -->
@@ -479,7 +470,7 @@
 
   <!-- ============ 顶部导航 ============ -->
   <div class="topbar">
-    <a href="aoshu.html" class="btn-back" rel="noopener">← 返回题库</a>
+    <a href="aoshu.html" class="btn-back" rel="noopener" onclick="showGame('aoshu');return false;">← 返回题库</a>
   </div>
 
   <!-- ============ 目录 ============ -->
@@ -532,8 +523,33 @@
     </div>
   </div>
 </div>
+`;
 
-<script>
+let katexLoaded = false;
+function loadKatex() {
+    return new Promise((resolve) => {
+        if (typeof katex !== 'undefined') { katexLoaded = true; resolve(); return; }
+        if (!document.querySelector('link[href*="katex"]')) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css';
+            document.head.appendChild(link);
+        }
+        if (!document.querySelector('script[src*="katex"]')) {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js';
+            let done = false;
+            const finish = () => { if (!done) { done = true; katexLoaded = typeof katex !== 'undefined'; resolve(); } };
+            script.onload = finish;
+            script.onerror = finish;
+            setTimeout(finish, 10000); // 超时保护
+            document.head.appendChild(script);
+        } else {
+            resolve();
+        }
+    });
+}
+
 // ============ 题型数据 ============
 // 题型数据通过 fetch 异步加载，详见文件末尾 loadAndRender()
 let TYPES = [];
@@ -1181,8 +1197,44 @@ function loadAndRender() {
       }
     });
 }
-loadAndRender();
 
-</script>
-</body>
-</html>
+let siluInited = false;
+
+export function injectSiluStyle() {
+    if (document.getElementById('silu-style')) return;
+    const style = document.createElement('style');
+    style.id = 'silu-style';
+    style.textContent = SILU_CSS;
+    document.head.appendChild(style);
+}
+
+export function renderSiluHTML() {
+    return SILU_HTML;
+}
+
+export async function initSilu() {
+    injectSiluStyle();
+    await loadKatex();
+    if (!siluInited) {
+        siluInited = true;
+        loadAndRender();
+    }
+}
+
+// 挂载到 window（供 onclick 等全局调用）
+if (typeof window !== 'undefined') {
+    window.initSilu = initSilu;
+    window.injectSiluStyle = injectSiluStyle;
+    window.renderSiluHTML = renderSiluHTML;
+    // showGame / goHome 由父应用（math.html）提供，这里确保可回退
+    if (typeof window.showGame !== 'function') {
+        window.showGame = function(game) {
+            try { location.href = game + '.html'; } catch(e) {}
+        };
+    }
+    if (typeof window.goHome !== 'function') {
+        window.goHome = function() {
+            try { location.href = 'index.html'; } catch(e) {}
+        };
+    }
+}

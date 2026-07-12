@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#FF9A9E">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="英语乐园">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="xue.png">
-<title>英语单词大冒险 · 小学英语学习游戏</title>
-<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Baloo+2:wght@400;500;600;700;800&family=Comic+Neue:wght@400;700&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
+// 快乐学英语 ES Module
+// 由 dc.html 转换而来；保留全部 CSS / HTML / JS 功能。
+
+const DC_CSS = `
 /* ====================== 基础与变量 ====================== */
 :root{
   --bg:#FFF8F0;
@@ -616,10 +606,9 @@ body.reduce-motion *{animation-duration:.01ms !important;animation-iteration-cou
   .learn-word{font-size:42px}
   .page-title{font-size:26px}
 }
-</style>
-</head>
-<body>
+`;
 
+const DC_HTML = `
 <!-- 背景装饰 -->
 <div class="bg-deco" id="bg-deco"></div>
 
@@ -1081,8 +1070,20 @@ body.reduce-motion *{animation-duration:.01ms !important;animation-iteration-cou
 
 <!-- Toast -->
 <div class="toast" id="toast"></div>
+`;
 
-<script>
+let fontsLoaded = false;
+function loadFonts() {
+    if (fontsLoaded) return;
+    if (document.querySelector('link[href*="fonts.googleapis"]')) { fontsLoaded = true; return; }
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Baloo+2:wght@400;500;600;700;800&family=Comic+Neue:wght@400;700&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+    fontsLoaded = true;
+}
+
+/* ====================== 以下为原 <script> 内的全部 JS ====================== */
 /* ====================== 数据加载 ====================== */
 var wordDatabase = {};
 var schoolWords = {};
@@ -1102,9 +1103,17 @@ async function loadAllData(){
   await Promise.all(files.map(f => 
     fetch(`${base}/${f.file}`)
       .then(r => r.json())
-      .then(d => { window[f.key] = d; })
+      .then(d => { assignData(f.key, d); })
       .catch(e => console.error("加载失败:", f.file, e))
   ));
+}
+// ES Module 中 var 为模块作用域，需直接赋值给变量（原代码用 window[key]=d 在模块中失效）
+function assignData(key, d){
+  if(key==="wordDatabase") wordDatabase = d;
+  else if(key==="schoolWords") schoolWords = d;
+  else if(key==="dialogDatabase") dialogDatabase = d;
+  else if(key==="ipaData") ipaData = d;
+  else if(key==="wordIpaDict") wordIpaDict = d;
 }
 
 function getWordIpa(word){
@@ -1257,9 +1266,7 @@ function applyFont(){
   document.body.classList.remove("font-cartoon","font-system","font-round","font-clean","font-serif");
   document.body.classList.add("font-" + (state.fontStyle || "cartoon"));
 }
-function applyReduceMotion(){
-  document.body.classList.toggle("reduce-motion", state.reduceMotion);
-}
+/* applyReduceMotion: 简单版已移除，下方为增强版定义 */
 
 /* ====================== 视图切换 ====================== */
 function go(viewId, param){
@@ -2986,17 +2993,63 @@ async function initApp(){
   renderHomeStats();
   setTimeout(preloadIpaAudio, 1500);
 }
-initApp();
 
-// 点击页面其他地方关闭下拉菜单
-document.addEventListener("click", (e)=>{
-  const themeDd = document.getElementById("theme-dropdown");
-  const dialogDd = document.getElementById("dialog-theme-dropdown");
-  const nbDd = document.getElementById("nb-theme-dropdown");
-  if(themeDd && !themeDd.contains(e.target)) themeDd.classList.remove("open");
-  if(dialogDd && !dialogDd.contains(e.target)) dialogDd.classList.remove("open");
-  if(nbDd && !nbDd.contains(e.target)) nbDd.classList.remove("open");
-});
-</script>
-</body>
-</html>
+/* ====================== ES Module 导出与初始化 ====================== */
+let dcInited = false;
+
+export function injectDcStyle() {
+    if (document.getElementById('dc-style')) return;
+    const style = document.createElement('style');
+    style.id = 'dc-style';
+    style.textContent = DC_CSS;
+    document.head.appendChild(style);
+}
+
+export function renderDcHTML() {
+    return DC_HTML;
+}
+
+export function initDc() {
+    injectDcStyle();
+    loadFonts();
+    if (dcInited) return;
+    dcInited = true;
+    // 原 initApp() 启动逻辑
+    initApp();
+    // 点击页面其他地方关闭下拉菜单
+    document.addEventListener("click", (e)=>{
+      const themeDd = document.getElementById("theme-dropdown");
+      const dialogDd = document.getElementById("dialog-theme-dropdown");
+      const nbDd = document.getElementById("nb-theme-dropdown");
+      if(themeDd && !themeDd.contains(e.target)) themeDd.classList.remove("open");
+      if(dialogDd && !dialogDd.contains(e.target)) dialogDd.classList.remove("open");
+      if(nbDd && !nbDd.contains(e.target)) nbDd.classList.remove("open");
+    });
+}
+
+// 挂载到 window：供 HTML 中 onclick / onkeydown 及动态生成节点的 inline handler 调用
+if (typeof window !== 'undefined') {
+    window.go = go;
+    window.speak = speak;
+    window.speakCurrent = speakCurrent;
+    window.nextWord = nextWord;
+    window.prevWord = prevWord;
+    window.exitGame = exitGame;
+    window.restartGame = restartGame;
+    window.toggleNbPlay = toggleNbPlay;
+    window.stopNbPlay = stopNbPlay;
+    window.resetProgress = resetProgress;
+    window.switchSchoolTab = switchSchoolTab;
+    window.toggleSchoolPlay = toggleSchoolPlay;
+    window.stopSchoolPlay = stopSchoolPlay;
+    window.doLookup = doLookup;
+    window.toggleDialogThemeDropdown = toggleDialogThemeDropdown;
+    window.nextDialog = nextDialog;
+    window.nextLevel = nextLevel;
+    window.closeModal = closeModal;
+    window.continueAfterQuiz = continueAfterQuiz;
+    window.toggleThemeDropdown = toggleThemeDropdown;
+    window.toggleNbThemeDropdown = toggleNbThemeDropdown;
+    window.closeConfirm = closeConfirm;
+    window.nbCardClick = nbCardClick;
+}

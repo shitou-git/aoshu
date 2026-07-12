@@ -107,6 +107,7 @@
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
+    cursor: pointer;
   }
   .card::before {
     content: "";
@@ -154,6 +155,25 @@
   .card-math   { --card-color: #667eea; --card-soft: #e0e7ff; }
   .card-english{ --card-color: #f07a3e; --card-soft: #ffedd5; }
 
+  /* ======= 页面容器 ======= */
+  .page {
+    display: none;
+  }
+  .page.active {
+    display: block;
+  }
+  .full-page {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #fff;
+    z-index: 1000;
+    overflow-y: auto;
+    display: none;
+  }
+  .full-page.active {
+    display: block;
+  }
+
   /* ======= 页脚 ======= */
   .footer {
     text-align: center;
@@ -176,46 +196,55 @@
 
 <div class="container">
 
-  <header class="header">
-    <h1><span class="emoji">🌸</span>学习乐园<span class="emoji">🌟</span></h1>
-    <p>小学一站式学习平台 · 奥数 · 公式 · 游戏 · 英语</p>
-  </header>
+  <!-- 首页 -->
+  <div id="homePage" class="page active">
+    <header class="header">
+      <h1><span class="emoji">🌸</span>学习乐园<span class="emoji">🌟</span></h1>
+      <p>小学一站式学习平台 · 奥数 · 公式 · 游戏 · 英语</p>
+    </header>
 
-  <nav class="cards">
+    <nav class="cards">
 
-    <a class="card card-aoshu" href="aoshu.html">
-      <span class="card-icon">🧮</span>
-      <h2>奥数乐园</h2>
-      <p>思维训练题库，含初级、中级、高级三个难度，涵盖计算、应用、行程、几何、数论、推理等多种题型，附解题思路与答案。</p>
-      <span class="tag">434 道题</span>
-    </a>
+      <div class="card card-aoshu" onclick="showGame('aoshu')">
+        <span class="card-icon">🧮</span>
+        <h2>奥数乐园</h2>
+        <p>思维训练题库，含初级、中级、高级三个难度，涵盖计算、应用、行程、几何、数论、推理等多种题型，附解题思路与答案。</p>
+        <span class="tag">434 道题</span>
+      </div>
 
-    <a class="card card-silu" href="silu.html">
-      <span class="card-icon">📖</span>
-      <h2>公式速查</h2>
-      <p>奥数解题思路公式速查手册，按题型梳理公式与解题四步法，支持分类浏览与 AI 查公式，KaTeX 公式渲染。</p>
-      <span class="tag">68 个题型</span>
-    </a>
+      <div class="card card-silu" onclick="showGame('silu')">
+        <span class="card-icon">📖</span>
+        <h2>公式速查</h2>
+        <p>奥数解题思路公式速查手册，按题型梳理公式与解题四步法，支持分类浏览与 AI 查公式，KaTeX 公式渲染。</p>
+        <span class="tag">68 个题型</span>
+      </div>
 
-    <a class="card card-math" href="math.html">
-      <span class="card-icon">🎮</span>
-      <h2>快乐学习</h2>
-      <p>数学游戏集合，含数独、幻方、加减乘除运算、舒尔特方格，锻炼逻辑思维与计算能力，趣味互动。</p>
-      <span class="tag">4 款游戏</span>
-    </a>
+      <div class="card card-math" onclick="showGame('math')">
+        <span class="card-icon">🎮</span>
+        <h2>快乐学习</h2>
+        <p>数学游戏集合，含数独、幻方、加减乘除运算、舒尔特方格，锻炼逻辑思维与计算能力，趣味互动。</p>
+        <span class="tag">4 款游戏</span>
+      </div>
 
-    <a class="card card-english" href="dc.html">
-      <span class="card-icon">📚</span>
-      <h2>英语单词大冒险</h2>
-      <p>小学英语学习游戏，配对游戏、对话学习、单词本、国际音标，配真人发音，趣味学英语。</p>
-      <span class="tag">英语乐园</span>
-    </a>
+      <div class="card card-english" onclick="showGame('dc')">
+        <span class="card-icon">📚</span>
+        <h2>英语单词大冒险</h2>
+        <p>小学英语学习游戏，配对游戏、对话学习、单词本、国际音标，配真人发音，趣味学英语。</p>
+        <span class="tag">英语乐园</span>
+      </div>
 
-  </nav>
+    </nav>
 
-  <footer class="footer">
-    <p>🌸 学习乐园 · 让学习更有趣 🌟</p>
-  </footer>
+    <footer class="footer">
+      <p>🌸 学习乐园 · 让学习更有趣 🌟</p>
+    </footer>
+  </div>
+
+  <!-- 各页面容器（由ES Module动态填充内容） -->
+  <div id="aoshuPage" class="page full-page"></div>
+  <div id="siluPage" class="page full-page"></div>
+  <div id="mathPage" class="page full-page"></div>
+  <div id="dcPage" class="page full-page"></div>
 
 </div>
 
@@ -234,6 +263,8 @@
   }
 })();
 </script>
+
+<script type="module" src="modules/main.js"></script>
 
 </body>
 </html>

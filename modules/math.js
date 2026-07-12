@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#667eea">
-    <link rel="icon" type="image/webp" href="xue-64.webp">
-    <link rel="apple-touch-icon" href="xue-192.webp">
-    <link rel="manifest" href="manifest-math.json">
-    <title>快乐学习</title>
-    <style>
+// 数学游戏集合 ES Module（含数独/幻方/四则运算/舒尔特）
+// 由 math.html 转换而来
+// 内部通过 mathShowGame 切换4个游戏，mathGoHome 返回顶层SPA首页
+
+const MATH_CSS = `
         * {
             margin: 0;
             padding: 0;
@@ -2094,55 +2088,11 @@
         .message.error {
             background: #ffebee;
             color: #c62828;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- 首页 -->
-        <div id="homePage" class="home-page">
-            <h1>🎯 趣味学习</h1>
-            <div class="game-cards">
-                <div class="game-card" onclick="showGame('sudoku')">
-                    <div class="game-icon">📊</div>
-                    <h2>数独</h2>
-                    <p>锻炼逻辑思维的经典数字游戏</p>
-                </div>
-                <div class="game-card" onclick="showGame('magic')">
-                    <div class="game-icon">✨</div>
-                    <h2>幻方</h2>
-                    <p>每行每列对角线和相等的神奇方格</p>
-                </div>
-                <div class="game-card" onclick="showGame('arithmetic')">
-                    <div class="game-icon">🧮</div>
-                    <h2>四则运算</h2>
-                    <p>练习加减乘除，提升运算能力</p>
-                </div>
-                <div class="game-card" onclick="showGame('schulte')">
-                    <div class="game-icon">🎯</div>
-                    <h2>舒尔特方格</h2>
-                    <p>练习注意力，提升专注力</p>
-                </div>
-                <div class="game-card" onclick="showGame('aoshu')">
-                    <div class="game-icon">🧮</div>
-                    <h2>奥数</h2>
-                    <p>拓展思维，挑战奥数难题</p>
-                </div>
-                <div class="game-card" onclick="showGame('dc')">
-                    <div class="game-icon">📚</div>
-                    <h2>快乐学英语</h2>
-                    <p>趣味英语学习乐园</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;" onclick="window.open('https://shitou-git.github.io/chat/index', '_blank')"><img src="Z.webp" style="width: 64px; height: 64px; border-radius: 10px;"><span style="font-size: 14px; font-weight: 600;">灵知</span></div>
-            </div>
-            <div style="text-align: center; margin-top: 20px; color: rgba(255,255,255,0.6); font-size: 12px;">v1.2.0</div>
-        </div>
+        }`;
 
-        <!-- 幻方游戏页面 -->
-        <div id="magicPage" class="game-page">
-            <button class="back-btn" onclick="goHome()">← 返回首页</button>
+// 4个游戏页面的HTML（不含homePage，由顶层SPA管理首页）
+const MATH_HTML = `<div id="magicPage" class="game-page">
+            <button class="back-btn" onclick="mathGoHome()">← 返回首页</button>
             <div class="header">
                 <h1>✨ 幻方游戏</h1>
                 <p>点击空白格子，再点击下方数字填写</p>
@@ -2173,9 +2123,8 @@
             </div>
         </div>
 
-        <!-- 四则运算游戏页面（加减法 + 乘除法合并） -->
-        <div id="arithmeticPage" class="game-page">
-            <button class="back-btn" onclick="goHome()">← 返回首页</button>
+<div id="arithmeticPage" class="game-page">
+            <button class="back-btn" onclick="mathGoHome()">← 返回首页</button>
             <div class="header">
                 <h1>🧮 四则运算</h1>
                 <p>练习加减乘除，使用数字按钮输入答案</p>
@@ -2325,9 +2274,8 @@
             </div>
         </div>
 
-        <!-- 舒尔特方格游戏页面 -->
-        <div id="schultePage" class="game-page">
-            <button class="back-btn" onclick="goHome()">← 返回首页</button>
+<div id="schultePage" class="game-page">
+            <button class="back-btn" onclick="mathGoHome()">← 返回首页</button>
             <div class="header">
                 <h1>🎯 舒尔特方格</h1>
                 <p>按顺序点击数字，锻炼专注力</p>
@@ -2455,9 +2403,8 @@
             </div>
         </div>
 
-        <!-- 数独游戏页面 -->
-        <div id="sudokuPage" class="game-page">
-            <button class="back-btn" onclick="goHome()">← 返回首页</button>
+<div id="sudokuPage" class="game-page">
+            <button class="back-btn" onclick="mathGoHome()">← 返回首页</button>
             <div class="header">
                 <h1>📊 数独游戏</h1>
                 <p>锻炼逻辑思维的经典数字游戏</p>
@@ -2494,37 +2441,19 @@
                     <p>在空格中填入数字 1-9，使每行、每列和每个宫格内的数字都不重复。九宫格：每行、每列、每个3×3小宫格含1-9各一次。四宫格：每行、每列、每个2×2小宫格含1-4各一次。六宫格：每行、每列、每个2×3小宫格含1-6各一次。</p>
                 </div>
             </div>
-        </div>
+        </div>`;
 
-        <!-- 英语单词页面（iframe 内嵌） -->
-        <div id="dcPage" class="game-page iframe-page">
-            <iframe src="dc.html"></iframe>
-        </div>
 
-        <!-- 奥数页面（iframe 内嵌） -->
-        <div id="aoshuPage" class="game-page iframe-page">
-            <iframe src="aoshu.html"></iframe>
-        </div>
-    </div>
-
-    <!-- iframe 返回按钮（独立于页面，固定在视口） -->
-    <button id="iframeBackBtn" class="back-btn iframe-back-btn" onclick="goHome()" style="display: none;">← 返回首页</button>
-
-    <script>
         // ========== 通用函数 ==========
         let currentGame = 'home';
         let timerInterval = null;
         let startTime = 0;
 
-        function showGame(game) {
-            document.getElementById('homePage').style.display = 'none';
+        function mathShowGame(game) {
             document.getElementById('magicPage').classList.remove('active');
             document.getElementById('arithmeticPage').classList.remove('active');
             document.getElementById('schultePage').classList.remove('active');
             document.getElementById('sudokuPage').classList.remove('active');
-            document.getElementById('dcPage').classList.remove('active');
-            document.getElementById('aoshuPage').classList.remove('active');
-            document.getElementById('iframeBackBtn').style.display = 'none';
 
             if (game === 'sudoku') {
                 document.getElementById('sudokuPage').classList.add('active');
@@ -2538,31 +2467,25 @@
             } else if (game === 'schulte') {
                 document.getElementById('schultePage').classList.add('active');
                 initSchulte();
-            } else if (game === 'dc') {
-                document.getElementById('dcPage').classList.add('active');
-                document.getElementById('iframeBackBtn').style.display = 'inline-flex';
-            } else if (game === 'aoshu') {
-                document.getElementById('aoshuPage').classList.add('active');
-                document.getElementById('iframeBackBtn').style.display = 'inline-flex';
             }
             currentGame = game;
         }
 
-        function goHome() {
-            document.getElementById('homePage').style.display = 'block';
+        function mathGoHome() {
             document.getElementById('magicPage').classList.remove('active');
             document.getElementById('arithmeticPage').classList.remove('active');
             document.getElementById('schultePage').classList.remove('active');
             document.getElementById('sudokuPage').classList.remove('active');
-            document.getElementById('dcPage').classList.remove('active');
-            document.getElementById('aoshuPage').classList.remove('active');
-            document.getElementById('iframeBackBtn').style.display = 'none';
             stopTimer();
             // 清除舒尔特方格计时器
             if (typeof stopSchulteClock === 'function') {
                 stopSchulteClock();
             }
             currentGame = 'home';
+            // 返回顶层SPA首页（由 main.js 提供）
+            if (typeof window.goHome === 'function') {
+                window.goHome();
+            }
         }
 
         // ========== 四则运算模式切换（加减法 / 乘除法） ==========
@@ -3179,25 +3102,6 @@
             startTimer();
         }
 
-        // ========== 事件绑定 ==========
-        document.querySelectorAll('#magicPage .diff-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#magicPage .diff-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                magicDifficulty = btn.dataset.level;
-                resetMagicGame();
-            });
-        });
-
-        document.querySelectorAll('#addsubSection .diff-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#addsubSection .diff-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                point24Difficulty = btn.dataset.level;
-                resetPoint24Game();
-            });
-        });
-
         // ========== 乘除法计算游戏 ==========
         let multdivDifficulty = 'easy';
         let multdivAnswer = 0;
@@ -3551,16 +3455,6 @@
             startTimer();
         }
 
-        // ========== 乘除法事件绑定 ==========
-        document.querySelectorAll('#multdivSection .diff-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#multdivSection .diff-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                multdivDifficulty = btn.dataset.level;
-                resetMultdivGame();
-            });
-        });
-
         // ========== 计数器工具函数（LocalStorage 持久化） ==========
         const STORAGE_KEY_MAP = {
             point24: { correct: 'point24CorrectCount', wrong: 'point24WrongCount' },
@@ -3604,12 +3498,6 @@
                 }
             }
         }
-
-        // 页面加载时自动初始化两个页面的计数器显示
-        document.addEventListener('DOMContentLoaded', () => {
-            renderCounter('point24');
-            renderCounter('multdiv');
-        });
 
         // ========== 舒尔特方格游戏 ==========
         const SCHULTE_STORE_KEY = "schulte_records_v2";
@@ -4502,14 +4390,6 @@
             return true;
         }
 
-        function shuffleArray(array) {
-            const newArray = [...array];
-            for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-            }
-            return newArray;
-        }
 
         function createSudokuPuzzle(solution, size, difficulty) {
             const puzzle = solution.map(row => [...row]);
@@ -4801,9 +4681,73 @@
             const secs = totalSeconds % 60;
             return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
-    </script>
-    <div class="footer">
-        <p>@Stone | 锻炼逻辑思维的经典数字游戏</p>
-    </div>
-</body>
-</html>
+
+// ========== 模块初始化与导出 ==========
+let mathInited = false;
+
+export function injectMathStyle() {
+    if (document.getElementById('math-style')) return;
+    const style = document.createElement('style');
+    style.id = 'math-style';
+    style.textContent = MATH_CSS;
+    document.head.appendChild(style);
+}
+
+export function renderMathHTML() {
+    return MATH_HTML;
+}
+
+export function initMath() {
+    if (mathInited) return;
+    mathInited = true;
+
+    // 事件绑定（由顶层移入）
+    // ========== 事件绑定 ==========
+        document.querySelectorAll('#magicPage .diff-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#magicPage .diff-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                magicDifficulty = btn.dataset.level;
+                resetMagicGame();
+            });
+        });
+
+        document.querySelectorAll('#addsubSection .diff-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#addsubSection .diff-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                point24Difficulty = btn.dataset.level;
+                resetPoint24Game();
+            });
+        });
+
+    // ========== 乘除法事件绑定 ==========
+        document.querySelectorAll('#multdivSection .diff-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#multdivSection .diff-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                multdivDifficulty = btn.dataset.level;
+                resetMultdivGame();
+            });
+        });
+
+    renderCounter('point24');
+        renderCounter('multdiv');
+
+    // 暴露给 window 供 inline onclick 调用
+    window.mathShowGame = mathShowGame;
+    window.mathGoHome = mathGoHome;
+    window.switchArithmeticMode = switchArithmeticMode;
+    window.resetMagicGame = resetMagicGame;
+    window.showMagicSolution = showMagicSolution;
+    window.checkMagicAnswer = checkMagicAnswer;
+    window.resetPoint24Game = resetPoint24Game;
+    window.showPoint24Solution = showPoint24Solution;
+    window.checkPoint24Answer = checkPoint24Answer;
+    window.confirmResetCounter = confirmResetCounter;
+    window.resetMultdivGame = resetMultdivGame;
+    window.showMultdivSolution = showMultdivSolution;
+    window.checkMultdivAnswer = checkMultdivAnswer;
+}
+
+export { mathShowGame };
