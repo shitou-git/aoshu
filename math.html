@@ -2498,15 +2498,16 @@
 
         <!-- 英语单词页面（iframe 内嵌） -->
         <div id="dcPage" class="game-page iframe-page">
-            <button class="back-btn iframe-back-btn" onclick="goHome()">← 返回首页</button>
             <iframe src="dc.html"></iframe>
         </div>
 
         <!-- 奥数页面（iframe 内嵌） -->
         <div id="aoshuPage" class="game-page iframe-page">
-            <button class="back-btn iframe-back-btn" onclick="goHome()">← 返回首页</button>
             <iframe src="aoshu.html"></iframe>
         </div>
+
+        <!-- iframe 返回按钮（独立于页面，固定在视口） -->
+        <button id="iframeBackBtn" class="back-btn iframe-back-btn" onclick="goHome()" style="display: none;">← 返回首页</button>
     </div>
 
     <script>
@@ -2538,8 +2539,10 @@
                 initSchulte();
             } else if (game === 'dc') {
                 document.getElementById('dcPage').classList.add('active');
+                document.getElementById('iframeBackBtn').style.display = 'inline-flex';
             } else if (game === 'aoshu') {
                 document.getElementById('aoshuPage').classList.add('active');
+                document.getElementById('iframeBackBtn').style.display = 'inline-flex';
             }
             currentGame = game;
         }
@@ -2552,6 +2555,7 @@
             document.getElementById('sudokuPage').classList.remove('active');
             document.getElementById('dcPage').classList.remove('active');
             document.getElementById('aoshuPage').classList.remove('active');
+            document.getElementById('iframeBackBtn').style.display = 'none';
             stopTimer();
             // 清除舒尔特方格计时器
             if (typeof stopSchulteClock === 'function') {
