@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#8b5cf6">
+<meta name="description" content="小学学习乐园 · 奥数题库、公式速查、数学游戏、英语单词，一站式学习平台">
+<link rel="icon" type="image/webp" href="xue-64.webp">
+<link rel="apple-touch-icon" href="xue-192.webp">
+<link rel="manifest" href="manifest.json">
+<title>学习乐园 · 小学一站式学习平台</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --c-primary: #8b5cf6;
+    --c-accent: #ec4899;
+    --c-warm: #f59e0b;
+    --c-text: #1f2937;
+    --c-muted: #6b7280;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
+    background: linear-gradient(135deg, #faf5ff 0%, #fff7ed 50%, #fdf2f8 100%);
+    min-height: 100vh;
+    color: var(--c-text);
+    line-height: 1.6;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* 飘动装饰背景 */
+  .bg-deco { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .bg-deco i {
+    position: absolute; font-size: 36px; opacity: 0.3;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.35; }
+    90%  { opacity: 0.35; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+  }
+
+  .container { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ======= 标题区 ======= */
+  .header {
+    text-align: center;
+    padding: 44px 24px 36px;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
+    color: #fff;
+    border-radius: 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(255,255,255,0.2) 0%, transparent 25%),
+      radial-gradient(circle at 85% 75%, rgba(255,255,255,0.15) 0%, transparent 30%);
+    pointer-events: none;
+  }
+  .header h1 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.12);
+    position: relative;
+  }
+  .header p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .header .emoji { display: inline-block; margin: 0 6px; animation: bounce 2s infinite; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ======= 卡片网格 ======= */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: var(--card-color, var(--c-primary));
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(124, 58, 237, 0.22);
+    border-color: var(--card-color, var(--c-primary));
+  }
+  .card:active { transform: translateY(-2px); }
+
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--c-text);
+  }
+  .card p {
+    font-size: 0.95rem;
+    color: var(--c-muted);
+    line-height: 1.7;
+  }
+  .card .tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: var(--card-soft, #ede9fe);
+    color: var(--card-color, var(--c-primary));
+  }
+
+  /* 各卡片配色 */
+  .card-aoshu  { --card-color: #7c3aed; --card-soft: #ede9fe; }
+  .card-silu   { --card-color: #ec4899; --card-soft: #fce7f3; }
+  .card-math   { --card-color: #667eea; --card-soft: #e0e7ff; }
+  .card-english{ --card-color: #f07a3e; --card-soft: #ffedd5; }
+
+  /* ======= 页脚 ======= */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--c-muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    .header h1 { font-size: 1.9rem; letter-spacing: 2px; }
+    .header p { font-size: 0.95rem; }
+    .cards { grid-template-columns: 1fr; gap: 16px; }
+    .card { padding: 26px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-deco" id="bgDeco"></div>
+
+<div class="container">
+
+  <header class="header">
+    <h1><span class="emoji">🌸</span>学习乐园<span class="emoji">🌟</span></h1>
+    <p>小学一站式学习平台 · 奥数 · 公式 · 游戏 · 英语</p>
+  </header>
+
+  <nav class="cards">
+
+    <a class="card card-aoshu" href="aoshu.html">
+      <span class="card-icon">🧮</span>
+      <h2>奥数乐园</h2>
+      <p>思维训练题库，含初级、中级、高级三个难度，涵盖计算、应用、行程、几何、数论、推理等多种题型，附解题思路与答案。</p>
+      <span class="tag">434 道题</span>
+    </a>
+
+    <a class="card card-silu" href="silu.html">
+      <span class="card-icon">📖</span>
+      <h2>公式速查</h2>
+      <p>奥数解题思路公式速查手册，按题型梳理公式与解题四步法，支持分类浏览与 AI 查公式，KaTeX 公式渲染。</p>
+      <span class="tag">68 个题型</span>
+    </a>
+
+    <a class="card card-math" href="math.html">
+      <span class="card-icon">🎮</span>
+      <h2>快乐学习</h2>
+      <p>数学游戏集合，含数独、幻方、加减乘除运算、舒尔特方格，锻炼逻辑思维与计算能力，趣味互动。</p>
+      <span class="tag">4 款游戏</span>
+    </a>
+
+    <a class="card card-english" href="dc.html">
+      <span class="card-icon">📚</span>
+      <h2>英语单词大冒险</h2>
+      <p>小学英语学习游戏，配对游戏、对话学习、单词本、国际音标，配真人发音，趣味学英语。</p>
+      <span class="tag">英语乐园</span>
+    </a>
+
+  </nav>
+
+  <footer class="footer">
+    <p>🌸 学习乐园 · 让学习更有趣 🌟</p>
+  </footer>
+
+</div>
+
+<script>
+// 生成飘动装饰元素
+(function() {
+  var deco = document.getElementById("bgDeco");
+  var emojis = ["🌸","✨","📚","🎯","⭐","🧮","📖","🎨","🌟","💡"];
+  for (var i = 0; i < 12; i++) {
+    var el = document.createElement("i");
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + "%";
+    el.style.animationDuration = (12 + Math.random() * 14) + "s";
+    el.style.animationDelay = (-Math.random() * 20) + "s";
+    deco.appendChild(el);
+  }
+})();
+</script>
+
+</body>
+</html>

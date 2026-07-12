@@ -1,0 +1,2924 @@
+{
+  "animals": {
+    "name": {
+      "en": "Animals",
+      "zh": "动物"
+    },
+    "icon": "🐱",
+    "words": [
+      {
+        "en": "cat",
+        "zh": "猫",
+        "emoji": "🐱",
+        "ipa": "kˈæt"
+      },
+      {
+        "en": "dog",
+        "zh": "狗",
+        "emoji": "🐶",
+        "ipa": "dˈɔɡ"
+      },
+      {
+        "en": "fish",
+        "zh": "鱼",
+        "emoji": "🐟",
+        "ipa": "fˈɪʃ"
+      },
+      {
+        "en": "bird",
+        "zh": "鸟",
+        "emoji": "🐦",
+        "ipa": "bˈɜrd"
+      },
+      {
+        "en": "rabbit",
+        "zh": "兔子",
+        "emoji": "🐰",
+        "ipa": "rˈæbət"
+      },
+      {
+        "en": "pig",
+        "zh": "猪",
+        "emoji": "🐷",
+        "ipa": "pˈɪɡ"
+      },
+      {
+        "en": "cow",
+        "zh": "牛",
+        "emoji": "🐮",
+        "ipa": "kˈaʊ"
+      },
+      {
+        "en": "duck",
+        "zh": "鸭子",
+        "emoji": "🦆",
+        "ipa": "dˈʌk"
+      },
+      {
+        "en": "bear",
+        "zh": "熊",
+        "emoji": "🐻",
+        "ipa": "bˈɛr"
+      },
+      {
+        "en": "monkey",
+        "zh": "猴子",
+        "emoji": "🐵",
+        "ipa": "mˈʌŋki"
+      },
+      {
+        "en": "tiger",
+        "zh": "老虎",
+        "emoji": "🐯",
+        "ipa": "tˈaɪɡər"
+      },
+      {
+        "en": "elephant",
+        "zh": "大象",
+        "emoji": "🐘",
+        "ipa": "ˈɛləfənt"
+      },
+      {
+        "en": "panda",
+        "zh": "熊猫",
+        "emoji": "🐼",
+        "ipa": "pˈændə"
+      },
+      {
+        "en": "lion",
+        "zh": "狮子",
+        "emoji": "🦁",
+        "ipa": "lˈaɪən"
+      },
+      {
+        "en": "chicken",
+        "zh": "鸡",
+        "emoji": "🐔",
+        "ipa": "tʃˈɪkən"
+      },
+      {
+        "en": "pet",
+        "zh": "宠物",
+        "emoji": "🐾",
+        "ipa": "pˈɛt"
+      },
+      {
+        "en": "snake",
+        "zh": "蛇",
+        "emoji": "🐍",
+        "ipa": "snˈeɪk"
+      },
+      {
+        "en": "turtle",
+        "zh": "海龟",
+        "emoji": "🐢",
+        "ipa": "tˈɜrtəl"
+      },
+      {
+        "en": "bee",
+        "zh": "蜜蜂",
+        "emoji": "🐝",
+        "ipa": "bˈi"
+      },
+      {
+        "en": "butterfly",
+        "zh": "蝴蝶",
+        "emoji": "🦋",
+        "ipa": "bˈʌtərflˌaɪ"
+      }
+    ]
+  },
+  "food": {
+    "name": {
+      "en": "Food",
+      "zh": "食物"
+    },
+    "icon": "🍎",
+    "words": [
+      {
+        "en": "apple",
+        "zh": "苹果",
+        "emoji": "🍎",
+        "ipa": "ˈæpəl"
+      },
+      {
+        "en": "banana",
+        "zh": "香蕉",
+        "emoji": "🍌",
+        "ipa": "bənˈænə"
+      },
+      {
+        "en": "milk",
+        "zh": "牛奶",
+        "emoji": "🥛",
+        "ipa": "mˈɪlk"
+      },
+      {
+        "en": "bread",
+        "zh": "面包",
+        "emoji": "🍞",
+        "ipa": "brˈɛd"
+      },
+      {
+        "en": "cake",
+        "zh": "蛋糕",
+        "emoji": "🍰",
+        "ipa": "kˈeɪk"
+      },
+      {
+        "en": "egg",
+        "zh": "鸡蛋",
+        "emoji": "🥚",
+        "ipa": "ˈɛɡ"
+      },
+      {
+        "en": "rice",
+        "zh": "米饭",
+        "emoji": "🍚",
+        "ipa": "rˈaɪs"
+      },
+      {
+        "en": "grapes",
+        "zh": "葡萄",
+        "emoji": "🍇",
+        "ipa": "ɡrˈeɪps"
+      },
+      {
+        "en": "orange",
+        "zh": "橙子",
+        "emoji": "🍊",
+        "ipa": "ˈɔrəndʒ"
+      },
+      {
+        "en": "pear",
+        "zh": "梨",
+        "emoji": "🍐",
+        "ipa": "pˈɛr"
+      },
+      {
+        "en": "water",
+        "zh": "水",
+        "emoji": "💧",
+        "ipa": "wˈɔtər"
+      },
+      {
+        "en": "juice",
+        "zh": "果汁",
+        "emoji": "🍹",
+        "ipa": "dʒˈus"
+      },
+      {
+        "en": "ice cream",
+        "zh": "冰淇淋",
+        "emoji": "🍦",
+        "ipa": "ˈaɪs kriːm"
+      },
+      {
+        "en": "cookie",
+        "zh": "饼干",
+        "emoji": "🍪",
+        "ipa": "kˈʊki"
+      },
+      {
+        "en": "noodles",
+        "zh": "面条",
+        "emoji": "🍜",
+        "ipa": "nˈudəlz"
+      },
+      {
+        "en": "vegetable",
+        "zh": "蔬菜",
+        "emoji": "🥦",
+        "ipa": "vˈɛdʒtəbəl"
+      },
+      {
+        "en": "meat",
+        "zh": "肉",
+        "emoji": "🍖",
+        "ipa": "mˈit"
+      },
+      {
+        "en": "chicken",
+        "zh": "鸡肉",
+        "emoji": "🍗",
+        "ipa": "tʃˈɪkən"
+      },
+      {
+        "en": "tea",
+        "zh": "茶",
+        "emoji": "🍵",
+        "ipa": "tˈi"
+      },
+      {
+        "en": "tomato",
+        "zh": "西红柿",
+        "emoji": "🍅",
+        "ipa": "təmˈeɪtˌoʊ"
+      },
+      {
+        "en": "potato",
+        "zh": "土豆",
+        "emoji": "🥔",
+        "ipa": "pətˈeɪtˌoʊ"
+      },
+      {
+        "en": "fruit",
+        "zh": "水果",
+        "emoji": "🍎",
+        "ipa": "frˈut"
+      },
+      {
+        "en": "hamburger",
+        "zh": "汉堡包",
+        "emoji": "🍔",
+        "ipa": "hˈæmbərɡər"
+      },
+      {
+        "en": "salad",
+        "zh": "沙拉",
+        "emoji": "🥙",
+        "ipa": "sˈæləd"
+      },
+      {
+        "en": "tofu",
+        "zh": "豆腐",
+        "emoji": "⬜",
+        "ipa": "tˈoʊfu"
+      },
+      {
+        "en": "jiaozi",
+        "zh": "饺子",
+        "emoji": "🍥",
+        "ipa": "ˈdʒaʊˈdziː"
+      },
+      {
+        "en": "peach",
+        "zh": "桃子",
+        "emoji": "🍑",
+        "ipa": "pˈitʃ"
+      },
+      {
+        "en": "melon",
+        "zh": "西瓜",
+        "emoji": "🍉",
+        "ipa": "mˈɛlən"
+      },
+      {
+        "en": "strawberry",
+        "zh": "草莓",
+        "emoji": "🍓",
+        "ipa": "strˈɔbˌɛri"
+      },
+      {
+        "en": "pineapple",
+        "zh": "菠萝",
+        "emoji": "🍍",
+        "ipa": "pˈaɪnˌæpəl"
+      }
+    ]
+  },
+  "colors": {
+    "name": {
+      "en": "Colors",
+      "zh": "颜色"
+    },
+    "icon": "🎨",
+    "words": [
+      {
+        "en": "red",
+        "zh": "红色",
+        "emoji": "🔴",
+        "ipa": "rˈɛd"
+      },
+      {
+        "en": "blue",
+        "zh": "蓝色",
+        "emoji": "🔵",
+        "ipa": "blˈu"
+      },
+      {
+        "en": "green",
+        "zh": "绿色",
+        "emoji": "🟢",
+        "ipa": "ɡrˈin"
+      },
+      {
+        "en": "yellow",
+        "zh": "黄色",
+        "emoji": "🟡",
+        "ipa": "jˈɛloʊ"
+      },
+      {
+        "en": "pink",
+        "zh": "粉色",
+        "emoji": "💗",
+        "ipa": "pˈɪŋk"
+      },
+      {
+        "en": "orange",
+        "zh": "橙色",
+        "emoji": "🟠",
+        "ipa": "ˈɔrəndʒ"
+      },
+      {
+        "en": "white",
+        "zh": "白色",
+        "emoji": "⚪",
+        "ipa": "wˈaɪt"
+      },
+      {
+        "en": "black",
+        "zh": "黑色",
+        "emoji": "⚫",
+        "ipa": "blˈæk"
+      },
+      {
+        "en": "purple",
+        "zh": "紫色",
+        "emoji": "🟣",
+        "ipa": "pˈɜrpəl"
+      },
+      {
+        "en": "brown",
+        "zh": "棕色",
+        "emoji": "🟤",
+        "ipa": "brˈaʊn"
+      },
+      {
+        "en": "grey",
+        "zh": "灰色",
+        "emoji": "🌫️",
+        "ipa": "ɡrˈeɪ"
+      },
+      {
+        "en": "gold",
+        "zh": "金色",
+        "emoji": "🟡",
+        "ipa": "ɡˈoʊld"
+      }
+    ]
+  },
+  "numbers": {
+    "name": {
+      "en": "Numbers",
+      "zh": "数字"
+    },
+    "icon": "🔢",
+    "words": [
+      {
+        "en": "one",
+        "zh": "一",
+        "emoji": "1",
+        "ipa": "wˈʌn"
+      },
+      {
+        "en": "two",
+        "zh": "二",
+        "emoji": "2",
+        "ipa": "tˈu"
+      },
+      {
+        "en": "three",
+        "zh": "三",
+        "emoji": "3",
+        "ipa": "θrˈi"
+      },
+      {
+        "en": "four",
+        "zh": "四",
+        "emoji": "4",
+        "ipa": "fˈɔr"
+      },
+      {
+        "en": "five",
+        "zh": "五",
+        "emoji": "5",
+        "ipa": "fˈaɪv"
+      },
+      {
+        "en": "six",
+        "zh": "六",
+        "emoji": "6",
+        "ipa": "sˈɪks"
+      },
+      {
+        "en": "seven",
+        "zh": "七",
+        "emoji": "7",
+        "ipa": "sˈɛvən"
+      },
+      {
+        "en": "eight",
+        "zh": "八",
+        "emoji": "8",
+        "ipa": "ˈeɪt"
+      },
+      {
+        "en": "nine",
+        "zh": "九",
+        "emoji": "9",
+        "ipa": "nˈaɪn"
+      },
+      {
+        "en": "ten",
+        "zh": "十",
+        "emoji": "10",
+        "ipa": "tˈɛn"
+      },
+      {
+        "en": "eleven",
+        "zh": "十一",
+        "emoji": "11",
+        "ipa": "ɪlˈɛvən"
+      },
+      {
+        "en": "twelve",
+        "zh": "十二",
+        "emoji": "12",
+        "ipa": "twˈɛlv"
+      },
+      {
+        "en": "thirteen",
+        "zh": "十三",
+        "emoji": "13",
+        "ipa": "θˈɜrtˈin"
+      },
+      {
+        "en": "fourteen",
+        "zh": "十四",
+        "emoji": "14",
+        "ipa": "fˈɔrtˈin"
+      },
+      {
+        "en": "fifteen",
+        "zh": "十五",
+        "emoji": "15",
+        "ipa": "fɪftˈin"
+      },
+      {
+        "en": "sixteen",
+        "zh": "十六",
+        "emoji": "16",
+        "ipa": "sɪkstˈin"
+      },
+      {
+        "en": "seventeen",
+        "zh": "十七",
+        "emoji": "17",
+        "ipa": "sˈɛvəntˈin"
+      },
+      {
+        "en": "eighteen",
+        "zh": "十八",
+        "emoji": "18",
+        "ipa": "eɪtˈin"
+      },
+      {
+        "en": "nineteen",
+        "zh": "十九",
+        "emoji": "19",
+        "ipa": "nˈaɪntˈin"
+      },
+      {
+        "en": "twenty",
+        "zh": "二十",
+        "emoji": "20",
+        "ipa": "twˈɛnti"
+      },
+      {
+        "en": "thirty",
+        "zh": "三十",
+        "emoji": "30",
+        "ipa": "θˈɜrdˌi"
+      },
+      {
+        "en": "forty",
+        "zh": "四十",
+        "emoji": "40",
+        "ipa": "fˈɔrti"
+      },
+      {
+        "en": "fifty",
+        "zh": "五十",
+        "emoji": "50",
+        "ipa": "fˈɪfti"
+      },
+      {
+        "en": "sixty",
+        "zh": "六十",
+        "emoji": "60",
+        "ipa": "sˈɪksti"
+      },
+      {
+        "en": "seventy",
+        "zh": "七十",
+        "emoji": "70",
+        "ipa": "sˈɛvənti"
+      },
+      {
+        "en": "eighty",
+        "zh": "八十",
+        "emoji": "80",
+        "ipa": "ˈeɪti"
+      },
+      {
+        "en": "ninety",
+        "zh": "九十",
+        "emoji": "90",
+        "ipa": "nˈaɪnti"
+      },
+      {
+        "en": "hundred",
+        "zh": "一百",
+        "emoji": "100",
+        "ipa": "hˈʌndrəd"
+      }
+    ]
+  },
+  "nature": {
+    "name": {
+      "en": "Nature",
+      "zh": "自然"
+    },
+    "icon": "🌳",
+    "words": [
+      {
+        "en": "sun",
+        "zh": "太阳",
+        "emoji": "☀️",
+        "ipa": "sˈʌn"
+      },
+      {
+        "en": "moon",
+        "zh": "月亮",
+        "emoji": "🌙",
+        "ipa": "mˈun"
+      },
+      {
+        "en": "tree",
+        "zh": "树",
+        "emoji": "🌳",
+        "ipa": "trˈi"
+      },
+      {
+        "en": "flower",
+        "zh": "花",
+        "emoji": "🌸",
+        "ipa": "flˈaʊər"
+      },
+      {
+        "en": "rain",
+        "zh": "雨",
+        "emoji": "🌧️",
+        "ipa": "rˈeɪn"
+      },
+      {
+        "en": "star",
+        "zh": "星星",
+        "emoji": "⭐",
+        "ipa": "stˈɑr"
+      },
+      {
+        "en": "cloud",
+        "zh": "云",
+        "emoji": "☁️",
+        "ipa": "klˈaʊd"
+      },
+      {
+        "en": "snow",
+        "zh": "雪",
+        "emoji": "❄️",
+        "ipa": "snˈoʊ"
+      },
+      {
+        "en": "wind",
+        "zh": "风",
+        "emoji": "💨",
+        "ipa": "wˈaɪnd"
+      },
+      {
+        "en": "fire",
+        "zh": "火",
+        "emoji": "🔥",
+        "ipa": "fˈaɪər"
+      },
+      {
+        "en": "water",
+        "zh": "水",
+        "emoji": "💧",
+        "ipa": "wˈɔtər"
+      },
+      {
+        "en": "stone",
+        "zh": "石头",
+        "emoji": "🗿",
+        "ipa": "stˈoʊn"
+      },
+      {
+        "en": "grass",
+        "zh": "草",
+        "emoji": "🌿",
+        "ipa": "ɡrˈæs"
+      },
+      {
+        "en": "lake",
+        "zh": "湖",
+        "emoji": "🌊",
+        "ipa": "lˈeɪk"
+      },
+      {
+        "en": "hill",
+        "zh": "小山",
+        "emoji": "🗻",
+        "ipa": "hˈɪl"
+      },
+      {
+        "en": "bridge",
+        "zh": "桥",
+        "emoji": "🌉",
+        "ipa": "brˈɪdʒ"
+      }
+    ]
+  },
+  "school": {
+    "name": {
+      "en": "School",
+      "zh": "学习用品"
+    },
+    "icon": "📚",
+    "words": [
+      {
+        "en": "book",
+        "zh": "书",
+        "emoji": "📕",
+        "ipa": "bˈʊk"
+      },
+      {
+        "en": "pen",
+        "zh": "钢笔",
+        "emoji": "🖊️",
+        "ipa": "pˈɛn"
+      },
+      {
+        "en": "pencil",
+        "zh": "铅笔",
+        "emoji": "✏️",
+        "ipa": "pˈɛnsəl"
+      },
+      {
+        "en": "bag",
+        "zh": "书包",
+        "emoji": "🎒",
+        "ipa": "bˈæɡ"
+      },
+      {
+        "en": "ruler",
+        "zh": "尺子",
+        "emoji": "📏",
+        "ipa": "rˈulər"
+      },
+      {
+        "en": "eraser",
+        "zh": "橡皮",
+        "emoji": "🧽",
+        "ipa": "ɪrˈeɪsər"
+      },
+      {
+        "en": "crayon",
+        "zh": "蜡笔",
+        "emoji": "🖍️",
+        "ipa": "krˈeɪˌɑn"
+      },
+      {
+        "en": "paper",
+        "zh": "纸",
+        "emoji": "📄",
+        "ipa": "pˈeɪpər"
+      },
+      {
+        "en": "notebook",
+        "zh": "笔记本",
+        "emoji": "📒",
+        "ipa": "nˈoʊtbˌʊk"
+      },
+      {
+        "en": "pencil case",
+        "zh": "铅笔盒",
+        "emoji": "✏️",
+        "ipa": "ˈpensl keɪs"
+      },
+      {
+        "en": "backpack",
+        "zh": "书包",
+        "emoji": "🎒",
+        "ipa": "bˈækpˌæk"
+      },
+      {
+        "en": "school",
+        "zh": "学校",
+        "emoji": "🏫",
+        "ipa": "skˈul"
+      },
+      {
+        "en": "classroom",
+        "zh": "教室",
+        "emoji": "🏫",
+        "ipa": "klˈæsrˌum"
+      },
+      {
+        "en": "blackboard",
+        "zh": "黑板",
+        "emoji": "⬛",
+        "ipa": "blˈækbˌɔrd"
+      },
+      {
+        "en": "desk",
+        "zh": "书桌",
+        "emoji": "📋",
+        "ipa": "dˈɛsk"
+      },
+      {
+        "en": "chair",
+        "zh": "椅子",
+        "emoji": "🪑",
+        "ipa": "tʃˈɛr"
+      },
+      {
+        "en": "teacher",
+        "zh": "老师",
+        "emoji": "👩‍🏫",
+        "ipa": "tˈitʃər"
+      },
+      {
+        "en": "student",
+        "zh": "学生",
+        "emoji": "👨‍🎓",
+        "ipa": "stˈudənt"
+      },
+      {
+        "en": "class",
+        "zh": "班级",
+        "emoji": "🏫",
+        "ipa": "klˈæs"
+      },
+      {
+        "en": "lesson",
+        "zh": "课",
+        "emoji": "📖",
+        "ipa": "lˈɛsən"
+      }
+    ]
+  },
+  "home": {
+    "name": {
+      "en": "Home",
+      "zh": "家居房间"
+    },
+    "icon": "🏠",
+    "words": [
+      {
+        "en": "home",
+        "zh": "家",
+        "emoji": "🏠",
+        "ipa": "hˈoʊm"
+      },
+      {
+        "en": "room",
+        "zh": "房间",
+        "emoji": "🛋️",
+        "ipa": "rˈum"
+      },
+      {
+        "en": "bedroom",
+        "zh": "卧室",
+        "emoji": "🛏️",
+        "ipa": "bˈɛdrˌum"
+      },
+      {
+        "en": "kitchen",
+        "zh": "厨房",
+        "emoji": "🍳",
+        "ipa": "kˈɪtʃən"
+      },
+      {
+        "en": "bed",
+        "zh": "床",
+        "emoji": "🛏️",
+        "ipa": "bˈɛd"
+      },
+      {
+        "en": "table",
+        "zh": "桌子",
+        "emoji": "🪑",
+        "ipa": "tˈeɪbəl"
+      },
+      {
+        "en": "chair",
+        "zh": "椅子",
+        "emoji": "🪑",
+        "ipa": "tʃˈɛr"
+      },
+      {
+        "en": "sofa",
+        "zh": "沙发",
+        "emoji": "🛋️",
+        "ipa": "sˈoʊfə"
+      },
+      {
+        "en": "door",
+        "zh": "门",
+        "emoji": "🚪",
+        "ipa": "dˈɔr"
+      },
+      {
+        "en": "window",
+        "zh": "窗户",
+        "emoji": "🪟",
+        "ipa": "wˈɪndoʊ"
+      },
+      {
+        "en": "wall",
+        "zh": "墙",
+        "emoji": "🧱",
+        "ipa": "wˈɔl"
+      },
+      {
+        "en": "light",
+        "zh": "灯",
+        "emoji": "💡",
+        "ipa": "lˈaɪt"
+      },
+      {
+        "en": "lamp",
+        "zh": "台灯",
+        "emoji": "🕯️",
+        "ipa": "lˈæmp"
+      },
+      {
+        "en": "TV",
+        "zh": "电视",
+        "emoji": "📺",
+        "ipa": "tˈivˈi"
+      },
+      {
+        "en": "computer",
+        "zh": "电脑",
+        "emoji": "💻",
+        "ipa": "kəmpjˈutər"
+      },
+      {
+        "en": "telephone",
+        "zh": "电话",
+        "emoji": "☎️",
+        "ipa": "tˈɛləfˌoʊn"
+      },
+      {
+        "en": "phone",
+        "zh": "手机",
+        "emoji": "📱",
+        "ipa": "fˈoʊn"
+      },
+      {
+        "en": "box",
+        "zh": "盒子",
+        "emoji": "📦",
+        "ipa": "bˈɑks"
+      },
+      {
+        "en": "picture",
+        "zh": "画",
+        "emoji": "🖼️",
+        "ipa": "pˈɪktʃər"
+      },
+      {
+        "en": "clock",
+        "zh": "时钟",
+        "emoji": "🕐",
+        "ipa": "klˈɑk"
+      },
+      {
+        "en": "plant",
+        "zh": "植物",
+        "emoji": "🪴",
+        "ipa": "plˈænt"
+      }
+    ]
+  },
+  "body": {
+    "name": {
+      "en": "Body",
+      "zh": "身体部位"
+    },
+    "icon": "👦",
+    "words": [
+      {
+        "en": "head",
+        "zh": "头",
+        "emoji": "😊",
+        "ipa": "hˈɛd"
+      },
+      {
+        "en": "face",
+        "zh": "脸",
+        "emoji": "😊",
+        "ipa": "fˈeɪs"
+      },
+      {
+        "en": "eye",
+        "zh": "眼睛",
+        "emoji": "👁️",
+        "ipa": "ˈaɪ"
+      },
+      {
+        "en": "nose",
+        "zh": "鼻子",
+        "emoji": "👃",
+        "ipa": "nˈoʊz"
+      },
+      {
+        "en": "mouth",
+        "zh": "嘴巴",
+        "emoji": "👄",
+        "ipa": "mˈaʊθ"
+      },
+      {
+        "en": "ear",
+        "zh": "耳朵",
+        "emoji": "👂",
+        "ipa": "ˈir"
+      },
+      {
+        "en": "hair",
+        "zh": "头发",
+        "emoji": "💇",
+        "ipa": "hˈɛr"
+      },
+      {
+        "en": "hand",
+        "zh": "手",
+        "emoji": "✋",
+        "ipa": "hˈænd"
+      },
+      {
+        "en": "arm",
+        "zh": "胳膊",
+        "emoji": "💪",
+        "ipa": "ˈɑrm"
+      },
+      {
+        "en": "leg",
+        "zh": "腿",
+        "emoji": "🦵",
+        "ipa": "lˈɛɡ"
+      },
+      {
+        "en": "foot",
+        "zh": "脚",
+        "emoji": "👣",
+        "ipa": "fˈʊt"
+      },
+      {
+        "en": "finger",
+        "zh": "手指",
+        "emoji": "👆",
+        "ipa": "fˈɪŋɡər"
+      },
+      {
+        "en": "tongue",
+        "zh": "舌头",
+        "emoji": "👅",
+        "ipa": "tˈʌŋ"
+      }
+    ]
+  },
+  "family": {
+    "name": {
+      "en": "Family",
+      "zh": "家庭成员"
+    },
+    "icon": "👨👩👧",
+    "words": [
+      {
+        "en": "father",
+        "zh": "爸爸",
+        "emoji": "👨",
+        "ipa": "fˈɑðər"
+      },
+      {
+        "en": "mother",
+        "zh": "妈妈",
+        "emoji": "👩",
+        "ipa": "mˈʌðər"
+      },
+      {
+        "en": "brother",
+        "zh": "哥哥/弟弟",
+        "emoji": "👦",
+        "ipa": "brˈʌðər"
+      },
+      {
+        "en": "sister",
+        "zh": "姐姐/妹妹",
+        "emoji": "👧",
+        "ipa": "sˈɪstər"
+      },
+      {
+        "en": "grandpa",
+        "zh": "爷爷/外公",
+        "emoji": "👴",
+        "ipa": "ɡrˈændpˌɑ"
+      },
+      {
+        "en": "grandma",
+        "zh": "奶奶/外婆",
+        "emoji": "👵",
+        "ipa": "ɡrˈændmɑ"
+      },
+      {
+        "en": "baby",
+        "zh": "宝宝",
+        "emoji": "👶",
+        "ipa": "bˈeɪbi"
+      },
+      {
+        "en": "family",
+        "zh": "家庭",
+        "emoji": "👨‍👩‍👧‍👦",
+        "ipa": "fˈæməli"
+      },
+      {
+        "en": "grandfather",
+        "zh": "外祖父",
+        "emoji": "👴",
+        "ipa": "ɡrˈændfˌɑðər"
+      },
+      {
+        "en": "grandmother",
+        "zh": "外祖母",
+        "emoji": "👵",
+        "ipa": "ɡrˈændmˌʌðər"
+      },
+      {
+        "en": "dad",
+        "zh": "爸爸",
+        "emoji": "👨",
+        "ipa": "dˈæd"
+      },
+      {
+        "en": "mom",
+        "zh": "妈妈",
+        "emoji": "👩",
+        "ipa": "mˈɑm"
+      },
+      {
+        "en": "aunt",
+        "zh": "姑姑",
+        "emoji": "👩",
+        "ipa": "ˈænt"
+      },
+      {
+        "en": "uncle",
+        "zh": "叔叔",
+        "emoji": "👨",
+        "ipa": "ˈʌŋkəl"
+      },
+      {
+        "en": "me",
+        "zh": "我",
+        "emoji": "👤",
+        "ipa": "mˈi"
+      }
+    ]
+  },
+  "greetings": {
+    "name": {
+      "en": "Greetings",
+      "zh": "日常问候"
+    },
+    "icon": "👋",
+    "words": [
+      {
+        "en": "hello",
+        "zh": "你好",
+        "emoji": "👋",
+        "ipa": "həlˈoʊ"
+      },
+      {
+        "en": "hi",
+        "zh": "嗨",
+        "emoji": "👋",
+        "ipa": "hˈaɪ"
+      },
+      {
+        "en": "goodbye",
+        "zh": "再见",
+        "emoji": "👋",
+        "ipa": "ɡˌʊdbˈaɪ"
+      },
+      {
+        "en": "bye",
+        "zh": "拜拜",
+        "emoji": "👋",
+        "ipa": "bˈaɪ"
+      },
+      {
+        "en": "good",
+        "zh": "好的",
+        "emoji": "👍",
+        "ipa": "ɡˈʊd"
+      },
+      {
+        "en": "morning",
+        "zh": "早晨",
+        "emoji": "🌅",
+        "ipa": "mˈɔrnɪŋ"
+      },
+      {
+        "en": "afternoon",
+        "zh": "下午",
+        "emoji": "🌤️",
+        "ipa": "ˌæftərnˈun"
+      },
+      {
+        "en": "evening",
+        "zh": "晚上",
+        "emoji": "🌙",
+        "ipa": "ˈivnɪŋ"
+      },
+      {
+        "en": "night",
+        "zh": "夜晚",
+        "emoji": "🌙",
+        "ipa": "nˈaɪt"
+      },
+      {
+        "en": "thanks",
+        "zh": "谢谢",
+        "emoji": "🙏",
+        "ipa": "θˈæŋks"
+      },
+      {
+        "en": "please",
+        "zh": "请",
+        "emoji": "🙂",
+        "ipa": "plˈiz"
+      },
+      {
+        "en": "sorry",
+        "zh": "对不起",
+        "emoji": "😔",
+        "ipa": "sˈɑri"
+      },
+      {
+        "en": "thank",
+        "zh": "谢谢",
+        "emoji": "🙏",
+        "ipa": "θˈæŋk"
+      },
+      {
+        "en": "happy",
+        "zh": "快乐的",
+        "emoji": "😊",
+        "ipa": "hˈæpi"
+      },
+      {
+        "en": "merry",
+        "zh": "高兴的",
+        "emoji": "🎄",
+        "ipa": "mˈɛri"
+      },
+      {
+        "en": "new",
+        "zh": "新的",
+        "emoji": "✨",
+        "ipa": "nˈu"
+      },
+      {
+        "en": "year",
+        "zh": "年",
+        "emoji": "📅",
+        "ipa": "jˈɪr"
+      }
+    ]
+  },
+  "weather": {
+    "name": {
+      "en": "Weather",
+      "zh": "天气时间"
+    },
+    "icon": "☀️",
+    "words": [
+      {
+        "en": "morning",
+        "zh": "早上",
+        "emoji": "🌅",
+        "ipa": "mˈɔrnɪŋ"
+      },
+      {
+        "en": "afternoon",
+        "zh": "下午",
+        "emoji": "🌤️",
+        "ipa": "ˌæftərnˈun"
+      },
+      {
+        "en": "evening",
+        "zh": "傍晚",
+        "emoji": "🌆",
+        "ipa": "ˈivnɪŋ"
+      },
+      {
+        "en": "night",
+        "zh": "夜晚",
+        "emoji": "🌙",
+        "ipa": "nˈaɪt"
+      },
+      {
+        "en": "today",
+        "zh": "今天",
+        "emoji": "📅",
+        "ipa": "tədˈeɪ"
+      },
+      {
+        "en": "tomorrow",
+        "zh": "明天",
+        "emoji": "📆",
+        "ipa": "təmˈɑrˌoʊ"
+      },
+      {
+        "en": "yesterday",
+        "zh": "昨天",
+        "emoji": "🗓️",
+        "ipa": "jˈɛstərdˌeɪ"
+      },
+      {
+        "en": "hot",
+        "zh": "热",
+        "emoji": "🔥",
+        "ipa": "hˈɑt"
+      },
+      {
+        "en": "cold",
+        "zh": "冷",
+        "emoji": "❄️",
+        "ipa": "kˈoʊld"
+      },
+      {
+        "en": "warm",
+        "zh": "温暖",
+        "emoji": "🌞",
+        "ipa": "wˈɔrm"
+      },
+      {
+        "en": "cool",
+        "zh": "凉爽",
+        "emoji": "🍃",
+        "ipa": "kˈul"
+      },
+      {
+        "en": "weather",
+        "zh": "天气",
+        "emoji": "🌤️",
+        "ipa": "wˈɛðər"
+      },
+      {
+        "en": "spring",
+        "zh": "春天",
+        "emoji": "🌸",
+        "ipa": "sprˈɪŋ"
+      },
+      {
+        "en": "summer",
+        "zh": "夏天",
+        "emoji": "☀️",
+        "ipa": "sˈʌmər"
+      },
+      {
+        "en": "autumn",
+        "zh": "秋天",
+        "emoji": "🍂",
+        "ipa": "ˈɔtəm"
+      },
+      {
+        "en": "winter",
+        "zh": "冬天",
+        "emoji": "❄️",
+        "ipa": "wˈɪntər"
+      },
+      {
+        "en": "season",
+        "zh": "季节",
+        "emoji": "🗓️",
+        "ipa": "sˈizən"
+      },
+      {
+        "en": "favourite",
+        "zh": "最喜欢的",
+        "emoji": "⭐",
+        "ipa": "fˈeɪvərɪt"
+      },
+      {
+        "en": "rainy",
+        "zh": "下雨的",
+        "emoji": "🌧️",
+        "ipa": "rˈeɪni"
+      },
+      {
+        "en": "cloudy",
+        "zh": "多云的",
+        "emoji": "☁️",
+        "ipa": "klˈaʊdi"
+      },
+      {
+        "en": "snowy",
+        "zh": "下雪的",
+        "emoji": "🌨️",
+        "ipa": "snˈoʊi"
+      },
+      {
+        "en": "sunny",
+        "zh": "晴朗的",
+        "emoji": "☀️",
+        "ipa": "sˈʌni"
+      },
+      {
+        "en": "windy",
+        "zh": "刮风的",
+        "emoji": "💨",
+        "ipa": "wˈɪndi"
+      },
+      {
+        "en": "umbrella",
+        "zh": "雨伞",
+        "emoji": "☂️",
+        "ipa": "əmbrˈɛlə"
+      },
+      {
+        "en": "Sunday",
+        "zh": "星期天",
+        "emoji": "📅",
+        "ipa": "sˈʌndˌeɪ"
+      },
+      {
+        "en": "Monday",
+        "zh": "星期一",
+        "emoji": "📅",
+        "ipa": "mˈʌndi"
+      },
+      {
+        "en": "Tuesday",
+        "zh": "星期二",
+        "emoji": "📅",
+        "ipa": "tˈuzdi"
+      },
+      {
+        "en": "Wednesday",
+        "zh": "星期三",
+        "emoji": "📅",
+        "ipa": "wˈɛnzdi"
+      },
+      {
+        "en": "Thursday",
+        "zh": "星期四",
+        "emoji": "📅",
+        "ipa": "θˈɜrzdˌeɪ"
+      },
+      {
+        "en": "Friday",
+        "zh": "星期五",
+        "emoji": "📅",
+        "ipa": "frˈaɪdi"
+      },
+      {
+        "en": "Saturday",
+        "zh": "星期六",
+        "emoji": "📅",
+        "ipa": "sˈætərdi"
+      }
+    ]
+  },
+  "transport": {
+    "name": {
+      "en": "Transport",
+      "zh": "交通工具"
+    },
+    "icon": "🚗",
+    "words": [
+      {
+        "en": "car",
+        "zh": "小汽车",
+        "emoji": "🚗",
+        "ipa": "kˈɑr"
+      },
+      {
+        "en": "bus",
+        "zh": "公交车",
+        "emoji": "🚌",
+        "ipa": "bˈʌs"
+      },
+      {
+        "en": "bike",
+        "zh": "自行车",
+        "emoji": "🚲",
+        "ipa": "bˈaɪk"
+      },
+      {
+        "en": "train",
+        "zh": "火车",
+        "emoji": "🚂",
+        "ipa": "trˈeɪn"
+      },
+      {
+        "en": "plane",
+        "zh": "飞机",
+        "emoji": "✈️",
+        "ipa": "plˈeɪn"
+      },
+      {
+        "en": "ship",
+        "zh": "轮船",
+        "emoji": "🚢",
+        "ipa": "ʃˈɪp"
+      },
+      {
+        "en": "boat",
+        "zh": "小船",
+        "emoji": "⛵",
+        "ipa": "bˈoʊt"
+      },
+      {
+        "en": "taxi",
+        "zh": "出租车",
+        "emoji": "🚕",
+        "ipa": "tˈæksi"
+      },
+      {
+        "en": "van",
+        "zh": "客货车",
+        "emoji": "🚐",
+        "ipa": "vˈæn"
+      },
+      {
+        "en": "bicycle",
+        "zh": "自行车",
+        "emoji": "🚲",
+        "ipa": "bˈaɪsɪkəl"
+      },
+      {
+        "en": "subway",
+        "zh": "地铁",
+        "emoji": "🚇",
+        "ipa": "sˈʌbwˌeɪ"
+      },
+      {
+        "en": "traffic light",
+        "zh": "交通灯",
+        "emoji": "🚦",
+        "ipa": "ˈtræfɪk laɪt"
+      }
+    ]
+  },
+  "actions": {
+    "name": {
+      "en": "Actions",
+      "zh": "日常动作"
+    },
+    "icon": "🏃",
+    "words": [
+      {
+        "en": "run",
+        "zh": "跑",
+        "emoji": "🏃",
+        "ipa": "rˈʌn"
+      },
+      {
+        "en": "walk",
+        "zh": "走",
+        "emoji": "🚶",
+        "ipa": "wˈɔk"
+      },
+      {
+        "en": "jump",
+        "zh": "跳",
+        "emoji": "⭐",
+        "ipa": "dʒˈʌmp"
+      },
+      {
+        "en": "swim",
+        "zh": "游泳",
+        "emoji": "🏊",
+        "ipa": "swˈɪm"
+      },
+      {
+        "en": "sing",
+        "zh": "唱歌",
+        "emoji": "🎤",
+        "ipa": "sˈɪŋ"
+      },
+      {
+        "en": "dance",
+        "zh": "跳舞",
+        "emoji": "💃",
+        "ipa": "dˈæns"
+      },
+      {
+        "en": "read",
+        "zh": "读书",
+        "emoji": "📖",
+        "ipa": "rˈɛd"
+      },
+      {
+        "en": "write",
+        "zh": "写字",
+        "emoji": "✍️",
+        "ipa": "rˈaɪt"
+      },
+      {
+        "en": "draw",
+        "zh": "画画",
+        "emoji": "🎨",
+        "ipa": "drˈɔ"
+      },
+      {
+        "en": "play",
+        "zh": "玩",
+        "emoji": "🎮",
+        "ipa": "plˈeɪ"
+      },
+      {
+        "en": "eat",
+        "zh": "吃",
+        "emoji": "🍽️",
+        "ipa": "ˈit"
+      },
+      {
+        "en": "drink",
+        "zh": "喝",
+        "emoji": "🥤",
+        "ipa": "drˈɪŋk"
+      },
+      {
+        "en": "fly a kite",
+        "zh": "放风筝",
+        "emoji": "🎏",
+        "ipa": "flaɪ ə kaɪt"
+      },
+      {
+        "en": "play football",
+        "zh": "踢足球",
+        "emoji": "⚽",
+        "ipa": "pleɪ ˈfʊtbɔːl"
+      },
+      {
+        "en": "ride a bike",
+        "zh": "骑自行车",
+        "emoji": "🚲",
+        "ipa": "raɪd ə baɪk"
+      },
+      {
+        "en": "make a snowman",
+        "zh": "堆雪人",
+        "emoji": "⛄",
+        "ipa": "meɪk ə ˈsnəʊmæn"
+      },
+      {
+        "en": "get up",
+        "zh": "起床",
+        "emoji": "🛏️",
+        "ipa": "ɡet ʌp"
+      },
+      {
+        "en": "eat breakfast",
+        "zh": "吃早饭",
+        "emoji": "🍳",
+        "ipa": "iːt ˈbrekfəst"
+      },
+      {
+        "en": "eat lunch",
+        "zh": "吃午饭",
+        "emoji": "🍱",
+        "ipa": "iːt lʌntʃ"
+      },
+      {
+        "en": "eat dinner",
+        "zh": "吃晚饭",
+        "emoji": "🍽️",
+        "ipa": "iːt ˈdɪnə"
+      },
+      {
+        "en": "go to bed",
+        "zh": "上床睡觉",
+        "emoji": "🛏️",
+        "ipa": "ɡəʊ tuː bed"
+      },
+      {
+        "en": "go to school",
+        "zh": "上学",
+        "emoji": "🏫",
+        "ipa": "ɡəʊ tuː skuːl"
+      },
+      {
+        "en": "go home",
+        "zh": "回家",
+        "emoji": "🏠",
+        "ipa": "ɡəʊ həʊm"
+      },
+      {
+        "en": "look",
+        "zh": "看",
+        "emoji": "👀",
+        "ipa": "lˈʊk"
+      },
+      {
+        "en": "look for",
+        "zh": "寻找",
+        "emoji": "🔍",
+        "ipa": "lʊk fɔː"
+      },
+      {
+        "en": "want",
+        "zh": "要",
+        "emoji": "🤲",
+        "ipa": "wˈɑnt"
+      },
+      {
+        "en": "help",
+        "zh": "帮助",
+        "emoji": "🆘",
+        "ipa": "hˈɛlp"
+      },
+      {
+        "en": "wear",
+        "zh": "穿",
+        "emoji": "👔",
+        "ipa": "wˈɛr"
+      },
+      {
+        "en": "buy",
+        "zh": "买",
+        "emoji": "🛒",
+        "ipa": "bˈaɪ"
+      }
+    ]
+  },
+  "classroom": {
+    "name": {
+      "en": "Classroom",
+      "zh": "课堂用语"
+    },
+    "icon": "🏫",
+    "words": [
+      {
+        "en": "teacher",
+        "zh": "老师",
+        "emoji": "👩‍🏫",
+        "ipa": "tˈitʃər"
+      },
+      {
+        "en": "student",
+        "zh": "学生",
+        "emoji": "👨‍🎓",
+        "ipa": "stˈudənt"
+      },
+      {
+        "en": "class",
+        "zh": "班级",
+        "emoji": "🏫",
+        "ipa": "klˈæs"
+      },
+      {
+        "en": "hello",
+        "zh": "你好",
+        "emoji": "👋",
+        "ipa": "həlˈoʊ"
+      },
+      {
+        "en": "stand up",
+        "zh": "起立",
+        "emoji": "🙋",
+        "ipa": "stænd ʌp"
+      },
+      {
+        "en": "sit down",
+        "zh": "坐下",
+        "emoji": "🪑",
+        "ipa": "sɪt daʊn"
+      },
+      {
+        "en": "look",
+        "zh": "看",
+        "emoji": "👀",
+        "ipa": "lˈʊk"
+      },
+      {
+        "en": "listen",
+        "zh": "听",
+        "emoji": "👂",
+        "ipa": "lˈɪsən"
+      },
+      {
+        "en": "speak",
+        "zh": "说",
+        "emoji": "📢",
+        "ipa": "spˈik"
+      },
+      {
+        "en": "read",
+        "zh": "读",
+        "emoji": "📖",
+        "ipa": "rˈɛd"
+      },
+      {
+        "en": "write",
+        "zh": "写",
+        "emoji": "✍️",
+        "ipa": "rˈaɪt"
+      },
+      {
+        "en": "thank you",
+        "zh": "谢谢",
+        "emoji": "🙏",
+        "ipa": "θæŋk juː"
+      },
+      {
+        "en": "bookshop",
+        "zh": "书店",
+        "emoji": "📚",
+        "ipa": "bˈʊkʃˌɑp"
+      },
+      {
+        "en": "park",
+        "zh": "公园",
+        "emoji": "🌳",
+        "ipa": "pˈɑrk"
+      },
+      {
+        "en": "zoo",
+        "zh": "动物园",
+        "emoji": "🦁",
+        "ipa": "zˈu"
+      },
+      {
+        "en": "hospital",
+        "zh": "医院",
+        "emoji": "🏥",
+        "ipa": "hˈɑspˌɪtəl"
+      },
+      {
+        "en": "supermarket",
+        "zh": "超市",
+        "emoji": "🏬",
+        "ipa": "sˈupərmˌɑrkɪt"
+      },
+      {
+        "en": "Christmas",
+        "zh": "圣诞节",
+        "emoji": "🎄",
+        "ipa": "krˈɪsməs"
+      },
+      {
+        "en": "card",
+        "zh": "贺卡",
+        "emoji": "💌",
+        "ipa": "kˈɑrd"
+      },
+      {
+        "en": "present",
+        "zh": "礼物",
+        "emoji": "🎁",
+        "ipa": "prˈɛzənt"
+      },
+      {
+        "en": "here",
+        "zh": "这儿",
+        "emoji": "📍",
+        "ipa": "hˈir"
+      },
+      {
+        "en": "too",
+        "zh": "也",
+        "emoji": "➕",
+        "ipa": "tˈu"
+      },
+      {
+        "en": "beautiful",
+        "zh": "美丽的",
+        "emoji": "🌸",
+        "ipa": "bjˈutəfəl"
+      },
+      {
+        "en": "big",
+        "zh": "大的",
+        "emoji": "⬆️",
+        "ipa": "bˈɪɡ"
+      },
+      {
+        "en": "small",
+        "zh": "小的",
+        "emoji": "⬇️",
+        "ipa": "smˈɔl"
+      },
+      {
+        "en": "long",
+        "zh": "长的",
+        "emoji": "📏",
+        "ipa": "lˈɔŋ"
+      },
+      {
+        "en": "short",
+        "zh": "短的",
+        "emoji": "📏",
+        "ipa": "ʃˈɔrt"
+      },
+      {
+        "en": "tall",
+        "zh": "高的",
+        "emoji": "📏",
+        "ipa": "tˈɔl"
+      },
+      {
+        "en": "thin",
+        "zh": "瘦的",
+        "emoji": "📏",
+        "ipa": "θˈɪn"
+      },
+      {
+        "en": "old",
+        "zh": "老的",
+        "emoji": "👴",
+        "ipa": "ˈoʊld"
+      },
+      {
+        "en": "new",
+        "zh": "新的",
+        "emoji": "✨",
+        "ipa": "nˈu"
+      },
+      {
+        "en": "who",
+        "zh": "谁",
+        "emoji": "❓",
+        "ipa": "hˈu"
+      },
+      {
+        "en": "he",
+        "zh": "他",
+        "emoji": "👨",
+        "ipa": "hˈi"
+      },
+      {
+        "en": "she",
+        "zh": "她",
+        "emoji": "👩",
+        "ipa": "ʃˈi"
+      },
+      {
+        "en": "his",
+        "zh": "他的",
+        "emoji": "👨",
+        "ipa": "hˈɪz"
+      },
+      {
+        "en": "her",
+        "zh": "她的",
+        "emoji": "👩",
+        "ipa": "hˈɜr"
+      },
+      {
+        "en": "my",
+        "zh": "我的",
+        "emoji": "👤",
+        "ipa": "mˈaɪ"
+      },
+      {
+        "en": "your",
+        "zh": "你的",
+        "emoji": "👤",
+        "ipa": "jˈɔr"
+      },
+      {
+        "en": "I",
+        "zh": "我",
+        "emoji": "👤",
+        "ipa": "ˈaɪ"
+      },
+      {
+        "en": "you",
+        "zh": "你",
+        "emoji": "👤",
+        "ipa": "jˈu"
+      },
+      {
+        "en": "it",
+        "zh": "它",
+        "emoji": "📦",
+        "ipa": "ˈɪt"
+      },
+      {
+        "en": "what",
+        "zh": "什么",
+        "emoji": "❓",
+        "ipa": "wˈʌt"
+      },
+      {
+        "en": "how",
+        "zh": "多少",
+        "emoji": "❓",
+        "ipa": "hˈaʊ"
+      },
+      {
+        "en": "many",
+        "zh": "多的",
+        "emoji": "🔢",
+        "ipa": "mˈɛni"
+      },
+      {
+        "en": "are",
+        "zh": "是",
+        "emoji": "✅",
+        "ipa": "ˈɑr"
+      },
+      {
+        "en": "is",
+        "zh": "是",
+        "emoji": "✅",
+        "ipa": "ˈɪz"
+      },
+      {
+        "en": "am",
+        "zh": "是",
+        "emoji": "✅",
+        "ipa": "ˈæm"
+      },
+      {
+        "en": "this",
+        "zh": "这个",
+        "emoji": "👉",
+        "ipa": "ðˈɪs"
+      },
+      {
+        "en": "in",
+        "zh": "在...里面",
+        "emoji": "📦",
+        "ipa": "ɪn"
+      },
+      {
+        "en": "on",
+        "zh": "在...上面",
+        "emoji": "📦",
+        "ipa": "ˈɑn"
+      },
+      {
+        "en": "under",
+        "zh": "在...下面",
+        "emoji": "📦",
+        "ipa": "ˈʌndər"
+      },
+      {
+        "en": "behind",
+        "zh": "在...背后",
+        "emoji": "📦",
+        "ipa": "bɪhˈaɪnd"
+      },
+      {
+        "en": "near",
+        "zh": "靠近",
+        "emoji": "📍",
+        "ipa": "nˈɪr"
+      },
+      {
+        "en": "where",
+        "zh": "在哪里",
+        "emoji": "❓",
+        "ipa": "wˈɛr"
+      },
+      {
+        "en": "at",
+        "zh": "在...点钟",
+        "emoji": "⏰",
+        "ipa": "ˈæt"
+      },
+      {
+        "en": "when",
+        "zh": "什么时候",
+        "emoji": "⏰",
+        "ipa": "wˈɛn"
+      },
+      {
+        "en": "time",
+        "zh": "时间",
+        "emoji": "⏰",
+        "ipa": "tˈaɪm"
+      },
+      {
+        "en": "every day",
+        "zh": "每天",
+        "emoji": "📅",
+        "ipa": "ˈevri deɪ"
+      }
+    ]
+  },
+  "clothes": {
+    "name": {
+      "en": "Clothes",
+      "zh": "服装"
+    },
+    "icon": "👕",
+    "words": [
+      {
+        "en": "coat",
+        "zh": "外套",
+        "emoji": "🧥",
+        "ipa": "kˈoʊt"
+      },
+      {
+        "en": "sweater",
+        "zh": "毛衣",
+        "emoji": "🧶",
+        "ipa": "swˈɛtər"
+      },
+      {
+        "en": "shirt",
+        "zh": "衬衫",
+        "emoji": "👔",
+        "ipa": "ʃˈɜrt"
+      },
+      {
+        "en": "skirt",
+        "zh": "短裙",
+        "emoji": "👗",
+        "ipa": "skˈɜrt"
+      },
+      {
+        "en": "dress",
+        "zh": "连衣裙",
+        "emoji": "👗",
+        "ipa": "drˈɛs"
+      },
+      {
+        "en": "pants",
+        "zh": "长裤",
+        "emoji": "👖",
+        "ipa": "pˈænts"
+      },
+      {
+        "en": "shorts",
+        "zh": "短裤",
+        "emoji": "🩳",
+        "ipa": "ʃˈɔrts"
+      },
+      {
+        "en": "socks",
+        "zh": "袜子",
+        "emoji": "🧦",
+        "ipa": "sˈɑks"
+      },
+      {
+        "en": "shoes",
+        "zh": "鞋子",
+        "emoji": "👟",
+        "ipa": "ʃˈuz"
+      },
+      {
+        "en": "hat",
+        "zh": "帽子",
+        "emoji": "👒",
+        "ipa": "hˈæt"
+      },
+      {
+        "en": "cap",
+        "zh": "便帽",
+        "emoji": "🧢",
+        "ipa": "kˈæp"
+      },
+      {
+        "en": "T-shirt",
+        "zh": "T恤",
+        "emoji": "👕",
+        "ipa": "tˈisˌɜrt"
+      },
+      {
+        "en": "jacket",
+        "zh": "夹克",
+        "emoji": "🧥",
+        "ipa": "dʒˈækət"
+      },
+      {
+        "en": "glove",
+        "zh": "手套",
+        "emoji": "🧤",
+        "ipa": "ɡlˈʌv"
+      },
+      {
+        "en": "scarf",
+        "zh": "围巾",
+        "emoji": "🧣",
+        "ipa": "skˈɑrf"
+      },
+      {
+        "en": "uniform",
+        "zh": "校服",
+        "emoji": "👕",
+        "ipa": "jˈunəfˌɔrm"
+      },
+      {
+        "en": "raincoat",
+        "zh": "雨衣",
+        "emoji": "🧥",
+        "ipa": "rˈeɪnkˌoʊt"
+      }
+    ]
+  },
+  "jobs": {
+    "name": {
+      "en": "Jobs",
+      "zh": "职业"
+    },
+    "icon": "👮",
+    "words": [
+      {
+        "en": "teacher",
+        "zh": "老师",
+        "emoji": "👩‍🏫",
+        "ipa": "tˈitʃər"
+      },
+      {
+        "en": "student",
+        "zh": "学生",
+        "emoji": "👨‍🎓",
+        "ipa": "stˈudənt"
+      },
+      {
+        "en": "doctor",
+        "zh": "医生",
+        "emoji": "👨‍⚕️",
+        "ipa": "dˈɑktər"
+      },
+      {
+        "en": "nurse",
+        "zh": "护士",
+        "emoji": "👩‍⚕️",
+        "ipa": "nˈɜrs"
+      },
+      {
+        "en": "farmer",
+        "zh": "农民",
+        "emoji": "👨‍🌾",
+        "ipa": "fˈɑrmər"
+      },
+      {
+        "en": "driver",
+        "zh": "司机",
+        "emoji": "🚗",
+        "ipa": "drˈaɪvər"
+      },
+      {
+        "en": "policeman",
+        "zh": "警察",
+        "emoji": "👮",
+        "ipa": "pəlˈismən"
+      },
+      {
+        "en": "fireman",
+        "zh": "消防员",
+        "emoji": "🧑‍🚒",
+        "ipa": "fˈaɪrmən"
+      },
+      {
+        "en": "cook",
+        "zh": "厨师",
+        "emoji": "👨‍🍳",
+        "ipa": "kˈʊk"
+      },
+      {
+        "en": "waiter",
+        "zh": "服务员",
+        "emoji": "🤵",
+        "ipa": "wˈeɪtər"
+      },
+      {
+        "en": "worker",
+        "zh": "工人",
+        "emoji": "👷",
+        "ipa": "wˈɜrkər"
+      },
+      {
+        "en": "postman",
+        "zh": "邮递员",
+        "emoji": "📮",
+        "ipa": "pˈoʊstmən"
+      },
+      {
+        "en": "singer",
+        "zh": "歌手",
+        "emoji": "🎤",
+        "ipa": "sˈɪŋər"
+      },
+      {
+        "en": "dancer",
+        "zh": "舞蹈家",
+        "emoji": "💃",
+        "ipa": "dˈænsər"
+      },
+      {
+        "en": "pilot",
+        "zh": "飞行员",
+        "emoji": "✈️",
+        "ipa": "pˈaɪlət"
+      }
+    ]
+  },
+  "places": {
+    "name": {
+      "en": "Places",
+      "zh": "地点场所"
+    },
+    "icon": "🏫",
+    "words": [
+      {
+        "en": "school",
+        "zh": "学校",
+        "emoji": "🏫",
+        "ipa": "skˈul"
+      },
+      {
+        "en": "home",
+        "zh": "家",
+        "emoji": "🏠",
+        "ipa": "hˈoʊm"
+      },
+      {
+        "en": "park",
+        "zh": "公园",
+        "emoji": "🏞️",
+        "ipa": "pˈɑrk"
+      },
+      {
+        "en": "zoo",
+        "zh": "动物园",
+        "emoji": "🦁",
+        "ipa": "zˈu"
+      },
+      {
+        "en": "shop",
+        "zh": "商店",
+        "emoji": "🏬",
+        "ipa": "ʃˈɑp"
+      },
+      {
+        "en": "library",
+        "zh": "图书馆",
+        "emoji": "📚",
+        "ipa": "lˈaɪbrɛrˌi"
+      },
+      {
+        "en": "hospital",
+        "zh": "医院",
+        "emoji": "🏥",
+        "ipa": "hˈɑspˌɪtəl"
+      },
+      {
+        "en": "cinema",
+        "zh": "电影院",
+        "emoji": "🎬",
+        "ipa": "sˈɪnəmə"
+      },
+      {
+        "en": "supermarket",
+        "zh": "超市",
+        "emoji": "🛒",
+        "ipa": "sˈupərmˌɑrkɪt"
+      },
+      {
+        "en": "classroom",
+        "zh": "教室",
+        "emoji": "🏫",
+        "ipa": "klˈæsrˌum"
+      },
+      {
+        "en": "bookshop",
+        "zh": "书店",
+        "emoji": "📖",
+        "ipa": "bˈʊkʃˌɑp"
+      },
+      {
+        "en": "bank",
+        "zh": "银行",
+        "emoji": "🏦",
+        "ipa": "bˈæŋk"
+      },
+      {
+        "en": "museum",
+        "zh": "博物馆",
+        "emoji": "🏛️",
+        "ipa": "mjuzˈiəm"
+      },
+      {
+        "en": "post office",
+        "zh": "邮局",
+        "emoji": "📮",
+        "ipa": "pəʊst ˈɒfɪs"
+      },
+      {
+        "en": "playground",
+        "zh": "操场",
+        "emoji": "🏃",
+        "ipa": "plˈeɪɡrˌaʊnd"
+      },
+      {
+        "en": "room",
+        "zh": "房间",
+        "emoji": "🛋️",
+        "ipa": "rˈum"
+      },
+      {
+        "en": "bedroom",
+        "zh": "卧室",
+        "emoji": "🛏️",
+        "ipa": "bˈɛdrˌum"
+      },
+      {
+        "en": "kitchen",
+        "zh": "厨房",
+        "emoji": "🍳",
+        "ipa": "kˈɪtʃən"
+      },
+      {
+        "en": "farm",
+        "zh": "农场",
+        "emoji": "🚜",
+        "ipa": "fˈɑrm"
+      },
+      {
+        "en": "city",
+        "zh": "城市",
+        "emoji": "🏙️",
+        "ipa": "sˈɪti"
+      }
+    ]
+  },
+  "toys": {
+    "name": {
+      "en": "Toys",
+      "zh": "玩具"
+    },
+    "icon": "🧸",
+    "words": [
+      {
+        "en": "ball",
+        "zh": "球",
+        "emoji": "⚽",
+        "ipa": "bˈɔl"
+      },
+      {
+        "en": "doll",
+        "zh": "玩偶",
+        "emoji": "🎎",
+        "ipa": "dˈɑl"
+      },
+      {
+        "en": "kite",
+        "zh": "风筝",
+        "emoji": "🪁",
+        "ipa": "kˈaɪt"
+      },
+      {
+        "en": "toy",
+        "zh": "玩具",
+        "emoji": "🧸",
+        "ipa": "tˈɔɪ"
+      },
+      {
+        "en": "plane",
+        "zh": "飞机",
+        "emoji": "✈️",
+        "ipa": "plˈeɪn"
+      },
+      {
+        "en": "train",
+        "zh": "火车",
+        "emoji": "🚂",
+        "ipa": "trˈeɪn"
+      },
+      {
+        "en": "car",
+        "zh": "小汽车",
+        "emoji": "🚗",
+        "ipa": "kˈɑr"
+      },
+      {
+        "en": "bear",
+        "zh": "玩具熊",
+        "emoji": "🧸",
+        "ipa": "bˈɛr"
+      },
+      {
+        "en": "yo-yo",
+        "zh": "溜溜球",
+        "emoji": "🪀",
+        "ipa": "ˈjəʊjəʊ"
+      },
+      {
+        "en": "cards",
+        "zh": "卡片",
+        "emoji": "🃏",
+        "ipa": "kˈɑrdz"
+      },
+      {
+        "en": "balloon",
+        "zh": "气球",
+        "emoji": "🎈",
+        "ipa": "bəlˈun"
+      },
+      {
+        "en": "bicycle",
+        "zh": "自行车",
+        "emoji": "🚲",
+        "ipa": "bˈaɪsɪkəl"
+      },
+      {
+        "en": "puzzle",
+        "zh": "拼图",
+        "emoji": "🧩",
+        "ipa": "pˈʌzəl"
+      },
+      {
+        "en": "drum",
+        "zh": "鼓",
+        "emoji": "🥁",
+        "ipa": "drˈʌm"
+      },
+      {
+        "en": "guitar",
+        "zh": "吉他",
+        "emoji": "🎸",
+        "ipa": "ɡɪtˈɑr"
+      }
+    ]
+  },
+  "subjects": {
+    "name": {
+      "en": "Subjects",
+      "zh": "学科"
+    },
+    "icon": "📖",
+    "words": [
+      {
+        "en": "English",
+        "zh": "英语",
+        "emoji": "🇬🇧",
+        "ipa": "ˈɪŋɡlɪʃ"
+      },
+      {
+        "en": "Chinese",
+        "zh": "语文",
+        "emoji": "🇨🇳",
+        "ipa": "tʃaɪnˈiz"
+      },
+      {
+        "en": "math",
+        "zh": "数学",
+        "emoji": "➗",
+        "ipa": "mˈæθ"
+      },
+      {
+        "en": "music",
+        "zh": "音乐",
+        "emoji": "🎵",
+        "ipa": "mjˈuzɪk"
+      },
+      {
+        "en": "art",
+        "zh": "美术",
+        "emoji": "🎨",
+        "ipa": "ˈɑrt"
+      },
+      {
+        "en": "PE",
+        "zh": "体育",
+        "emoji": "⚽",
+        "ipa": "ˌpiːˈiː"
+      },
+      {
+        "en": "science",
+        "zh": "科学",
+        "emoji": "🔬",
+        "ipa": "sˈaɪəns"
+      },
+      {
+        "en": "computer",
+        "zh": "电脑",
+        "emoji": "💻",
+        "ipa": "kəmpjˈutər"
+      },
+      {
+        "en": "class",
+        "zh": "班级",
+        "emoji": "🏫",
+        "ipa": "klˈæs"
+      },
+      {
+        "en": "lesson",
+        "zh": "课",
+        "emoji": "📖",
+        "ipa": "lˈɛsən"
+      },
+      {
+        "en": "homework",
+        "zh": "作业",
+        "emoji": "📝",
+        "ipa": "hˈoʊmwˌɜrk"
+      },
+      {
+        "en": "story",
+        "zh": "故事",
+        "emoji": "📚",
+        "ipa": "stˈɔri"
+      },
+      {
+        "en": "subject",
+        "zh": "科目",
+        "emoji": "📚",
+        "ipa": "səbdʒˈɛkt"
+      }
+    ]
+  },
+  "feelings": {
+    "name": {
+      "en": "Feelings",
+      "zh": "情感感受"
+    },
+    "icon": "😊",
+    "words": [
+      {
+        "en": "happy",
+        "zh": "开心的",
+        "emoji": "😊",
+        "ipa": "hˈæpi"
+      },
+      {
+        "en": "sad",
+        "zh": "难过的",
+        "emoji": "😢",
+        "ipa": "sˈæd"
+      },
+      {
+        "en": "angry",
+        "zh": "生气的",
+        "emoji": "😠",
+        "ipa": "ˈæŋɡri"
+      },
+      {
+        "en": "scared",
+        "zh": "害怕的",
+        "emoji": "😨",
+        "ipa": "skˈɛrd"
+      },
+      {
+        "en": "tired",
+        "zh": "累的",
+        "emoji": "😴",
+        "ipa": "tˈaɪərd"
+      },
+      {
+        "en": "hungry",
+        "zh": "饿的",
+        "emoji": "🍽️",
+        "ipa": "hˈʌŋɡri"
+      },
+      {
+        "en": "thirsty",
+        "zh": "渴的",
+        "emoji": "🥤",
+        "ipa": "θˈɜrsti"
+      },
+      {
+        "en": "fine",
+        "zh": "好的",
+        "emoji": "😌",
+        "ipa": "fˈaɪn"
+      },
+      {
+        "en": "excited",
+        "zh": "兴奋的",
+        "emoji": "🤩",
+        "ipa": "ɪksˈaɪtəd"
+      },
+      {
+        "en": "worried",
+        "zh": "担心的",
+        "emoji": "😟",
+        "ipa": "wˈɜrid"
+      },
+      {
+        "en": "glad",
+        "zh": "高兴的",
+        "emoji": "😄",
+        "ipa": "ɡlˈæd"
+      },
+      {
+        "en": "sick",
+        "zh": "生病的",
+        "emoji": "🤒",
+        "ipa": "sˈɪk"
+      },
+      {
+        "en": "great",
+        "zh": "极好的",
+        "emoji": "🎉",
+        "ipa": "ɡrˈeɪt"
+      },
+      {
+        "en": "OK",
+        "zh": "好的",
+        "emoji": "👌",
+        "ipa": "ˈoʊkˈeɪ"
+      }
+    ]
+  },
+  "adjectives": {
+    "name": {
+      "en": "Adjectives",
+      "zh": "描述形容词"
+    },
+    "icon": "📏",
+    "words": [
+      {
+        "en": "big",
+        "zh": "大的",
+        "emoji": "🔵",
+        "ipa": "bˈɪɡ"
+      },
+      {
+        "en": "small",
+        "zh": "小的",
+        "emoji": "🔸",
+        "ipa": "smˈɔl"
+      },
+      {
+        "en": "tall",
+        "zh": "高的",
+        "emoji": "📏",
+        "ipa": "tˈɔl"
+      },
+      {
+        "en": "short",
+        "zh": "矮的",
+        "emoji": "📏",
+        "ipa": "ʃˈɔrt"
+      },
+      {
+        "en": "long",
+        "zh": "长的",
+        "emoji": "📏",
+        "ipa": "lˈɔŋ"
+      },
+      {
+        "en": "fat",
+        "zh": "胖的",
+        "emoji": "🐷",
+        "ipa": "fˈæt"
+      },
+      {
+        "en": "thin",
+        "zh": "瘦的",
+        "emoji": "🥒",
+        "ipa": "θˈɪn"
+      },
+      {
+        "en": "old",
+        "zh": "老的",
+        "emoji": "👴",
+        "ipa": "ˈoʊld"
+      },
+      {
+        "en": "new",
+        "zh": "新的",
+        "emoji": "✨",
+        "ipa": "nˈu"
+      },
+      {
+        "en": "good",
+        "zh": "好的",
+        "emoji": "👍",
+        "ipa": "ɡˈʊd"
+      },
+      {
+        "en": "bad",
+        "zh": "坏的",
+        "emoji": "👎",
+        "ipa": "bˈæd"
+      },
+      {
+        "en": "beautiful",
+        "zh": "美丽的",
+        "emoji": "🌸",
+        "ipa": "bjˈutəfəl"
+      },
+      {
+        "en": "pretty",
+        "zh": "漂亮的",
+        "emoji": "💐",
+        "ipa": "prˈɪti"
+      },
+      {
+        "en": "cute",
+        "zh": "可爱的",
+        "emoji": "🥰",
+        "ipa": "kjˈut"
+      },
+      {
+        "en": "young",
+        "zh": "年轻的",
+        "emoji": "👶",
+        "ipa": "jˈʌŋ"
+      },
+      {
+        "en": "hot",
+        "zh": "热的",
+        "emoji": "🔥",
+        "ipa": "hˈɑt"
+      },
+      {
+        "en": "cold",
+        "zh": "冷的",
+        "emoji": "❄️",
+        "ipa": "kˈoʊld"
+      },
+      {
+        "en": "warm",
+        "zh": "温暖的",
+        "emoji": "☀️",
+        "ipa": "wˈɔrm"
+      },
+      {
+        "en": "cool",
+        "zh": "凉爽的",
+        "emoji": "🍃",
+        "ipa": "kˈul"
+      },
+      {
+        "en": "fast",
+        "zh": "快的",
+        "emoji": "💨",
+        "ipa": "fˈæst"
+      },
+      {
+        "en": "slow",
+        "zh": "慢的",
+        "emoji": "🐌",
+        "ipa": "slˈoʊ"
+      },
+      {
+        "en": "easy",
+        "zh": "容易的",
+        "emoji": "😊",
+        "ipa": "ˈizi"
+      },
+      {
+        "en": "hard",
+        "zh": "难的",
+        "emoji": "🤔",
+        "ipa": "hˈɑrd"
+      },
+      {
+        "en": "clean",
+        "zh": "干净的",
+        "emoji": "🧼",
+        "ipa": "klˈin"
+      },
+      {
+        "en": "dirty",
+        "zh": "脏的",
+        "emoji": "💩",
+        "ipa": "dˈɜrti"
+      }
+    ]
+  },
+  "fruits": {
+    "name": {
+      "en": "Fruits",
+      "zh": "水果"
+    },
+    "icon": "🍎",
+    "words": [
+      {
+        "en": "apple",
+        "zh": "苹果",
+        "emoji": "🍎",
+        "ipa": "ˈæpəl"
+      },
+      {
+        "en": "banana",
+        "zh": "香蕉",
+        "emoji": "🍌",
+        "ipa": "bənˈænə"
+      },
+      {
+        "en": "orange",
+        "zh": "橙子",
+        "emoji": "🍊",
+        "ipa": "ˈɔrəndʒ"
+      },
+      {
+        "en": "pear",
+        "zh": "梨",
+        "emoji": "🍐",
+        "ipa": "pˈɛr"
+      },
+      {
+        "en": "grape",
+        "zh": "葡萄",
+        "emoji": "🍇",
+        "ipa": "ɡrˈeɪp"
+      },
+      {
+        "en": "strawberry",
+        "zh": "草莓",
+        "emoji": "🍓",
+        "ipa": "strˈɔbˌɛri"
+      },
+      {
+        "en": "watermelon",
+        "zh": "西瓜",
+        "emoji": "🍉",
+        "ipa": "wˈɔtərmˌɛlən"
+      },
+      {
+        "en": "peach",
+        "zh": "桃子",
+        "emoji": "🍑",
+        "ipa": "pˈitʃ"
+      },
+      {
+        "en": "mango",
+        "zh": "芒果",
+        "emoji": "🥭",
+        "ipa": "mˈæŋɡoʊ"
+      },
+      {
+        "en": "pineapple",
+        "zh": "菠萝",
+        "emoji": "🍍",
+        "ipa": "pˈaɪnˌæpəl"
+      },
+      {
+        "en": "lemon",
+        "zh": "柠檬",
+        "emoji": "🍋",
+        "ipa": "lˈɛmən"
+      },
+      {
+        "en": "cherry",
+        "zh": "樱桃",
+        "emoji": "🍒",
+        "ipa": "tʃˈɛri"
+      },
+      {
+        "en": "fruit",
+        "zh": "水果",
+        "emoji": "🍎",
+        "ipa": "frˈut"
+      }
+    ]
+  }
+}

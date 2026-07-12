@@ -1,0 +1,37 @@
+{
+  "name": "快乐学习",
+  "short_name": "快乐学习",
+  "description": "数学游戏集合，锻炼逻辑思维和计算能力",
+  "start_url": "./math.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "xue-64.webp",
+      "sizes": "64x64",
+      "type": "image/webp"
+    },
+    {
+      "src": "xue-128.webp",
+      "sizes": "128x128",
+      "type": "image/webp"
+    },
+    {
+      "src": "xue-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "xue-256.webp",
+      "sizes": "256x256",
+      "type": "image/webp"
+    },
+    {
+      "src": "xue-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

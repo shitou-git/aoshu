@@ -1,0 +1,38 @@
+{
+  "name": "小学英语学习乐园",
+  "short_name": "英语乐园",
+  "description": "小学生英语单词学习游戏，配对游戏、对话学习、单词本、国际音标",
+  "start_url": "./dc.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF7ED",
+  "theme_color": "#FF9A9E",
+  "lang": "zh-CN",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "xue-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "xue-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "xue-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "xue.png",
+      "sizes": "2048x2048",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

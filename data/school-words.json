@@ -1,0 +1,6480 @@
+{
+  "primary": {
+    "name": {
+      "en": "Primary School",
+      "zh": "小学词汇"
+    },
+    "icon": "🎒",
+    "words": [
+      {
+        "en": "a",
+        "zh": "一个",
+        "ipa": "ə"
+      },
+      {
+        "en": "about",
+        "zh": "关于",
+        "ipa": "əˈbaʊt"
+      },
+      {
+        "en": "after",
+        "zh": "在...之后",
+        "ipa": "ˈæftər"
+      },
+      {
+        "en": "afternoon",
+        "zh": "下午",
+        "ipa": "ˌæftərˈnuːn"
+      },
+      {
+        "en": "again",
+        "zh": "再次",
+        "ipa": "əˈɡɛn"
+      },
+      {
+        "en": "age",
+        "zh": "年龄",
+        "ipa": "eɪdʒ"
+      },
+      {
+        "en": "all",
+        "zh": "全部",
+        "ipa": "ɔl"
+      },
+      {
+        "en": "also",
+        "zh": "也",
+        "ipa": "ˈɔlsoʊ"
+      },
+      {
+        "en": "always",
+        "zh": "总是",
+        "ipa": "ˈɔlweɪz"
+      },
+      {
+        "en": "and",
+        "zh": "和",
+        "ipa": "ænd"
+      },
+      {
+        "en": "animal",
+        "zh": "动物",
+        "ipa": "ˈænəməl"
+      },
+      {
+        "en": "answer",
+        "zh": "回答",
+        "ipa": "ˈɑːnsər"
+      },
+      {
+        "en": "any",
+        "zh": "任何",
+        "ipa": "ˈɛni"
+      },
+      {
+        "en": "apple",
+        "zh": "苹果",
+        "ipa": "ˈæpəl"
+      },
+      {
+        "en": "April",
+        "zh": "四月",
+        "ipa": "ˈeɪprəl"
+      },
+      {
+        "en": "are",
+        "zh": "是",
+        "ipa": "ɑːr"
+      },
+      {
+        "en": "arm",
+        "zh": "手臂",
+        "ipa": "ɑːrm"
+      },
+      {
+        "en": "around",
+        "zh": "周围",
+        "ipa": "əˈraʊnd"
+      },
+      {
+        "en": "ask",
+        "zh": "问",
+        "ipa": "æsk"
+      },
+      {
+        "en": "at",
+        "zh": "在",
+        "ipa": "æt"
+      },
+      {
+        "en": "aunt",
+        "zh": "阿姨",
+        "ipa": "ɑːnt"
+      },
+      {
+        "en": "autumn",
+        "zh": "秋天",
+        "ipa": "ˈɔtəm"
+      },
+      {
+        "en": "away",
+        "zh": "离开",
+        "ipa": "əˈweɪ"
+      },
+      {
+        "en": "baby",
+        "zh": "婴儿",
+        "ipa": "ˈbeɪbi"
+      },
+      {
+        "en": "back",
+        "zh": "回来",
+        "ipa": "bæk"
+      },
+      {
+        "en": "bad",
+        "zh": "坏的",
+        "ipa": "bæd"
+      },
+      {
+        "en": "bag",
+        "zh": "包",
+        "ipa": "bæɡ"
+      },
+      {
+        "en": "ball",
+        "zh": "球",
+        "ipa": "bɔl"
+      },
+      {
+        "en": "banana",
+        "zh": "香蕉",
+        "ipa": "bəˈnænə"
+      },
+      {
+        "en": "basketball",
+        "zh": "篮球",
+        "ipa": "ˈbæskɪtbɔl"
+      },
+      {
+        "en": "be",
+        "zh": "是",
+        "ipa": "bi"
+      },
+      {
+        "en": "beach",
+        "zh": "海滩",
+        "ipa": "biːtʃ"
+      },
+      {
+        "en": "bear",
+        "zh": "熊",
+        "ipa": "ber"
+      },
+      {
+        "en": "beautiful",
+        "zh": "美丽的",
+        "ipa": "ˈbjuːtɪfl"
+      },
+      {
+        "en": "because",
+        "zh": "因为",
+        "ipa": "bɪˈkɔz"
+      },
+      {
+        "en": "become",
+        "zh": "变成",
+        "ipa": "bɪˈkʌm"
+      },
+      {
+        "en": "bed",
+        "zh": "床",
+        "ipa": "bed"
+      },
+      {
+        "en": "bedroom",
+        "zh": "卧室",
+        "ipa": "ˈbedruːm"
+      },
+      {
+        "en": "bee",
+        "zh": "蜜蜂",
+        "ipa": "bi"
+      },
+      {
+        "en": "before",
+        "zh": "在...之前",
+        "ipa": "bɪˈfɔr"
+      },
+      {
+        "en": "begin",
+        "zh": "开始",
+        "ipa": "bɪˈɡɪn"
+      },
+      {
+        "en": "behind",
+        "zh": "在...后面",
+        "ipa": "bɪˈhaɪnd"
+      },
+      {
+        "en": "believe",
+        "zh": "相信",
+        "ipa": "bɪˈliːv"
+      },
+      {
+        "en": "below",
+        "zh": "在...下面",
+        "ipa": "bɪˈloʊ"
+      },
+      {
+        "en": "best",
+        "zh": "最好的",
+        "ipa": "best"
+      },
+      {
+        "en": "better",
+        "zh": "更好的",
+        "ipa": "ˈbetər"
+      },
+      {
+        "en": "between",
+        "zh": "在...之间",
+        "ipa": "bɪˈtwin"
+      },
+      {
+        "en": "big",
+        "zh": "大的",
+        "ipa": "bɪɡ"
+      },
+      {
+        "en": "bike",
+        "zh": "自行车",
+        "ipa": "baɪk"
+      },
+      {
+        "en": "bird",
+        "zh": "鸟",
+        "ipa": "bɜːrd"
+      },
+      {
+        "en": "birthday",
+        "zh": "生日",
+        "ipa": "ˈbɜːrθdeɪ"
+      },
+      {
+        "en": "black",
+        "zh": "黑色",
+        "ipa": "blæk"
+      },
+      {
+        "en": "blue",
+        "zh": "蓝色",
+        "ipa": "blu"
+      },
+      {
+        "en": "boat",
+        "zh": "船",
+        "ipa": "boʊt"
+      },
+      {
+        "en": "body",
+        "zh": "身体",
+        "ipa": "ˈbɒdi"
+      },
+      {
+        "en": "book",
+        "zh": "书",
+        "ipa": "bʊk"
+      },
+      {
+        "en": "both",
+        "zh": "两者都",
+        "ipa": "boʊθ"
+      },
+      {
+        "en": "bottle",
+        "zh": "瓶子",
+        "ipa": "ˈbɒtl"
+      },
+      {
+        "en": "box",
+        "zh": "盒子",
+        "ipa": "bɒks"
+      },
+      {
+        "en": "boy",
+        "zh": "男孩",
+        "ipa": "bɔɪ"
+      },
+      {
+        "en": "bread",
+        "zh": "面包",
+        "ipa": "bred"
+      },
+      {
+        "en": "breakfast",
+        "zh": "早餐",
+        "ipa": "ˈbrekfəst"
+      },
+      {
+        "en": "bridge",
+        "zh": "桥",
+        "ipa": "brɪdʒ"
+      },
+      {
+        "en": "bright",
+        "zh": "明亮的",
+        "ipa": "braɪt"
+      },
+      {
+        "en": "bring",
+        "zh": "带来",
+        "ipa": "brɪŋ"
+      },
+      {
+        "en": "brother",
+        "zh": "兄弟",
+        "ipa": "ˈbrʌðər"
+      },
+      {
+        "en": "brown",
+        "zh": "棕色",
+        "ipa": "braʊn"
+      },
+      {
+        "en": "bus",
+        "zh": "公共汽车",
+        "ipa": "bʌs"
+      },
+      {
+        "en": "busy",
+        "zh": "忙碌的",
+        "ipa": "ˈbɪzi"
+      },
+      {
+        "en": "but",
+        "zh": "但是",
+        "ipa": "bʌt"
+      },
+      {
+        "en": "buy",
+        "zh": "买",
+        "ipa": "baɪ"
+      },
+      {
+        "en": "by",
+        "zh": "通过",
+        "ipa": "baɪ"
+      },
+      {
+        "en": "cake",
+        "zh": "蛋糕",
+        "ipa": "keɪk"
+      },
+      {
+        "en": "call",
+        "zh": "呼叫",
+        "ipa": "kɔl"
+      },
+      {
+        "en": "can",
+        "zh": "能",
+        "ipa": "kæn"
+      },
+      {
+        "en": "candle",
+        "zh": "蜡烛",
+        "ipa": "ˈkændl"
+      },
+      {
+        "en": "cap",
+        "zh": "帽子",
+        "ipa": "kæp"
+      },
+      {
+        "en": "car",
+        "zh": "汽车",
+        "ipa": "kɑːr"
+      },
+      {
+        "en": "card",
+        "zh": "卡片",
+        "ipa": "kɑːrd"
+      },
+      {
+        "en": "careful",
+        "zh": "小心的",
+        "ipa": "ˈkerfl"
+      },
+      {
+        "en": "carry",
+        "zh": "携带",
+        "ipa": "ˈkæri"
+      },
+      {
+        "en": "cat",
+        "zh": "猫",
+        "ipa": "kæt"
+      },
+      {
+        "en": "catch",
+        "zh": "抓住",
+        "ipa": "kætʃ"
+      },
+      {
+        "en": "chair",
+        "zh": "椅子",
+        "ipa": "tʃer"
+      },
+      {
+        "en": "change",
+        "zh": "改变",
+        "ipa": "tʃeɪndʒ"
+      },
+      {
+        "en": "child",
+        "zh": "孩子",
+        "ipa": "tʃaɪld"
+      },
+      {
+        "en": "children",
+        "zh": "孩子们",
+        "ipa": "ˈtʃɪldrən"
+      },
+      {
+        "en": "China",
+        "zh": "中国",
+        "ipa": "ˈtʃaɪnə"
+      },
+      {
+        "en": "Chinese",
+        "zh": "中文",
+        "ipa": "ˈtʃaɪˈniːz"
+      },
+      {
+        "en": "class",
+        "zh": "班级",
+        "ipa": "klæs"
+      },
+      {
+        "en": "classroom",
+        "zh": "教室",
+        "ipa": "ˈklæsruːm"
+      },
+      {
+        "en": "clean",
+        "zh": "干净的",
+        "ipa": "kliːn"
+      },
+      {
+        "en": "clear",
+        "zh": "清楚的",
+        "ipa": "klɪr"
+      },
+      {
+        "en": "clever",
+        "zh": "聪明的",
+        "ipa": "ˈklevər"
+      },
+      {
+        "en": "clock",
+        "zh": "时钟",
+        "ipa": "klɒk"
+      },
+      {
+        "en": "close",
+        "zh": "关闭",
+        "ipa": "kloʊz"
+      },
+      {
+        "en": "clothes",
+        "zh": "衣服",
+        "ipa": "kloʊðz"
+      },
+      {
+        "en": "cloud",
+        "zh": "云",
+        "ipa": "klaʊd"
+      },
+      {
+        "en": "cold",
+        "zh": "冷的",
+        "ipa": "koʊld"
+      },
+      {
+        "en": "color",
+        "zh": "颜色",
+        "ipa": "ˈkʌlər"
+      },
+      {
+        "en": "come",
+        "zh": "来",
+        "ipa": "kʌm"
+      },
+      {
+        "en": "computer",
+        "zh": "电脑",
+        "ipa": "kəmˈpjuːtər"
+      },
+      {
+        "en": "cook",
+        "zh": "烹饪",
+        "ipa": "kʊk"
+      },
+      {
+        "en": "cool",
+        "zh": "凉爽的",
+        "ipa": "kuːl"
+      },
+      {
+        "en": "correct",
+        "zh": "正确的",
+        "ipa": "kəˈrekt"
+      },
+      {
+        "en": "cotton",
+        "zh": "棉花",
+        "ipa": "ˈkɒtn"
+      },
+      {
+        "en": "could",
+        "zh": "能（过去式）",
+        "ipa": "kʊd"
+      },
+      {
+        "en": "country",
+        "zh": "国家",
+        "ipa": "ˈkʌntri"
+      },
+      {
+        "en": "cup",
+        "zh": "杯子",
+        "ipa": "kʌp"
+      },
+      {
+        "en": "cute",
+        "zh": "可爱的",
+        "ipa": "kjuːt"
+      },
+      {
+        "en": "dad",
+        "zh": "爸爸",
+        "ipa": "dæd"
+      },
+      {
+        "en": "daily",
+        "zh": "日常的",
+        "ipa": "ˈdeɪli"
+      },
+      {
+        "en": "dance",
+        "zh": "跳舞",
+        "ipa": "dæns"
+      },
+      {
+        "en": "danger",
+        "zh": "危险",
+        "ipa": "ˈdeɪndʒər"
+      },
+      {
+        "en": "dark",
+        "zh": "黑暗的",
+        "ipa": "dɑːrk"
+      },
+      {
+        "en": "date",
+        "zh": "日期",
+        "ipa": "deɪt"
+      },
+      {
+        "en": "daughter",
+        "zh": "女儿",
+        "ipa": "ˈdɔːtər"
+      },
+      {
+        "en": "day",
+        "zh": "天",
+        "ipa": "deɪ"
+      },
+      {
+        "en": "dear",
+        "zh": "亲爱的",
+        "ipa": "dɪr"
+      },
+      {
+        "en": "December",
+        "zh": "十二月",
+        "ipa": "dɪˈsembər"
+      },
+      {
+        "en": "decide",
+        "zh": "决定",
+        "ipa": "dɪˈsaɪd"
+      },
+      {
+        "en": "deep",
+        "zh": "深的",
+        "ipa": "diːp"
+      },
+      {
+        "en": "delicious",
+        "zh": "美味的",
+        "ipa": "dɪˈlɪʃəs"
+      },
+      {
+        "en": "desk",
+        "zh": "书桌",
+        "ipa": "desk"
+      },
+      {
+        "en": "dictionary",
+        "zh": "字典",
+        "ipa": "ˈdɪkʃəneri"
+      },
+      {
+        "en": "die",
+        "zh": "死",
+        "ipa": "daɪ"
+      },
+      {
+        "en": "different",
+        "zh": "不同的",
+        "ipa": "ˈdɪfrənt"
+      },
+      {
+        "en": "difficult",
+        "zh": "困难的",
+        "ipa": "ˈdɪfɪkəlt"
+      },
+      {
+        "en": "dinner",
+        "zh": "晚餐",
+        "ipa": "ˈdɪnər"
+      },
+      {
+        "en": "dirty",
+        "zh": "脏的",
+        "ipa": "ˈdɜːrti"
+      },
+      {
+        "en": "discover",
+        "zh": "发现",
+        "ipa": "dɪˈskʌvər"
+      },
+      {
+        "en": "doctor",
+        "zh": "医生",
+        "ipa": "ˈdɒktər"
+      },
+      {
+        "en": "dog",
+        "zh": "狗",
+        "ipa": "dɔːɡ"
+      },
+      {
+        "en": "door",
+        "zh": "门",
+        "ipa": "dɔːr"
+      },
+      {
+        "en": "down",
+        "zh": "向下",
+        "ipa": "daʊn"
+      },
+      {
+        "en": "draw",
+        "zh": "画",
+        "ipa": "drɔː"
+      },
+      {
+        "en": "dream",
+        "zh": "梦想",
+        "ipa": "driːm"
+      },
+      {
+        "en": "dress",
+        "zh": "连衣裙",
+        "ipa": "dres"
+      },
+      {
+        "en": "drink",
+        "zh": "喝",
+        "ipa": "drɪŋk"
+      },
+      {
+        "en": "drive",
+        "zh": "驾驶",
+        "ipa": "draɪv"
+      },
+      {
+        "en": "duck",
+        "zh": "鸭子",
+        "ipa": "dʌk"
+      },
+      {
+        "en": "during",
+        "zh": "在...期间",
+        "ipa": "ˈdjʊrɪŋ"
+      },
+      {
+        "en": "each",
+        "zh": "每个",
+        "ipa": "iːtʃ"
+      },
+      {
+        "en": "early",
+        "zh": "早的",
+        "ipa": "ˈɜːrli"
+      },
+      {
+        "en": "earth",
+        "zh": "地球",
+        "ipa": "ɜːrθ"
+      },
+      {
+        "en": "east",
+        "zh": "东方",
+        "ipa": "iːst"
+      },
+      {
+        "en": "easy",
+        "zh": "容易的",
+        "ipa": "ˈiːzi"
+      },
+      {
+        "en": "eat",
+        "zh": "吃",
+        "ipa": "iːt"
+      },
+      {
+        "en": "egg",
+        "zh": "鸡蛋",
+        "ipa": "eɡ"
+      },
+      {
+        "en": "eight",
+        "zh": "八",
+        "ipa": "eɪt"
+      },
+      {
+        "en": "either",
+        "zh": "或者",
+        "ipa": "ˈaɪðər"
+      },
+      {
+        "en": "elephant",
+        "zh": "大象",
+        "ipa": "ˈelɪfənt"
+      },
+      {
+        "en": "else",
+        "zh": "其他",
+        "ipa": "els"
+      },
+      {
+        "en": "empty",
+        "zh": "空的",
+        "ipa": "ˈempti"
+      },
+      {
+        "en": "end",
+        "zh": "结束",
+        "ipa": "end"
+      },
+      {
+        "en": "English",
+        "zh": "英语",
+        "ipa": "ˈɪŋɡlɪʃ"
+      },
+      {
+        "en": "enjoy",
+        "zh": "享受",
+        "ipa": "ɪnˈdʒɔɪ"
+      },
+      {
+        "en": "enough",
+        "zh": "足够的",
+        "ipa": "ɪˈnʌf"
+      },
+      {
+        "en": "enter",
+        "zh": "进入",
+        "ipa": "ˈentər"
+      },
+      {
+        "en": "evening",
+        "zh": "晚上",
+        "ipa": "ˈiːvnɪŋ"
+      },
+      {
+        "en": "every",
+        "zh": "每个",
+        "ipa": "ˈevri"
+      },
+      {
+        "en": "everyone",
+        "zh": "每个人",
+        "ipa": "ˈevriwʌn"
+      },
+      {
+        "en": "everything",
+        "zh": "每件事",
+        "ipa": "ˈevriθɪŋ"
+      },
+      {
+        "en": "example",
+        "zh": "例子",
+        "ipa": "ɪɡˈzæmpl"
+      },
+      {
+        "en": "excellent",
+        "zh": "优秀的",
+        "ipa": "ˈeksələnt"
+      },
+      {
+        "en": "excited",
+        "zh": "兴奋的",
+        "ipa": "ɪkˈsaɪtɪd"
+      },
+      {
+        "en": "exciting",
+        "zh": "令人兴奋的",
+        "ipa": "ɪkˈsaɪtɪŋ"
+      },
+      {
+        "en": "exercise",
+        "zh": "练习",
+        "ipa": "ˈeksəsaɪz"
+      },
+      {
+        "en": "expensive",
+        "zh": "昂贵的",
+        "ipa": "ɪkˈspensɪv"
+      },
+      {
+        "en": "explain",
+        "zh": "解释",
+        "ipa": "ɪkˈspleɪn"
+      },
+      {
+        "en": "eye",
+        "zh": "眼睛",
+        "ipa": "aɪ"
+      },
+      {
+        "en": "face",
+        "zh": "脸",
+        "ipa": "feɪs"
+      },
+      {
+        "en": "fact",
+        "zh": "事实",
+        "ipa": "fækt"
+      },
+      {
+        "en": "factory",
+        "zh": "工厂",
+        "ipa": "ˈfæktəri"
+      },
+      {
+        "en": "fall",
+        "zh": "落下",
+        "ipa": "fɔːl"
+      },
+      {
+        "en": "family",
+        "zh": "家庭",
+        "ipa": "ˈfæməli"
+      },
+      {
+        "en": "famous",
+        "zh": "著名的",
+        "ipa": "ˈfeɪməs"
+      },
+      {
+        "en": "far",
+        "zh": "远的",
+        "ipa": "fɑːr"
+      },
+      {
+        "en": "farm",
+        "zh": "农场",
+        "ipa": "fɑːrm"
+      },
+      {
+        "en": "farmer",
+        "zh": "农民",
+        "ipa": "ˈfɑːrmər"
+      },
+      {
+        "en": "fast",
+        "zh": "快的",
+        "ipa": "fæst"
+      },
+      {
+        "en": "father",
+        "zh": "父亲",
+        "ipa": "ˈfɑːðər"
+      },
+      {
+        "en": "favorite",
+        "zh": "最喜欢的",
+        "ipa": "ˈfeɪvərɪt"
+      },
+      {
+        "en": "fear",
+        "zh": "害怕",
+        "ipa": "fɪr"
+      },
+      {
+        "en": "February",
+        "zh": "二月",
+        "ipa": "ˈfebrueri"
+      },
+      {
+        "en": "feel",
+        "zh": "感觉",
+        "ipa": "fil"
+      },
+      {
+        "en": "festival",
+        "zh": "节日",
+        "ipa": "ˈfestɪvl"
+      },
+      {
+        "en": "few",
+        "zh": "少数",
+        "ipa": "fjuː"
+      },
+      {
+        "en": "field",
+        "zh": "田野",
+        "ipa": "fiːld"
+      },
+      {
+        "en": "fifth",
+        "zh": "第五",
+        "ipa": "fɪfθ"
+      },
+      {
+        "en": "fifty",
+        "zh": "五十",
+        "ipa": "ˈfɪfti"
+      },
+      {
+        "en": "fight",
+        "zh": "战斗",
+        "ipa": "faɪt"
+      },
+      {
+        "en": "fill",
+        "zh": "填充",
+        "ipa": "fɪl"
+      },
+      {
+        "en": "film",
+        "zh": "电影",
+        "ipa": "fɪlm"
+      },
+      {
+        "en": "find",
+        "zh": "找到",
+        "ipa": "faɪnd"
+      },
+      {
+        "en": "fine",
+        "zh": "好的",
+        "ipa": "faɪn"
+      },
+      {
+        "en": "finger",
+        "zh": "手指",
+        "ipa": "ˈfɪŋɡər"
+      },
+      {
+        "en": "finish",
+        "zh": "完成",
+        "ipa": "ˈfɪnɪʃ"
+      },
+      {
+        "en": "fire",
+        "zh": "火",
+        "ipa": "faɪər"
+      },
+      {
+        "en": "first",
+        "zh": "第一",
+        "ipa": "fɜːrst"
+      },
+      {
+        "en": "fish",
+        "zh": "鱼",
+        "ipa": "fɪʃ"
+      },
+      {
+        "en": "fit",
+        "zh": "适合",
+        "ipa": "fɪt"
+      },
+      {
+        "en": "five",
+        "zh": "五",
+        "ipa": "faɪv"
+      },
+      {
+        "en": "fix",
+        "zh": "修理",
+        "ipa": "fɪks"
+      },
+      {
+        "en": "flag",
+        "zh": "旗帜",
+        "ipa": "flæɡ"
+      },
+      {
+        "en": "floor",
+        "zh": "地板",
+        "ipa": "flɔːr"
+      },
+      {
+        "en": "flower",
+        "zh": "花",
+        "ipa": "ˈflaʊər"
+      },
+      {
+        "en": "fly",
+        "zh": "飞",
+        "ipa": "flaɪ"
+      },
+      {
+        "en": "follow",
+        "zh": "跟随",
+        "ipa": "ˈfɑːloʊ"
+      },
+      {
+        "en": "food",
+        "zh": "食物",
+        "ipa": "fuːd"
+      },
+      {
+        "en": "foot",
+        "zh": "脚",
+        "ipa": "fʊt"
+      },
+      {
+        "en": "football",
+        "zh": "足球",
+        "ipa": "ˈfʊtbɔːl"
+      },
+      {
+        "en": "for",
+        "zh": "为了",
+        "ipa": "fɔːr"
+      },
+      {
+        "en": "forest",
+        "zh": "森林",
+        "ipa": "ˈfɔːrɪst"
+      },
+      {
+        "en": "forget",
+        "zh": "忘记",
+        "ipa": "fərˈɡet"
+      },
+      {
+        "en": "form",
+        "zh": "表格",
+        "ipa": "fɔːrm"
+      },
+      {
+        "en": "forty",
+        "zh": "四十",
+        "ipa": "ˈfɔːrti"
+      },
+      {
+        "en": "forward",
+        "zh": "向前",
+        "ipa": "ˈfɔːrwərd"
+      },
+      {
+        "en": "four",
+        "zh": "四",
+        "ipa": "fɔːr"
+      },
+      {
+        "en": "fourth",
+        "zh": "第四",
+        "ipa": "fɔːrθ"
+      },
+      {
+        "en": "free",
+        "zh": "自由的",
+        "ipa": "friː"
+      },
+      {
+        "en": "fresh",
+        "zh": "新鲜的",
+        "ipa": "freʃ"
+      },
+      {
+        "en": "Friday",
+        "zh": "星期五",
+        "ipa": "ˈfraɪdeɪ"
+      },
+      {
+        "en": "friend",
+        "zh": "朋友",
+        "ipa": "frend"
+      },
+      {
+        "en": "friendly",
+        "zh": "友好的",
+        "ipa": "ˈfrendli"
+      },
+      {
+        "en": "from",
+        "zh": "从",
+        "ipa": "frəm"
+      },
+      {
+        "en": "front",
+        "zh": "前面",
+        "ipa": "frʌnt"
+      },
+      {
+        "en": "fruit",
+        "zh": "水果",
+        "ipa": "fruːt"
+      },
+      {
+        "en": "full",
+        "zh": "满的",
+        "ipa": "fʊl"
+      },
+      {
+        "en": "fun",
+        "zh": "乐趣",
+        "ipa": "fʌn"
+      },
+      {
+        "en": "funny",
+        "zh": "有趣的",
+        "ipa": "ˈfʌni"
+      },
+      {
+        "en": "future",
+        "zh": "未来",
+        "ipa": "ˈfjuːtʃər"
+      },
+      {
+        "en": "game",
+        "zh": "游戏",
+        "ipa": "ɡeɪm"
+      },
+      {
+        "en": "garden",
+        "zh": "花园",
+        "ipa": "ˈɡɑːrdn"
+      },
+      {
+        "en": "gate",
+        "zh": "门",
+        "ipa": "ɡeɪt"
+      },
+      {
+        "en": "get",
+        "zh": "得到",
+        "ipa": "ɡet"
+      },
+      {
+        "en": "gift",
+        "zh": "礼物",
+        "ipa": "ɡɪft"
+      },
+      {
+        "en": "girl",
+        "zh": "女孩",
+        "ipa": "ɡɜːrl"
+      },
+      {
+        "en": "give",
+        "zh": "给",
+        "ipa": "ɡɪv"
+      },
+      {
+        "en": "glad",
+        "zh": "高兴的",
+        "ipa": "ɡlæd"
+      },
+      {
+        "en": "glass",
+        "zh": "玻璃",
+        "ipa": "ɡlæs"
+      },
+      {
+        "en": "go",
+        "zh": "去",
+        "ipa": "ɡoʊ"
+      },
+      {
+        "en": "gold",
+        "zh": "金子",
+        "ipa": "ɡoʊld"
+      },
+      {
+        "en": "good",
+        "zh": "好的",
+        "ipa": "ɡʊd"
+      },
+      {
+        "en": "goodbye",
+        "zh": "再见",
+        "ipa": "ˌɡʊdˈbaɪ"
+      },
+      {
+        "en": "grade",
+        "zh": "年级",
+        "ipa": "ɡreɪd"
+      },
+      {
+        "en": "grandfather",
+        "zh": "祖父",
+        "ipa": "ˈɡrændfɑːðər"
+      },
+      {
+        "en": "grandmother",
+        "zh": "祖母",
+        "ipa": "ˈɡrændmʌðər"
+      },
+      {
+        "en": "grass",
+        "zh": "草",
+        "ipa": "ɡræs"
+      },
+      {
+        "en": "great",
+        "zh": "伟大的",
+        "ipa": "ɡreɪt"
+      },
+      {
+        "en": "green",
+        "zh": "绿色",
+        "ipa": "ɡriːn"
+      },
+      {
+        "en": "ground",
+        "zh": "地面",
+        "ipa": "ɡraʊnd"
+      },
+      {
+        "en": "group",
+        "zh": "组",
+        "ipa": "ɡruːp"
+      },
+      {
+        "en": "grow",
+        "zh": "生长",
+        "ipa": "ɡroʊ"
+      },
+      {
+        "en": "guess",
+        "zh": "猜测",
+        "ipa": "ɡes"
+      },
+      {
+        "en": "hair",
+        "zh": "头发",
+        "ipa": "her"
+      },
+      {
+        "en": "half",
+        "zh": "一半",
+        "ipa": "hæf"
+      },
+      {
+        "en": "hall",
+        "zh": "大厅",
+        "ipa": "hɔːl"
+      },
+      {
+        "en": "hand",
+        "zh": "手",
+        "ipa": "hænd"
+      },
+      {
+        "en": "happy",
+        "zh": "快乐的",
+        "ipa": "ˈhæpi"
+      },
+      {
+        "en": "hard",
+        "zh": "硬的",
+        "ipa": "hɑːrd"
+      },
+      {
+        "en": "hat",
+        "zh": "帽子",
+        "ipa": "hæt"
+      },
+      {
+        "en": "hate",
+        "zh": "讨厌",
+        "ipa": "heɪt"
+      },
+      {
+        "en": "have",
+        "zh": "有",
+        "ipa": "hæv"
+      },
+      {
+        "en": "he",
+        "zh": "他",
+        "ipa": "hi"
+      },
+      {
+        "en": "head",
+        "zh": "头",
+        "ipa": "hed"
+      },
+      {
+        "en": "health",
+        "zh": "健康",
+        "ipa": "helθ"
+      },
+      {
+        "en": "healthy",
+        "zh": "健康的",
+        "ipa": "ˈhelθi"
+      },
+      {
+        "en": "hear",
+        "zh": "听见",
+        "ipa": "hɪr"
+      },
+      {
+        "en": "heart",
+        "zh": "心",
+        "ipa": "hɑːrt"
+      },
+      {
+        "en": "heavy",
+        "zh": "重的",
+        "ipa": "ˈhevi"
+      },
+      {
+        "en": "help",
+        "zh": "帮助",
+        "ipa": "help"
+      },
+      {
+        "en": "her",
+        "zh": "她的",
+        "ipa": "hɜːr"
+      },
+      {
+        "en": "here",
+        "zh": "这里",
+        "ipa": "hɪr"
+      },
+      {
+        "en": "hide",
+        "zh": "隐藏",
+        "ipa": "haɪd"
+      },
+      {
+        "en": "high",
+        "zh": "高的",
+        "ipa": "haɪ"
+      },
+      {
+        "en": "hill",
+        "zh": "小山",
+        "ipa": "hɪl"
+      },
+      {
+        "en": "him",
+        "zh": "他（宾格）",
+        "ipa": "hɪm"
+      },
+      {
+        "en": "his",
+        "zh": "他的",
+        "ipa": "hɪz"
+      },
+      {
+        "en": "history",
+        "zh": "历史",
+        "ipa": "ˈhɪstri"
+      },
+      {
+        "en": "hit",
+        "zh": "打",
+        "ipa": "hɪt"
+      },
+      {
+        "en": "hold",
+        "zh": "握住",
+        "ipa": "hoʊld"
+      },
+      {
+        "en": "hole",
+        "zh": "洞",
+        "ipa": "hoʊl"
+      },
+      {
+        "en": "holiday",
+        "zh": "假期",
+        "ipa": "ˈhɑːlədeɪ"
+      },
+      {
+        "en": "home",
+        "zh": "家",
+        "ipa": "hoʊm"
+      },
+      {
+        "en": "hope",
+        "zh": "希望",
+        "ipa": "hoʊp"
+      },
+      {
+        "en": "hospital",
+        "zh": "医院",
+        "ipa": "ˈhɒspɪtl"
+      },
+      {
+        "en": "hot",
+        "zh": "热的",
+        "ipa": "hɒt"
+      },
+      {
+        "en": "hotel",
+        "zh": "酒店",
+        "ipa": "hoʊˈtel"
+      },
+      {
+        "en": "hour",
+        "zh": "小时",
+        "ipa": "aʊər"
+      },
+      {
+        "en": "house",
+        "zh": "房子",
+        "ipa": "haʊs"
+      },
+      {
+        "en": "how",
+        "zh": "如何",
+        "ipa": "haʊ"
+      },
+      {
+        "en": "however",
+        "zh": "然而",
+        "ipa": "haʊˈevər"
+      },
+      {
+        "en": "hungry",
+        "zh": "饿的",
+        "ipa": "ˈhʌŋɡri"
+      },
+      {
+        "en": "hurt",
+        "zh": "伤害",
+        "ipa": "hɜːrt"
+      },
+      {
+        "en": "husband",
+        "zh": "丈夫",
+        "ipa": "ˈhʌzbənd"
+      },
+      {
+        "en": "I",
+        "zh": "我",
+        "ipa": "aɪ"
+      },
+      {
+        "en": "ice",
+        "zh": "冰",
+        "ipa": "aɪs"
+      },
+      {
+        "en": "idea",
+        "zh": "想法",
+        "ipa": "aɪˈdɪə"
+      },
+      {
+        "en": "if",
+        "zh": "如果",
+        "ipa": "ɪf"
+      },
+      {
+        "en": "ill",
+        "zh": "生病的",
+        "ipa": "ɪl"
+      },
+      {
+        "en": "important",
+        "zh": "重要的",
+        "ipa": "ɪmˈpɔːrtənt"
+      },
+      {
+        "en": "improve",
+        "zh": "改善",
+        "ipa": "ɪmˈpruːv"
+      },
+      {
+        "en": "in",
+        "zh": "在...里面",
+        "ipa": "ɪn"
+      },
+      {
+        "en": "inside",
+        "zh": "在...里面",
+        "ipa": "ˌɪnˈsaɪd"
+      },
+      {
+        "en": "instead",
+        "zh": "代替",
+        "ipa": "ɪnˈsted"
+      },
+      {
+        "en": "interest",
+        "zh": "兴趣",
+        "ipa": "ˈɪntrəst"
+      },
+      {
+        "en": "internet",
+        "zh": "互联网",
+        "ipa": "ˈɪntərnət"
+      },
+      {
+        "en": "into",
+        "zh": "进入",
+        "ipa": "ˈɪntuː"
+      },
+      {
+        "en": "introduce",
+        "zh": "介绍",
+        "ipa": "ˌɪntrəˈdjuːs"
+      },
+      {
+        "en": "invent",
+        "zh": "发明",
+        "ipa": "ɪnˈvent"
+      },
+      {
+        "en": "is",
+        "zh": "是",
+        "ipa": "ɪz"
+      },
+      {
+        "en": "island",
+        "zh": "岛屿",
+        "ipa": "ˈaɪlənd"
+      },
+      {
+        "en": "it",
+        "zh": "它",
+        "ipa": "ɪt"
+      },
+      {
+        "en": "its",
+        "zh": "它的",
+        "ipa": "ɪts"
+      },
+      {
+        "en": "jacket",
+        "zh": "夹克",
+        "ipa": "ˈdʒækɪt"
+      },
+      {
+        "en": "January",
+        "zh": "一月",
+        "ipa": "ˈdʒænjuəri"
+      },
+      {
+        "en": "job",
+        "zh": "工作",
+        "ipa": "dʒɒb"
+      },
+      {
+        "en": "join",
+        "zh": "加入",
+        "ipa": "dʒɔɪn"
+      },
+      {
+        "en": "journey",
+        "zh": "旅程",
+        "ipa": "ˈdʒɜːrni"
+      },
+      {
+        "en": "joy",
+        "zh": "快乐",
+        "ipa": "dʒɔɪ"
+      },
+      {
+        "en": "jump",
+        "zh": "跳",
+        "ipa": "dʒʌmp"
+      },
+      {
+        "en": "just",
+        "zh": "刚刚",
+        "ipa": "dʒʌst"
+      },
+      {
+        "en": "keep",
+        "zh": "保持",
+        "ipa": "kiːp"
+      },
+      {
+        "en": "key",
+        "zh": "钥匙",
+        "ipa": "kiː"
+      },
+      {
+        "en": "kick",
+        "zh": "踢",
+        "ipa": "kɪk"
+      },
+      {
+        "en": "kid",
+        "zh": "小孩",
+        "ipa": "kɪd"
+      },
+      {
+        "en": "kind",
+        "zh": "善良的",
+        "ipa": "kaɪnd"
+      },
+      {
+        "en": "king",
+        "zh": "国王",
+        "ipa": "kɪŋ"
+      },
+      {
+        "en": "kitchen",
+        "zh": "厨房",
+        "ipa": "ˈkɪtʃɪn"
+      },
+      {
+        "en": "kite",
+        "zh": "风筝",
+        "ipa": "kaɪt"
+      },
+      {
+        "en": "know",
+        "zh": "知道",
+        "ipa": "noʊ"
+      },
+      {
+        "en": "knowledge",
+        "zh": "知识",
+        "ipa": "ˈnɑːlɪdʒ"
+      },
+      {
+        "en": "lady",
+        "zh": "女士",
+        "ipa": "ˈleɪdi"
+      },
+      {
+        "en": "lake",
+        "zh": "湖",
+        "ipa": "leɪk"
+      },
+      {
+        "en": "land",
+        "zh": "土地",
+        "ipa": "lænd"
+      },
+      {
+        "en": "language",
+        "zh": "语言",
+        "ipa": "ˈlæŋɡwɪdʒ"
+      },
+      {
+        "en": "large",
+        "zh": "大的",
+        "ipa": "lɑːrdʒ"
+      },
+      {
+        "en": "last",
+        "zh": "最后的",
+        "ipa": "læst"
+      },
+      {
+        "en": "late",
+        "zh": "晚的",
+        "ipa": "leɪt"
+      },
+      {
+        "en": "laugh",
+        "zh": "笑",
+        "ipa": "læf"
+      },
+      {
+        "en": "lay",
+        "zh": "躺",
+        "ipa": "leɪ"
+      },
+      {
+        "en": "lead",
+        "zh": "领导",
+        "ipa": "liːd"
+      },
+      {
+        "en": "leaf",
+        "zh": "叶子",
+        "ipa": "liːf"
+      },
+      {
+        "en": "learn",
+        "zh": "学习",
+        "ipa": "lɜːrn"
+      },
+      {
+        "en": "least",
+        "zh": "最少的",
+        "ipa": "liːst"
+      },
+      {
+        "en": "leave",
+        "zh": "离开",
+        "ipa": "liːv"
+      },
+      {
+        "en": "left",
+        "zh": "左边",
+        "ipa": "left"
+      },
+      {
+        "en": "leg",
+        "zh": "腿",
+        "ipa": "leɡ"
+      },
+      {
+        "en": "lesson",
+        "zh": "课",
+        "ipa": "ˈlesn"
+      },
+      {
+        "en": "let",
+        "zh": "让",
+        "ipa": "let"
+      },
+      {
+        "en": "letter",
+        "zh": "字母",
+        "ipa": "ˈletər"
+      },
+      {
+        "en": "level",
+        "zh": "水平",
+        "ipa": "ˈlevl"
+      },
+      {
+        "en": "library",
+        "zh": "图书馆",
+        "ipa": "ˈlaɪbreri"
+      },
+      {
+        "en": "lie",
+        "zh": "躺",
+        "ipa": "laɪ"
+      },
+      {
+        "en": "life",
+        "zh": "生命",
+        "ipa": "laɪf"
+      },
+      {
+        "en": "light",
+        "zh": "光",
+        "ipa": "laɪt"
+      },
+      {
+        "en": "like",
+        "zh": "喜欢",
+        "ipa": "laɪk"
+      },
+      {
+        "en": "line",
+        "zh": "线",
+        "ipa": "laɪn"
+      },
+      {
+        "en": "lion",
+        "zh": "狮子",
+        "ipa": "ˈlaɪən"
+      },
+      {
+        "en": "listen",
+        "zh": "听",
+        "ipa": "ˈlɪsn"
+      },
+      {
+        "en": "little",
+        "zh": "小的",
+        "ipa": "ˈlɪtl"
+      },
+      {
+        "en": "live",
+        "zh": "居住",
+        "ipa": "lɪv"
+      },
+      {
+        "en": "long",
+        "zh": "长的",
+        "ipa": "lɔːŋ"
+      },
+      {
+        "en": "look",
+        "zh": "看",
+        "ipa": "lʊk"
+      },
+      {
+        "en": "lose",
+        "zh": "失去",
+        "ipa": "luːz"
+      },
+      {
+        "en": "lot",
+        "zh": "许多",
+        "ipa": "lɒt"
+      },
+      {
+        "en": "love",
+        "zh": "爱",
+        "ipa": "lʌv"
+      },
+      {
+        "en": "low",
+        "zh": "低的",
+        "ipa": "loʊ"
+      },
+      {
+        "en": "luck",
+        "zh": "运气",
+        "ipa": "lʌk"
+      },
+      {
+        "en": "lucky",
+        "zh": "幸运的",
+        "ipa": "ˈlʌki"
+      },
+      {
+        "en": "lunch",
+        "zh": "午餐",
+        "ipa": "lʌntʃ"
+      }
+    ]
+  },
+  "junior": {
+    "name": {
+      "en": "Junior High",
+      "zh": "初中词汇"
+    },
+    "icon": "📖",
+    "words": [
+      {
+        "en": "ability",
+        "zh": "能力",
+        "ipa": "əˈbɪləti"
+      },
+      {
+        "en": "absent",
+        "zh": "缺席的",
+        "ipa": "ˈæbsənt"
+      },
+      {
+        "en": "accept",
+        "zh": "接受",
+        "ipa": "əkˈsept"
+      },
+      {
+        "en": "achieve",
+        "zh": "实现",
+        "ipa": "əˈtʃiːv"
+      },
+      {
+        "en": "across",
+        "zh": "穿过",
+        "ipa": "əˈkrɔs"
+      },
+      {
+        "en": "action",
+        "zh": "行动",
+        "ipa": "ˈækʃn"
+      },
+      {
+        "en": "active",
+        "zh": "活跃的",
+        "ipa": "ˈæktɪv"
+      },
+      {
+        "en": "activity",
+        "zh": "活动",
+        "ipa": "ækˈtɪvəti"
+      },
+      {
+        "en": "actually",
+        "zh": "实际上",
+        "ipa": "ˈæktʃuəli"
+      },
+      {
+        "en": "addition",
+        "zh": "添加",
+        "ipa": "əˈdɪʃn"
+      },
+      {
+        "en": "advantage",
+        "zh": "优势",
+        "ipa": "ədˈvæntɪdʒ"
+      },
+      {
+        "en": "advertisement",
+        "zh": "广告",
+        "ipa": "ˌædvərˈtaɪzmənt"
+      },
+      {
+        "en": "advice",
+        "zh": "建议",
+        "ipa": "ədˈvaɪs"
+      },
+      {
+        "en": "advise",
+        "zh": "建议",
+        "ipa": "ədˈvaɪz"
+      },
+      {
+        "en": "affect",
+        "zh": "影响",
+        "ipa": "əˈfekt"
+      },
+      {
+        "en": "afraid",
+        "zh": "害怕",
+        "ipa": "əˈfreɪd"
+      },
+      {
+        "en": "Africa",
+        "zh": "非洲",
+        "ipa": "ˈæfrɪkə"
+      },
+      {
+        "en": "African",
+        "zh": "非洲的",
+        "ipa": "ˈæfrɪkən"
+      },
+      {
+        "en": "after all",
+        "zh": "毕竟",
+        "ipa": "ˈæftər ɔl"
+      },
+      {
+        "en": "against",
+        "zh": "反对",
+        "ipa": "əˈɡenst"
+      },
+      {
+        "en": "age",
+        "zh": "年龄",
+        "ipa": "eɪdʒ"
+      },
+      {
+        "en": "agency",
+        "zh": "代理",
+        "ipa": "ˈeɪdʒənsi"
+      },
+      {
+        "en": "ago",
+        "zh": "以前",
+        "ipa": "əˈɡoʊ"
+      },
+      {
+        "en": "agree",
+        "zh": "同意",
+        "ipa": "əˈɡri"
+      },
+      {
+        "en": "agreement",
+        "zh": "协议",
+        "ipa": "əˈɡriːmənt"
+      },
+      {
+        "en": "ahead",
+        "zh": "向前",
+        "ipa": "əˈhed"
+      },
+      {
+        "en": "aim",
+        "zh": "目标",
+        "ipa": "eɪm"
+      },
+      {
+        "en": "air",
+        "zh": "空气",
+        "ipa": "er"
+      },
+      {
+        "en": "airport",
+        "zh": "机场",
+        "ipa": "ˈerˌpɔrt"
+      },
+      {
+        "en": "alarm",
+        "zh": "警报",
+        "ipa": "əˈlɑːrm"
+      },
+      {
+        "en": "alive",
+        "zh": "活着的",
+        "ipa": "əˈlaɪv"
+      },
+      {
+        "en": "all",
+        "zh": "全部",
+        "ipa": "ɔl"
+      },
+      {
+        "en": "allow",
+        "zh": "允许",
+        "ipa": "əˈlaʊ"
+      },
+      {
+        "en": "almost",
+        "zh": "几乎",
+        "ipa": "ˈɔlmoʊst"
+      },
+      {
+        "en": "alone",
+        "zh": "单独",
+        "ipa": "əˈloʊn"
+      },
+      {
+        "en": "along",
+        "zh": "沿着",
+        "ipa": "əˈlɔŋ"
+      },
+      {
+        "en": "already",
+        "zh": "已经",
+        "ipa": "ɔlˈrɛdi"
+      },
+      {
+        "en": "also",
+        "zh": "也",
+        "ipa": "ˈɔlsoʊ"
+      },
+      {
+        "en": "although",
+        "zh": "虽然",
+        "ipa": "ɔlˈðoʊ"
+      },
+      {
+        "en": "always",
+        "zh": "总是",
+        "ipa": "ˈɔlweɪz"
+      },
+      {
+        "en": "amazing",
+        "zh": "令人惊叹的",
+        "ipa": "əˈmeɪzɪŋ"
+      },
+      {
+        "en": "America",
+        "zh": "美国",
+        "ipa": "əˈmɛrɪkə"
+      },
+      {
+        "en": "American",
+        "zh": "美国人",
+        "ipa": "əˈmɛrɪkən"
+      },
+      {
+        "en": "among",
+        "zh": "在...之中",
+        "ipa": "əˈmʌŋ"
+      },
+      {
+        "en": "ancient",
+        "zh": "古代的",
+        "ipa": "ˈeɪnʃənt"
+      },
+      {
+        "en": "angry",
+        "zh": "生气的",
+        "ipa": "ˈæŋɡri"
+      },
+      {
+        "en": "animal",
+        "zh": "动物",
+        "ipa": "ˈænəməl"
+      },
+      {
+        "en": "announce",
+        "zh": "宣布",
+        "ipa": "əˈnaʊns"
+      },
+      {
+        "en": "another",
+        "zh": "另一个",
+        "ipa": "əˈnʌðər"
+      },
+      {
+        "en": "answer",
+        "zh": "回答",
+        "ipa": "ˈɑːnsər"
+      },
+      {
+        "en": "anxious",
+        "zh": "焦虑的",
+        "ipa": "ˈæŋkʃəs"
+      },
+      {
+        "en": "any",
+        "zh": "任何",
+        "ipa": "ˈɛni"
+      },
+      {
+        "en": "anybody",
+        "zh": "任何人",
+        "ipa": "ˈɛnibʌdi"
+      },
+      {
+        "en": "anyone",
+        "zh": "任何人",
+        "ipa": "ˈɛniwʌn"
+      },
+      {
+        "en": "anything",
+        "zh": "任何事",
+        "ipa": "ˈɛniθɪŋ"
+      },
+      {
+        "en": "anyway",
+        "zh": "无论如何",
+        "ipa": "ˈɛniweɪ"
+      },
+      {
+        "en": "anywhere",
+        "zh": "任何地方",
+        "ipa": "ˈɛniwɛr"
+      },
+      {
+        "en": "apart",
+        "zh": "分开",
+        "ipa": "əˈpɑːrt"
+      },
+      {
+        "en": "apartment",
+        "zh": "公寓",
+        "ipa": "əˈpɑːrtmənt"
+      },
+      {
+        "en": "apologize",
+        "zh": "道歉",
+        "ipa": "əˈpɒlədʒaɪz"
+      },
+      {
+        "en": "appearance",
+        "zh": "外貌",
+        "ipa": "əˈpɪrəns"
+      },
+      {
+        "en": "apple",
+        "zh": "苹果",
+        "ipa": "ˈæpəl"
+      },
+      {
+        "en": "application",
+        "zh": "应用",
+        "ipa": "ˌæplɪˈkeɪʃn"
+      },
+      {
+        "en": "appointment",
+        "zh": "约会",
+        "ipa": "əˈpɔɪntmənt"
+      },
+      {
+        "en": "appreciate",
+        "zh": "欣赏",
+        "ipa": "əˈpriːʃieɪt"
+      },
+      {
+        "en": "approach",
+        "zh": "方法",
+        "ipa": "əˈproʊtʃ"
+      },
+      {
+        "en": "area",
+        "zh": "区域",
+        "ipa": "ˈɛriə"
+      },
+      {
+        "en": "argue",
+        "zh": "争论",
+        "ipa": "ˈɑːrɡjuː"
+      },
+      {
+        "en": "arm",
+        "zh": "手臂",
+        "ipa": "ɑːrm"
+      },
+      {
+        "en": "army",
+        "zh": "军队",
+        "ipa": "ˈɑːrmi"
+      },
+      {
+        "en": "around",
+        "zh": "周围",
+        "ipa": "əˈraʊnd"
+      },
+      {
+        "en": "arrive",
+        "zh": "到达",
+        "ipa": "əˈraɪv"
+      },
+      {
+        "en": "article",
+        "zh": "文章",
+        "ipa": "ˈɑːrtɪkl"
+      },
+      {
+        "en": "artist",
+        "zh": "艺术家",
+        "ipa": "ˈɑːrtɪst"
+      },
+      {
+        "en": "as",
+        "zh": "作为",
+        "ipa": "æz"
+      },
+      {
+        "en": "Asia",
+        "zh": "亚洲",
+        "ipa": "ˈeɪʒə"
+      },
+      {
+        "en": "Asian",
+        "zh": "亚洲的",
+        "ipa": "ˈeɪʒən"
+      },
+      {
+        "en": "ask",
+        "zh": "问",
+        "ipa": "æsk"
+      },
+      {
+        "en": "asleep",
+        "zh": "睡着的",
+        "ipa": "əˈsliːp"
+      },
+      {
+        "en": "aspect",
+        "zh": "方面",
+        "ipa": "ˈæspekt"
+      },
+      {
+        "en": "attention",
+        "zh": "注意",
+        "ipa": "əˈtenʃn"
+      },
+      {
+        "en": "attitude",
+        "zh": "态度",
+        "ipa": "ˈætɪtuːd"
+      },
+      {
+        "en": "attract",
+        "zh": "吸引",
+        "ipa": "əˈtrækt"
+      },
+      {
+        "en": "audience",
+        "zh": "观众",
+        "ipa": "ˈɔːdiəns"
+      },
+      {
+        "en": "aunt",
+        "zh": "阿姨",
+        "ipa": "ɑːnt"
+      },
+      {
+        "en": "author",
+        "zh": "作者",
+        "ipa": "ˈɔːθər"
+      },
+      {
+        "en": "autumn",
+        "zh": "秋天",
+        "ipa": "ˈɔtəm"
+      },
+      {
+        "en": "available",
+        "zh": "可用的",
+        "ipa": "əˈveɪləbl"
+      },
+      {
+        "en": "average",
+        "zh": "平均的",
+        "ipa": "ˈævərɪdʒ"
+      },
+      {
+        "en": "avoid",
+        "zh": "避免",
+        "ipa": "əˈvɔɪd"
+      },
+      {
+        "en": "awake",
+        "zh": "醒着的",
+        "ipa": "əˈweɪk"
+      },
+      {
+        "en": "aware",
+        "zh": "意识到的",
+        "ipa": "əˈwer"
+      },
+      {
+        "en": "away",
+        "zh": "离开",
+        "ipa": "əˈweɪ"
+      },
+      {
+        "en": "awful",
+        "zh": "糟糕的",
+        "ipa": "ˈɔfl"
+      },
+      {
+        "en": "baby",
+        "zh": "婴儿",
+        "ipa": "ˈbeɪbi"
+      },
+      {
+        "en": "back",
+        "zh": "回来",
+        "ipa": "bæk"
+      },
+      {
+        "en": "background",
+        "zh": "背景",
+        "ipa": "ˈbækɡraʊnd"
+      },
+      {
+        "en": "bad",
+        "zh": "坏的",
+        "ipa": "bæd"
+      },
+      {
+        "en": "badly",
+        "zh": "糟糕地",
+        "ipa": "ˈbædli"
+      },
+      {
+        "en": "bag",
+        "zh": "包",
+        "ipa": "bæɡ"
+      },
+      {
+        "en": "balance",
+        "zh": "平衡",
+        "ipa": "ˈbæləns"
+      },
+      {
+        "en": "ball",
+        "zh": "球",
+        "ipa": "bɔl"
+      },
+      {
+        "en": "band",
+        "zh": "乐队",
+        "ipa": "bænd"
+      },
+      {
+        "en": "bank",
+        "zh": "银行",
+        "ipa": "bæŋk"
+      },
+      {
+        "en": "base",
+        "zh": "基础",
+        "ipa": "beɪs"
+      },
+      {
+        "en": "basic",
+        "zh": "基本的",
+        "ipa": "ˈbeɪsɪk"
+      },
+      {
+        "en": "basket",
+        "zh": "篮子",
+        "ipa": "ˈbæskɪt"
+      },
+      {
+        "en": "basketball",
+        "zh": "篮球",
+        "ipa": "ˈbæskɪtbɔl"
+      },
+      {
+        "en": "bath",
+        "zh": "洗澡",
+        "ipa": "bæθ"
+      },
+      {
+        "en": "battery",
+        "zh": "电池",
+        "ipa": "ˈbætəri"
+      },
+      {
+        "en": "be",
+        "zh": "是",
+        "ipa": "bi"
+      },
+      {
+        "en": "beach",
+        "zh": "海滩",
+        "ipa": "biːtʃ"
+      },
+      {
+        "en": "bear",
+        "zh": "熊",
+        "ipa": "ber"
+      },
+      {
+        "en": "beat",
+        "zh": "打败",
+        "ipa": "biːt"
+      },
+      {
+        "en": "beautiful",
+        "zh": "美丽的",
+        "ipa": "ˈbjuːtɪfl"
+      },
+      {
+        "en": "beauty",
+        "zh": "美丽",
+        "ipa": "ˈbjuːti"
+      },
+      {
+        "en": "because",
+        "zh": "因为",
+        "ipa": "bɪˈkɔz"
+      },
+      {
+        "en": "become",
+        "zh": "变成",
+        "ipa": "bɪˈkʌm"
+      },
+      {
+        "en": "bed",
+        "zh": "床",
+        "ipa": "bed"
+      },
+      {
+        "en": "bedroom",
+        "zh": "卧室",
+        "ipa": "ˈbedruːm"
+      },
+      {
+        "en": "bee",
+        "zh": "蜜蜂",
+        "ipa": "bi"
+      },
+      {
+        "en": "beef",
+        "zh": "牛肉",
+        "ipa": "biːf"
+      },
+      {
+        "en": "before",
+        "zh": "在...之前",
+        "ipa": "bɪˈfɔr"
+      },
+      {
+        "en": "begin",
+        "zh": "开始",
+        "ipa": "bɪˈɡɪn"
+      },
+      {
+        "en": "beginning",
+        "zh": "开始",
+        "ipa": "bɪˈɡɪnɪŋ"
+      },
+      {
+        "en": "behalf",
+        "zh": "代表",
+        "ipa": "bɪˈhæf"
+      },
+      {
+        "en": "behavior",
+        "zh": "行为",
+        "ipa": "bɪˈheɪvjər"
+      },
+      {
+        "en": "behind",
+        "zh": "在...后面",
+        "ipa": "bɪˈhaɪnd"
+      },
+      {
+        "en": "believe",
+        "zh": "相信",
+        "ipa": "bɪˈliːv"
+      },
+      {
+        "en": "bell",
+        "zh": "铃",
+        "ipa": "bel"
+      },
+      {
+        "en": "belong",
+        "zh": "属于",
+        "ipa": "bɪˈlɔŋ"
+      },
+      {
+        "en": "below",
+        "zh": "在...下面",
+        "ipa": "bɪˈloʊ"
+      },
+      {
+        "en": "belt",
+        "zh": "皮带",
+        "ipa": "belt"
+      },
+      {
+        "en": "bench",
+        "zh": "长凳",
+        "ipa": "bentʃ"
+      },
+      {
+        "en": "bend",
+        "zh": "弯曲",
+        "ipa": "bend"
+      },
+      {
+        "en": "benefit",
+        "zh": "好处",
+        "ipa": "ˈbenɪfɪt"
+      },
+      {
+        "en": "beside",
+        "zh": "在...旁边",
+        "ipa": "bɪˈsaɪd"
+      },
+      {
+        "en": "best",
+        "zh": "最好的",
+        "ipa": "best"
+      },
+      {
+        "en": "better",
+        "zh": "更好的",
+        "ipa": "ˈbetər"
+      },
+      {
+        "en": "between",
+        "zh": "在...之间",
+        "ipa": "bɪˈtwin"
+      },
+      {
+        "en": "beyond",
+        "zh": "超过",
+        "ipa": "bɪˈjɑːnd"
+      },
+      {
+        "en": "big",
+        "zh": "大的",
+        "ipa": "bɪɡ"
+      },
+      {
+        "en": "bike",
+        "zh": "自行车",
+        "ipa": "baɪk"
+      },
+      {
+        "en": "bill",
+        "zh": "账单",
+        "ipa": "bɪl"
+      },
+      {
+        "en": "biology",
+        "zh": "生物",
+        "ipa": "baɪˈɒlədʒi"
+      },
+      {
+        "en": "bird",
+        "zh": "鸟",
+        "ipa": "bɜːrd"
+      },
+      {
+        "en": "birth",
+        "zh": "出生",
+        "ipa": "bɜːrθ"
+      },
+      {
+        "en": "birthday",
+        "zh": "生日",
+        "ipa": "ˈbɜːrθdeɪ"
+      },
+      {
+        "en": "bit",
+        "zh": "一点",
+        "ipa": "bɪt"
+      },
+      {
+        "en": "bite",
+        "zh": "咬",
+        "ipa": "baɪt"
+      },
+      {
+        "en": "bitter",
+        "zh": "苦的",
+        "ipa": "ˈbɪtər"
+      },
+      {
+        "en": "black",
+        "zh": "黑色",
+        "ipa": "blæk"
+      },
+      {
+        "en": "blame",
+        "zh": "责备",
+        "ipa": "bleɪm"
+      },
+      {
+        "en": "blank",
+        "zh": "空白的",
+        "ipa": "blæŋk"
+      },
+      {
+        "en": "blanket",
+        "zh": "毯子",
+        "ipa": "ˈblæŋkɪt"
+      },
+      {
+        "en": "bleed",
+        "zh": "流血",
+        "ipa": "bliːd"
+      },
+      {
+        "en": "blind",
+        "zh": "盲的",
+        "ipa": "blaɪnd"
+      },
+      {
+        "en": "block",
+        "zh": "街区",
+        "ipa": "blɒk"
+      },
+      {
+        "en": "blood",
+        "zh": "血",
+        "ipa": "blʌd"
+      },
+      {
+        "en": "blow",
+        "zh": "吹",
+        "ipa": "bloʊ"
+      },
+      {
+        "en": "blue",
+        "zh": "蓝色",
+        "ipa": "blu"
+      },
+      {
+        "en": "board",
+        "zh": "木板",
+        "ipa": "bɔːrd"
+      },
+      {
+        "en": "boat",
+        "zh": "船",
+        "ipa": "boʊt"
+      },
+      {
+        "en": "body",
+        "zh": "身体",
+        "ipa": "ˈbɒdi"
+      },
+      {
+        "en": "boil",
+        "zh": "煮沸",
+        "ipa": "bɔɪl"
+      },
+      {
+        "en": "bone",
+        "zh": "骨头",
+        "ipa": "boʊn"
+      },
+      {
+        "en": "book",
+        "zh": "书",
+        "ipa": "bʊk"
+      },
+      {
+        "en": "bored",
+        "zh": "无聊的",
+        "ipa": "bɔːrd"
+      },
+      {
+        "en": "boring",
+        "zh": "令人无聊的",
+        "ipa": "ˈbɔːrɪŋ"
+      },
+      {
+        "en": "born",
+        "zh": "出生的",
+        "ipa": "bɔːrn"
+      },
+      {
+        "en": "borrow",
+        "zh": "借",
+        "ipa": "ˈbɑːroʊ"
+      },
+      {
+        "en": "boss",
+        "zh": "老板",
+        "ipa": "bɔːs"
+      },
+      {
+        "en": "both",
+        "zh": "两者都",
+        "ipa": "boʊθ"
+      },
+      {
+        "en": "bottle",
+        "zh": "瓶子",
+        "ipa": "ˈbɒtl"
+      },
+      {
+        "en": "bottom",
+        "zh": "底部",
+        "ipa": "ˈbɑːtəm"
+      },
+      {
+        "en": "box",
+        "zh": "盒子",
+        "ipa": "bɒks"
+      },
+      {
+        "en": "boy",
+        "zh": "男孩",
+        "ipa": "bɔɪ"
+      },
+      {
+        "en": "brain",
+        "zh": "大脑",
+        "ipa": "breɪn"
+      },
+      {
+        "en": "branch",
+        "zh": "树枝",
+        "ipa": "bræntʃ"
+      },
+      {
+        "en": "brave",
+        "zh": "勇敢的",
+        "ipa": "breɪv"
+      },
+      {
+        "en": "bread",
+        "zh": "面包",
+        "ipa": "bred"
+      },
+      {
+        "en": "break",
+        "zh": "打破",
+        "ipa": "breɪk"
+      },
+      {
+        "en": "breakfast",
+        "zh": "早餐",
+        "ipa": "ˈbrekfəst"
+      },
+      {
+        "en": "breath",
+        "zh": "呼吸",
+        "ipa": "brɛθ"
+      },
+      {
+        "en": "breathe",
+        "zh": "呼吸（动词）",
+        "ipa": "briːð"
+      },
+      {
+        "en": "bridge",
+        "zh": "桥",
+        "ipa": "brɪdʒ"
+      },
+      {
+        "en": "bright",
+        "zh": "明亮的",
+        "ipa": "braɪt"
+      },
+      {
+        "en": "bring",
+        "zh": "带来",
+        "ipa": "brɪŋ"
+      },
+      {
+        "en": "broad",
+        "zh": "宽的",
+        "ipa": "brɔːd"
+      },
+      {
+        "en": "brother",
+        "zh": "兄弟",
+        "ipa": "ˈbrʌðər"
+      },
+      {
+        "en": "brown",
+        "zh": "棕色",
+        "ipa": "braʊn"
+      },
+      {
+        "en": "brush",
+        "zh": "刷子",
+        "ipa": "brʌʃ"
+      },
+      {
+        "en": "bucket",
+        "zh": "桶",
+        "ipa": "ˈbʌkɪt"
+      },
+      {
+        "en": "build",
+        "zh": "建造",
+        "ipa": "bɪld"
+      },
+      {
+        "en": "building",
+        "zh": "建筑物",
+        "ipa": "ˈbɪldɪŋ"
+      },
+      {
+        "en": "bunch",
+        "zh": "一束",
+        "ipa": "bʌntʃ"
+      },
+      {
+        "en": "burn",
+        "zh": "燃烧",
+        "ipa": "bɜːrn"
+      },
+      {
+        "en": "burst",
+        "zh": "爆发",
+        "ipa": "bɜːrst"
+      },
+      {
+        "en": "business",
+        "zh": "生意",
+        "ipa": "ˈbɪznəs"
+      },
+      {
+        "en": "busy",
+        "zh": "忙碌的",
+        "ipa": "ˈbɪzi"
+      },
+      {
+        "en": "but",
+        "zh": "但是",
+        "ipa": "bʌt"
+      },
+      {
+        "en": "butter",
+        "zh": "黄油",
+        "ipa": "ˈbʌtər"
+      },
+      {
+        "en": "button",
+        "zh": "按钮",
+        "ipa": "ˈbʌtn"
+      },
+      {
+        "en": "buy",
+        "zh": "买",
+        "ipa": "baɪ"
+      },
+      {
+        "en": "by",
+        "zh": "通过",
+        "ipa": "baɪ"
+      },
+      {
+        "en": "cafe",
+        "zh": "咖啡馆",
+        "ipa": "kæˈfeɪ"
+      },
+      {
+        "en": "cake",
+        "zh": "蛋糕",
+        "ipa": "keɪk"
+      },
+      {
+        "en": "call",
+        "zh": "呼叫",
+        "ipa": "kɔl"
+      },
+      {
+        "en": "calm",
+        "zh": "平静的",
+        "ipa": "kɑːm"
+      },
+      {
+        "en": "camera",
+        "zh": "相机",
+        "ipa": "ˈkæmrə"
+      },
+      {
+        "en": "camp",
+        "zh": "露营",
+        "ipa": "kæmp"
+      },
+      {
+        "en": "can",
+        "zh": "能",
+        "ipa": "kæn"
+      },
+      {
+        "en": "Canada",
+        "zh": "加拿大",
+        "ipa": "ˈkænədə"
+      },
+      {
+        "en": "Canadian",
+        "zh": "加拿大人",
+        "ipa": "kəˈneɪdiən"
+      },
+      {
+        "en": "cancel",
+        "zh": "取消",
+        "ipa": "ˈkænsl"
+      },
+      {
+        "en": "cancer",
+        "zh": "癌症",
+        "ipa": "ˈkænsər"
+      },
+      {
+        "en": "candle",
+        "zh": "蜡烛",
+        "ipa": "ˈkændl"
+      },
+      {
+        "en": "candy",
+        "zh": "糖果",
+        "ipa": "ˈkændi"
+      },
+      {
+        "en": "cap",
+        "zh": "帽子",
+        "ipa": "kæp"
+      },
+      {
+        "en": "capital",
+        "zh": "首都",
+        "ipa": "ˈkæpɪtl"
+      },
+      {
+        "en": "captain",
+        "zh": "队长",
+        "ipa": "ˈkæptɪn"
+      },
+      {
+        "en": "car",
+        "zh": "汽车",
+        "ipa": "kɑːr"
+      },
+      {
+        "en": "card",
+        "zh": "卡片",
+        "ipa": "kɑːrd"
+      },
+      {
+        "en": "care",
+        "zh": "关心",
+        "ipa": "ker"
+      },
+      {
+        "en": "career",
+        "zh": "职业",
+        "ipa": "kəˈrɪr"
+      },
+      {
+        "en": "careful",
+        "zh": "小心的",
+        "ipa": "ˈkerfl"
+      },
+      {
+        "en": "carefully",
+        "zh": "小心地",
+        "ipa": "ˈkerfəli"
+      },
+      {
+        "en": "carrot",
+        "zh": "胡萝卜",
+        "ipa": "ˈkærət"
+      },
+      {
+        "en": "carry",
+        "zh": "携带",
+        "ipa": "ˈkæri"
+      },
+      {
+        "en": "cartoon",
+        "zh": "卡通",
+        "ipa": "kɑːrˈtuːn"
+      },
+      {
+        "en": "case",
+        "zh": "箱子",
+        "ipa": "keɪs"
+      },
+      {
+        "en": "cash",
+        "zh": "现金",
+        "ipa": "kæʃ"
+      },
+      {
+        "en": "cat",
+        "zh": "猫",
+        "ipa": "kæt"
+      },
+      {
+        "en": "catch",
+        "zh": "抓住",
+        "ipa": "kætʃ"
+      },
+      {
+        "en": "cause",
+        "zh": "原因",
+        "ipa": "kɔːz"
+      },
+      {
+        "en": "cave",
+        "zh": "洞穴",
+        "ipa": "keɪv"
+      },
+      {
+        "en": "ceiling",
+        "zh": "天花板",
+        "ipa": "ˈsiːlɪŋ"
+      },
+      {
+        "en": "celebrate",
+        "zh": "庆祝",
+        "ipa": "ˈselɪbreɪt"
+      },
+      {
+        "en": "cell",
+        "zh": "细胞",
+        "ipa": "sel"
+      },
+      {
+        "en": "cent",
+        "zh": "分",
+        "ipa": "sent"
+      },
+      {
+        "en": "central",
+        "zh": "中心的",
+        "ipa": "ˈsentrəl"
+      },
+      {
+        "en": "centre",
+        "zh": "中心",
+        "ipa": "ˈsentər"
+      },
+      {
+        "en": "century",
+        "zh": "世纪",
+        "ipa": "ˈsentʃəri"
+      },
+      {
+        "en": "certain",
+        "zh": "确定的",
+        "ipa": "ˈsɜːrtn"
+      },
+      {
+        "en": "certainly",
+        "zh": "当然",
+        "ipa": "ˈsɜːrtnli"
+      },
+      {
+        "en": "chain",
+        "zh": "链",
+        "ipa": "tʃeɪn"
+      },
+      {
+        "en": "chair",
+        "zh": "椅子",
+        "ipa": "tʃer"
+      },
+      {
+        "en": "challenge",
+        "zh": "挑战",
+        "ipa": "ˈtʃælɪndʒ"
+      },
+      {
+        "en": "champion",
+        "zh": "冠军",
+        "ipa": "ˈtʃæmpiən"
+      },
+      {
+        "en": "chance",
+        "zh": "机会",
+        "ipa": "tʃæns"
+      },
+      {
+        "en": "change",
+        "zh": "改变",
+        "ipa": "tʃeɪndʒ"
+      },
+      {
+        "en": "channel",
+        "zh": "频道",
+        "ipa": "ˈtʃænl"
+      },
+      {
+        "en": "character",
+        "zh": "角色",
+        "ipa": "ˈkærəktər"
+      },
+      {
+        "en": "charge",
+        "zh": "收费",
+        "ipa": "tʃɑːrdʒ"
+      },
+      {
+        "en": "cheap",
+        "zh": "便宜的",
+        "ipa": "tʃiːp"
+      },
+      {
+        "en": "check",
+        "zh": "检查",
+        "ipa": "tʃek"
+      },
+      {
+        "en": "cheese",
+        "zh": "奶酪",
+        "ipa": "tʃiːz"
+      },
+      {
+        "en": "chef",
+        "zh": "厨师",
+        "ipa": "ʃef"
+      },
+      {
+        "en": "chemical",
+        "zh": "化学的",
+        "ipa": "ˈkemɪkl"
+      },
+      {
+        "en": "chess",
+        "zh": "象棋",
+        "ipa": "tʃes"
+      },
+      {
+        "en": "chest",
+        "zh": "胸部",
+        "ipa": "tʃest"
+      },
+      {
+        "en": "chicken",
+        "zh": "鸡肉",
+        "ipa": "ˈtʃɪkən"
+      },
+      {
+        "en": "chief",
+        "zh": "首席",
+        "ipa": "tʃiːf"
+      },
+      {
+        "en": "child",
+        "zh": "孩子",
+        "ipa": "tʃaɪld"
+      },
+      {
+        "en": "children",
+        "zh": "孩子们",
+        "ipa": "ˈtʃɪldrən"
+      },
+      {
+        "en": "China",
+        "zh": "中国",
+        "ipa": "ˈtʃaɪnə"
+      },
+      {
+        "en": "Chinese",
+        "zh": "中文",
+        "ipa": "ˈtʃaɪˈniːz"
+      },
+      {
+        "en": "chocolate",
+        "zh": "巧克力",
+        "ipa": "ˈtʃɒklət"
+      },
+      {
+        "en": "choice",
+        "zh": "选择",
+        "ipa": "tʃɔɪs"
+      },
+      {
+        "en": "choose",
+        "zh": "选择（动词）",
+        "ipa": "tʃuːz"
+      },
+      {
+        "en": "Christmas",
+        "zh": "圣诞节",
+        "ipa": "ˈkrɪsməs"
+      },
+      {
+        "en": "church",
+        "zh": "教堂",
+        "ipa": "tʃɜːrtʃ"
+      },
+      {
+        "en": "cinema",
+        "zh": "电影院",
+        "ipa": "ˈsɪnəmə"
+      },
+      {
+        "en": "circle",
+        "zh": "圆圈",
+        "ipa": "ˈsɜːrkl"
+      },
+      {
+        "en": "city",
+        "zh": "城市",
+        "ipa": "ˈsɪti"
+      },
+      {
+        "en": "civilization",
+        "zh": "文明",
+        "ipa": "ˌsɪvələˈzeɪʃn"
+      },
+      {
+        "en": "claim",
+        "zh": "声称",
+        "ipa": "kleɪm"
+      },
+      {
+        "en": "class",
+        "zh": "班级",
+        "ipa": "klæs"
+      },
+      {
+        "en": "classical",
+        "zh": "古典的",
+        "ipa": "ˈklæsɪkl"
+      },
+      {
+        "en": "classroom",
+        "zh": "教室",
+        "ipa": "ˈklæsruːm"
+      },
+      {
+        "en": "clean",
+        "zh": "干净的",
+        "ipa": "kliːn"
+      },
+      {
+        "en": "clear",
+        "zh": "清楚的",
+        "ipa": "klɪr"
+      },
+      {
+        "en": "clearly",
+        "zh": "清楚地",
+        "ipa": "ˈklɪrli"
+      },
+      {
+        "en": "clever",
+        "zh": "聪明的",
+        "ipa": "ˈklevər"
+      },
+      {
+        "en": "climb",
+        "zh": "爬",
+        "ipa": "klaɪm"
+      },
+      {
+        "en": "clock",
+        "zh": "时钟",
+        "ipa": "klɒk"
+      },
+      {
+        "en": "close",
+        "zh": "关闭",
+        "ipa": "kloʊz"
+      },
+      {
+        "en": "clothes",
+        "zh": "衣服",
+        "ipa": "kloʊðz"
+      },
+      {
+        "en": "cloud",
+        "zh": "云",
+        "ipa": "klaʊd"
+      },
+      {
+        "en": "club",
+        "zh": "俱乐部",
+        "ipa": "klʌb"
+      },
+      {
+        "en": "coach",
+        "zh": "教练",
+        "ipa": "koʊtʃ"
+      },
+      {
+        "en": "coast",
+        "zh": "海岸",
+        "ipa": "koʊst"
+      },
+      {
+        "en": "coat",
+        "zh": "外套",
+        "ipa": "koʊt"
+      },
+      {
+        "en": "coffee",
+        "zh": "咖啡",
+        "ipa": "ˈkɔfi"
+      },
+      {
+        "en": "coin",
+        "zh": "硬币",
+        "ipa": "kɔɪn"
+      },
+      {
+        "en": "cold",
+        "zh": "冷的",
+        "ipa": "koʊld"
+      },
+      {
+        "en": "collect",
+        "zh": "收集",
+        "ipa": "kəˈlekt"
+      },
+      {
+        "en": "college",
+        "zh": "学院",
+        "ipa": "ˈkɒlɪdʒ"
+      },
+      {
+        "en": "colour",
+        "zh": "颜色",
+        "ipa": "ˈkʌlər"
+      },
+      {
+        "en": "come",
+        "zh": "来",
+        "ipa": "kʌm"
+      },
+      {
+        "en": "comfort",
+        "zh": "舒适",
+        "ipa": "ˈkʌmfərt"
+      },
+      {
+        "en": "comfortable",
+        "zh": "舒适的",
+        "ipa": "ˈkʌmftəbl"
+      },
+      {
+        "en": "common",
+        "zh": "普通的",
+        "ipa": "ˈkɒmən"
+      },
+      {
+        "en": "communicate",
+        "zh": "交流",
+        "ipa": "kəˈmjuːnɪkeɪt"
+      },
+      {
+        "en": "community",
+        "zh": "社区",
+        "ipa": "kəˈmjuːnəti"
+      },
+      {
+        "en": "company",
+        "zh": "公司",
+        "ipa": "ˈkʌmpəni"
+      },
+      {
+        "en": "compare",
+        "zh": "比较",
+        "ipa": "kəmˈper"
+      },
+      {
+        "en": "competition",
+        "zh": "比赛",
+        "ipa": "ˌkɒmpəˈtɪʃn"
+      },
+      {
+        "en": "complain",
+        "zh": "抱怨",
+        "ipa": "kəmˈpleɪn"
+      },
+      {
+        "en": "complete",
+        "zh": "完整的",
+        "ipa": "kəmˈpliːt"
+      },
+      {
+        "en": "complex",
+        "zh": "复杂的",
+        "ipa": "kəmˈpleks"
+      },
+      {
+        "en": "computer",
+        "zh": "电脑",
+        "ipa": "kəmˈpjuːtər"
+      },
+      {
+        "en": "concept",
+        "zh": "概念",
+        "ipa": "ˈkɒnsept"
+      },
+      {
+        "en": "concert",
+        "zh": "音乐会",
+        "ipa": "ˈkɒnsərt"
+      },
+      {
+        "en": "condition",
+        "zh": "条件",
+        "ipa": "kənˈdɪʃn"
+      },
+      {
+        "en": "conduct",
+        "zh": "进行",
+        "ipa": "kənˈdʌkt"
+      },
+      {
+        "en": "conference",
+        "zh": "会议",
+        "ipa": "ˈkɒnfərəns"
+      },
+      {
+        "en": "confidence",
+        "zh": "信心",
+        "ipa": "ˈkɒnfɪdəns"
+      },
+      {
+        "en": "confident",
+        "zh": "自信的",
+        "ipa": "ˈkɒnfɪdənt"
+      },
+      {
+        "en": "confuse",
+        "zh": "使困惑",
+        "ipa": "kənˈfjuːz"
+      },
+      {
+        "en": "connect",
+        "zh": "连接",
+        "ipa": "kəˈnekt"
+      },
+      {
+        "en": "consider",
+        "zh": "考虑",
+        "ipa": "kənˈsɪdər"
+      },
+      {
+        "en": "continue",
+        "zh": "继续",
+        "ipa": "kənˈtɪnjuː"
+      },
+      {
+        "en": "control",
+        "zh": "控制",
+        "ipa": "kənˈtroʊl"
+      },
+      {
+        "en": "convenient",
+        "zh": "方便的",
+        "ipa": "kənˈviːniənt"
+      },
+      {
+        "en": "conversation",
+        "zh": "对话",
+        "ipa": "ˌkɒnvərˈseɪʃn"
+      },
+      {
+        "en": "cook",
+        "zh": "烹饪",
+        "ipa": "kʊk"
+      },
+      {
+        "en": "cool",
+        "zh": "凉爽的",
+        "ipa": "kuːl"
+      },
+      {
+        "en": "copy",
+        "zh": "复制",
+        "ipa": "ˈkɒpi"
+      },
+      {
+        "en": "corn",
+        "zh": "玉米",
+        "ipa": "kɔːrn"
+      },
+      {
+        "en": "corner",
+        "zh": "角落",
+        "ipa": "ˈkɔːrnər"
+      },
+      {
+        "en": "correct",
+        "zh": "正确的",
+        "ipa": "kəˈrekt"
+      },
+      {
+        "en": "cost",
+        "zh": "花费",
+        "ipa": "kɒst"
+      },
+      {
+        "en": "cotton",
+        "zh": "棉花",
+        "ipa": "ˈkɒtn"
+      },
+      {
+        "en": "cough",
+        "zh": "咳嗽",
+        "ipa": "kɔːf"
+      },
+      {
+        "en": "could",
+        "zh": "能（过去式）",
+        "ipa": "kʊd"
+      },
+      {
+        "en": "country",
+        "zh": "国家",
+        "ipa": "ˈkʌntri"
+      },
+      {
+        "en": "couple",
+        "zh": "一对",
+        "ipa": "ˈkʌpl"
+      },
+      {
+        "en": "courage",
+        "zh": "勇气",
+        "ipa": "ˈkɜːrɪdʒ"
+      },
+      {
+        "en": "course",
+        "zh": "课程",
+        "ipa": "kɔːrs"
+      },
+      {
+        "en": "court",
+        "zh": "法庭",
+        "ipa": "kɔːrt"
+      },
+      {
+        "en": "cover",
+        "zh": "覆盖",
+        "ipa": "ˈkʌvər"
+      },
+      {
+        "en": "cow",
+        "zh": "牛",
+        "ipa": "kaʊ"
+      },
+      {
+        "en": "crazy",
+        "zh": "疯狂的",
+        "ipa": "ˈkreɪzi"
+      },
+      {
+        "en": "cream",
+        "zh": "奶油",
+        "ipa": "kriːm"
+      },
+      {
+        "en": "create",
+        "zh": "创造",
+        "ipa": "kriˈeɪt"
+      },
+      {
+        "en": "creative",
+        "zh": "有创造力的",
+        "ipa": "kriˈeɪtɪv"
+      },
+      {
+        "en": "cross",
+        "zh": "穿过",
+        "ipa": "krɔːs"
+      },
+      {
+        "en": "crowd",
+        "zh": "人群",
+        "ipa": "kraʊd"
+      },
+      {
+        "en": "cry",
+        "zh": "哭",
+        "ipa": "kraɪ"
+      },
+      {
+        "en": "culture",
+        "zh": "文化",
+        "ipa": "ˈkʌltʃər"
+      },
+      {
+        "en": "cup",
+        "zh": "杯子",
+        "ipa": "kʌp"
+      },
+      {
+        "en": "curious",
+        "zh": "好奇的",
+        "ipa": "ˈkjʊriəs"
+      },
+      {
+        "en": "current",
+        "zh": "当前的",
+        "ipa": "ˈkɜːrənt"
+      },
+      {
+        "en": "custom",
+        "zh": "习俗",
+        "ipa": "ˈkʌstəm"
+      },
+      {
+        "en": "customer",
+        "zh": "顾客",
+        "ipa": "ˈkʌstəmər"
+      },
+      {
+        "en": "cut",
+        "zh": "切",
+        "ipa": "kʌt"
+      },
+      {
+        "en": "cute",
+        "zh": "可爱的",
+        "ipa": "kjuːt"
+      },
+      {
+        "en": "cycle",
+        "zh": "循环",
+        "ipa": "ˈsaɪkl"
+      },
+      {
+        "en": "dad",
+        "zh": "爸爸",
+        "ipa": "dæd"
+      },
+      {
+        "en": "daily",
+        "zh": "日常的",
+        "ipa": "ˈdeɪli"
+      },
+      {
+        "en": "damage",
+        "zh": "损害",
+        "ipa": "ˈdæmɪdʒ"
+      },
+      {
+        "en": "dance",
+        "zh": "跳舞",
+        "ipa": "dæns"
+      },
+      {
+        "en": "danger",
+        "zh": "危险",
+        "ipa": "ˈdeɪndʒər"
+      },
+      {
+        "en": "dangerous",
+        "zh": "危险的",
+        "ipa": "ˈdeɪndʒərəs"
+      },
+      {
+        "en": "dare",
+        "zh": "敢",
+        "ipa": "der"
+      },
+      {
+        "en": "dark",
+        "zh": "黑暗的",
+        "ipa": "dɑːrk"
+      },
+      {
+        "en": "date",
+        "zh": "日期",
+        "ipa": "deɪt"
+      },
+      {
+        "en": "daughter",
+        "zh": "女儿",
+        "ipa": "ˈdɔːtər"
+      },
+      {
+        "en": "day",
+        "zh": "天",
+        "ipa": "deɪ"
+      },
+      {
+        "en": "dead",
+        "zh": "死的",
+        "ipa": "ded"
+      },
+      {
+        "en": "deal",
+        "zh": "交易",
+        "ipa": "diːl"
+      },
+      {
+        "en": "dear",
+        "zh": "亲爱的",
+        "ipa": "dɪr"
+      },
+      {
+        "en": "death",
+        "zh": "死亡",
+        "ipa": "deθ"
+      },
+      {
+        "en": "debate",
+        "zh": "辩论",
+        "ipa": "dɪˈbeɪt"
+      },
+      {
+        "en": "December",
+        "zh": "十二月",
+        "ipa": "dɪˈsembər"
+      },
+      {
+        "en": "decide",
+        "zh": "决定",
+        "ipa": "dɪˈsaɪd"
+      },
+      {
+        "en": "decision",
+        "zh": "决定",
+        "ipa": "dɪˈsɪʒn"
+      },
+      {
+        "en": "deep",
+        "zh": "深的",
+        "ipa": "diːp"
+      },
+      {
+        "en": "degree",
+        "zh": "度",
+        "ipa": "dɪˈɡriː"
+      },
+      {
+        "en": "delay",
+        "zh": "延迟",
+        "ipa": "dɪˈleɪ"
+      },
+      {
+        "en": "delicious",
+        "zh": "美味的",
+        "ipa": "dɪˈlɪʃəs"
+      },
+      {
+        "en": "deliver",
+        "zh": "递送",
+        "ipa": "dɪˈlɪvər"
+      },
+      {
+        "en": "demand",
+        "zh": "要求",
+        "ipa": "dɪˈmænd"
+      },
+      {
+        "en": "deny",
+        "zh": "否认",
+        "ipa": "dɪˈnaɪ"
+      },
+      {
+        "en": "department",
+        "zh": "部门",
+        "ipa": "dɪˈpɑːrtmənt"
+      },
+      {
+        "en": "depend",
+        "zh": "依赖",
+        "ipa": "dɪˈpend"
+      },
+      {
+        "en": "describe",
+        "zh": "描述",
+        "ipa": "dɪˈskraɪb"
+      },
+      {
+        "en": "desert",
+        "zh": "沙漠",
+        "ipa": "ˈdezərt"
+      },
+      {
+        "en": "design",
+        "zh": "设计",
+        "ipa": "dɪˈzaɪn"
+      },
+      {
+        "en": "desk",
+        "zh": "书桌",
+        "ipa": "desk"
+      },
+      {
+        "en": "dessert",
+        "zh": "甜点",
+        "ipa": "dɪˈzɜːrt"
+      },
+      {
+        "en": "destination",
+        "zh": "目的地",
+        "ipa": "ˌdestɪˈneɪʃn"
+      },
+      {
+        "en": "destroy",
+        "zh": "破坏",
+        "ipa": "dɪˈstrɔɪ"
+      },
+      {
+        "en": "detail",
+        "zh": "细节",
+        "ipa": "ˈdiːteɪl"
+      },
+      {
+        "en": "detect",
+        "zh": "检测",
+        "ipa": "dɪˈtekt"
+      },
+      {
+        "en": "develop",
+        "zh": "发展",
+        "ipa": "dɪˈveləp"
+      },
+      {
+        "en": "development",
+        "zh": "发展",
+        "ipa": "dɪˈveləpmənt"
+      },
+      {
+        "en": "device",
+        "zh": "设备",
+        "ipa": "dɪˈvaɪs"
+      },
+      {
+        "en": "dictionary",
+        "zh": "字典",
+        "ipa": "ˈdɪkʃəneri"
+      },
+      {
+        "en": "die",
+        "zh": "死",
+        "ipa": "daɪ"
+      },
+      {
+        "en": "diet",
+        "zh": "饮食",
+        "ipa": "ˈdaɪət"
+      },
+      {
+        "en": "differ",
+        "zh": "不同",
+        "ipa": "ˈdɪfər"
+      },
+      {
+        "en": "difference",
+        "zh": "不同",
+        "ipa": "ˈdɪfrəns"
+      },
+      {
+        "en": "different",
+        "zh": "不同的",
+        "ipa": "ˈdɪfrənt"
+      },
+      {
+        "en": "difficult",
+        "zh": "困难的",
+        "ipa": "ˈdɪfɪkəlt"
+      },
+      {
+        "en": "difficulty",
+        "zh": "困难",
+        "ipa": "ˈdɪfɪkəlti"
+      },
+      {
+        "en": "dig",
+        "zh": "挖",
+        "ipa": "dɪɡ"
+      },
+      {
+        "en": "dinner",
+        "zh": "晚餐",
+        "ipa": "ˈdɪnər"
+      },
+      {
+        "en": "direct",
+        "zh": "直接的",
+        "ipa": "dɪˈrekt"
+      },
+      {
+        "en": "direction",
+        "zh": "方向",
+        "ipa": "daɪˈrekʃn"
+      },
+      {
+        "en": "director",
+        "zh": "导演",
+        "ipa": "dɪˈrektər"
+      },
+      {
+        "en": "dirty",
+        "zh": "脏的",
+        "ipa": "ˈdɜːrti"
+      },
+      {
+        "en": "disappear",
+        "zh": "消失",
+        "ipa": "ˌdɪsəˈpɪr"
+      },
+      {
+        "en": "discover",
+        "zh": "发现",
+        "ipa": "dɪˈskʌvər"
+      },
+      {
+        "en": "discovery",
+        "zh": "发现",
+        "ipa": "dɪˈskʌvəri"
+      },
+      {
+        "en": "discuss",
+        "zh": "讨论",
+        "ipa": "dɪˈskʌs"
+      },
+      {
+        "en": "discussion",
+        "zh": "讨论",
+        "ipa": "dɪˈskʌʃn"
+      },
+      {
+        "en": "disease",
+        "zh": "疾病",
+        "ipa": "dɪˈziːz"
+      },
+      {
+        "en": "dish",
+        "zh": "盘子",
+        "ipa": "dɪʃ"
+      },
+      {
+        "en": "dismiss",
+        "zh": "解散",
+        "ipa": "dɪsˈmɪs"
+      },
+      {
+        "en": "distance",
+        "zh": "距离",
+        "ipa": "ˈdɪstəns"
+      },
+      {
+        "en": "distant",
+        "zh": "遥远的",
+        "ipa": "ˈdɪstənt"
+      },
+      {
+        "en": "divide",
+        "zh": "分",
+        "ipa": "dɪˈvaɪd"
+      },
+      {
+        "en": "do",
+        "zh": "做",
+        "ipa": "duː"
+      },
+      {
+        "en": "doctor",
+        "zh": "医生",
+        "ipa": "ˈdɒktər"
+      },
+      {
+        "en": "dog",
+        "zh": "狗",
+        "ipa": "dɔːɡ"
+      },
+      {
+        "en": "door",
+        "zh": "门",
+        "ipa": "dɔːr"
+      },
+      {
+        "en": "double",
+        "zh": "双倍的",
+        "ipa": "ˈdʌbl"
+      },
+      {
+        "en": "doubt",
+        "zh": "怀疑",
+        "ipa": "daʊt"
+      },
+      {
+        "en": "down",
+        "zh": "向下",
+        "ipa": "daʊn"
+      },
+      {
+        "en": "dozen",
+        "zh": "一打",
+        "ipa": "ˈdʌzn"
+      },
+      {
+        "en": "draw",
+        "zh": "画",
+        "ipa": "drɔː"
+      },
+      {
+        "en": "dream",
+        "zh": "梦想",
+        "ipa": "driːm"
+      },
+      {
+        "en": "dress",
+        "zh": "连衣裙",
+        "ipa": "dres"
+      },
+      {
+        "en": "drink",
+        "zh": "喝",
+        "ipa": "drɪŋk"
+      },
+      {
+        "en": "drive",
+        "zh": "驾驶",
+        "ipa": "draɪv"
+      },
+      {
+        "en": "drop",
+        "zh": "滴",
+        "ipa": "drɒp"
+      },
+      {
+        "en": "drug",
+        "zh": "药",
+        "ipa": "drʌɡ"
+      },
+      {
+        "en": "dry",
+        "zh": "干的",
+        "ipa": "draɪ"
+      },
+      {
+        "en": "duck",
+        "zh": "鸭子",
+        "ipa": "dʌk"
+      },
+      {
+        "en": "during",
+        "zh": "在...期间",
+        "ipa": "ˈdjʊrɪŋ"
+      },
+      {
+        "en": "duty",
+        "zh": "责任",
+        "ipa": "ˈduːti"
+      },
+      {
+        "en": "each",
+        "zh": "每个",
+        "ipa": "iːtʃ"
+      },
+      {
+        "en": "early",
+        "zh": "早的",
+        "ipa": "ˈɜːrli"
+      },
+      {
+        "en": "earn",
+        "zh": "赚取",
+        "ipa": "ɜːrn"
+      },
+      {
+        "en": "earth",
+        "zh": "地球",
+        "ipa": "ɜːrθ"
+      },
+      {
+        "en": "east",
+        "zh": "东方",
+        "ipa": "iːst"
+      },
+      {
+        "en": "easy",
+        "zh": "容易的",
+        "ipa": "ˈiːzi"
+      },
+      {
+        "en": "eat",
+        "zh": "吃",
+        "ipa": "iːt"
+      },
+      {
+        "en": "edge",
+        "zh": "边缘",
+        "ipa": "edʒ"
+      },
+      {
+        "en": "education",
+        "zh": "教育",
+        "ipa": "ˌedʒuˈkeɪʃn"
+      },
+      {
+        "en": "effect",
+        "zh": "效果",
+        "ipa": "ɪˈfekt"
+      },
+      {
+        "en": "effort",
+        "zh": "努力",
+        "ipa": "ˈefərt"
+      },
+      {
+        "en": "egg",
+        "zh": "鸡蛋",
+        "ipa": "eɡ"
+      },
+      {
+        "en": "eight",
+        "zh": "八",
+        "ipa": "eɪt"
+      },
+      {
+        "en": "either",
+        "zh": "或者",
+        "ipa": "ˈaɪðər"
+      },
+      {
+        "en": "electric",
+        "zh": "电的",
+        "ipa": "ɪˈlektrɪk"
+      },
+      {
+        "en": "elephant",
+        "zh": "大象",
+        "ipa": "ˈelɪfənt"
+      },
+      {
+        "en": "else",
+        "zh": "其他",
+        "ipa": "els"
+      },
+      {
+        "en": "empty",
+        "zh": "空的",
+        "ipa": "ˈempti"
+      },
+      {
+        "en": "encourage",
+        "zh": "鼓励",
+        "ipa": "ɪnˈkɜːrɪdʒ"
+      },
+      {
+        "en": "end",
+        "zh": "结束",
+        "ipa": "end"
+      },
+      {
+        "en": "enemy",
+        "zh": "敌人",
+        "ipa": "ˈenəmi"
+      },
+      {
+        "en": "energy",
+        "zh": "能量",
+        "ipa": "ˈenərdʒi"
+      },
+      {
+        "en": "engine",
+        "zh": "发动机",
+        "ipa": "ˈendʒɪn"
+      },
+      {
+        "en": "English",
+        "zh": "英语",
+        "ipa": "ˈɪŋɡlɪʃ"
+      },
+      {
+        "en": "enjoy",
+        "zh": "享受",
+        "ipa": "ɪnˈdʒɔɪ"
+      },
+      {
+        "en": "enough",
+        "zh": "足够的",
+        "ipa": "ɪˈnʌf"
+      },
+      {
+        "en": "enter",
+        "zh": "进入",
+        "ipa": "ˈentər"
+      },
+      {
+        "en": "entertainment",
+        "zh": "娱乐",
+        "ipa": "ˌentərˈteɪnmənt"
+      },
+      {
+        "en": "entire",
+        "zh": "整个的",
+        "ipa": "ɪnˈtaɪər"
+      },
+      {
+        "en": "entrance",
+        "zh": "入口",
+        "ipa": "ˈentrəns"
+      },
+      {
+        "en": "entry",
+        "zh": "进入",
+        "ipa": "ˈentri"
+      },
+      {
+        "en": "environment",
+        "zh": "环境",
+        "ipa": "ɪnˈvaɪrənmənt"
+      },
+      {
+        "en": "equal",
+        "zh": "相等的",
+        "ipa": "ˈiːkwəl"
+      },
+      {
+        "en": "equipment",
+        "zh": "设备",
+        "ipa": "ɪˈkwɪpmənt"
+      },
+      {
+        "en": "error",
+        "zh": "错误",
+        "ipa": "ˈerər"
+      },
+      {
+        "en": "escape",
+        "zh": "逃跑",
+        "ipa": "ɪˈskeɪp"
+      },
+      {
+        "en": "especially",
+        "zh": "特别是",
+        "ipa": "ɪˈspeʃəli"
+      },
+      {
+        "en": "essay",
+        "zh": "散文",
+        "ipa": "ˈeseɪ"
+      },
+      {
+        "en": "Europe",
+        "zh": "欧洲",
+        "ipa": "ˈjʊrəp"
+      },
+      {
+        "en": "European",
+        "zh": "欧洲的",
+        "ipa": "ˌjʊrəˈpiːən"
+      },
+      {
+        "en": "even",
+        "zh": "甚至",
+        "ipa": "ˈiːvn"
+      },
+      {
+        "en": "evening",
+        "zh": "晚上",
+        "ipa": "ˈiːvnɪŋ"
+      },
+      {
+        "en": "event",
+        "zh": "事件",
+        "ipa": "ɪˈvent"
+      },
+      {
+        "en": "ever",
+        "zh": "曾经",
+        "ipa": "ˈevər"
+      },
+      {
+        "en": "every",
+        "zh": "每个",
+        "ipa": "ˈevri"
+      },
+      {
+        "en": "everybody",
+        "zh": "每个人",
+        "ipa": "ˈevribʌdi"
+      },
+      {
+        "en": "everyone",
+        "zh": "每个人",
+        "ipa": "ˈevriwʌn"
+      },
+      {
+        "en": "everything",
+        "zh": "每件事",
+        "ipa": "ˈevriθɪŋ"
+      },
+      {
+        "en": "everywhere",
+        "zh": "到处",
+        "ipa": "ˈevriwɛr"
+      },
+      {
+        "en": "evidence",
+        "zh": "证据",
+        "ipa": "ˈevɪdəns"
+      },
+      {
+        "en": "exact",
+        "zh": "精确的",
+        "ipa": "ɪɡˈzækt"
+      },
+      {
+        "en": "exactly",
+        "zh": "精确地",
+        "ipa": "ɪɡˈzæktli"
+      },
+      {
+        "en": "exam",
+        "zh": "考试",
+        "ipa": "ɪɡˈzæm"
+      },
+      {
+        "en": "example",
+        "zh": "例子",
+        "ipa": "ɪɡˈzæmpl"
+      },
+      {
+        "en": "excellent",
+        "zh": "优秀的",
+        "ipa": "ˈeksələnt"
+      },
+      {
+        "en": "except",
+        "zh": "除了",
+        "ipa": "ɪkˈsept"
+      },
+      {
+        "en": "exchange",
+        "zh": "交换",
+        "ipa": "ɪksˈtʃeɪndʒ"
+      },
+      {
+        "en": "excited",
+        "zh": "兴奋的",
+        "ipa": "ɪkˈsaɪtɪd"
+      },
+      {
+        "en": "exciting",
+        "zh": "令人兴奋的",
+        "ipa": "ɪkˈsaɪtɪŋ"
+      },
+      {
+        "en": "excuse",
+        "zh": "原谅",
+        "ipa": "ɪkˈskjuːs"
+      },
+      {
+        "en": "exercise",
+        "zh": "练习",
+        "ipa": "ˈeksəsaɪz"
+      },
+      {
+        "en": "exhibition",
+        "zh": "展览",
+        "ipa": "ˌeksɪˈbɪʃn"
+      },
+      {
+        "en": "exist",
+        "zh": "存在",
+        "ipa": "ɪɡˈzɪst"
+      },
+      {
+        "en": "exit",
+        "zh": "出口",
+        "ipa": "ˈeksɪt"
+      },
+      {
+        "en": "expensive",
+        "zh": "昂贵的",
+        "ipa": "ɪkˈspensɪv"
+      },
+      {
+        "en": "experience",
+        "zh": "经验",
+        "ipa": "ɪkˈspɪriəns"
+      },
+      {
+        "en": "experiment",
+        "zh": "实验",
+        "ipa": "ɪkˈsperɪmənt"
+      },
+      {
+        "en": "expert",
+        "zh": "专家",
+        "ipa": "ˈekspɜːrt"
+      },
+      {
+        "en": "explain",
+        "zh": "解释",
+        "ipa": "ɪkˈspleɪn"
+      },
+      {
+        "en": "explanation",
+        "zh": "解释",
+        "ipa": "ˌekspləˈneɪʃn"
+      },
+      {
+        "en": "explore",
+        "zh": "探索",
+        "ipa": "ɪkˈsplɔːr"
+      },
+      {
+        "en": "express",
+        "zh": "表达",
+        "ipa": "ɪkˈspres"
+      },
+      {
+        "en": "expression",
+        "zh": "表达",
+        "ipa": "ɪkˈspreʃn"
+      },
+      {
+        "en": "extra",
+        "zh": "额外的",
+        "ipa": "ˈekstrə"
+      },
+      {
+        "en": "eye",
+        "zh": "眼睛",
+        "ipa": "aɪ"
+      },
+      {
+        "en": "face",
+        "zh": "脸",
+        "ipa": "feɪs"
+      },
+      {
+        "en": "fact",
+        "zh": "事实",
+        "ipa": "fækt"
+      },
+      {
+        "en": "factory",
+        "zh": "工厂",
+        "ipa": "ˈfæktəri"
+      },
+      {
+        "en": "fail",
+        "zh": "失败",
+        "ipa": "feɪl"
+      },
+      {
+        "en": "failure",
+        "zh": "失败",
+        "ipa": "ˈfeɪljər"
+      },
+      {
+        "en": "fair",
+        "zh": "公平的",
+        "ipa": "fer"
+      },
+      {
+        "en": "fall",
+        "zh": "落下",
+        "ipa": "fɔːl"
+      },
+      {
+        "en": "false",
+        "zh": "错误的",
+        "ipa": "fɔːls"
+      },
+      {
+        "en": "familiar",
+        "zh": "熟悉的",
+        "ipa": "fəˈmɪliər"
+      },
+      {
+        "en": "family",
+        "zh": "家庭",
+        "ipa": "ˈfæməli"
+      },
+      {
+        "en": "famous",
+        "zh": "著名的",
+        "ipa": "ˈfeɪməs"
+      },
+      {
+        "en": "fan",
+        "zh": "风扇",
+        "ipa": "fæn"
+      },
+      {
+        "en": "far",
+        "zh": "远的",
+        "ipa": "fɑːr"
+      },
+      {
+        "en": "farm",
+        "zh": "农场",
+        "ipa": "fɑːrm"
+      },
+      {
+        "en": "farmer",
+        "zh": "农民",
+        "ipa": "ˈfɑːrmər"
+      },
+      {
+        "en": "fast",
+        "zh": "快的",
+        "ipa": "fæst"
+      },
+      {
+        "en": "fat",
+        "zh": "胖的",
+        "ipa": "fæt"
+      },
+      {
+        "en": "father",
+        "zh": "父亲",
+        "ipa": "ˈfɑːðər"
+      },
+      {
+        "en": "fault",
+        "zh": "过错",
+        "ipa": "fɔːlt"
+      },
+      {
+        "en": "favorite",
+        "zh": "最喜欢的",
+        "ipa": "ˈfeɪvərɪt"
+      },
+      {
+        "en": "fear",
+        "zh": "害怕",
+        "ipa": "fɪr"
+      },
+      {
+        "en": "feature",
+        "zh": "特征",
+        "ipa": "ˈfiːtʃər"
+      },
+      {
+        "en": "February",
+        "zh": "二月",
+        "ipa": "ˈfebrueri"
+      },
+      {
+        "en": "feed",
+        "zh": "喂养",
+        "ipa": "fiːd"
+      },
+      {
+        "en": "feel",
+        "zh": "感觉",
+        "ipa": "fil"
+      },
+      {
+        "en": "feeling",
+        "zh": "感觉",
+        "ipa": "ˈfiːlɪŋ"
+      },
+      {
+        "en": "female",
+        "zh": "女性的",
+        "ipa": "ˈfiːmeɪl"
+      },
+      {
+        "en": "festival",
+        "zh": "节日",
+        "ipa": "ˈfestɪvl"
+      },
+      {
+        "en": "few",
+        "zh": "少数",
+        "ipa": "fjuː"
+      },
+      {
+        "en": "field",
+        "zh": "田野",
+        "ipa": "fiːld"
+      },
+      {
+        "en": "fierce",
+        "zh": "凶猛的",
+        "ipa": "fɪrs"
+      },
+      {
+        "en": "fifth",
+        "zh": "第五",
+        "ipa": "fɪfθ"
+      },
+      {
+        "en": "fifty",
+        "zh": "五十",
+        "ipa": "ˈfɪfti"
+      },
+      {
+        "en": "fight",
+        "zh": "战斗",
+        "ipa": "faɪt"
+      },
+      {
+        "en": "fill",
+        "zh": "填充",
+        "ipa": "fɪl"
+      },
+      {
+        "en": "film",
+        "zh": "电影",
+        "ipa": "fɪlm"
+      },
+      {
+        "en": "final",
+        "zh": "最后的",
+        "ipa": "ˈfaɪnl"
+      },
+      {
+        "en": "finally",
+        "zh": "最后",
+        "ipa": "ˈfaɪnəli"
+      },
+      {
+        "en": "find",
+        "zh": "找到",
+        "ipa": "faɪnd"
+      },
+      {
+        "en": "fine",
+        "zh": "好的",
+        "ipa": "faɪn"
+      },
+      {
+        "en": "finger",
+        "zh": "手指",
+        "ipa": "ˈfɪŋɡər"
+      },
+      {
+        "en": "finish",
+        "zh": "完成",
+        "ipa": "ˈfɪnɪʃ"
+      },
+      {
+        "en": "fire",
+        "zh": "火",
+        "ipa": "faɪər"
+      },
+      {
+        "en": "firm",
+        "zh": "坚定的",
+        "ipa": "fɜːrm"
+      },
+      {
+        "en": "first",
+        "zh": "第一",
+        "ipa": "fɜːrst"
+      },
+      {
+        "en": "fish",
+        "zh": "鱼",
+        "ipa": "fɪʃ"
+      },
+      {
+        "en": "fit",
+        "zh": "适合",
+        "ipa": "fɪt"
+      },
+      {
+        "en": "five",
+        "zh": "五",
+        "ipa": "faɪv"
+      },
+      {
+        "en": "fix",
+        "zh": "修理",
+        "ipa": "fɪks"
+      },
+      {
+        "en": "flag",
+        "zh": "旗帜",
+        "ipa": "flæɡ"
+      },
+      {
+        "en": "flat",
+        "zh": "平坦的",
+        "ipa": "flæt"
+      },
+      {
+        "en": "flight",
+        "zh": "飞行",
+        "ipa": "flaɪt"
+      },
+      {
+        "en": "floor",
+        "zh": "地板",
+        "ipa": "flɔːr"
+      },
+      {
+        "en": "flower",
+        "zh": "花",
+        "ipa": "ˈflaʊər"
+      },
+      {
+        "en": "fly",
+        "zh": "飞",
+        "ipa": "flaɪ"
+      },
+      {
+        "en": "focus",
+        "zh": "焦点",
+        "ipa": "ˈfoʊkəs"
+      },
+      {
+        "en": "fog",
+        "zh": "雾",
+        "ipa": "fɒɡ"
+      },
+      {
+        "en": "follow",
+        "zh": "跟随",
+        "ipa": "ˈfɑːloʊ"
+      },
+      {
+        "en": "food",
+        "zh": "食物",
+        "ipa": "fuːd"
+      },
+      {
+        "en": "foot",
+        "zh": "脚",
+        "ipa": "fʊt"
+      },
+      {
+        "en": "football",
+        "zh": "足球",
+        "ipa": "ˈfʊtbɔːl"
+      },
+      {
+        "en": "for",
+        "zh": "为了",
+        "ipa": "fɔːr"
+      },
+      {
+        "en": "force",
+        "zh": "力量",
+        "ipa": "fɔːrs"
+      },
+      {
+        "en": "foreign",
+        "zh": "外国的",
+        "ipa": "ˈfɔːrɪn"
+      },
+      {
+        "en": "forest",
+        "zh": "森林",
+        "ipa": "ˈfɔːrɪst"
+      },
+      {
+        "en": "forever",
+        "zh": "永远",
+        "ipa": "fərˈevər"
+      },
+      {
+        "en": "forget",
+        "zh": "忘记",
+        "ipa": "fərˈɡet"
+      },
+      {
+        "en": "forgive",
+        "zh": "原谅",
+        "ipa": "fərˈɡɪv"
+      },
+      {
+        "en": "fork",
+        "zh": "叉子",
+        "ipa": "fɔːrk"
+      },
+      {
+        "en": "form",
+        "zh": "表格",
+        "ipa": "fɔːrm"
+      },
+      {
+        "en": "forty",
+        "zh": "四十",
+        "ipa": "ˈfɔːrti"
+      },
+      {
+        "en": "forward",
+        "zh": "向前",
+        "ipa": "ˈfɔːrwərd"
+      },
+      {
+        "en": "four",
+        "zh": "四",
+        "ipa": "fɔːr"
+      },
+      {
+        "en": "fourth",
+        "zh": "第四",
+        "ipa": "fɔːrθ"
+      },
+      {
+        "en": "fox",
+        "zh": "狐狸",
+        "ipa": "fɒks"
+      },
+      {
+        "en": "franc",
+        "zh": "法郎",
+        "ipa": "fræŋk"
+      },
+      {
+        "en": "free",
+        "zh": "自由的",
+        "ipa": "friː"
+      },
+      {
+        "en": "freedom",
+        "zh": "自由",
+        "ipa": "ˈfriːdəm"
+      },
+      {
+        "en": "freeze",
+        "zh": "冻结",
+        "ipa": "friːz"
+      },
+      {
+        "en": "fresh",
+        "zh": "新鲜的",
+        "ipa": "freʃ"
+      },
+      {
+        "en": "Friday",
+        "zh": "星期五",
+        "ipa": "ˈfraɪdeɪ"
+      },
+      {
+        "en": "friend",
+        "zh": "朋友",
+        "ipa": "frend"
+      },
+      {
+        "en": "friendly",
+        "zh": "友好的",
+        "ipa": "ˈfrendli"
+      },
+      {
+        "en": "friendship",
+        "zh": "友谊",
+        "ipa": "ˈfrendʃɪp"
+      },
+      {
+        "en": "frightened",
+        "zh": "害怕的",
+        "ipa": "ˈfraɪtn̩d"
+      },
+      {
+        "en": "from",
+        "zh": "从",
+        "ipa": "frəm"
+      },
+      {
+        "en": "front",
+        "zh": "前面",
+        "ipa": "frʌnt"
+      },
+      {
+        "en": "fruit",
+        "zh": "水果",
+        "ipa": "fruːt"
+      },
+      {
+        "en": "frustrate",
+        "zh": "挫败",
+        "ipa": "ˈfrʌstreɪt"
+      },
+      {
+        "en": "full",
+        "zh": "满的",
+        "ipa": "fʊl"
+      },
+      {
+        "en": "fun",
+        "zh": "乐趣",
+        "ipa": "fʌn"
+      },
+      {
+        "en": "funny",
+        "zh": "有趣的",
+        "ipa": "ˈfʌni"
+      },
+      {
+        "en": "furniture",
+        "zh": "家具",
+        "ipa": "ˈfɜːrnɪtʃər"
+      },
+      {
+        "en": "future",
+        "zh": "未来",
+        "ipa": "ˈfjuːtʃər"
+      },
+      {
+        "en": "gain",
+        "zh": "获得",
+        "ipa": "ɡeɪn"
+      },
+      {
+        "en": "game",
+        "zh": "游戏",
+        "ipa": "ɡeɪm"
+      },
+      {
+        "en": "garage",
+        "zh": "车库",
+        "ipa": "ɡəˈrɑːʒ"
+      },
+      {
+        "en": "garden",
+        "zh": "花园",
+        "ipa": "ˈɡɑːrdn"
+      },
+      {
+        "en": "gas",
+        "zh": "气体",
+        "ipa": "ɡæs"
+      },
+      {
+        "en": "gate",
+        "zh": "门",
+        "ipa": "ɡeɪt"
+      },
+      {
+        "en": "gather",
+        "zh": "聚集",
+        "ipa": "ˈɡæðər"
+      },
+      {
+        "en": "general",
+        "zh": "一般的",
+        "ipa": "ˈdʒenrəl"
+      },
+      {
+        "en": "gentleman",
+        "zh": "绅士",
+        "ipa": "ˈdʒentlmən"
+      },
+      {
+        "en": "geography",
+        "zh": "地理",
+        "ipa": "dʒiˈɒɡrəfi"
+      },
+      {
+        "en": "get",
+        "zh": "得到",
+        "ipa": "ɡet"
+      },
+      {
+        "en": "gift",
+        "zh": "礼物",
+        "ipa": "ɡɪft"
+      },
+      {
+        "en": "giraffe",
+        "zh": "长颈鹿",
+        "ipa": "dʒəˈræf"
+      },
+      {
+        "en": "girl",
+        "zh": "女孩",
+        "ipa": "ɡɜːrl"
+      },
+      {
+        "en": "give",
+        "zh": "给",
+        "ipa": "ɡɪv"
+      },
+      {
+        "en": "glad",
+        "zh": "高兴的",
+        "ipa": "ɡlæd"
+      },
+      {
+        "en": "glass",
+        "zh": "玻璃",
+        "ipa": "ɡlæs"
+      },
+      {
+        "en": "globe",
+        "zh": "地球仪",
+        "ipa": "ɡloʊb"
+      },
+      {
+        "en": "go",
+        "zh": "去",
+        "ipa": "ɡoʊ"
+      },
+      {
+        "en": "goal",
+        "zh": "目标",
+        "ipa": "ɡoʊl"
+      },
+      {
+        "en": "god",
+        "zh": "神",
+        "ipa": "ɡɑːd"
+      },
+      {
+        "en": "gold",
+        "zh": "金子",
+        "ipa": "ɡoʊld"
+      },
+      {
+        "en": "good",
+        "zh": "好的",
+        "ipa": "ɡʊd"
+      },
+      {
+        "en": "government",
+        "zh": "政府",
+        "ipa": "ˈɡʌvərnmənt"
+      },
+      {
+        "en": "grade",
+        "zh": "年级",
+        "ipa": "ɡreɪd"
+      },
+      {
+        "en": "gradually",
+        "zh": "逐渐地",
+        "ipa": "ˈɡrædʒuəli"
+      },
+      {
+        "en": "grandfather",
+        "zh": "祖父",
+        "ipa": "ˈɡrændfɑːðər"
+      },
+      {
+        "en": "grandmother",
+        "zh": "祖母",
+        "ipa": "ˈɡrændmʌðər"
+      },
+      {
+        "en": "grass",
+        "zh": "草",
+        "ipa": "ɡræs"
+      },
+      {
+        "en": "great",
+        "zh": "伟大的",
+        "ipa": "ɡreɪt"
+      },
+      {
+        "en": "green",
+        "zh": "绿色",
+        "ipa": "ɡriːn"
+      },
+      {
+        "en": "ground",
+        "zh": "地面",
+        "ipa": "ɡraʊnd"
+      },
+      {
+        "en": "group",
+        "zh": "组",
+        "ipa": "ɡruːp"
+      },
+      {
+        "en": "grow",
+        "zh": "生长",
+        "ipa": "ɡroʊ"
+      },
+      {
+        "en": "growth",
+        "zh": "生长",
+        "ipa": "ɡroʊθ"
+      },
+      {
+        "en": "guard",
+        "zh": "守卫",
+        "ipa": "ɡɑːrd"
+      },
+      {
+        "en": "guess",
+        "zh": "猜测",
+        "ipa": "ɡes"
+      },
+      {
+        "en": "guest",
+        "zh": "客人",
+        "ipa": "ɡest"
+      },
+      {
+        "en": "guide",
+        "zh": "指导",
+        "ipa": "ɡaɪd"
+      },
+      {
+        "en": "habit",
+        "zh": "习惯",
+        "ipa": "ˈhæbɪt"
+      },
+      {
+        "en": "hair",
+        "zh": "头发",
+        "ipa": "her"
+      },
+      {
+        "en": "half",
+        "zh": "一半",
+        "ipa": "hæf"
+      },
+      {
+        "en": "hall",
+        "zh": "大厅",
+        "ipa": "hɔːl"
+      },
+      {
+        "en": "hand",
+        "zh": "手",
+        "ipa": "hænd"
+      },
+      {
+        "en": "hang",
+        "zh": "悬挂",
+        "ipa": "hæŋ"
+      },
+      {
+        "en": "happen",
+        "zh": "发生",
+        "ipa": "ˈhæpən"
+      },
+      {
+        "en": "happy",
+        "zh": "快乐的",
+        "ipa": "ˈhæpi"
+      },
+      {
+        "en": "harbor",
+        "zh": "港口",
+        "ipa": "ˈhɑːrbər"
+      },
+      {
+        "en": "hard",
+        "zh": "硬的",
+        "ipa": "hɑːrd"
+      },
+      {
+        "en": "hardly",
+        "zh": "几乎不",
+        "ipa": "ˈhɑːrdli"
+      },
+      {
+        "en": "harm",
+        "zh": "伤害",
+        "ipa": "hɑːrm"
+      },
+      {
+        "en": "hat",
+        "zh": "帽子",
+        "ipa": "hæt"
+      },
+      {
+        "en": "hate",
+        "zh": "讨厌",
+        "ipa": "heɪt"
+      },
+      {
+        "en": "have",
+        "zh": "有",
+        "ipa": "hæv"
+      },
+      {
+        "en": "he",
+        "zh": "他",
+        "ipa": "hi"
+      },
+      {
+        "en": "head",
+        "zh": "头",
+        "ipa": "hed"
+      },
+      {
+        "en": "health",
+        "zh": "健康",
+        "ipa": "helθ"
+      },
+      {
+        "en": "healthy",
+        "zh": "健康的",
+        "ipa": "ˈhelθi"
+      },
+      {
+        "en": "hear",
+        "zh": "听见",
+        "ipa": "hɪr"
+      },
+      {
+        "en": "heart",
+        "zh": "心",
+        "ipa": "hɑːrt"
+      },
+      {
+        "en": "heat",
+        "zh": "热",
+        "ipa": "hiːt"
+      },
+      {
+        "en": "heavy",
+        "zh": "重的",
+        "ipa": "ˈhevi"
+      },
+      {
+        "en": "height",
+        "zh": "高度",
+        "ipa": "haɪt"
+      },
+      {
+        "en": "hello",
+        "zh": "你好",
+        "ipa": "həˈloʊ"
+      },
+      {
+        "en": "help",
+        "zh": "帮助",
+        "ipa": "help"
+      },
+      {
+        "en": "her",
+        "zh": "她的",
+        "ipa": "hɜːr"
+      },
+      {
+        "en": "here",
+        "zh": "这里",
+        "ipa": "hɪr"
+      },
+      {
+        "en": "hero",
+        "zh": "英雄",
+        "ipa": "ˈhɪroʊ"
+      },
+      {
+        "en": "herself",
+        "zh": "她自己",
+        "ipa": "hɜːrˈself"
+      },
+      {
+        "en": "hide",
+        "zh": "隐藏",
+        "ipa": "haɪd"
+      },
+      {
+        "en": "high",
+        "zh": "高的",
+        "ipa": "haɪ"
+      },
+      {
+        "en": "hill",
+        "zh": "小山",
+        "ipa": "hɪl"
+      },
+      {
+        "en": "him",
+        "zh": "他（宾格）",
+        "ipa": "hɪm"
+      },
+      {
+        "en": "himself",
+        "zh": "他自己",
+        "ipa": "hɪmˈself"
+      },
+      {
+        "en": "his",
+        "zh": "他的",
+        "ipa": "hɪz"
+      },
+      {
+        "en": "history",
+        "zh": "历史",
+        "ipa": "ˈhɪstri"
+      },
+      {
+        "en": "hit",
+        "zh": "打",
+        "ipa": "hɪt"
+      },
+      {
+        "en": "hold",
+        "zh": "握住",
+        "ipa": "hoʊld"
+      },
+      {
+        "en": "hole",
+        "zh": "洞",
+        "ipa": "hoʊl"
+      },
+      {
+        "en": "holiday",
+        "zh": "假期",
+        "ipa": "ˈhɑːlədeɪ"
+      },
+      {
+        "en": "home",
+        "zh": "家",
+        "ipa": "hoʊm"
+      },
+      {
+        "en": "honest",
+        "zh": "诚实的",
+        "ipa": "ˈɒnɪst"
+      },
+      {
+        "en": "hope",
+        "zh": "希望",
+        "ipa": "hoʊp"
+      },
+      {
+        "en": "horse",
+        "zh": "马",
+        "ipa": "hɔːrs"
+      },
+      {
+        "en": "hospital",
+        "zh": "医院",
+        "ipa": "ˈhɒspɪtl"
+      },
+      {
+        "en": "host",
+        "zh": "主人",
+        "ipa": "hoʊst"
+      },
+      {
+        "en": "hot",
+        "zh": "热的",
+        "ipa": "hɒt"
+      },
+      {
+        "en": "hotel",
+        "zh": "酒店",
+        "ipa": "hoʊˈtel"
+      },
+      {
+        "en": "hour",
+        "zh": "小时",
+        "ipa": "aʊər"
+      },
+      {
+        "en": "house",
+        "zh": "房子",
+        "ipa": "haʊs"
+      },
+      {
+        "en": "housework",
+        "zh": "家务",
+        "ipa": "ˈhaʊswɜːrk"
+      },
+      {
+        "en": "how",
+        "zh": "如何",
+        "ipa": "haʊ"
+      },
+      {
+        "en": "however",
+        "zh": "然而",
+        "ipa": "haʊˈevər"
+      },
+      {
+        "en": "huge",
+        "zh": "巨大的",
+        "ipa": "hjuːdʒ"
+      },
+      {
+        "en": "human",
+        "zh": "人类",
+        "ipa": "ˈhjuːmən"
+      },
+      {
+        "en": "hundred",
+        "zh": "百",
+        "ipa": "ˈhʌndrəd"
+      },
+      {
+        "en": "hungry",
+        "zh": "饿的",
+        "ipa": "ˈhʌŋɡri"
+      },
+      {
+        "en": "hunt",
+        "zh": "狩猎",
+        "ipa": "hʌnt"
+      },
+      {
+        "en": "hurry",
+        "zh": "匆忙",
+        "ipa": "ˈhɜːri"
+      },
+      {
+        "en": "hurt",
+        "zh": "伤害",
+        "ipa": "hɜːrt"
+      },
+      {
+        "en": "husband",
+        "zh": "丈夫",
+        "ipa": "ˈhʌzbənd"
+      },
+      {
+        "en": "I",
+        "zh": "我",
+        "ipa": "aɪ"
+      },
+      {
+        "en": "ice",
+        "zh": "冰",
+        "ipa": "aɪs"
+      },
+      {
+        "en": "idea",
+        "zh": "想法",
+        "ipa": "aɪˈdɪə"
+      },
+      {
+        "en": "if",
+        "zh": "如果",
+        "ipa": "ɪf"
+      },
+      {
+        "en": "ill",
+        "zh": "生病的",
+        "ipa": "ɪl"
+      },
+      {
+        "en": "imagine",
+        "zh": "想象",
+        "ipa": "ɪˈmædʒɪn"
+      },
+      {
+        "en": "immediate",
+        "zh": "立即的",
+        "ipa": "ɪˈmiːdiət"
+      },
+      {
+        "en": "importance",
+        "zh": "重要性",
+        "ipa": "ɪmˈpɔːrtəns"
+      },
+      {
+        "en": "important",
+        "zh": "重要的",
+        "ipa": "ɪmˈpɔːrtənt"
+      },
+      {
+        "en": "impossible",
+        "zh": "不可能的",
+        "ipa": "ɪmˈpɒsəbl"
+      },
+      {
+        "en": "improve",
+        "zh": "改善",
+        "ipa": "ɪmˈpruːv"
+      },
+      {
+        "en": "in",
+        "zh": "在...里面",
+        "ipa": "ɪn"
+      },
+      {
+        "en": "include",
+        "zh": "包括",
+        "ipa": "ɪnˈkluːd"
+      },
+      {
+        "en": "income",
+        "zh": "收入",
+        "ipa": "ˈɪnkʌm"
+      },
+      {
+        "en": "increase",
+        "zh": "增加",
+        "ipa": "ɪnˈkriːs"
+      },
+      {
+        "en": "indeed",
+        "zh": "确实",
+        "ipa": "ɪnˈdiːd"
+      },
+      {
+        "en": "independent",
+        "zh": "独立的",
+        "ipa": "ˌɪndɪˈpendənt"
+      },
+      {
+        "en": "industry",
+        "zh": "工业",
+        "ipa": "ˈɪndəstri"
+      },
+      {
+        "en": "influence",
+        "zh": "影响",
+        "ipa": "ˈɪnfluəns"
+      },
+      {
+        "en": "information",
+        "zh": "信息",
+        "ipa": "ˌɪnfərˈmeɪʃn"
+      },
+      {
+        "en": "inside",
+        "zh": "在...里面",
+        "ipa": "ˌɪnˈsaɪd"
+      },
+      {
+        "en": "instead",
+        "zh": "代替",
+        "ipa": "ɪnˈsted"
+      },
+      {
+        "en": "instruction",
+        "zh": "说明",
+        "ipa": "ɪnˈstrʌkʃn"
+      },
+      {
+        "en": "interest",
+        "zh": "兴趣",
+        "ipa": "ˈɪntrəst"
+      },
+      {
+        "en": "interested",
+        "zh": "感兴趣的",
+        "ipa": "ˈɪntrəstɪd"
+      },
+      {
+        "en": "interesting",
+        "zh": "有趣的",
+        "ipa": "ˈɪntrəstɪŋ"
+      },
+      {
+        "en": "international",
+        "zh": "国际的",
+        "ipa": "ˌɪntərˈnæʃənl"
+      },
+      {
+        "en": "internet",
+        "zh": "互联网",
+        "ipa": "ˈɪntərnət"
+      },
+      {
+        "en": "interview",
+        "zh": "采访",
+        "ipa": "ˈɪntərvjuː"
+      },
+      {
+        "en": "into",
+        "zh": "进入",
+        "ipa": "ˈɪntuː"
+      },
+      {
+        "en": "introduce",
+        "zh": "介绍",
+        "ipa": "ˌɪntrəˈdjuːs"
+      },
+      {
+        "en": "invent",
+        "zh": "发明",
+        "ipa": "ɪnˈvent"
+      },
+      {
+        "en": "invention",
+        "zh": "发明",
+        "ipa": "ɪnˈvenʃn"
+      },
+      {
+        "en": "invite",
+        "zh": "邀请",
+        "ipa": "ɪnˈvaɪt"
+      },
+      {
+        "en": "involve",
+        "zh": "涉及",
+        "ipa": "ɪnˈvɑːlv"
+      },
+      {
+        "en": "is",
+        "zh": "是",
+        "ipa": "ɪz"
+      },
+      {
+        "en": "island",
+        "zh": "岛屿",
+        "ipa": "ˈaɪlənd"
+      },
+      {
+        "en": "it",
+        "zh": "它",
+        "ipa": "ɪt"
+      },
+      {
+        "en": "Italian",
+        "zh": "意大利的",
+        "ipa": "ɪˈtæliən"
+      },
+      {
+        "en": "its",
+        "zh": "它的",
+        "ipa": "ɪts"
+      },
+      {
+        "en": "itself",
+        "zh": "它自己",
+        "ipa": "ɪtˈself"
+      },
+      {
+        "en": "jacket",
+        "zh": "夹克",
+        "ipa": "ˈdʒækɪt"
+      },
+      {
+        "en": "January",
+        "zh": "一月",
+        "ipa": "ˈdʒænjuəri"
+      },
+      {
+        "en": "jeans",
+        "zh": "牛仔裤",
+        "ipa": "dʒiːnz"
+      },
+      {
+        "en": "job",
+        "zh": "工作",
+        "ipa": "dʒɒb"
+      },
+      {
+        "en": "join",
+        "zh": "加入",
+        "ipa": "dʒɔɪn"
+      },
+      {
+        "en": "journal",
+        "zh": "日记",
+        "ipa": "ˈdʒɜːrnl"
+      },
+      {
+        "en": "journey",
+        "zh": "旅程",
+        "ipa": "ˈdʒɜːrni"
+      },
+      {
+        "en": "joy",
+        "zh": "快乐",
+        "ipa": "dʒɔɪ"
+      },
+      {
+        "en": "judge",
+        "zh": "判断",
+        "ipa": "dʒʌdʒ"
+      },
+      {
+        "en": "jump",
+        "zh": "跳",
+        "ipa": "dʒʌmp"
+      },
+      {
+        "en": "junior",
+        "zh": "初级的",
+        "ipa": "ˈdʒuːniər"
+      },
+      {
+        "en": "just",
+        "zh": "刚刚",
+        "ipa": "dʒʌst"
+      },
+      {
+        "en": "keep",
+        "zh": "保持",
+        "ipa": "kiːp"
+      },
+      {
+        "en": "key",
+        "zh": "钥匙",
+        "ipa": "kiː"
+      },
+      {
+        "en": "keyboard",
+        "zh": "键盘",
+        "ipa": "ˈkiːbɔːrd"
+      },
+      {
+        "en": "kick",
+        "zh": "踢",
+        "ipa": "kɪk"
+      },
+      {
+        "en": "kid",
+        "zh": "小孩",
+        "ipa": "kɪd"
+      },
+      {
+        "en": "kill",
+        "zh": "杀死",
+        "ipa": "kɪl"
+      },
+      {
+        "en": "kind",
+        "zh": "善良的",
+        "ipa": "kaɪnd"
+      },
+      {
+        "en": "king",
+        "zh": "国王",
+        "ipa": "kɪŋ"
+      },
+      {
+        "en": "kingdom",
+        "zh": "王国",
+        "ipa": "ˈkɪŋdəm"
+      },
+      {
+        "en": "kitchen",
+        "zh": "厨房",
+        "ipa": "ˈkɪtʃɪn"
+      },
+      {
+        "en": "kite",
+        "zh": "风筝",
+        "ipa": "kaɪt"
+      },
+      {
+        "en": "knee",
+        "zh": "膝盖",
+        "ipa": "niː"
+      },
+      {
+        "en": "knife",
+        "zh": "刀",
+        "ipa": "naɪf"
+      },
+      {
+        "en": "knock",
+        "zh": "敲",
+        "ipa": "nɒk"
+      },
+      {
+        "en": "know",
+        "zh": "知道",
+        "ipa": "noʊ"
+      },
+      {
+        "en": "knowledge",
+        "zh": "知识",
+        "ipa": "ˈnɑːlɪdʒ"
+      },
+      {
+        "en": "lab",
+        "zh": "实验室",
+        "ipa": "læb"
+      },
+      {
+        "en": "laboratory",
+        "zh": "实验室",
+        "ipa": "ləˈbɒrətri"
+      },
+      {
+        "en": "lack",
+        "zh": "缺乏",
+        "ipa": "læk"
+      },
+      {
+        "en": "lady",
+        "zh": "女士",
+        "ipa": "ˈleɪdi"
+      },
+      {
+        "en": "lake",
+        "zh": "湖",
+        "ipa": "leɪk"
+      },
+      {
+        "en": "lamp",
+        "zh": "灯",
+        "ipa": "læmp"
+      },
+      {
+        "en": "land",
+        "zh": "土地",
+        "ipa": "lænd"
+      },
+      {
+        "en": "language",
+        "zh": "语言",
+        "ipa": "ˈlæŋɡwɪdʒ"
+      },
+      {
+        "en": "large",
+        "zh": "大的",
+        "ipa": "lɑːrdʒ"
+      },
+      {
+        "en": "last",
+        "zh": "最后的",
+        "ipa": "læst"
+      },
+      {
+        "en": "late",
+        "zh": "晚的",
+        "ipa": "leɪt"
+      },
+      {
+        "en": "later",
+        "zh": "后来",
+        "ipa": "ˈleɪtər"
+      },
+      {
+        "en": "laugh",
+        "zh": "笑",
+        "ipa": "læf"
+      },
+      {
+        "en": "law",
+        "zh": "法律",
+        "ipa": "lɔː"
+      },
+      {
+        "en": "lawyer",
+        "zh": "律师",
+        "ipa": "ˈlɔːjər"
+      },
+      {
+        "en": "lay",
+        "zh": "躺",
+        "ipa": "leɪ"
+      },
+      {
+        "en": "lead",
+        "zh": "领导",
+        "ipa": "liːd"
+      },
+      {
+        "en": "leader",
+        "zh": "领导",
+        "ipa": "ˈliːdər"
+      },
+      {
+        "en": "leaf",
+        "zh": "叶子",
+        "ipa": "liːf"
+      },
+      {
+        "en": "learn",
+        "zh": "学习",
+        "ipa": "lɜːrn"
+      },
+      {
+        "en": "least",
+        "zh": "最少的",
+        "ipa": "liːst"
+      },
+      {
+        "en": "leave",
+        "zh": "离开",
+        "ipa": "liːv"
+      },
+      {
+        "en": "left",
+        "zh": "左边",
+        "ipa": "left"
+      },
+      {
+        "en": "leg",
+        "zh": "腿",
+        "ipa": "leɡ"
+      },
+      {
+        "en": "length",
+        "zh": "长度",
+        "ipa": "leŋθ"
+      },
+      {
+        "en": "lesson",
+        "zh": "课",
+        "ipa": "ˈlesn"
+      },
+      {
+        "en": "let",
+        "zh": "让",
+        "ipa": "let"
+      },
+      {
+        "en": "letter",
+        "zh": "字母",
+        "ipa": "ˈletər"
+      },
+      {
+        "en": "level",
+        "zh": "水平",
+        "ipa": "ˈlevl"
+      },
+      {
+        "en": "library",
+        "zh": "图书馆",
+        "ipa": "ˈlaɪbreri"
+      },
+      {
+        "en": "license",
+        "zh": "执照",
+        "ipa": "ˈlaɪsns"
+      },
+      {
+        "en": "lie",
+        "zh": "躺",
+        "ipa": "laɪ"
+      },
+      {
+        "en": "life",
+        "zh": "生命",
+        "ipa": "laɪf"
+      },
+      {
+        "en": "lift",
+        "zh": "电梯",
+        "ipa": "lɪft"
+      },
+      {
+        "en": "light",
+        "zh": "光",
+        "ipa": "laɪt"
+      },
+      {
+        "en": "like",
+        "zh": "喜欢",
+        "ipa": "laɪk"
+      },
+      {
+        "en": "likely",
+        "zh": "可能的",
+        "ipa": "ˈlaɪkli"
+      },
+      {
+        "en": "line",
+        "zh": "线",
+        "ipa": "laɪn"
+      },
+      {
+        "en": "lion",
+        "zh": "狮子",
+        "ipa": "ˈlaɪən"
+      },
+      {
+        "en": "lip",
+        "zh": "嘴唇",
+        "ipa": "lɪp"
+      },
+      {
+        "en": "list",
+        "zh": "列表",
+        "ipa": "lɪst"
+      },
+      {
+        "en": "listen",
+        "zh": "听",
+        "ipa": "ˈlɪsn"
+      },
+      {
+        "en": "little",
+        "zh": "小的",
+        "ipa": "ˈlɪtl"
+      },
+      {
+        "en": "live",
+        "zh": "居住",
+        "ipa": "lɪv"
+      },
+      {
+        "en": "living",
+        "zh": "生活",
+        "ipa": "ˈlɪvɪŋ"
+      },
+      {
+        "en": "lock",
+        "zh": "锁",
+        "ipa": "lɒk"
+      },
+      {
+        "en": "long",
+        "zh": "长的",
+        "ipa": "lɔːŋ"
+      },
+      {
+        "en": "look",
+        "zh": "看",
+        "ipa": "lʊk"
+      },
+      {
+        "en": "lose",
+        "zh": "失去",
+        "ipa": "luːz"
+      },
+      {
+        "en": "loss",
+        "zh": "损失",
+        "ipa": "lɔːs"
+      },
+      {
+        "en": "lot",
+        "zh": "许多",
+        "ipa": "lɒt"
+      },
+      {
+        "en": "love",
+        "zh": "爱",
+        "ipa": "lʌv"
+      },
+      {
+        "en": "low",
+        "zh": "低的",
+        "ipa": "loʊ"
+      },
+      {
+        "en": "luck",
+        "zh": "运气",
+        "ipa": "lʌk"
+      },
+      {
+        "en": "lucky",
+        "zh": "幸运的",
+        "ipa": "ˈlʌki"
+      },
+      {
+        "en": "lunch",
+        "zh": "午餐",
+        "ipa": "lʌntʃ"
+      },
+      {
+        "en": "machine",
+        "zh": "机器",
+        "ipa": "məˈʃiːn"
+      },
+      {
+        "en": "mad",
+        "zh": "疯狂的",
+        "ipa": "mæd"
+      },
+      {
+        "en": "magazine",
+        "zh": "杂志",
+        "ipa": "ˌmæɡəˈziːn"
+      },
+      {
+        "en": "magic",
+        "zh": "魔法",
+        "ipa": "ˈmædʒɪk"
+      },
+      {
+        "en": "mail",
+        "zh": "邮件",
+        "ipa": "meɪl"
+      },
+      {
+        "en": "main",
+        "zh": "主要的",
+        "ipa": "meɪn"
+      },
+      {
+        "en": "maintain",
+        "zh": "维持",
+        "ipa": "meɪnˈteɪn"
+      },
+      {
+        "en": "major",
+        "zh": "主要的",
+        "ipa": "ˈmeɪdʒər"
+      },
+      {
+        "en": "make",
+        "zh": "制作",
+        "ipa": "meɪk"
+      },
+      {
+        "en": "male",
+        "zh": "男性的",
+        "ipa": "meɪl"
+      },
+      {
+        "en": "man",
+        "zh": "男人",
+        "ipa": "mæn"
+      },
+      {
+        "en": "manage",
+        "zh": "管理",
+        "ipa": "ˈmænɪdʒ"
+      },
+      {
+        "en": "management",
+        "zh": "管理",
+        "ipa": "ˈmænɪdʒmənt"
+      },
+      {
+        "en": "manager",
+        "zh": "经理",
+        "ipa": "ˈmænɪdʒər"
+      },
+      {
+        "en": "many",
+        "zh": "许多",
+        "ipa": "ˈmeni"
+      },
+      {
+        "en": "map",
+        "zh": "地图",
+        "ipa": "mæp"
+      },
+      {
+        "en": "March",
+        "zh": "三月",
+        "ipa": "mɑːrtʃ"
+      },
+      {
+        "en": "mark",
+        "zh": "标记",
+        "ipa": "mɑːrk"
+      },
+      {
+        "en": "market",
+        "zh": "市场",
+        "ipa": "ˈmɑːrkɪt"
+      },
+      {
+        "en": "marry",
+        "zh": "结婚",
+        "ipa": "ˈmæri"
+      },
+      {
+        "en": "match",
+        "zh": "比赛",
+        "ipa": "mætʃ"
+      },
+      {
+        "en": "material",
+        "zh": "材料",
+        "ipa": "məˈtɪriəl"
+      },
+      {
+        "en": "math",
+        "zh": "数学",
+        "ipa": "mæθ"
+      },
+      {
+        "en": "matter",
+        "zh": "事情",
+        "ipa": "ˈmætər"
+      },
+      {
+        "en": "may",
+        "zh": "可以",
+        "ipa": "meɪ"
+      },
+      {
+        "en": "May",
+        "zh": "五月",
+        "ipa": "meɪ"
+      },
+      {
+        "en": "maybe",
+        "zh": "也许",
+        "ipa": "ˈmeɪbi"
+      },
+      {
+        "en": "me",
+        "zh": "我（宾格）",
+        "ipa": "mi"
+      },
+      {
+        "en": "meal",
+        "zh": "一餐",
+        "ipa": "miːl"
+      },
+      {
+        "en": "mean",
+        "zh": "意思是",
+        "ipa": "miːn"
+      },
+      {
+        "en": "meaning",
+        "zh": "意思",
+        "ipa": "ˈmiːnɪŋ"
+      },
+      {
+        "en": "measure",
+        "zh": "测量",
+        "ipa": "ˈmeʒər"
+      },
+      {
+        "en": "meat",
+        "zh": "肉",
+        "ipa": "miːt"
+      },
+      {
+        "en": "medicine",
+        "zh": "药",
+        "ipa": "ˈmedsn"
+      },
+      {
+        "en": "medium",
+        "zh": "中等的",
+        "ipa": "ˈmiːdiəm"
+      },
+      {
+        "en": "meet",
+        "zh": "遇见",
+        "ipa": "miːt"
+      },
+      {
+        "en": "meeting",
+        "zh": "会议",
+        "ipa": "ˈmiːtɪŋ"
+      },
+      {
+        "en": "member",
+        "zh": "成员",
+        "ipa": "ˈmembər"
+      },
+      {
+        "en": "memory",
+        "zh": "记忆",
+        "ipa": "ˈmeməri"
+      },
+      {
+        "en": "men",
+        "zh": "男人们",
+        "ipa": "men"
+      },
+      {
+        "en": "mention",
+        "zh": "提到",
+        "ipa": "ˈmenʃn"
+      },
+      {
+        "en": "message",
+        "zh": "消息",
+        "ipa": "ˈmesɪdʒ"
+      },
+      {
+        "en": "metal",
+        "zh": "金属",
+        "ipa": "ˈmetl"
+      },
+      {
+        "en": "method",
+        "zh": "方法",
+        "ipa": "ˈmeθəd"
+      },
+      {
+        "en": "middle",
+        "zh": "中间",
+        "ipa": "ˈmɪdl"
+      },
+      {
+        "en": "might",
+        "zh": "可能",
+        "ipa": "maɪt"
+      },
+      {
+        "en": "mile",
+        "zh": "英里",
+        "ipa": "maɪl"
+      },
+      {
+        "en": "military",
+        "zh": "军事的",
+        "ipa": "ˈmɪləteri"
+      },
+      {
+        "en": "milk",
+        "zh": "牛奶",
+        "ipa": "mɪlk"
+      },
+      {
+        "en": "mind",
+        "zh": "介意",
+        "ipa": "maɪnd"
+      },
+      {
+        "en": "mine",
+        "zh": "我的",
+        "ipa": "maɪn"
+      },
+      {
+        "en": "minister",
+        "zh": "部长",
+        "ipa": "ˈmɪnɪstər"
+      },
+      {
+        "en": "minute",
+        "zh": "分钟",
+        "ipa": "ˈmɪnɪt"
+      },
+      {
+        "en": "mirror",
+        "zh": "镜子",
+        "ipa": "ˈmɪrər"
+      },
+      {
+        "en": "miss",
+        "zh": "错过",
+        "ipa": "mɪs"
+      },
+      {
+        "en": "mistake",
+        "zh": "错误",
+        "ipa": "mɪˈsteɪk"
+      },
+      {
+        "en": "mix",
+        "zh": "混合",
+        "ipa": "mɪks"
+      },
+      {
+        "en": "model",
+        "zh": "模型",
+        "ipa": "ˈmɒdl"
+      },
+      {
+        "en": "modern",
+        "zh": "现代的",
+        "ipa": "ˈmɒdərn"
+      },
+      {
+        "en": "moment",
+        "zh": "片刻",
+        "ipa": "ˈmoʊmənt"
+      },
+      {
+        "en": "money",
+        "zh": "钱",
+        "ipa": "ˈmʌni"
+      },
+      {
+        "en": "monkey",
+        "zh": "猴子",
+        "ipa": "ˈmʌŋki"
+      },
+      {
+        "en": "month",
+        "zh": "月",
+        "ipa": "mʌnθ"
+      },
+      {
+        "en": "moon",
+        "zh": "月亮",
+        "ipa": "muːn"
+      },
+      {
+        "en": "moral",
+        "zh": "道德的",
+        "ipa": "ˈmɒrəl"
+      },
+      {
+        "en": "more",
+        "zh": "更多",
+        "ipa": "mɔːr"
+      },
+      {
+        "en": "morning",
+        "zh": "早晨",
+        "ipa": "ˈmɔːrnɪŋ"
+      },
+      {
+        "en": "most",
+        "zh": "最多",
+        "ipa": "moʊst"
+      },
+      {
+        "en": "mother",
+        "zh": "母亲",
+        "ipa": "ˈmʌðər"
+      },
+      {
+        "en": "motion",
+        "zh": "运动",
+        "ipa": "ˈmoʊʃn"
+      },
+      {
+        "en": "motor",
+        "zh": "马达",
+        "ipa": "ˈmoʊtər"
+      },
+      {
+        "en": "mountain",
+        "zh": "山",
+        "ipa": "ˈmaʊntən"
+      },
+      {
+        "en": "mouth",
+        "zh": "嘴",
+        "ipa": "maʊθ"
+      },
+      {
+        "en": "move",
+        "zh": "移动",
+        "ipa": "muːv"
+      },
+      {
+        "en": "movement",
+        "zh": "运动",
+        "ipa": "ˈmuːvmənt"
+      },
+      {
+        "en": "movie",
+        "zh": "电影",
+        "ipa": "ˈmuːvi"
+      },
+      {
+        "en": "much",
+        "zh": "许多",
+        "ipa": "mʌtʃ"
+      },
+      {
+        "en": "murder",
+        "zh": "谋杀",
+        "ipa": "ˈmɜːrdər"
+      },
+      {
+        "en": "music",
+        "zh": "音乐",
+        "ipa": "ˈmjuːzɪk"
+      },
+      {
+        "en": "must",
+        "zh": "必须",
+        "ipa": "mʌst"
+      },
+      {
+        "en": "my",
+        "zh": "我的",
+        "ipa": "maɪ"
+      },
+      {
+        "en": "myself",
+        "zh": "我自己",
+        "ipa": "maɪˈself"
+      }
+    ]
+  }
+}

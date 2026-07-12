@@ -1,0 +1,902 @@
+{
+  "greetings": {
+    "name": {
+      "en": "Greetings",
+      "zh": "打招呼"
+    },
+    "icon": "👋",
+    "dialogs": [
+      {
+        "q": "Hello!",
+        "qzh": "你好！",
+        "a": "Hi!",
+        "azh": "嗨！"
+      },
+      {
+        "q": "Good morning!",
+        "qzh": "早上好！",
+        "a": "Good morning!",
+        "azh": "早上好！"
+      },
+      {
+        "q": "Good afternoon!",
+        "qzh": "下午好！",
+        "a": "Good afternoon!",
+        "azh": "下午好！"
+      },
+      {
+        "q": "Good evening!",
+        "qzh": "晚上好！",
+        "a": "Good evening!",
+        "azh": "晚上好！"
+      },
+      {
+        "q": "How are you?",
+        "qzh": "你好吗？",
+        "a": "Fine, thank you.",
+        "azh": "我很好，谢谢。"
+      },
+      {
+        "q": "How are you?",
+        "qzh": "你好吗？",
+        "a": "I'm OK.",
+        "azh": "我挺好的。"
+      },
+      {
+        "q": "What's your name?",
+        "qzh": "你叫什么名字？",
+        "a": "My name is Lily.",
+        "azh": "我叫 Lily。"
+      },
+      {
+        "q": "How old are you?",
+        "qzh": "你几岁了？",
+        "a": "I'm seven.",
+        "azh": "我七岁了。"
+      },
+      {
+        "q": "Nice to meet you.",
+        "qzh": "很高兴认识你。",
+        "a": "Nice to meet you too.",
+        "azh": "我也很高兴认识你。"
+      },
+      {
+        "q": "Goodbye!",
+        "qzh": "再见！",
+        "a": "Bye!",
+        "azh": "拜拜！"
+      },
+      {
+        "q": "See you!",
+        "qzh": "回头见！",
+        "a": "See you later!",
+        "azh": "回头见！"
+      },
+      {
+        "q": "Good night!",
+        "qzh": "晚安！",
+        "a": "Good night!",
+        "azh": "晚安！"
+      }
+    ]
+  },
+  "introduction": {
+    "name": {
+      "en": "Introduction",
+      "zh": "自我介绍"
+    },
+    "icon": "👤",
+    "dialogs": [
+      {
+        "q": "Hello! I'm Tom.",
+        "qzh": "你好！我是 Tom。",
+        "a": "Hi! I'm Amy.",
+        "azh": "嗨！我是 Amy。"
+      },
+      {
+        "q": "What's your name?",
+        "qzh": "你叫什么名字？",
+        "a": "I'm Lucy.",
+        "azh": "我叫 Lucy。"
+      },
+      {
+        "q": "Where are you from?",
+        "qzh": "你来自哪里？",
+        "a": "I'm from China.",
+        "azh": "我来自中国。"
+      },
+      {
+        "q": "I'm from China.",
+        "qzh": "我来自中国。",
+        "a": "Me too!",
+        "azh": "我也是！"
+      },
+      {
+        "q": "How old are you?",
+        "qzh": "你几岁了？",
+        "a": "I'm seven years old.",
+        "azh": "我七岁了。"
+      },
+      {
+        "q": "I'm eight years old.",
+        "qzh": "我八岁了。",
+        "a": "I'm seven.",
+        "azh": "我七岁。"
+      },
+      {
+        "q": "Nice to meet you.",
+        "qzh": "很高兴见到你。",
+        "a": "Nice to meet you too.",
+        "azh": "我也很高兴见到你。"
+      },
+      {
+        "q": "This is my friend.",
+        "qzh": "这是我的朋友。",
+        "a": "Hello, nice to meet you.",
+        "azh": "你好，很高兴见到你。"
+      },
+      {
+        "q": "Are you a student?",
+        "qzh": "你是学生吗？",
+        "a": "Yes, I am.",
+        "azh": "是的，我是。"
+      },
+      {
+        "q": "What class are you in?",
+        "qzh": "你在几班？",
+        "a": "I'm in Class One.",
+        "azh": "我在一班。"
+      }
+    ]
+  },
+  "classroom": {
+    "name": {
+      "en": "Classroom",
+      "zh": "课堂对话"
+    },
+    "icon": "🏫",
+    "dialogs": [
+      {
+        "q": "Good morning, class!",
+        "qzh": "同学们早上好！",
+        "a": "Good morning, teacher!",
+        "azh": "老师早上好！"
+      },
+      {
+        "q": "Stand up, please.",
+        "qzh": "请起立。",
+        "a": "Yes, Miss Li.",
+        "azh": "好的，李老师。"
+      },
+      {
+        "q": "Sit down, please.",
+        "qzh": "请坐。",
+        "a": "Thank you!",
+        "azh": "谢谢！"
+      },
+      {
+        "q": "Open your book, please.",
+        "qzh": "请打开书。",
+        "a": "Okay!",
+        "azh": "好的！"
+      },
+      {
+        "q": "Close your book.",
+        "qzh": "合上书。",
+        "a": "All right.",
+        "azh": "好的。"
+      },
+      {
+        "q": "Read after me, please.",
+        "qzh": "请跟我读。",
+        "a": "Okay!",
+        "azh": "好的！"
+      },
+      {
+        "q": "What's this?",
+        "qzh": "这是什么？",
+        "a": "It's a book.",
+        "azh": "这是一本书。"
+      },
+      {
+        "q": "What's that?",
+        "qzh": "那是什么？",
+        "a": "It's a pen.",
+        "azh": "那是一支钢笔。"
+      },
+      {
+        "q": "How do you spell it?",
+        "qzh": "怎么拼写？",
+        "a": "C-A-T, cat.",
+        "azh": "C-A-T，cat。"
+      },
+      {
+        "q": "Can you say it again?",
+        "qzh": "你能再说一遍吗？",
+        "a": "Sure! Cat.",
+        "azh": "当然！Cat。"
+      },
+      {
+        "q": "Who can answer this question?",
+        "qzh": "谁能回答这个问题？",
+        "a": "I can!",
+        "azh": "我能！"
+      },
+      {
+        "q": "Great job!",
+        "qzh": "真棒！",
+        "a": "Thank you!",
+        "azh": "谢谢！"
+      },
+      {
+        "q": "Let's start the class.",
+        "qzh": "我们开始上课。",
+        "a": "Okay!",
+        "azh": "好的！"
+      },
+      {
+        "q": "Class is over.",
+        "qzh": "下课了。",
+        "a": "Thank you, teacher!",
+        "azh": "谢谢老师！"
+      }
+    ]
+  },
+  "daily": {
+    "name": {
+      "en": "Daily",
+      "zh": "日常交流"
+    },
+    "icon": "🌞",
+    "dialogs": [
+      {
+        "q": "Good morning, Mom!",
+        "qzh": "妈妈早上好！",
+        "a": "Good morning, dear.",
+        "azh": "早上好，宝贝。"
+      },
+      {
+        "q": "Good morning, Dad!",
+        "qzh": "爸爸早上好！",
+        "a": "Good morning, son.",
+        "azh": "早上好，儿子。"
+      },
+      {
+        "q": "What's for breakfast?",
+        "qzh": "早餐吃什么？",
+        "a": "Milk and bread.",
+        "azh": "牛奶和面包。"
+      },
+      {
+        "q": "I'm hungry.",
+        "qzh": "我饿了。",
+        "a": "Here's some bread.",
+        "azh": "这儿有面包。"
+      },
+      {
+        "q": "I'm thirsty.",
+        "qzh": "我渴了。",
+        "a": "Have some water.",
+        "azh": "喝点水吧。"
+      },
+      {
+        "q": "I'm going to school.",
+        "qzh": "我去上学了。",
+        "a": "Have a good day!",
+        "azh": "祝你今天过得愉快！"
+      },
+      {
+        "q": "What time is it?",
+        "qzh": "几点了？",
+        "a": "It's seven o'clock.",
+        "azh": "七点钟。"
+      },
+      {
+        "q": "Hurry up!",
+        "qzh": "快点！",
+        "a": "I'm coming.",
+        "azh": "我来了。"
+      },
+      {
+        "q": "I'm home!",
+        "qzh": "我回来了！",
+        "a": "Welcome back!",
+        "azh": "欢迎回来！"
+      },
+      {
+        "q": "How was your day?",
+        "qzh": "今天怎么样？",
+        "a": "It was great!",
+        "azh": "很棒！"
+      },
+      {
+        "q": "Let's have dinner.",
+        "qzh": "我们吃晚饭吧。",
+        "a": "Okay!",
+        "azh": "好的！"
+      },
+      {
+        "q": "I'm tired.",
+        "qzh": "我累了。",
+        "a": "Let's go to bed.",
+        "azh": "我们去睡觉吧。"
+      },
+      {
+        "q": "Good night, Mom!",
+        "qzh": "妈妈晚安！",
+        "a": "Good night, sweetheart.",
+        "azh": "晚安，宝贝。"
+      },
+      {
+        "q": "I love you!",
+        "qzh": "我爱你！",
+        "a": "I love you too!",
+        "azh": "我也爱你！"
+      }
+    ]
+  },
+  "food": {
+    "name": {
+      "en": "Food",
+      "zh": "食物餐桌"
+    },
+    "icon": "🍎",
+    "dialogs": [
+      {
+        "q": "Are you hungry?",
+        "qzh": "你饿了吗？",
+        "a": "Yes, I am.",
+        "azh": "是的，我饿了。"
+      },
+      {
+        "q": "Do you want some rice?",
+        "qzh": "你想吃点米饭吗？",
+        "a": "Yes, please.",
+        "azh": "好的，谢谢。"
+      },
+      {
+        "q": "What do you want to eat?",
+        "qzh": "你想吃什么？",
+        "a": "I'd like noodles.",
+        "azh": "我想吃面条。"
+      },
+      {
+        "q": "Do you like apples?",
+        "qzh": "你喜欢苹果吗？",
+        "a": "Yes, I do.",
+        "azh": "是的，我喜欢。"
+      },
+      {
+        "q": "Do you like milk?",
+        "qzh": "你喜欢牛奶吗？",
+        "a": "Yes, very much.",
+        "azh": "是的，非常喜欢。"
+      },
+      {
+        "q": "Is it delicious?",
+        "qzh": "好吃吗？",
+        "a": "Yes, it's yummy!",
+        "azh": "是的，很好吃！"
+      },
+      {
+        "q": "It's yummy!",
+        "qzh": "真好吃！",
+        "a": "I'm glad you like it.",
+        "azh": "我很高兴你喜欢。"
+      },
+      {
+        "q": "Can I have some more?",
+        "qzh": "我能再要一点吗？",
+        "a": "Sure, here you are.",
+        "azh": "当然，给你。"
+      },
+      {
+        "q": "I don't like vegetables.",
+        "qzh": "我不喜欢蔬菜。",
+        "a": "They're good for you.",
+        "azh": "它们对你有好处。"
+      },
+      {
+        "q": "What fruit do you like?",
+        "qzh": "你喜欢什么水果？",
+        "a": "I like bananas.",
+        "azh": "我喜欢香蕉。"
+      }
+    ]
+  },
+  "shopping": {
+    "name": {
+      "en": "Shopping",
+      "zh": "购物"
+    },
+    "icon": "🛒",
+    "dialogs": [
+      {
+        "q": "Can I help you?",
+        "qzh": "需要帮忙吗？",
+        "a": "Yes, please.",
+        "azh": "是的，需要。"
+      },
+      {
+        "q": "What can I do for you?",
+        "qzh": "我能为你做什么？",
+        "a": "I want an apple.",
+        "azh": "我想要一个苹果。"
+      },
+      {
+        "q": "How much is it?",
+        "qzh": "多少钱？",
+        "a": "Five yuan.",
+        "azh": "五块钱。"
+      },
+      {
+        "q": "How much is this book?",
+        "qzh": "这本书多少钱？",
+        "a": "It's ten yuan.",
+        "azh": "十块钱。"
+      },
+      {
+        "q": "It's too expensive.",
+        "qzh": "太贵了。",
+        "a": "How about this one?",
+        "azh": "这个怎么样？"
+      },
+      {
+        "q": "Can I have a look?",
+        "qzh": "我能看一下吗？",
+        "a": "Sure, here you are.",
+        "azh": "当然，给你。"
+      },
+      {
+        "q": "Do you have milk?",
+        "qzh": "有牛奶吗？",
+        "a": "Yes, we do.",
+        "azh": "是的，我们有。"
+      },
+      {
+        "q": "I'll take it.",
+        "qzh": "我买了。",
+        "a": "Thank you!",
+        "azh": "谢谢！"
+      },
+      {
+        "q": "Thank you!",
+        "qzh": "谢谢！",
+        "a": "You're welcome.",
+        "azh": "不客气。"
+      },
+      {
+        "q": "Have a nice day!",
+        "qzh": "祝你愉快！",
+        "a": "You too!",
+        "azh": "你也一样！"
+      }
+    ]
+  },
+  "friends": {
+    "name": {
+      "en": "Friends",
+      "zh": "朋友聊天"
+    },
+    "icon": "👭",
+    "dialogs": [
+      {
+        "q": "Let's play!",
+        "qzh": "我们一起玩吧！",
+        "a": "Great!",
+        "azh": "太好了！"
+      },
+      {
+        "q": "What's your favorite color?",
+        "qzh": "你最喜欢什么颜色？",
+        "a": "I like blue.",
+        "azh": "我喜欢蓝色。"
+      },
+      {
+        "q": "What's your favorite food?",
+        "qzh": "你最喜欢什么食物？",
+        "a": "I like ice cream.",
+        "azh": "我喜欢冰淇淋。"
+      },
+      {
+        "q": "Do you like cats?",
+        "qzh": "你喜欢猫吗？",
+        "a": "Yes, I do!",
+        "azh": "是的，我喜欢！"
+      },
+      {
+        "q": "Do you like dogs?",
+        "qzh": "你喜欢狗吗？",
+        "a": "No, I don't.",
+        "azh": "不，我不喜欢。"
+      },
+      {
+        "q": "Let's sing a song!",
+        "qzh": "我们唱首歌吧！",
+        "a": "Okay!",
+        "azh": "好的！"
+      },
+      {
+        "q": "Let's draw a picture.",
+        "qzh": "我们画幅画吧。",
+        "a": "Good idea!",
+        "azh": "好主意！"
+      },
+      {
+        "q": "Happy birthday!",
+        "qzh": "生日快乐！",
+        "a": "Thank you!",
+        "azh": "谢谢你！"
+      },
+      {
+        "q": "Here's a present for you.",
+        "qzh": "这是给你的礼物。",
+        "a": "Oh, thank you!",
+        "azh": "哦，谢谢！"
+      },
+      {
+        "q": "Can I play with you?",
+        "qzh": "我能和你一起玩吗？",
+        "a": "Of course!",
+        "azh": "当然可以！"
+      }
+    ]
+  },
+  "asking": {
+    "name": {
+      "en": "Asking",
+      "zh": "问路求助"
+    },
+    "icon": "🗺️",
+    "dialogs": [
+      {
+        "q": "Excuse me.",
+        "qzh": "打扰一下。",
+        "a": "Yes?",
+        "azh": "什么事？"
+      },
+      {
+        "q": "Where is the book?",
+        "qzh": "书在哪里？",
+        "a": "It's on the desk.",
+        "azh": "在桌子上。"
+      },
+      {
+        "q": "Where is my bag?",
+        "qzh": "我的书包在哪里？",
+        "a": "It's under the chair.",
+        "azh": "在椅子下面。"
+      },
+      {
+        "q": "Where is the cat?",
+        "qzh": "猫在哪里？",
+        "a": "It's behind the door.",
+        "azh": "在门后面。"
+      },
+      {
+        "q": "What's this?",
+        "qzh": "这是什么？",
+        "a": "It's a pencil.",
+        "azh": "这是一支铅笔。"
+      },
+      {
+        "q": "What's that in English?",
+        "qzh": "那个用英语怎么说？",
+        "a": "It's a ruler.",
+        "azh": "是一把尺子。"
+      },
+      {
+        "q": "Is this your pen?",
+        "qzh": "这是你的钢笔吗？",
+        "a": "Yes, it is. Thank you!",
+        "azh": "是的，谢谢你！"
+      },
+      {
+        "q": "Is that your book?",
+        "qzh": "那是你的书吗？",
+        "a": "No, it isn't.",
+        "azh": "不，不是的。"
+      },
+      {
+        "q": "Can I borrow your eraser?",
+        "qzh": "我能借你的橡皮吗？",
+        "a": "Sure, here you are.",
+        "azh": "当然，给你。"
+      },
+      {
+        "q": "Can you help me?",
+        "qzh": "你能帮我吗？",
+        "a": "Of course!",
+        "azh": "当然可以！"
+      },
+      {
+        "q": "Thank you for helping me.",
+        "qzh": "谢谢你帮我。",
+        "a": "You're welcome.",
+        "azh": "不客气。"
+      },
+      {
+        "q": "I'm sorry.",
+        "qzh": "对不起。",
+        "a": "That's okay.",
+        "azh": "没关系。"
+      }
+    ]
+  },
+  "time": {
+    "name": {
+      "en": "Time",
+      "zh": "时间日期"
+    },
+    "icon": "⏰",
+    "dialogs": [
+      {
+        "q": "What time is it?",
+        "qzh": "几点了？",
+        "a": "It's nine o'clock.",
+        "azh": "九点钟。"
+      },
+      {
+        "q": "What time do you get up?",
+        "qzh": "你几点起床？",
+        "a": "I get up at seven.",
+        "azh": "我七点起床。"
+      },
+      {
+        "q": "What day is today?",
+        "qzh": "今天星期几？",
+        "a": "It's Monday.",
+        "azh": "今天星期一。"
+      },
+      {
+        "q": "What day was yesterday?",
+        "qzh": "昨天星期几？",
+        "a": "It was Sunday.",
+        "azh": "昨天星期天。"
+      },
+      {
+        "q": "What day is tomorrow?",
+        "qzh": "明天星期几？",
+        "a": "It's Tuesday.",
+        "azh": "明天星期二。"
+      },
+      {
+        "q": "When is your birthday?",
+        "qzh": "你的生日是什么时候？",
+        "a": "My birthday is in June.",
+        "azh": "我的生日在六月。"
+      },
+      {
+        "q": "When do you go to school?",
+        "qzh": "你什么时候上学？",
+        "a": "I go to school at eight.",
+        "azh": "我八点去上学。"
+      },
+      {
+        "q": "When do you go to bed?",
+        "qzh": "你什么时候睡觉？",
+        "a": "At nine o'clock.",
+        "azh": "九点钟。"
+      },
+      {
+        "q": "What month is it?",
+        "qzh": "现在几月？",
+        "a": "It's October.",
+        "azh": "现在是十月。"
+      },
+      {
+        "q": "What year is it?",
+        "qzh": "今年是哪一年？",
+        "a": "It's 2026.",
+        "azh": "2026年。"
+      }
+    ]
+  },
+  "weather": {
+    "name": {
+      "en": "Weather",
+      "zh": "天气季节"
+    },
+    "icon": "⛅",
+    "dialogs": [
+      {
+        "q": "How is the weather?",
+        "qzh": "天气怎么样？",
+        "a": "It's sunny.",
+        "azh": "天气晴朗。"
+      },
+      {
+        "q": "How is the weather today?",
+        "qzh": "今天天气怎么样？",
+        "a": "It's cloudy.",
+        "azh": "今天多云。"
+      },
+      {
+        "q": "It's raining.",
+        "qzh": "下雨了。",
+        "a": "Take your umbrella.",
+        "azh": "带上雨伞。"
+      },
+      {
+        "q": "It's snowing!",
+        "qzh": "下雪了！",
+        "a": "Let's make a snowman!",
+        "azh": "我们堆雪人吧！"
+      },
+      {
+        "q": "It's hot today.",
+        "qzh": "今天很热。",
+        "a": "Have some water.",
+        "azh": "喝点水吧。"
+      },
+      {
+        "q": "It's cold today.",
+        "qzh": "今天很冷。",
+        "a": "Wear your coat.",
+        "azh": "穿上外套。"
+      },
+      {
+        "q": "Do you like spring?",
+        "qzh": "你喜欢春天吗？",
+        "a": "Yes, it's warm.",
+        "azh": "是的，春天很温暖。"
+      },
+      {
+        "q": "Do you like summer?",
+        "qzh": "你喜欢夏天吗？",
+        "a": "No, it's too hot.",
+        "azh": "不，夏天太热了。"
+      },
+      {
+        "q": "What season is it?",
+        "qzh": "现在是什么季节？",
+        "a": "It's autumn.",
+        "azh": "现在是秋天。"
+      },
+      {
+        "q": "It's windy today.",
+        "qzh": "今天刮风。",
+        "a": "Let's fly a kite!",
+        "azh": "我们去放风筝吧！"
+      }
+    ]
+  },
+  "feelings": {
+    "name": {
+      "en": "Feelings",
+      "zh": "情感表达"
+    },
+    "icon": "😊",
+    "dialogs": [
+      {
+        "q": "How do you feel?",
+        "qzh": "你感觉怎么样？",
+        "a": "I'm happy!",
+        "azh": "我很开心！"
+      },
+      {
+        "q": "Are you happy?",
+        "qzh": "你开心吗？",
+        "a": "Yes, I am.",
+        "azh": "是的，我开心。"
+      },
+      {
+        "q": "Are you sad?",
+        "qzh": "你难过吗？",
+        "a": "No, I'm fine.",
+        "azh": "不，我很好。"
+      },
+      {
+        "q": "I'm so tired.",
+        "qzh": "我好累啊。",
+        "a": "Have a rest.",
+        "azh": "休息一下吧。"
+      },
+      {
+        "q": "I'm hungry.",
+        "qzh": "我饿了。",
+        "a": "Let's eat something.",
+        "azh": "我们吃点东西吧。"
+      },
+      {
+        "q": "I'm thirsty.",
+        "qzh": "我渴了。",
+        "a": "Have some juice.",
+        "azh": "喝点果汁吧。"
+      },
+      {
+        "q": "Are you OK?",
+        "qzh": "你还好吗？",
+        "a": "I'm OK, thank you.",
+        "azh": "我没事，谢谢。"
+      },
+      {
+        "q": "I don't feel well.",
+        "qzh": "我感觉不舒服。",
+        "a": "I'm sorry to hear that.",
+        "azh": "听到这个消息我很难过。"
+      },
+      {
+        "q": "Don't worry.",
+        "qzh": "别担心。",
+        "a": "Thank you!",
+        "azh": "谢谢你！"
+      },
+      {
+        "q": "I'm so excited!",
+        "qzh": "我好兴奋啊！",
+        "a": "Me too!",
+        "azh": "我也是！"
+      }
+    ]
+  },
+  "hobbies": {
+    "name": {
+      "en": "Hobbies",
+      "zh": "兴趣爱好"
+    },
+    "icon": "🎨",
+    "dialogs": [
+      {
+        "q": "What's your hobby?",
+        "qzh": "你的爱好是什么？",
+        "a": "I like reading.",
+        "azh": "我喜欢看书。"
+      },
+      {
+        "q": "What do you like to do?",
+        "qzh": "你喜欢做什么？",
+        "a": "I like to sing.",
+        "azh": "我喜欢唱歌。"
+      },
+      {
+        "q": "Do you like to dance?",
+        "qzh": "你喜欢跳舞吗？",
+        "a": "Yes, I do!",
+        "azh": "是的，我喜欢！"
+      },
+      {
+        "q": "Can you swim?",
+        "qzh": "你会游泳吗？",
+        "a": "Yes, I can.",
+        "azh": "是的，我会。"
+      },
+      {
+        "q": "Can you ride a bike?",
+        "qzh": "你会骑自行车吗？",
+        "a": "No, I can't.",
+        "azh": "不，我不会。"
+      },
+      {
+        "q": "I like to draw pictures.",
+        "qzh": "我喜欢画画。",
+        "a": "That's great!",
+        "azh": "真棒！"
+      },
+      {
+        "q": "Let's play football.",
+        "qzh": "我们踢足球吧。",
+        "a": "Sounds good!",
+        "azh": "听起来不错！"
+      },
+      {
+        "q": "Do you like music?",
+        "qzh": "你喜欢音乐吗？",
+        "a": "Yes, I love it.",
+        "azh": "是的，我爱音乐。"
+      },
+      {
+        "q": "What sport do you like?",
+        "qzh": "你喜欢什么运动？",
+        "a": "I like running.",
+        "azh": "我喜欢跑步。"
+      },
+      {
+        "q": "Let's read this book.",
+        "qzh": "我们读这本书吧。",
+        "a": "Okay!",
+        "azh": "好的！"
+      }
+    ]
+  }
+}

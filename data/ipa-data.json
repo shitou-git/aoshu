@@ -1,0 +1,258 @@
+{
+  "longVowels": [
+    {
+      "sym": "iː",
+      "name": "长元音衣",
+      "example": "see"
+    },
+    {
+      "sym": "ɜː",
+      "name": "长元音额",
+      "example": "bird"
+    },
+    {
+      "sym": "ɑː",
+      "name": "长元音啊",
+      "example": "car"
+    },
+    {
+      "sym": "ɔː",
+      "name": "长元音奥",
+      "example": "door"
+    },
+    {
+      "sym": "uː",
+      "name": "长元音乌",
+      "example": "food"
+    }
+  ],
+  "shortVowels": [
+    {
+      "sym": "ɪ",
+      "name": "短元音衣",
+      "example": "big"
+    },
+    {
+      "sym": "e",
+      "name": "短元音哎",
+      "example": "pen"
+    },
+    {
+      "sym": "æ",
+      "name": "短元音哎",
+      "example": "cat"
+    },
+    {
+      "sym": "ʌ",
+      "name": "短元音啊",
+      "example": "cup"
+    },
+    {
+      "sym": "ɒ",
+      "name": "短元音奥",
+      "example": "hot"
+    },
+    {
+      "sym": "ʊ",
+      "name": "短元音乌",
+      "example": "book"
+    },
+    {
+      "sym": "ə",
+      "name": "轻元音额",
+      "example": "about"
+    }
+  ],
+  "diphthongs": [
+    {
+      "sym": "eɪ",
+      "name": "双元音诶",
+      "example": "day"
+    },
+    {
+      "sym": "aɪ",
+      "name": "双元音爱",
+      "example": "my"
+    },
+    {
+      "sym": "ɔɪ",
+      "name": "双元音奥衣",
+      "example": "boy"
+    },
+    {
+      "sym": "aʊ",
+      "name": "双元音傲",
+      "example": "cow"
+    },
+    {
+      "sym": "əʊ",
+      "name": "双元音欧",
+      "example": "go"
+    },
+    {
+      "sym": "ɪə",
+      "name": "双元音衣额",
+      "example": "ear"
+    },
+    {
+      "sym": "eə",
+      "name": "双元音哎额",
+      "example": "air"
+    },
+    {
+      "sym": "ʊə",
+      "name": "双元音乌额",
+      "example": "tour"
+    }
+  ],
+  "plosives": [
+    {
+      "sym": "p",
+      "name": "清辅音坡",
+      "example": "pen"
+    },
+    {
+      "sym": "b",
+      "name": "浊辅音波",
+      "example": "bag"
+    },
+    {
+      "sym": "t",
+      "name": "清辅音特",
+      "example": "tea"
+    },
+    {
+      "sym": "d",
+      "name": "浊辅音的",
+      "example": "dog"
+    },
+    {
+      "sym": "k",
+      "name": "清辅音克",
+      "example": "cat"
+    },
+    {
+      "sym": "ɡ",
+      "name": "浊辅音哥",
+      "example": "go"
+    }
+  ],
+  "fricatives": [
+    {
+      "sym": "f",
+      "name": "清辅音付",
+      "example": "fish"
+    },
+    {
+      "sym": "v",
+      "name": "浊辅音呜",
+      "example": "very"
+    },
+    {
+      "sym": "θ",
+      "name": "清辅音咬舌思",
+      "example": "think"
+    },
+    {
+      "sym": "ð",
+      "name": "浊辅音咬舌日",
+      "example": "this"
+    },
+    {
+      "sym": "s",
+      "name": "清辅音斯",
+      "example": "sun"
+    },
+    {
+      "sym": "z",
+      "name": "浊辅音日",
+      "example": "zoo"
+    },
+    {
+      "sym": "ʃ",
+      "name": "清辅音师",
+      "example": "she"
+    },
+    {
+      "sym": "ʒ",
+      "name": "浊辅音日",
+      "example": "measure"
+    },
+    {
+      "sym": "h",
+      "name": "清辅音喝",
+      "example": "hat"
+    },
+    {
+      "sym": "r",
+      "name": "浊辅音日",
+      "example": "red"
+    }
+  ],
+  "affricates": [
+    {
+      "sym": "tʃ",
+      "name": "清辅音吃",
+      "example": "chair"
+    },
+    {
+      "sym": "dʒ",
+      "name": "浊辅音知",
+      "example": "juice"
+    }
+  ],
+  "clusters": [
+    {
+      "sym": "tr",
+      "name": "清辅音戳",
+      "example": "tree"
+    },
+    {
+      "sym": "dr",
+      "name": "浊辅音捉",
+      "example": "drink"
+    },
+    {
+      "sym": "ts",
+      "name": "清辅音次",
+      "example": "cats"
+    },
+    {
+      "sym": "dz",
+      "name": "浊辅音子",
+      "example": "beds"
+    }
+  ],
+  "others": [
+    {
+      "sym": "m",
+      "name": "鼻音嗯",
+      "example": "mom"
+    },
+    {
+      "sym": "n",
+      "name": "鼻音嗯",
+      "example": "nose"
+    },
+    {
+      "sym": "ŋ",
+      "name": "后鼻音嗯",
+      "example": "sing"
+    },
+    {
+      "sym": "l",
+      "name": "舌侧音了",
+      "example": "like"
+    },
+    {
+      "sym": "w",
+      "name": "半元音我",
+      "example": "we"
+    },
+    {
+      "sym": "j",
+      "name": "半元音耶",
+      "example": "yes"
+    }
+  ]
+}
